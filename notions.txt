@@ -1,0 +1,12 @@
+machine virtuelle
+compilation (byte code)
+liaison dynamique (vs statique)
+fichier java
+fichier classe
+classpath
+JRE
+JDK
+API (runtime.jar)
+
+classe
+enumération

@@ -11,6 +11,8 @@ Le langage Java
    :caption: Sommaire:
 
    introduction
+   installation
+   compilation
 
 Indices and tables
 ==================
