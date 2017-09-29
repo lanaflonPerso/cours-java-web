@@ -214,7 +214,7 @@ Quelques raccourcis clavier utiles dans Eclipse :
   "CTRL + SHIFT + R", "Chercher une ressource (un fichier)"
   "F11", "Exécuter la classe courante"
 
-On peut créer toutes sortes de projet différents dans Eclipse. Pour nous, le plus
+On peut créer toutes sortes de projets différents dans Eclipse. Pour nous, le plus
 utile sera bien sûr le projet Java. Pour cela, il suffit d'aller dans le menu
 File > New > Java Project. On obtient alors la boite de dialogue suivante :
 
@@ -224,20 +224,20 @@ Il suffit de donner le nom du projet et de cliquer *Finish*. Il se peut qu'Eclip
 ouvre ensuite une boîte de dialogue pour vous demander si vous voulez changer de
 *perspective*. Dans Eclipse, une perspective est un agencement de l'espace de travail
 adapté pour certaines tâches. Il existe par exemple une perspective Java adaptée
-pour développer du code Java et une perspective Debug pour le debugage du code.
+pour développer du code Java et une perspective Debug pour le debuggage du code.
 
-Un fois le projet créée, on voit que Eclipse a ajouté automatiquement un répertoire src
-destinée à accueillir les sources du projet. Il suffit d'ajouter le fichier
+Un fois le projet créé, on voit que Eclipse a ajouté automatiquement un répertoire **src**
+destiné à accueillir les sources du projet. Il suffit d'ajouter le fichier
 :download:`PremierProgramme.java <assets/PremierProgramme.java>` à cet endroit.
 
 Comme indiqué ci-dessus, toute modification dans ce fichier entraînera automatiquement
 sa compilation au moment de la sauvegarde.
 
-Si je souhaite distribué mon projet, je peux, par exemple, produire un fichier JAR.
+Si je souhaite distribuer mon projet, je peux, par exemple, produire un fichier JAR.
 Pour cela, il suffit de faire un clic droit sur le nom du projet dans le *Package Explorer*
 et de choisir *Export*. Dans la boîte de dialogue d'export, je peux chercher "jar" et sélectionner
-Java > JAR File. En cliquant sur *Next*, je peux spécifier le nom et l'emplacement du fichier JAR à créer
-et cliquer sur *Finish*.
+Java > JAR File. En cliquant sur *Next*, je peux spécifier le nom et l'emplacement du fichier JAR
+et le créer en cliquant sur *Finish*.
 
 .. _javac: http://docs.oracle.com/javase/9/tools/javac.htm
 .. _java: http://docs.oracle.com/javase/9/tools/java.htm
