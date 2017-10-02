@@ -15,6 +15,7 @@ Le langage Java
    compilation
    structure_fondamentale
    premiere_classe
+   types_primitifs
 
 Indices and tables
 ==================
