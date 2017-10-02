@@ -3,7 +3,7 @@ Une première classe
 
 Java est langage orienté objet. Cela signifie que (presque) tout est un objet.
 La définition d'un objet s'appelle une classe. Donc programmer en Java, cela
-revient à **déclarer** des classes, à **instancier** des objets à partir de des classes
+revient à **déclarer** des classes, à **instancier** des objets à partir des classes
 déclarées ou fournies et à effectuer des opérations sur ces objets.
 
 Déclarer une classe
@@ -150,6 +150,16 @@ Si dans notre programme, nous voulons interagir avec une voiture nous devons cr�
 de la classe Voiture. Cette instance (que l'on appelle plus simplement un objet) dispose de son
 propre espace mémoire qui contient son état, c'est-à-dire la liste de ses attributs.
 Créer une instance d'un objet se fait grâce à l'opérateur **new**.
+
+.. note::
+
+  Remarquez l'utilisation des parenthèses avec l'opérateur **new** :
+
+  ::
+
+    Voiture voiture = new Voiture();
+
+  Ces parenthèses sont obligatoires.
 
 En Java, l'opérateur **.** sert à accéder aux attributs ou aux méthodes d'un objet. Donc si je dispose
 d'une variable *voiture* de type *Voiture*, je peux appeler sa méthode *accelerer* grâce à cet opérateur :
