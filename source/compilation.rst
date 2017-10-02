@@ -9,7 +9,7 @@ Un premier programme
 
 Nous allons utiliser comme exemple la programme Java suivant :
 
-.. code::
+::
 
   /**
    * Ce programme n'est pas très intéressant
@@ -36,7 +36,7 @@ nous devons utiliser le programme javac_ (Java Compiler) dont c'est la fonction.
 Dans un terminal, il suffit de se rendre dans le répertoire où se situe le fichier
 et de lancer la commande de compilation :
 
-.. code:: shell
+.. code-block:: shell
 
   $ cd /home/david/Workspace/workspace-java/exemple
   $ javac PremierProgramme.java
@@ -47,7 +47,7 @@ et de lancer la commande de compilation :
   du système. Il vous suffit de le rajouter ou de donner le chemin complet menant à
   ce programme. Par exemple :
 
-  .. code:: shell
+  .. code-block:: shell
 
     $ /opt/bin/jdk1.8/bin/javac PremierProgramme.java
 
@@ -70,7 +70,7 @@ L'exécution
 L'exécution d'un programme se fait par l'intermédiaire de la machine virtuelle. Pour invoquer cette
 dernière, on utilise tout simplement la commande java_ suivie du nom de la classe **sans l'extension** :
 
-.. code:: shell
+.. code-block:: shell
 
   $ java PremierProgramme
 
@@ -80,7 +80,7 @@ dernière, on utilise tout simplement la commande java_ suivie du nom de la clas
   du système. Il vous suffit de le rajouter ou de donner le chemin complet menant à
   ce programme. Par exemple :
 
-  .. code:: shell
+  .. code-block:: shell
 
     $ /opt/bin/jdk1.8/bin/java PremierProgramme
 
@@ -134,7 +134,7 @@ ou plusieurs chemins avec le paramètre **-classpath** aux commandes java_ et ja
 indiquant les répertoires à partir desquels il est possible de trouver des fichiers
 class.
 
-.. code:: shell
+.. code-block:: shell
 
   $ java -classpath /home/david/Workspace/workspace-java/exemple PremierProgramme
 
@@ -146,7 +146,7 @@ S'il existe des répertoires contenant des fichiers class que vous utilisez souv
 vous pouvez les inclure implicitement dans le classpath on déclarant ces répertoire
 dans la variable d'environnement **CLASSPATH**.
 
-.. code:: shell
+.. code-block:: shell
 
   $ export CLASSPATH=/home/david/Workspace/workspace-java/exemple
   $ java PremierProgramme
@@ -170,7 +170,7 @@ Pour palier à ce problème, on peut utiliser des fichiers jar_. JAR signifie si
 Très prosaïquement, il s'agit d'un fichier zip contenant un ensemble de fichiers class mais qui a l'extension **.jar**.
 Java fournit l'utilitaire jar_ pour créer une archive :
 
-.. code:: shell
+.. code-block:: shell
 
   $ jar -cf monappli.jar PremierProgramme.class
 
@@ -179,7 +179,7 @@ L'utilitaire jar_ reprend la syntaxe de **tar** sous les systèmes \*NIX.
 Un fichier JAR peut être ajouté au classpath rendant ainsi disponible l'ensemble
 des fichiers qu'il contient.
 
-.. code:: shell
+.. code-block:: shell
 
   $ export CLASSPATH=/home/david/Workspace/workspace-java/exemple/monappli.jar
   $ java PremierProgramme

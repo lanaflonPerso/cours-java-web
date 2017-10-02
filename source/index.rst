@@ -13,6 +13,7 @@ Le langage Java
    introduction
    installation
    compilation
+   structure
 
 Indices and tables
 ==================
