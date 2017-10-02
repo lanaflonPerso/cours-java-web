@@ -9,23 +9,12 @@ Un premier programme
 
 Nous allons utiliser comme exemple la programme Java suivant :
 
-::
-
-  /**
-   * Ce programme n'est pas très intéressant
-   */
-  public class PremierProgramme {
-
-  	public static void main(String[] args) {
-  		System.out.println("Hello World!");
-  	}
-
-  }
+.. literalinclude:: samples/PremierProgramme.java
 
 La syntaxe du langage nous importe peu pour l'instant. Ce programme Java va simplement écrire
 le message "Hello World!" sur la sortie standard.
 
-Téléchargez le fichier :download:`PremierProgramme.java <assets/PremierProgramme.java>`
+Téléchargez le fichier :download:`PremierProgramme.java <samples/PremierProgramme.java>`
 contenant ce code.
 
 La compilation
@@ -228,7 +217,7 @@ pour développer du code Java et une perspective Debug pour le debuggage du code
 
 Un fois le projet créé, on voit que Eclipse a ajouté automatiquement un répertoire **src**
 destiné à accueillir les sources du projet. Il suffit d'ajouter le fichier
-:download:`PremierProgramme.java <assets/PremierProgramme.java>` à cet endroit.
+:download:`PremierProgramme.java <samples/PremierProgramme.java>` à cet endroit.
 
 Comme indiqué ci-dessus, toute modification dans ce fichier entraînera automatiquement
 sa compilation au moment de la sauvegarde.

@@ -10,3 +10,5 @@ API (runtime.jar)
 
 classe
 enumération
+
+javabeans

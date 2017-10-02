@@ -13,7 +13,8 @@ Le langage Java
    introduction
    installation
    compilation
-   structure
+   structure_fondamentale
+   premiere_classe
 
 Indices and tables
 ==================

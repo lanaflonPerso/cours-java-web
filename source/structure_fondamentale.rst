@@ -38,6 +38,9 @@ il est également possible de créer des blocs anonymes.
     double j = i * 2;
   }
 
+Un bloc de code n'a pas besoin de se terminer par un point-virgule. Certains outils
+émettent un avertissement si vous le faites.
+
 Les commentaires
 ****************
 
@@ -138,7 +141,7 @@ Les conventions de nommage
 **************************
 
 Chaque langage de programmation et chaque communauté de développeurs définissent
-des conventions sur la façon de nommer les variables dans un programme. Comme
+des conventions sur la façon de nommer les identifiants dans un programme. Comme
 pour le formatage de code, cela n'a pas d'impact sur le compilateur mais permet
 de garantir un bonne lisibilité et donc une bonne compréhension de son code
 par ses pairs. Les développeurs Java sont particulièrement attachés au respect
@@ -203,7 +206,7 @@ Le mots-clés
 Comme pour la plupart des langages de programmation, il n'est pas possible d'utiliser
 comme nom dans un programme un mot-clé du langage. La liste des mots-clés en Java est :
 
-::
+.. code-block:: text
 
   abstract   continue   for          new         switch
   assert     default    if           package     synchronized
@@ -223,7 +226,7 @@ comme nom dans un programme un mot-clé du langage. La liste des mots-clés en J
 
 Il existe également des mots réservés qui ne sont pas strictement des mots-clés du langage :
 
-::
+.. code-block:: text
 
   true   false   null
 
