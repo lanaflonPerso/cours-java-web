@@ -16,6 +16,7 @@ Le langage Java
    structure_fondamentale
    premiere_classe
    types_primitifs
+   operateurs
 
 Indices and tables
 ==================
