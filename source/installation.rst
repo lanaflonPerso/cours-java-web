@@ -13,9 +13,9 @@ pour Windows et MacOS, et sous la forme d'un package ou d'une archive sous Linux
   Java (**JRE**) qui ne contient pas les outils nécessaires pour développer en Java. Vous
   devez donc installer un JDK
 
-.. topic:: Téléchargement du JDK
+.. topic:: Téléchargement du JDK 1.8
 
-  http://www.oracle.com/technetwork/java/javase/downloads/index.html
+  http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 Vous aurez également besoin d'un environnement de développement intégré (**IDE**) pour Java.
 Il en existe plusieurs. Dans le cadre de cette formation, nous utiliserons Eclipse_
