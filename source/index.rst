@@ -8,7 +8,6 @@ Le langage Java
 
 .. toctree::
    :maxdepth: 2
-   :caption: Sommaire:
 
    introduction
    installation
@@ -18,9 +17,9 @@ Le langage Java
    types_primitifs
    operateurs
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <http://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
+
+.. image:: https://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png
+   :target: http://creativecommons.org/licenses/by-sa/3.0/fr/
+   :alt: Licence Creative Commons

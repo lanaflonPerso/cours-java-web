@@ -48,8 +48,10 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Java'
-copyright = '2017, David Gayerie'
+project = 'Le langage Java'
+copyright = """
+David Gayerie
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/fr/80x15.png" /></a>"""
 author = 'David Gayerie'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -93,6 +95,11 @@ html_theme = 'alabaster'
 #
 html_theme_options = {
     'show_powered_by': False,
+    'fixed_sidebar': False,
+    'page_width': '75%',
+    'font_family': '"Open Sans", sans-serif',
+    'font_size': '12pt',
+    'head_font_family': '"Quicksand", sans-serif',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -113,6 +120,7 @@ html_sidebars = {
     ]
 }
 
+html_copy_source = False
 
 # -- Options for HTMLHelp output ------------------------------------------
 
