@@ -97,6 +97,7 @@ html_theme_options = {
     'show_powered_by': False,
     'fixed_sidebar': False,
     'page_width': '75%',
+    'sidebar_width': '25%',
     'font_family': '"Open Sans", sans-serif',
     'font_size': '12pt',
     'head_font_family': '"Quicksand", sans-serif',
