@@ -10,7 +10,7 @@ L'opérateur d'affectation
 L'assignation est réalisée grâce à l'opérateur **=**. Cet opérateur, copie
 la valeur du paramètre de droite (appelé *rvalue*) dans le paramètre de gauche
 (appelé *lvalue*). Java opère donc pas copie. Cela signifie que si l'on change
-plus tard la valeur d'un des paramètres, l'autre ne sera pas affecté.
+plus tard la valeur d'un des opérandes, l'autre ne sera pas affecté.
 
 ::
 
@@ -21,7 +21,7 @@ plus tard la valeur d'un des paramètres, l'autre ne sera pas affecté.
 
 Pour les variables de type objet, on appelle ces variables des **handlers**
 car la variable ne contient pas à proprement parler un objet mais
-*référence d'un objet*. On peut dire aussi qu'elle pointe vers la zone mémoire
+la *référence d'un objet*. On peut dire aussi qu'elle pointe vers la zone mémoire
 de cet objet. Cela à plusieurs conséquences importantes :
 
 ::
@@ -31,8 +31,8 @@ de cet objet. Cela à plusieurs conséquences importantes :
 
 Dans, l'exemple ci-dessus, **v2** reçoit la copie de l'adresse de l'objet
 contenu dans **v1**. Donc ces deux variables référencent bien le même objet
-et je peux le manipuler à travers l'une ou l'autre. Si plus loin dans le
-programme, j'écris :
+et nous pouvons le manipuler à travers l'une ou l'autre de ces variables.
+Si plus loin dans le programme, on écrit :
 
 ::
 
@@ -46,9 +46,9 @@ programme, j'écris :
   v2 = null;
 
 Maintenant, la variable **v2** contient la valeur spéciale **null** qui indique
-qu'elle ne pointe sur rien. Mais l'instance de voiture que la variable
+qu'elle ne référence rien. Mais l'instance de voiture que la variable
 **v2** référencée précédemment, n'a pas disparue pour autant.
-Elle existe toujours quelque part en mémoire. On dit que cette instance n'a plus de référence.
+Elle existe toujours quelque part en mémoire. On dit que cette instance n'est plus référencée.
 
 .. important::
 
@@ -57,7 +57,7 @@ Elle existe toujours quelque part en mémoire. On dit que cette instance n'a plu
 Les opérateurs arithmétiques
 ****************************
 
-Les opérateurs arithmétiques prenant deux arguments sont :
+Les opérateurs arithmétiques à deux opérandes sont :
 
 .. list-table:: Opérateurs arithmétiques
    :widths: 1 1
@@ -129,7 +129,7 @@ Les opérateurs arithmétiques unaires ne prennent qu'un seul argument
 
 .. note::
 
-  Il y a un différence entre les opérateur postixé et préfixé lorsqu'ils
+  Il y a une différence entre un opérateur postfixé et un opérateur préfixé lorsqu'ils
   sont utilisés conjointement à une affectation. Pour les opérateurs préfixés,
   l'incrément ou le décrément se fait **avant** l'affectation.
   Pour les opérateurs postfixés, l'incrément ou le décrément se fait **après** l'affectation.
@@ -147,9 +147,9 @@ L'opérateur de concaténation de chaînes
 
 Les chaînes de caractères peuvent être concaténées avec l'opérateur **+**.
 En Java, les chaînes de caractères sont des objets de type String_. Il est
-pas possible de concaténer un objet de type String_ avec un autre type.
-Pour cela, le compilateur insèrera un appel à la méthode *toString* de l'objet ou de
-la *wrapper class* pour un type primitif.
+possible de concaténer un objet de type String_ avec un autre type.
+Pour cela, le compilateur insérera un appel à la méthode *toString* de l'objet ou de
+la classe enveloppe pour un type primitif.
 
 ::
 
@@ -214,9 +214,9 @@ La liste ci-dessus est donnée par ordre de précédence.
 Les opérateurs **<**, **>**, **<=**, **>=** ne peuvent s'employer que pour des nombres
 ou des caractères (**char**).
 
-Les opérateurs **==** et **!=** servent à comparer les valeurs contenu dans les deux
-variables. Pour des variables de type objet, ces opérateurs **ne compare pas** les
-objet entre-eux mais simplement les références contenues dans ces variables.
+Les opérateurs **==** et **!=** servent à comparer les valeurs contenues dans les deux
+variables. Pour des variables de type objet, ces opérateurs **ne comparent pas** les
+objets entre-eux mais simplement les références contenues dans ces variables.
 
 ::
 
@@ -254,7 +254,7 @@ objet entre-eux mais simplement les références contenues dans ces variables.
 
 Les opérateurs logiques
 ***********************
-Les opérateurs logiques prennent des booléens en paramètres et produisent un résultat booléen (**true** ou **false**) :
+Les opérateurs logiques prennent des booléens comme opérandes et produisent un résultat booléen (**true** ou **false**) :
 
 .. list-table:: Opérateurs relationnels
    :widths: 1 1
@@ -277,7 +277,7 @@ Les opérateurs logiques prennent des booléens en paramètres et produisent un 
   boolean d = b && c; // d vaut false
   boolean e = b || c; // e vaut true
 
-Les opérateurs **&&** et **||** sont des opérateurs qui n'évalue l'expression à droite que si cela est nécessaire.
+Les opérateurs **&&** et **||** sont des opérateurs qui n'évaluent l'expression à droite que si cela est nécessaire.
 
 ::
 
@@ -295,13 +295,13 @@ Dans l'exemple ci-dessus, la méthode **ltest** est appelée et si elle retourne
 alors la méthode rtest() sera appelée pour évaluer l'expression. Si la méthode **ltest**
 retourne **true** alors le résultat de l'expression sera **true** et la méthode **rtest** ne sera pas appelée.
 
-Si les méthodes des exemples produisent des effets de bord, il est parfois difficile de comprendre
+Si les méthodes des exemples ci-dessus produisent des effets de bord, il est parfois difficile de comprendre
 le comportement du programme.
 
 .. tip::
 
   Il existe en Java les opérateurs **&** et **|** qui forcent l'évaluation de tous
-  les termes de l'expression quelque soit le résultat de chacun d'entre eux.
+  les termes de l'expression quel que soit le résultat de chacun d'entre eux.
 
   ::
 
@@ -363,8 +363,9 @@ Les opérateurs *bitwise* permettent de manipuler la valeur des bits d'un entier
 Les opérateurs de décalage
 **************************
 
-Les opérateurs de décalage s'utilise sur des entiers et permettent de déplacer les bits vers la gauche ou vers la droite.
-Il est possible également de conserver le bit de plus fort poids qui représente le signe.
+Les opérateurs de décalage s'utilisent sur des entiers et permettent de déplacer les bits vers la gauche ou vers la droite.
+Par convention, Java place le bit de poids fort à gauche quelque soit la représentation physique de l'information.
+Il est possible de conserver ou non la valeur du bit de poids fort qui représente le signe pour un décalage à droite.
 
 .. list-table:: Opérateurs de décalage
    :widths: 1 1
@@ -387,7 +388,7 @@ Puisque nous manipulons des nombres en base 2, un décalage vers la gauche équi
   int i = 1;
   i = i << 1 // i vaut 2
   i = i << 3 // i vaut 16
-  i = i >> 1 // i vaut 8
+  i = i >> 2 // i vaut 4
 
 
 Le trans-typage (cast)
@@ -407,21 +408,21 @@ le type attendu entre parenthèse :
   long l = i; // Ok
   short s = (short) l; // cast obligatoire
 
-L'opération doit avoir un sens. Par exemple, pousser d'un type d'objet à un autre, il faut
-que les classes de ces deux objets aient un lien d'héritage.
+L'opération doit avoir un sens. Par exemple, pour passer d'un type d'objet à un autre, il faut
+que les classes aient un lien d'héritage entre elles.
 
 .. caution::
 
   Si Java impose de spécifier explicitement le trans-typage dans certaines situations alors
-  c'est qu'il s'agit de situation qui peuvent être problématiques (perte de données possible
-  ou mauvais type d'objet). Il s'agit peut-être du symptôme d'un bug éventuel ou d'une
-  mauvaise conception.
+  c'est qu'il s'agit de situations qui peuvent être problématiques (perte de données possible
+  ou mauvais type d'objet). Il ne faut pas interpréter cela comme une limite du langage : il s'agit
+  peut-être du symptôme d'un bug ou d'une mauvaise conception.
 
 .. note::
 
   Le trans-typage peut se faire également par un appel à la méthode Class.cast_.
   Il s'agit d'une utilisation avancée du langage puisqu'elle fait intervenir la notion
-  de reflexivité.
+  de réflexivité.
 
 Opérateur et assignation
 ************************

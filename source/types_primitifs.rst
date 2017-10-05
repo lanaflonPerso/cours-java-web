@@ -2,7 +2,7 @@ Les types primitifs
 ###################
 
 Java n'est pas complètement un langage orienté objet dans la mesure où il supporte
-ce l'on nomme les types primitifs. Chaque type primitif est représenté par un mot-clé :
+ce l'on nomme les *types primitifs*. Chaque type primitif est représenté par un mot-clé :
 
 .. list-table:: Types primitifs
    :widths: 1 1 1
@@ -36,15 +36,15 @@ ce l'on nomme les types primitifs. Chaque type primitif est représenté par un 
      - Long integer
      - **long**
 
-   * - Nombre à vigule flottante
+   * - Nombre à virgule flottante
      - Float number
      - **float**
 
-   * - Nombre à vigule flottante en double precision
+   * - Nombre à virgule flottante en double précision
      - Double precision float number
      - **double**
 
-Un variable de type primitif représente juste une valeur stockée dans un espace mémoire
+Une variable de type primitif représente juste une valeur stockée dans un espace mémoire
 dont la taille dépend du type. À la différence des langages comme C ou C++, l'espace
 mémoire occupé par un primitif est fixé par le spécification du langage et non par la machine cible.
 
@@ -91,26 +91,26 @@ mémoire occupé par un primitif est fixé par le spécification du langage et n
 Le type booléen : boolean
 *************************
 
-Les types booléens ne peuvent prendre que deux valeurs : **true** ou **false**.
+Les variables de type booléen ne peuvent prendre que deux valeurs : **true** ou **false**.
 Par défaut, un attribut de type **boolean** vaut **false**.
 
 On ne peut utiliser que des opérateurs booléens comme **==** **!=** **!** sur des variables
 de type booléen (pas d'opération arithmétique autorisée).
 
-Le type charactère : char
+Le type caractère : char
 *************************
 
 Les variables de type **char** sont codées sur 2 octets non signés car la représentation
 interne des caractères est UTF-16. Cela signifie que la valeur va de 0 à 2^16 - 1.
-Par défaut, un attribut de type **char** vaut **0** (soit le caractère de terminaison).
+Par défaut, un attribut de type **char** vaut **0** (c'est-à-dire le caractère de terminaison).
 
-Pour représenter un litéral, on utilise l'apostrophe (**simple quote**) :
+Pour représenter un littéral, on utilise l'apostrophe (**simple quote**) :
 
 ::
 
   char c = 'a';
 
-Même si les charactères ne sont pas des nombres, Java autorise les opérations
+Même si les caractères ne sont pas des nombres, Java autorise les opérations
 arithmétiques sur les caractères en se basant sur le code caractère. Cela peut
 être pratique si l'on veut parcourir l'alphabet par exemple :
 
@@ -120,15 +120,15 @@ arithmétiques sur les caractères en se basant sur le code caractère. Cela peu
     // ...
   }
 
-On peut également samples/ un nombre à une variable caractère. Ce nombre représente
+On peut également affecter un nombre à une variable caractère. Ce nombre représente
 alors le code caractère :
 
 ::
 
-  char a = 97; // 97 est le code caractère de la lettre a
+  char a = 97; // 97 est le code caractère de la lettre a en UTF-16
 
 Affecter une variable de type entier à un variable de type **char** conduit à une erreur
-de compilation. En effet, le type **char** est un nombre signé sur 2 octets. Pour passer,
+de compilation. En effet, le type **char** est un nombre signé sur 2 octets. Pour passer
 la compilation, il faut trans-typer (**cast**) la variable :
 
 ::
@@ -139,11 +139,10 @@ la compilation, il faut trans-typer (**cast**) la variable :
 Les types entiers : byte, short, int, long
 ******************************************
 
-Les types entiers différents entre-eux uniquement
+Les types entiers différent entre-eux uniquement
 par l'espace de stockage mémoire qui leur est alloué.
 Ils sont tous des types signés.
-Par défaut, un attribut de type **byte**, **short**, **int** ou **long** vaut **0**.
-
+Par défaut, un attribut de type **byte**, **short**, **int** ou **long** vaut 0.
 
 La règle de conversion implicite est simple : on peut affecter une variable d'un type
 à une variable d'un autre type que si la taille mémoire est au moins assez grande.
@@ -174,7 +173,7 @@ de valeur :
   s = (short) i;
   i = (int) l;
 
-Lorsque vous affectez une valeur litérale à une variable, le compilateur contrôlera
+Lorsque vous affectez une valeur littérale à une variable, le compilateur contrôlera
 que la valeur est acceptable pour ce type :
 
 ::
@@ -183,9 +182,9 @@ que la valeur est acceptable pour ce type :
   b = 127; // ok
   b = 128; // ko car le type byte accepte des valeurs entre -128 et 127
 
-Les valeurs litérales peuvent s'écrire suivant plusieurs bases :
+Les valeurs littérales peuvent s'écrire suivant plusieurs bases :
 
-.. list-table:: Écriture des valeurs entières litérales
+.. list-table:: Écriture des valeurs entières littérales
    :widths: 1 4
    :header-rows: 1
 
@@ -204,7 +203,7 @@ Les valeurs litérales peuvent s'écrire suivant plusieurs bases :
    * - 16 (hexadécimal)
      - 0x12af ou 0X12AF
 
-On peut forcer une valeur litérale à être interprétée comme un entier long en suffixant
+On peut forcer une valeur littérale à être interprétée comme un entier long en suffixant
 la valeur par **L** ou **l** :
 
 ::
@@ -219,8 +218,8 @@ Pour plus de lisibilité, il est également possible de séparer les milliers pa
 
 .. note::
 
-  Les opérations arithmétiques entre des valeurs litérales sont effectuées à la compilation.
-  Il souvent plus lisible de faire apparaître l'opération plutôt que le résultat :
+  Les opérations arithmétiques entre des valeurs littérales sont effectuées à la compilation.
+  Il est souvent plus lisible de faire apparaître l'opération plutôt que le résultat :
 
   ::
 
@@ -229,9 +228,9 @@ Pour plus de lisibilité, il est également possible de séparer les milliers pa
 .. danger::
 
   La représentation interne des nombres entiers fait qu'il est possible d'aboutir
-  à un dépassement des valeurs maximales ou minimales (**buffer overflow**) .
+  à un dépassement des valeurs maximales ou minimales (*buffer overflow* ou *buffer underflow*) .
   Il n'est donc pas judicieux d'utiliser ces types pour représenter
-  des valeurs qui peuvent croître ou décroître sur une grande échelle.
+  des valeurs qui peuvent croître ou décroître sur une très grande échelle.
   Pour ces cas-là, on peut utiliser la classe BigInteger_ qui utilise une représentation
   interne plus complexe.
 
@@ -240,8 +239,8 @@ Les types à virgule flottante : float, double
 
 Les types **float** et **double** permettent de représenter les nombres à virgule
 selon le format `IEEE 754`_. Ce format stocke le signe sur un bit puis le nombre sous
-une forme entière (la mantisse) et l'exposant en base 2.
-Par défaut, un attribut de type **float** ou **double** vaut **0**.
+une forme entière (la mantisse) et l'exposant en base 2 pour positionner la virgule.
+Par défaut, un attribut de type **float** ou **double** vaut 0.
 
 **float** est dit en simple précision et est codé sur 4 octets (32 bits) tandis que
 **double** est dit en double précision et est codé sur 8 octets (64 bits).
@@ -256,7 +255,7 @@ nécessite une trans-typage (**cast**) avec une perte éventuelle de valeur.
   d = d + i;
   i = (int) (d + i);
 
-Les valeurs litérales peuvent s'écrire avec un **.** pour signifier la virgule et/ou avec une
+Les valeurs littérales peuvent s'écrire avec un **.** pour signifier la virgule et/ou avec une
 notation scientifique en donnant l'exposant en base 10 :
 
 ::
@@ -266,7 +265,7 @@ notation scientifique en donnant l'exposant en base 10 :
   double d3 = 1.5E1; // 1.5 * 10, c'est-à-dire 15.0
   double d4 = 0.1234E-15;
 
-Une valeur litérale est toujours considérée en double précision. Pour l'affecter à une variable
+Une valeur littérale est toujours considérée en double précision. Pour l'affecter à une variable
 de type **float**, il faut suffixer la valeur par **F** ou **f** :
 
 ::
@@ -277,18 +276,18 @@ de type **float**, il faut suffixer la valeur par **F** ou **f** :
 
   La représentation interne des nombres à virgule flottante fait qu'il est possible d'aboutir
   à des imprécisions de calcul. Il n'est donc pas judicieux d'utiliser ces types pour représenter
-  des valeurs pour lesquelles les écarts de calcul ne sont pas acceptables.
+  des valeurs pour lesquelles les approximations de calcul ne sont pas acceptables.
 
   Par exemple, les applications qui réalisent des calculs sur des montants financiers ne devraient
   **jamais** utiliser des nombres à virgule flottante. Soit il faut représenter l'information
   en interne toujours en entier (par exemple en centimes d'euro) soit il faut utiliser la classe BigDecimal_
-  qui utilise une représentation interne plus complexe.
+  qui utilise une représentation interne plus complexe mais sans approximation.
 
-Les wrapper classes
-*******************
+Les classes enveloppes
+**********************
 
 Comme les types primitifs ne sont pas des classes, l'API standard de Java fournit également des classes
-qui permettent d'encapsuler la valeur d'un type primitif : on parle de **wrapper classes**.
+qui permettent d'envelopper la valeur d'un type primitif : on parle de **wrapper classes**.
 
 
 .. list-table:: Wrapper classes
@@ -322,17 +321,21 @@ qui permettent d'encapsuler la valeur d'un type primitif : on parle de **wrapper
    * - **double**
      - java.lang.Double_
 
+.. note::
 
-Il est possible de créer une instance d'une wrapper class soit en utilisant
-sont constructeurs soit en utilisant la méthode de classe **valueOf** (il s'agit
+  Le tableau ci-dessus donne le nom complet des classes, c'est-à-dire en incluant
+  le nom du package (*java.lang*).
+
+Il est possible de créer une instance d'une classe enveloppe soit en utilisant
+son constructeur soit en utilisant la méthode de classe **valueOf** (il s'agit
 de la méthode recommandée).
 
 ::
 
   Integer i = Integer.valueOf(2);
 
-Pour obtenir la valeur encapsulée, on peut fait appel à la méthode *xxxValue()*, xxx étant
-le type encapsulé :
+Pour obtenir la valeur enveloppée, on fait appel à la méthode *xxxValue()*, xxx étant
+le type sous-jacent :
 
 ::
 
@@ -341,7 +344,7 @@ le type encapsulé :
 
 
 Pourquoi avoir créé ces classes ? Cela permet d'offrir un emplacement facile à mémoriser
-à des méthodes utilitaires. Par exemple, toutes les wrapper classes définissent une méthode
+à des méthodes utilitaires. Par exemple, toutes les classes enveloppes définissent une méthode
 de classe de la forme *parseXXX* qui permet de convertir une chaîne de caractères en un type
 primitif :
 
@@ -356,19 +359,19 @@ primitif :
   double d = Double.parseDouble("1");
   // enfin presque toutes car Character n'a pas cette méthode
 
-Une variable de type d'une des wrapper classes représente un objet donc il peut avoir la valeur spéciale **null**.
-Ce cas permet de signifier l'absence de valeur. Enfin les wrapper classes sont conçues pour être
-immutables. Cela signifie que l'on ne peut pas modifier la valeur qu'elles encapsulent après
+Une variable de type d'une des classes enveloppes référence un objet donc elle peut avoir la valeur spéciale **null**.
+Ce cas permet de signifier l'absence de valeur. Enfin les classes enveloppes sont conçues pour être
+non modifiables. Cela signifie que l'on ne peut pas modifier la valeur qu'elles enveloppent après
 leur création.
 
 L'autoboxing
 ************
 
 Il n'est pas rare dans une application Java de devoir convertir des types primitifs vers
-des instances de leur wrapper class et réciproquement. Afin d'alléger la syntaxe,
+des instances de leur classe enveloppe et réciproquement. Afin d'alléger la syntaxe,
 on peut se contenter d'affecter une variable à une autre et le compilateur se chargera
 d'ajouter le code manquant. L'opération qui permet de passer d'un type primitif
-à une instance de sa wrapper class s'appelle le **boxing** et l'opération inverse
+à une instance de sa classe enveloppe s'appelle le **boxing** et l'opération inverse
 s'appelle **l'unboxing**.
 
 Le code suivant
@@ -397,7 +400,7 @@ est également accepté par le compilateur et ce dernier lira à la place
   Integer i = Integer.valueOf(1); // boxing
   int j = i.intValue(); // unboxing
 
-On peut ainsi réaliser des opérations arithmétiques sur des instances de wrapper classes
+On peut ainsi réaliser des opérations arithmétiques sur des instances de classes enveloppes
 
 ::
 
@@ -406,14 +409,14 @@ On peut ainsi réaliser des opérations arithmétiques sur des instances de wrap
   Integer k = i + j;
 
 Il faut bien comprendre que le code ci-dessus manipule en fait des objets et qu'il implique
-plusieurs opération de boxing et de unboxing. Si cela n'est pas strictement nécessaire, alors
+plusieurs opérations de boxing et de unboxing. Si cela n'est pas strictement nécessaire, alors
 il vaut mieux utiliser des types primitifs.
 
 L'autoboxing fonctionne à chaque fois qu'une affectation à lieu. Il s'applique donc
 à la déclaration de variable, à l'affection de variable et au passage de paramètre.
 
 L'autoboxing est parfois difficile à utiliser car il conduit à des expressions
-qui peuvent être ambigües.
+qui peuvent être ambiguës.
 Par exemple, alors que le code suivant utilisant des primitives compile :
 
 ::

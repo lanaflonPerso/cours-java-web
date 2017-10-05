@@ -1,9 +1,6 @@
 Installation
 ############
 Pour suivre ce cours, vous aurez besoin d'un environnement de développement Java.
-Rendez vous sur le `site d'Oracle`_ afin de télécharger le **JDK** (Java Development Kit)
-compatible pour votre machine.
-
 L'installation du JDK dépend de votre plate-forme : il est distribué sous la forme d'un installeur
 pour Windows et MacOS, et sous la forme d'un package ou d'une archive sous Linux.
 
@@ -20,10 +17,10 @@ pour Windows et MacOS, et sous la forme d'un package ou d'une archive sous Linux
 Vous aurez également besoin d'un environnement de développement intégré (**IDE**) pour Java.
 Il en existe plusieurs. Dans le cadre de cette formation, nous utiliserons Eclipse_
 
-Il existe plusieurs *packaging* d'Eclipse visant des publics différents. Si vous voulez
+Il existe plusieurs *packages* d'Eclipse visant des publics différents. Si vous voulez
 uniquement faire du développement d'application Java, vous pouvez télécharger
 le package *Eclipse IDE for Java Developers*. Si par contre, vous voulez réaliser des
-développement d'application Web alors peut-être devriez-vous télécharger le package
+développements d'application Web alors peut-être devriez-vous télécharger le package
 *Eclipse IDE for Java EE Developers*. Cette dernière version offre des fonctionnalités
 supplémentaires pour le développement d'applications serveur.
 

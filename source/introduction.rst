@@ -6,16 +6,16 @@ par Oracle depuis son rachat de Sun Microsystems en 2010.
 Java a été conçu avec deux objectifs principaux :
 
 * Permettre aux développeurs d'écrire des logiciels indépendants de l'environnement *hardware* d'exécution.
-* Offrir un langage orienté objet avec des bibliothèques standards riches
+* Offrir un langage orienté objet avec une bibliothèque standard riche
 
 L'environnement
 ***************
 L'indépendance par rapport à l'environnement d'exécution est garantie par la *machine virtuelle Java*
 (Java Virtual Machine ou **JVM**). En effet, Java est un langage compilé mais le compilateur ne
-produit pas de code natif pour la machine, il produit bytecode_ : un jeu d'instructions compréhensibles
+produit pas de code natif pour la machine, il produit du bytecode_ : un jeu d'instructions compréhensibles
 par la JVM qu'elle va traduire en code exécutable par la machine au moment de l'exécution.
 
-Pour qu'un programme Java fonctionne, il faut non seulement que les développeurs aient compilés le code
+Pour qu'un programme Java fonctionne, il faut non seulement que les développeurs aient compilé le code
 source mais il faut également qu'un environnement d'exécution (comprenant la JVM) soit installé sur
 la machine cible.
 
@@ -28,7 +28,7 @@ JRE - Java Runtime Environment
 
 JDK - Java Development Kit
   Cet environnement fournit tous les outils nécessaires à l'exécution mais aussi au développement de
-  programmes Java.
+  programmes Java. Il fournit entre-autres la machine virtuelle Java et la compilateur.
 
 Oracle JDK et Open JDK
 **********************

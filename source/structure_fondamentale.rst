@@ -3,14 +3,14 @@ La structure fondamentale du langage
 
 La syntaxe du langage Java est à l'origine très inspirée du C et du C++. Ces
 deux langages de programmation ont également servi de base au C#. Donc si vous
-connaissez C, C++ ou C# vous retrouvez en Java des structures de langage qui vous
+connaissez C, C++ ou C# vous retrouverez en Java des structures de langage qui vous
 sont familières.
 
 Les instructions
 ****************
 
 Java est un `langage de programmation impératif`_. Cela signifie qu'un programme
-Java se compose d'instructions (statement) décrivant les opérations que la machine
+Java se compose d'instructions (**statements**) décrivant les opérations que la machine
 doit exécuter. En Java une instruction est délimitée par un **point-virgule**.
 
 ::
@@ -59,7 +59,7 @@ Un commentaire sur plusieurs lignes commence par **/*** et se termine par ***/**
      sur plusieurs lignes */
   double i = 0.0;
 
-Il existe un type spécial de commentaires utilisés par l'utilitaire javadoc_. C'est commentaire
+Il existe un type spécial de commentaires utilisé par l'utilitaire javadoc_. Ces commentaires
 servent à générer la documentation au format HTML de son code. Ces commentaires,
 appelés **commentaires javadoc**, commencent par **/**** :
 
@@ -157,21 +157,19 @@ des conventions de nommage.
 
    * - Packages
      - Un nom de package s'écrit toujours en minuscule. L'utilisation d'un _ est toléré
-       pour représenter une séparation (et remplacer un espace).
+       pour représenter une séparation.
      - java.utils
        com.company.extra_utils
 
    * - Classes et interfaces
      - Le nom des classes et des interfaces ne doivent pas être des verbes. La première
-       lettre doit être une majuscule et les mots sont séparés par l'utilisation d'une
-       lettre en majuscule (écriture dromadaire).
+       lettre de chaque mot doit être en majuscule (écriture dromadaire).
      - MyClass
        SuppressionClientOperateur
 
    * - Annotations
-     - La première lettre doit être une majuscule et les mots sont séparés par
-       l'utilisation de majuscule (écriture dromadaire). Il est toléré d'écrire des sigles
-       intégralement en majuscules.
+     - La première lettre de chaque mot doit être une majuscule (écriture dromadaire).
+       Il est toléré d'écrire des sigles intégralement en majuscules.
      - @InjectIn
        @EJB
 
@@ -189,7 +187,7 @@ des conventions de nommage.
        pas pour habitude d'utiliser une convention de nom pour différencier les variables locales
        des paramètres ou même des attributs d'une classe.
 
-       Le nom des variables doit être explicite sans utiliser d'abbréviation. Pour les variables "jetables",
+       Le nom des variables doit être explicite sans utiliser d'abréviation. Pour les variables "jetables",
        l'utilisation d'une lettre est d'usage (par exemple i, j ou k)
      - widthInPixels
        clientsInscrits

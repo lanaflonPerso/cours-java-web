@@ -2,7 +2,7 @@ Une première classe
 ###################
 
 Java est langage orienté objet. Cela signifie que (presque) tout est un objet.
-La définition d'un objet s'appelle une classe. Donc programmer en Java, cela
+La définition d'un objet s'appelle une classe. Donc programmer en Java
 revient à **déclarer** des classes, à **instancier** des objets à partir des classes
 déclarées ou fournies et à effectuer des opérations sur ces objets.
 
@@ -23,7 +23,7 @@ Vous pouvez également créer directement dans un projet sous Eclipse avec le me
 .. note::
 
   Si vous créez le fichier à partir d'Eclipse, celui-ci va vous proposer de créer le fichier dans un *package*
-  (par défaut ayant le même nom que le projet). Même si c'est une très bonne idée, vous pouvez effacer
+  (par défaut ayant le même nom que le projet). Vous pouvez effacer
   le contenu du champ package de la boîte de dialogue en attendant que nous abordions la notion de package.
 
 Anatomie d'une classe
@@ -36,8 +36,8 @@ Ensuite, on ouvre un bloc avec des accolades pour déclarer le contenu de la cla
 La déclaration d'une classe peut contenir :
 
 des attributs
-  Les attributs représentent l'état d'un classe. Il s'agit d'un ensemble d'objets ou de primitives qui contiendront
-  les informations liées à un objet. Par exemple, notre voiture peut avoir un attribut pour mémoriser sa vitesse.
+  Les attributs représentent l'état interne d'un objet.
+  Par exemple, notre voiture peut avoir un attribut pour mémoriser sa vitesse.
 
 des méthodes
   Les méthodes représentent les opérations que l'on peut effectuer sur un objet de cette classe.
@@ -56,7 +56,7 @@ Ajouter des méthodes
 ********************
 
 Ajoutons quelques méthodes à notre classe **Voiture**. Nous allons commencer par ajouter
-la méthode **getVitesse** qui permet de connaître vitesse actuelle d'une voiture en km/h.
+la méthode **getVitesse** qui permet de connaître la vitesse actuelle d'une voiture en km/h.
 
 .. literalinclude:: samples/premiere_classe/v1/Voiture.java
 
@@ -83,7 +83,7 @@ Pour la méthode que nous venons de déclarer:
 
 Le code source précédent ne compilera pas, en effet, Java étant un langage fortement typé,
 nous sommes obligé d'indiquer le type de retour de la méthode *getVitesse* et donc le compilateur
-s'attend à ce que cette méthode retourne un nombre flottant. La vitesse de la voiture est typiquement
+s'attend à ce que cette méthode retourne un nombre à virgule flottante. La vitesse de la voiture est typiquement
 une information qui correspond à l'état de la voiture à un moment donné. Il est donc intéressant
 de stocker cette information comme attribut de la classe :
 
@@ -95,22 +95,23 @@ Un attribut est identifé par :
 
   [portée] [type] [identifiant];
 
-Avec l'attribut *vitesse*, nous introduisons le type de portée **private**. En Java, un attribut a
+Pour l'attribut *vitesse*, nous spécifions le type de portée **private**. En Java, un attribut a
 toujours une valeur par défaut qui dépend de son type. Pour le type **float**, la valeur par défaut est 0.
 
-Nous pouvons maintenant enrichir notre class avec des méthodes supplémentaires :
+Nous pouvons maintenant enrichir notre classe avec des méthodes supplémentaires :
 
 .. literalinclude:: samples/premiere_classe/v3/Voiture.java
 
-Les méthodes *Voiture.accelerer* et *Voiture.decelerer* prennent toutes les deux un paramètre de
-type **float**. Comme ces méthodes ne retourne aucune valeur, nous sommes obligé de l'indiquer
+Les méthodes *Voiture.accelerer(float)* et *Voiture.decelerer(float)* prennent toutes les deux un paramètre de
+type **float**. Comme ces méthodes ne retournent aucune valeur, nous sommes obligés de l'indiquer
 avec le mot-clé **void**.
 
-La méthode *toString* est une méthode particulière. Elle s'agit de la méthode que le compilateur
+La méthode *toString()* est une méthode particulière. Elle s'agit de la méthode que le compilateur
 doit appeler s'il veut obtenir une représentation de l'objet sous la forme d'une chaîne
 de caractères. Notez, que l'opérateur **+** est utilisé en Java pour concaténer les chaînes
 de caractères et qu'il est possible de concaténer des chaînes de caractères avec d'autres types.
-Dans notre exemple, avec le nombre à virgule flottante représentant la vitesse de la voiture.
+Dans notre exemple, nous concaténons une chaîne de caractères avec le nombre à virgule flottante
+représentant la vitesse de la voiture.
 
 .. note::
 
@@ -129,8 +130,8 @@ la signature suivante :
   public static void main(String[] args) {
   }
 
-Une classe ne peut déclarer qu'une seule méthode **main**. En revanche toutes les classes peuvent
-déclarer une méthode **main**. Cela signifie qu'un programme Java peut avoir plusieurs points d'entrée
+Une classe ne peut déclarer qu'une seule méthode **main**. En revanche, toutes les classes peuvent
+déclarer une méthode **main**. Cela signifie qu'une application Java peut avoir plusieurs points d'entrée
 (ce qui peut se révéler très pratique). Voilà pourquoi la commande **java** attend comme paramètre
 le nom d'une classe qui doit déclarer une méthode **main**.
 
@@ -149,11 +150,11 @@ Voilà pourquoi notre classe Voiture n'est qu'une abstraction du concept de Voit
 Si dans notre programme, nous voulons interagir avec une voiture nous devons créer une instance
 de la classe Voiture. Cette instance (que l'on appelle plus simplement un objet) dispose de son
 propre espace mémoire qui contient son état, c'est-à-dire la liste de ses attributs.
-Créer une instance d'un objet se fait grâce à l'opérateur **new**.
+Créer une instance d'un objet se fait grâce au mot-clé **new**.
 
 .. note::
 
-  Remarquez l'utilisation des parenthèses avec l'opérateur **new** :
+  Remarquez l'utilisation des parenthèses avec le mot-clé **new** :
 
   ::
 
@@ -161,8 +162,8 @@ Créer une instance d'un objet se fait grâce à l'opérateur **new**.
 
   Ces parenthèses sont obligatoires.
 
-En Java, l'opérateur **.** sert à accéder aux attributs ou aux méthodes d'un objet. Donc si je dispose
-d'une variable *voiture* de type *Voiture*, je peux appeler sa méthode *accelerer* grâce à cet opérateur :
+En Java, l'opérateur **.** sert à accéder aux attributs ou aux méthodes d'un objet. Donc si on dispose
+d'une variable *voiture* de type *Voiture*, on peut appeler sa méthode *accelerer* grâce à cet opérateur :
 
 ::
 
@@ -175,7 +176,7 @@ les attributs de classe. Nous utilisons l'attribut de classe **out** de la class
 représente la sortie standard et nous appelons sa méthode println_ qui affiche le texte passé
 en paramètre suivi d'un saut de ligne. Cependant, nous ne passons pas une chaîne de caractères comme
 paramètre mais directement une instance de notre classe Voiture. Dans ce cas, la méthode println_
-appèlera la méthode *Voiture.toString()* pour obtenir une répresentation textuelle de l'objet.
+appellera la méthode *Voiture.toString()* pour obtenir une représentation textuelle de l'objet.
 
 Exécuter le programme en ligne de commandes
 *******************************************
@@ -206,13 +207,14 @@ Ce qui affichera sur la sortie suivante :
 Exécuter le programme depuis Eclipse
 ************************************
 
-Il suffit d'ajouter la classe *Voiture* dans un projet Java dans Eclipse. Ensuite,
+Il suffit d'ajouter la classe *Voiture* dans le répertoire *src* d'un projet Java dans Eclipse. Ensuite,
 il faut faire un clic droit sur le nom du fichier dans le *Package Explorer* et
 choisir *Run as > Java Application*.
 
 .. note::
 
-  Vous pouvez aussi appuyer sur la touche F11 lorsque vous êtes positionné dans le fichier source.
+  Vous pouvez aussi appuyer sur la touche F11 lorsque vous êtes positionné dans le fichier source
+  pour lancer l'exécution de la classe.
 
 .. _System: http://docs.oracle.com/javase/9/docs/api/java/lang/System.html
 .. _println: http://docs.oracle.com/javase/9/docs/api/java/io/PrintStream.html#println-java.lang.Object-

@@ -26,7 +26,7 @@ cas où l'expression est évaluée à faux :
     // instructions à exécuter si i est impair
   }
 
-L'expression **else** peut être suivie d'une nouvelle instruction if afin de réaliser
+L'expression **else** peut être suivie d'une nouvelle instruction **if** afin de réaliser
 des choix multiples :
 
 ::
@@ -49,25 +49,32 @@ des choix multiples :
     if (i % 2 == 0)
       i++;
 
-  Cependant, beaucoup de développeurs Java préfèrent utiliser sytématiquement
+  Cependant, beaucoup de développeurs Java préfèrent utiliser systématiquement
   les accolades.
 
 return
 ******
 
   **return** est un mot clé permettant d'arrêter immédiatement le traitement
-  d'une méthode et de retourner la valeur de l'expression spécifier après ce mot-clé. Si la méthode
+  d'une méthode et de retourner la valeur de l'expression spécifiée après ce mot-clé. Si la méthode
   ne retourne pas de valeur (**void**), alors on utilise le mot-clé **return** seul.
   L'exécution d'un **return** entraîne la fin d'une structure de contrôle.
 
-  Écrire des instructions immédiatement après un **return** n'a pas de sens puisqu'elles
+  ::
+
+    if (i % 2 == 0) {
+      return 0;
+    }
+
+  Écrire des instructions immédiatement après une instruction **return** n'a pas de sens puisqu'elles
   ne seront jamais exécutées. Le compilateur Java le signalera par une erreur *unreachable code*.
 
-::
+  ::
 
-  if (i % 2 == 0) {
-    return 0;
-  }
+    if (i % 2 == 0) {
+      return 0;
+      i++; // Erreur de compilation : unreachable code
+    }
 
 while
 *****
@@ -93,7 +100,7 @@ L'expression booléenne est évaluée au départ et après chaque exécution du 
     while (i % 2 == 0)
       // instruction à exécuter tant que i est pair
 
-  Cependant, beaucoup de développeurs Java préfèrent utiliser sytématiquement
+  Cependant, beaucoup de développeurs Java préfèrent utiliser systématiquement
   les accolades.
 
 do-while
@@ -141,7 +148,7 @@ bloc d'instructions est exécuté et un incrément est appelé.
       // instructions
     }
 
-  Il est ainsi possible d'exprimer une expression *for* sans condition de fin, la fameuse
+  Il est ainsi possible d'écrire une expression *for* sans condition de sortie, la fameuse
   boucle infinie :
 
   ::
@@ -160,7 +167,7 @@ bloc d'instructions est exécuté et un incrément est appelé.
     for (int i = 0; i < 10; ++i)
       // instruction à exécuter
 
-  Cependant, beaucoup de développeurs Java préfèrent utiliser sytématiquement
+  Cependant, beaucoup de développeurs Java préfèrent utiliser systématiquement
   les accolades.
 
 for amélioré
@@ -223,9 +230,9 @@ libellé
 *******
 
 Il est possible de mettre un libellé avant une expression **for** ou **while**. La seule et unique
-raison d'utiliser un libellé est pour traiter le cas d'une itération imbriquée dans une autre autre itération.
-**break** et **continue** n'agissent que sur le bloc d'itération courant. En utilisant un libellé, on peut
-arrêter ou continuer directement sur une itération de niveau supérieur :
+raison d'utiliser un libellé est le cas d'une itération imbriquée dans une autre itération.
+Par défaut, **break** et **continue** n'agissent que sur le bloc d'itération dans lequel ils apparaissent.
+En utilisant un libellé, on peut arrêter ou continuer sur une itération de niveau supérieur :
 
 ::
 
@@ -271,8 +278,8 @@ Un expression **switch** permet d'effectuer une sélection parmi plusieurs valeu
 **switch** évalue l'expression entre parenthèses et la compare dans l'ordre avec les valeurs des lignes **case**.
 Si une est identique alors il commence à exécuter la ligne d'instruction qui suit. Attention, un **case**
 représente un point à partir duquel l'exécution du code commencera. Si on veut isoler chaque cas, il faut
-utiliser une instruction **break**. Cela peut être pratique si on veut effectuer le même traitement pour
-un ensemble de cas :
+utiliser une instruction **break**. Au contraire, l'omission de l'instruction **break**
+peut être pratique si on veut effectuer le même traitement pour un ensemble de cas :
 
 ::
 

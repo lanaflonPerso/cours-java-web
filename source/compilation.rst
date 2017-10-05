@@ -43,12 +43,12 @@ et de lancer la commande de compilation :
   Le programme javac_ est installé dans le sous-répertoire **bin** du répertoire
   d'installation du JDK
 
-La compilation devrait se passer sans problème et doit aboutir à la création du fichier
+La compilation devrait se passer sans problème et aboutir à la création du fichier
 **PremierProgramme.class** dans le même répertoire que le fichier java.
 
 .. note::
-  Nous y reviendrons plus tard mais en Java nous déclarons des classes (parfois un peu spéciales).
-  Un fichier source porte l'extension java_ et contient le code source d'une classe. Un fichier
+  Nous y reviendrons plus tard mais en Java, nous déclarons des classes (parfois un peu spéciales).
+  Un fichier source porte l'extension **java** et contient le code source d'une classe. Un fichier
   résultant de la compilation porte le même nom que le fichier source mais avec l'extension **class**.
   Ce fichier n'est pas directement éditable car il contient des instructions en bytecode compréhensibles
   par la JVM.
@@ -97,7 +97,7 @@ On vérifie que les fichiers compilés sont disponibles pour l'exécution.
 
 Java ne supporte que la liaison dynamique. Cela signifie que chaque fichier compilé
 donnera un fichier class. Cela signifie également qu'un programme Java est en fait
-une collection de plusieurs fichers class.
+une collection de plusieurs fichiers class.
 
 Si votre programme est dépendant d'une bibliothèque tierce en Java, vous devez également fournir
 les fichiers de cette bibliothèque au moment de l'exécution.
@@ -116,7 +116,7 @@ Le classpath
 ************
 
 La liaison dynamique implique qu'un programme Java est une collection de fichiers.
-Ces fichiers peuvent se trouver à différents endroits dans le système de fichier.
+Ces fichiers peuvent se trouver à différents endroits dans le système de fichiers.
 Il faut donc un mécanisme pour permettre de les localiser. En Java, on utilise
 le **classpath** : le chemin des classes. On peut par exemple spécifier un
 ou plusieurs chemins avec le paramètre **-classpath** aux commandes java_ et javac_
@@ -127,12 +127,12 @@ class.
 
   $ java -classpath /home/david/Workspace/workspace-java/exemple PremierProgramme
 
-La commande ci-dessus peut être exécuter à partir de n'importe quel répertoire
+La commande ci-dessus peut être exécutée à partir de n'importe quel répertoire
 puisqu'elle précise un classpath. La JVM tentera de chercher un fichier PremierProgramme.class
 dans le répertoire */home/david/Workspace/workspace-java/exemple*.
 
 S'il existe des répertoires contenant des fichiers class que vous utilisez souvent,
-vous pouvez les inclure implicitement dans le classpath on déclarant ces répertoire
+vous pouvez les inclure implicitement dans le classpath on déclarant ces répertoires
 dans la variable d'environnement **CLASSPATH**.
 
 .. code-block:: shell
@@ -155,8 +155,8 @@ Si on se rappelle qu'un programme Java est une collection de fichiers class et q
 qu'un programme ait besoin de centaines voire de milliers de ces fichiers alors on se rend vite
 compte qu'il n'est pas très facile de distribuer un programme Java sous cette forme.
 
-Pour palier à ce problème, on peut utiliser des fichiers jar_. JAR signifie simplement *Java ARchive*.
-Très prosaïquement, il s'agit d'un fichier zip contenant un ensemble de fichiers class mais qui a l'extension **.jar**.
+Pour palier à ce problème, on peut utiliser des fichiers jar. JAR signifie *Java ARchive* :
+il s'agit d'un fichier zip contenant un ensemble de fichiers class mais qui a l'extension **.jar**.
 Java fournit l'utilitaire jar_ pour créer une archive :
 
 .. code-block:: shell
@@ -180,15 +180,15 @@ Création d'un projet dans Eclipse
 *********************************
 Il est utile de comprendre le fonctionnement des outils tels que java_ ou javac_
 mais ils ne sont pas d'une utilisation très aisée pour de vrais projets. On
-préfèrera utiliser des outils de build comme Ant_, Maven_ ou Gradle_ pour automatiser
-la compilation et des environnements de développement intégrés comme Eclipse_
-pour le devéloppement.
+préférera utiliser un outil de build comme Ant_, Maven_ ou Gradle_ pour automatiser
+la compilation et un environnement de développement intégré comme Eclipse_
+pour le développement.
 
 Eclipse fournit des avantages précieux pour les développeurs. Notamment :
 
 * Eclipse compile automatiquement les fichiers lorsqu'ils sont sauvés. Il est donc
   possible d'avoir immédiatement un retour sur les éventuelles erreurs de syntaxe ou autres.
-* Eclipse offre un environnement riche pour manipuler et modifier les fichiers sources
+* Eclipse offre un environnement riche pour manipuler et modifier les fichiers sources.
 
 Quelques raccourcis clavier utiles dans Eclipse :
 
@@ -205,11 +205,11 @@ Quelques raccourcis clavier utiles dans Eclipse :
 
 On peut créer toutes sortes de projets différents dans Eclipse. Pour nous, le plus
 utile sera bien sûr le projet Java. Pour cela, il suffit d'aller dans le menu
-File > New > Java Project. On obtient alors la boite de dialogue suivante :
+*File > New > Java Project*. On obtient alors la boite de dialogue suivante :
 
 .. image:: images/eclipse_create_java_project.png
 
-Il suffit de donner le nom du projet et de cliquer *Finish*. Il se peut qu'Eclipse
+Il suffit de donner le nom du projet et de cliquer sur *Finish*. Il se peut qu'Eclipse
 ouvre ensuite une boîte de dialogue pour vous demander si vous voulez changer de
 *perspective*. Dans Eclipse, une perspective est un agencement de l'espace de travail
 adapté pour certaines tâches. Il existe par exemple une perspective Java adaptée
@@ -222,11 +222,11 @@ destiné à accueillir les sources du projet. Il suffit d'ajouter le fichier
 Comme indiqué ci-dessus, toute modification dans ce fichier entraînera automatiquement
 sa compilation au moment de la sauvegarde.
 
-Si je souhaite distribuer mon projet, je peux, par exemple, produire un fichier JAR.
+Si l'on souhaite distribuer son projet, on peut, par exemple, produire un fichier JAR.
 Pour cela, il suffit de faire un clic droit sur le nom du projet dans le *Package Explorer*
-et de choisir *Export*. Dans la boîte de dialogue d'export, je peux chercher "jar" et sélectionner
-Java > JAR File. En cliquant sur *Next*, je peux spécifier le nom et l'emplacement du fichier JAR
-et le créer en cliquant sur *Finish*.
+et de choisir *Export*. Dans la boîte de dialogue d'export, il faut chercher "jar" et sélectionner
+*Java > JAR File*. En cliquant sur *Next*, on spécifie le nom et l'emplacement du fichier JAR
+et il sera créé en cliquant sur *Finish*.
 
 .. _javac: http://docs.oracle.com/javase/9/tools/javac.htm
 .. _java: http://docs.oracle.com/javase/9/tools/java.htm
