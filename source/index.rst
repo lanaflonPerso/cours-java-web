@@ -16,6 +16,7 @@ Le langage Java
    premiere_classe
    types_primitifs
    operateurs
+   structures_de_controle
 
 
 Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <http://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
