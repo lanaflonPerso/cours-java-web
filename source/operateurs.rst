@@ -21,7 +21,7 @@ plus tard la valeur d'un des paramètres, l'autre ne sera pas affecté.
 
 Pour les variables de type objet, on appelle ces variables des **handlers**
 car la variable ne contient pas à proprement parler un objet mais
-*référence un objet*. On peut dire aussi qu'elle pointe vers la zone mémoire
+*référence d'un objet*. On peut dire aussi qu'elle pointe vers la zone mémoire
 de cet objet. Cela à plusieurs conséquences importantes :
 
 ::
@@ -39,7 +39,7 @@ programme, j'écris :
   v1 = new Voiture();
 
 **v1** reçoit maintenant la référence d'un nouvel objet et les variables **v1** et
-**v2** pointent sur des instances différentes de **Voiture**. Si enfin, j'écris :
+**v2** référencent des instances différentes de **Voiture**. Si enfin, j'écris :
 
 ::
 

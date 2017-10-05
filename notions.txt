@@ -1,14 +1,26 @@
-machine virtuelle
-compilation (byte code)
-liaison dynamique (vs statique)
-fichier java
-fichier classe
-classpath
-JRE
-JDK
-API (runtime.jar)
 
 classe
+heap vs stack
+référence
+garbage collector (gestion de la mémoire)
+
+==================
+attributs & méthodes
+
+attribut
+
+this
+
+name scope (shadowing des attributs et utilisation de this)
+
+===================
+package
+
+import
+
+
+===================
+
 enumération
 
 javabeans
