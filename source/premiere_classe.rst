@@ -52,6 +52,11 @@ des classes internes
   Un classe peut contenir la déclaration d'autres classes que l'on appelle alors classes internes (**inner classes**).
   Nous y reviendrons dans un chapitre ultérieur.
 
+L'ordre dans lequel apparaissent ces éléments dans la déclaration de la classe est
+sans importance en Java. Pour des raisons de commodité de lecture, les développeurs
+adoptent en général une convention : d'abord les constantes, puis les énumérations,
+puis les attributs et enfin les méthodes. 
+
 Ajouter des méthodes
 ********************
 

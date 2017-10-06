@@ -484,6 +484,50 @@ directement à l'opérande de gauche.
 
   Quelle est la valeur de i ?
 
+L'opérateur .
+*************
+
+L'opérateur **.** permet d'accéder aux attributs et aux méthodes d'une classe
+ou d'un objet à partir d'une référence.
+
+::
+
+  String s = "Hello the world";
+  int length = s.length();
+  System.out.println("La chaîne de caractères contient " + length  + " caractères");
+
+.. note ::
+
+  On a l'habitude d'utiliser l'opérateur **.** en plaçant à gauche une variable ou
+  un appel de fonction. Cependant comme un chaîne de caractères est une instance
+  de String_, on peut aussi écrire :
+
+  ::
+
+    int length = "Hello the world".length();
+
+  Lorsqu'on utilise la réflexivité en Java, on peut même utiliser le nom des
+  types primitifs à gauche de l'opérateur **.** pour accéder à la classe associée :
+
+  ::
+
+    String name = int.class.getName();
+
+L'opérateur ,
+*************
+
+L'opérateur virgule est utilisé comme séparateur des paramètres dans la définition
+et l'appel des méthodes. Il peut également être utilisé en tant qu'opérateur pour
+évaluer séquentiellement une instruction.
+
+::
+
+  int x = 0, y = 1, z= 2;
+
+Cependant, la plupart des développeurs Java préfèrent déclarer une variable par ligne
+et l'utilisation de l'opérateur virgule dans ce contexte est donc très rare.
+
+
 .. _String: https://docs.oracle.com/javase/9/docs/api/java/lang/String.html
 .. _Object.equals: https://docs.oracle.com/javase/9/docs/api/java/lang/Object.html#equals-java.lang.Object-
 .. _StringBuilder: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html

@@ -21,6 +21,8 @@ import
 
 ===================
 
+classe abstraite
+
 enumération
 
 javabeans
