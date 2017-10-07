@@ -323,4 +323,30 @@ On peut ajouter une cas **default** qui servira de point d'exécution si aucun *
   En Java, le type d'expression accepté par un **switch** est limité. Un **switch** ne compile
   que pour un type primitif, une énumération ou une chaîne de caractères.
 
+Exercice
+********
+
+.. topic:: Implémenter le code de César
+  :class: exercice
+
+  Implémenter le `code de César <https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage>`_
+  en utilisant le code ci-dessous. Cet algorithme de chiffrement classique, utilisé par Jules
+  César dans ses correspondances secrètes, se base sur le principe du décalage. Une lettre
+  est remplacée par son équivalent dans l'alphabet en effectuant un décalage. Le programme
+  ci-dessous utilise un décalage de 23. Cela donne comme équivalence :
+
+  .. csv-table::
+
+    a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+    x, y, z, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w
+
+  Le programme vérifie que le résultat du chiffrement est bien conforme au ce qui est attendu.
+  Dans ce cas, il affichera *true* sur la sortie standard.
+
+  .. literalinclude:: samples/structures_de_controle/AlgoCesar.java
+
+  Décommentez le code de chaque étape dans la méthode *main* au fur et à
+  mesure que vous implémentez la méthode *encrypte* afin de vérifier que votre
+  algorithme fonctionne correctement.
+
 .. _Iterable: http://docs.oracle.com/javase/9/docs/api/java/lang/Iterable.html
