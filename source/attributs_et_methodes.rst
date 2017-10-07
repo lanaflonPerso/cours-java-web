@@ -128,7 +128,7 @@ ou ceci
 est strictement identique en Java.
 
 attributs finaux
-****************
+================
 
 Un attribut peut être déclaré comme **final**. Cela signifie qu'il n'est plus possible
 de modifier la valeur de cet attribut. De plus l'attribut doit être *explicitement*
@@ -181,7 +181,7 @@ et ne pourra plus être modifié.
     facture.voiture = new Voiture() // ERREUR DE COMPILATION
 
 attributs de classe
-*******************
+===================
 
 Jusqu'à présent, nous avons vu comment déclarer des attributs d'objet. C'est-à-dire
 que chaque instance d'une classe aura ses propres attributs avec ses propres valeurs
@@ -224,15 +224,70 @@ d'implémenter le design pattern singleton_ en Java. Dans notre exemple, out_ es
 qui représente la sortie standard de notre application. Cet objet est unique pour toute l'application
 et nous n'avons pas à le créer car il existe dès le lancement de l'application.
 
+Si le programme modifie un attribut de classe, alors la modification est visible depuis toutes
+les instances :
 
-.. todo::
+::
 
-  static : exemple et impact de modification, warning Eclipse si accès à travers un objet
-  constantes : static final
+  Voiture v1 = new Voiture();
+  Voiture v2 = new Voiture();
 
+  System.out.println(v1.nombreDeRoues); // 4
+  System.out.println(v2.nombreDeRoues); // 4
+
+  // modification d'un attribut de classe
+  v1.nombreDeRoues = 5;
+
+  Voiture v3 = new Voiture();
+
+  System.out.println(v1.nombreDeRoues); // 5
+  System.out.println(v2.nombreDeRoues); // 5
+  System.out.println(v3.nombreDeRoues); // 5
+
+Le code ci-dessus, même s'il est parfaitement correct, peut engendrer des difficultés de compréhension.
+Si on ne sait pas que *nombreDeRoues* est un attribut de classe on peut le modifier en pensant que
+cela n'aura pas d'impact sur les autres instances. C'est notamment pour cela que Eclipse émet un
+avertissement si on accède ou si on modifie un attribut de classe à travers un objet.
+Même si l'effet est identique, il est plus lisible d'accéder à un tel attribut à travers le nom de la classe uniquement :
+
+::
+
+  System.out.println(Voiture.nombreDeRoues); // 4
+
+  Voiture.nombreDeRoues = 5;
+
+  System.out.println(Voiture.nombreDeRoues); // 5
+
+
+Attributs de classe finaux
+==========================
+
+Il n'existe pas de mot-clés pour déclarer une constante en Java. Même si **const**
+est un mot-clé, il n'a aucune signification dans le langage. On utilise donc
+la combinaison des mots clés **static** et **final** pour déclarer une constante.
+Pour les distinguer des autres attributs, on écrit leur nom en majuscules et
+les mots sont séparés par _.
+
+::
+
+  public class Voiture {
+
+    public static final int NOMBRE_DE_ROUES = 4;
+    public String marque;
+    public float vitesse;
+
+  }
+
+.. caution ::
+
+  Rappelez-vous que, si l'attribut référence un objet, **final** n'empêche pas d'appeler des méthodes
+  qui vont modifier l'état interne de l'objet. On ne peut vraiment parler de constantes que pour les
+  attributs de type primitif.
 
 Les méthodes
 ************
+
+
 
 .. todo::
 
