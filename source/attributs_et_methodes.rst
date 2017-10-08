@@ -287,8 +287,46 @@ les mots sont séparés par _.
 Les méthodes
 ************
 
+Les méthodes permettent de définir le comportement des objets. nous avons vu précédemment
+qu'une méthode est définie pas sa **signature** qui spécifie sa portée, son type
+de retour, son nom et ses paramètres. La signature est suivie d'un bloc de code
+que l'on appelle le **corps** de méthode.
 
+::
 
+  public class Voiture {
+
+    private float vitesse;
+
+    /**
+     * @return La vitesse en km/h de la voiture
+     */
+    public float getVitesse() {
+      return vitesse;
+    }
+
+    /**
+     * Pour accélérer la voiture
+     * @param deltaVitesse Le vitesse supplémentaire
+     */
+    public void accelerer(float deltaVitesse) {
+      vitesse = vitesse + deltaVitesse;
+    }
+  }
+
+Il est possible de créer une instance de la classe ci-dessus avec l’opérateur **new**
+et d’exécuter les méthodes de l’objet créé avec l’opérateur **.** :
+
+::
+
+  Voiture v = new Voiture();
+  v.accelerer(88.0f);
+
+La portée
+=========
+
+Comme pour les attributs, les méthodes ont une portée, c'est-à-dire que le développeur
+de la classe peut décider si une méthode est accessible ou non au reste du programme.
 .. todo::
 
 portée public et private
