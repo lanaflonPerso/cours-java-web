@@ -176,7 +176,8 @@ de valeur :
 Lorsque vous affectez une valeur littérale à une variable, le compilateur contrôlera
 que la valeur est acceptable pour ce type :
 
-::
+.. code-block:: java
+  :emphasize-lines: 3
 
   byte b = 0;
   b = 127; // ok
@@ -426,7 +427,8 @@ Par exemple, alors que le code suivant utilisant des primitives compile :
 
 Ce code faisant appelle à l'autoboxing ne compile pas en l'état :
 
-::
+.. code-block:: java
+  :emphasize-lines: 2
 
   Integer i = 1;
   Float j = i; // ERREUR : i est de type Integer
@@ -434,7 +436,8 @@ Ce code faisant appelle à l'autoboxing ne compile pas en l'état :
 
 Pire, l'autoboxing peut être source de bug. Le plus évident est l'unboxing d'une variable nulle :
 
-::
+.. code-block:: java
+  :emphasize-lines: 2
 
   Integer i = null;
   int j = i; // ERREUR : unboxing de null !

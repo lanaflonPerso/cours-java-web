@@ -238,7 +238,7 @@ objets entre-eux mais simplement les références contenues dans ces variables.
     String s1 = "une chaîne";
     String s2 = "une chaîne";
 
-    // BUG le résultat est indéterminé
+    // sûrement un bug car le résultat est indéterminé
     boolean resultat = (s1 == s2);
 
   La bonne façon de faire est d'utiliser la méthode Object.equals_ pour comparer
