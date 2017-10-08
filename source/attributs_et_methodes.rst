@@ -540,6 +540,21 @@ C’est notamment pour cela que Eclipse émet un avertissement si on invoque une
 de classe à travers un objet. Même si l’effet est identique, il est plus lisible
 d’invoquer une méthode de classe à partir de la classe elle-même.
 
+La méthode de classe la plus célèbre en Java est sans doute **main**. Elle permet
+de définir le point d'entrée d'une application dans une classe :
+
+::
+
+  public static void main(String... args) {
+    // ...
+  }
+
+Les paramètres *args* correspondent aux paramètres passés en ligne de commande
+au programme **java** après le nom de la classe :
+
+.. code-block:: shell
+
+  $ java MaClasse arg1 arg2 arg3
 
 Redéfinition de méthode : overloading
 *************************************
