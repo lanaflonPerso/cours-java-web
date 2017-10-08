@@ -104,6 +104,10 @@ html_theme_options = {
     'font_family': '"Open Sans", sans-serif',
     'font_size': '12pt',
     'head_font_family': '"Quicksand", sans-serif',
+    'extra_nav_links': {
+        'API Java': 'http://docs.oracle.com/javase/8/docs/api/index.html?overview-summary.html',
+        'Documentation Java': 'http://docs.oracle.com/javase/8/docs/',
+    }
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
