@@ -349,4 +349,4 @@ Exercice
   mesure que vous implémentez la méthode *encrypte* afin de vérifier que votre
   algorithme fonctionne correctement.
 
-.. _Iterable: http://docs.oracle.com/javase/9/docs/api/java/lang/Iterable.html
+.. _Iterable: http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html

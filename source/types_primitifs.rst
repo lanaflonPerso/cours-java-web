@@ -447,13 +447,13 @@ de plusieurs centaines (milliers) de lignes de code.
 
 
 .. _IEEE 754: https://fr.wikipedia.org/wiki/IEEE_754
-.. _BigDecimal: http://docs.oracle.com/javase/9/docs/api/java/math/BigDecimal.html
-.. _BigInteger: http://docs.oracle.com/javase/9/docs/api/java/math/BigInteger.html
-.. _java.lang.Boolean: http://docs.oracle.com/javase/9/docs/api/java/lang/Boolean.html
-.. _java.lang.Character: http://docs.oracle.com/javase/9/docs/api/java/lang/Character.html
-.. _java.lang.Integer: http://docs.oracle.com/javase/9/docs/api/java/lang/Integer.html
-.. _java.lang.Byte: http://docs.oracle.com/javase/9/docs/api/java/lang/Byte.html
-.. _java.lang.Short: http://docs.oracle.com/javase/9/docs/api/java/lang/Short.html
-.. _java.lang.Long: http://docs.oracle.com/javase/9/docs/api/java/lang/Long.html
-.. _java.lang.Float: http://docs.oracle.com/javase/9/docs/api/java/lang/Float.html
-.. _java.lang.Double: http://docs.oracle.com/javase/9/docs/api/java/lang/Double.html
+.. _BigDecimal: http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html
+.. _BigInteger: http://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html
+.. _java.lang.Boolean: http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html
+.. _java.lang.Character: http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html
+.. _java.lang.Integer: http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html
+.. _java.lang.Byte: http://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html
+.. _java.lang.Short: http://docs.oracle.com/javase/8/docs/api/java/lang/Short.html
+.. _java.lang.Long: http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html
+.. _java.lang.Float: http://docs.oracle.com/javase/8/docs/api/java/lang/Float.html
+.. _java.lang.Double: http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html

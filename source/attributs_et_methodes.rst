@@ -641,9 +641,9 @@ principe d'encapsulation
 
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
-.. _System: http://docs.oracle.com/javase/9/docs/api/java/lang/System.html
-.. _out: http://docs.oracle.com/javase/9/docs/api/java/lang/System.html#out
-.. _java.lang.Math: http://docs.oracle.com/javase/9/docs/api/java/lang/Math.html
-.. _java.lang.System: http://docs.oracle.com/javase/9/docs/api/java/lang/System.html
-.. _java.util.Arrays: http://docs.oracle.com/javase/9/docs/api/java/util/Arrays.html
-.. _java.util.Collections: http://docs.oracle.com/javase/9/docs/api/java/util/Collections.html
+.. _System: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html
+.. _out: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#out
+.. _java.lang.Math: http://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+.. _java.lang.System: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html
+.. _java.util.Arrays: http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
+.. _java.util.Collections: http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html

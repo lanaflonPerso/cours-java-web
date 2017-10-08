@@ -528,7 +528,7 @@ Cependant, la plupart des développeurs Java préfèrent déclarer une variable 
 et l'utilisation de l'opérateur virgule dans ce contexte est donc très rare.
 
 
-.. _String: https://docs.oracle.com/javase/9/docs/api/java/lang/String.html
-.. _Object.equals: https://docs.oracle.com/javase/9/docs/api/java/lang/Object.html#equals-java.lang.Object-
+.. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+.. _Object.equals: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object-
 .. _StringBuilder: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
 .. _Class.cast: https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#cast-java.lang.Object-
