@@ -1,17 +1,29 @@
 
-classe
-heap vs stack
-référence
-garbage collector (gestion de la mémoire)
+les tableaux
 
 ==================
-attributs & méthodes
+Cycle de vie des objets
+garbage collector (gestion de la mémoire)
 
-attribut
+heap vs stack
 
-this
+Les constructeurs
+*****************
 
-name scope (shadowing des attributs et utilisation de this)
+.. todo::
+
+  portée public et private
+  paramètre et initialisation (cas des final)
+  appel à un autre constructeur de la classe depuis un constructeur
+
+blocs d'initialisation
+**********************
+
+.. todo::
+
+  bloc d'initialisation
+  bloc d'initialisation static
+
 
 ===================
 package
