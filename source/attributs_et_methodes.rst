@@ -350,16 +350,28 @@ Une méthode peut avoir au plus un type de retour. Le compilateur signalera une 
 s'il existe un chemin d'exécution dans la méthode qui ne renvoie pas le bon type de valeur
 en retour. Pour retourner une valeur, on utilise le mot-clé **return**. Si le type
 de retour est un objet, la méthode peut toujours retourner la valeur spéciale **null**,
-c'est-à-dire l'absence d'objet.
+c'est-à-dire l'absence d'objet. Une méthode qui ne retourne aucune valeur,
+le signale avec le mot-clé **void**.
 
-.. todo::
-  Exemple de code ici
+::
 
-Une méthode qui ne retourne aucune valeur, le signale avec le mot-clé **void**.
+  public class Voiture {
 
-.. todo::
-  Exemple de code ici
+    private String marque;
+    private float vitesse;
 
+    public float getVitesse() {
+      return vitesse;
+    }
+
+    public void setMarque(String nouvelleMarque) {
+      if (nouvelleMarque == null) {
+        return;
+      }
+      marque = nouvelleMarque;
+    }
+
+  }
 
 Les paramètres
 ==============
@@ -367,8 +379,23 @@ Les paramètres
 Un méthode peut éventuellement avoir des paramètres (ou arguments). Chaque paramètre
 est défini par son type et par son nom.
 
-.. todo::
-  Exemple de code ici
+::
+
+  public class Voiture {
+
+    public float getVitesse() {
+      // implémentation ici
+    }
+
+    public void setVitesse(float deltaVitesse) {
+      // implémentation ici
+    }
+
+    public void remplirReservoir(float quantite, TypeEssence typeEssence) {
+      // implémentation ici
+    }
+
+  }
 
 Il est également possible de créer une méthode avec un nombre variable de paramètres.
 On utilise pour le cela trois points après le type du paramètre.
@@ -641,10 +668,128 @@ la méthode *additionner(int, int)* sera forcément choisie par le compilateur.
 portée des noms et this
 ***********************
 
-.. todo::
+Lorsqu'on déclare un identifiant, qu'il s'agisse du nom d'une classe, d'un
+attribut, d'un paramètre, d'une variable..., il se pose toujours la question
+de sa portée : dans quel contexte ce nom sera-t-il compris par le compilateur ?
 
-  mot-clé this
-  principe du name scoping
+Pour les paramètres et les variables, la portée de leur nom est limitée à la
+méthode qui les déclare. Cela signifie que vous pouvez réutiliser les mêmes noms
+de paramètres et de variables dans deux méthodes différentes pour désigner des choses
+différentes.
+
+Plus précisément, le nom d'une variable est limité au bloc de code (délimité par
+des accolades) dans lequel il a été déclaré. En dehors de ce bloc, le nom est
+inaccessible.
+
+::
+
+  public int doSomething(int valeurMax) {
+    int resultat = 0;
+
+    // la variable i n'est accessible que dans la boucle for
+    for (int i = 0; i < 10; ++i) {
+
+      // la variable k n'est accessible que dans la boucle for
+      for (int k = 0; k < 10; ++k) {
+        // la variable m n'est accessible que dans ce bloc
+        int m = resultat + i * k;
+        if (m > valeurMax) {
+          return valeurMax;
+        }
+        resultat = m;
+      }
+    }
+    return resultat;
+  }
+
+En Java, le masquage de nom de variable ou de nom de paramètre est interdit.
+Cela signifie qu'il est impossible de déclarer une variable ayant le même
+nom qu'un paramètre ou qu'une autre variable accessible dans le bloc de code courant.
+
+.. code-block:: java
+  :emphasize-lines: 2
+
+  public int doSomething(int valeurMax) {
+    int valeurMax = 2; // ERREUR DE COMPILATION
+  }
+
+.. code-block:: java
+  :emphasize-lines: 6
+
+  public int doSomething(int valeurMax) {
+    int resultat = 0;
+    for (int i = 0; i < 10; ++i) {
+      resultat += i;
+      if (resultat > 10) {
+        int resultat = -1; // ERREUR DE COMPILATION
+        return resultat;
+      }
+    }
+    return resultat;
+  }
+
+Par contre, il est tout à fait possible de réutiliser un nom de variable dans
+deux blocs de code successifs. Cette pratique n'est vraiment utile que pour les
+variables temporaires (comme pour une boucle **for** contrôlée par un index).
+Sinon, cela gène généralement la lecture.
+
+::
+
+  public void doSomething(int valeurMin, int valeurMax) {
+    for (int i = 0; i < valeurMax; ++i) {
+      // implémentation
+    }
+
+    // on peut réutiliser le nom de variable i car il est déclaré
+    // dans deux blocs for différents
+    for (int i = 0; i < valeurMin; --i) {
+      // implémentation
+    }
+  }
+
+En Java, le masquage du nom d'un attribut par un paramètre ou une variable
+est autorisé car les attributs sont toujours accessibles à travers le mot-clé
+**this**.
+
+::
+
+  public class Voiture {
+    private String marque;
+
+    public void setMarque(String marque) {
+      if (marque == null) {
+        return null;
+      }
+      this.marque = marque;
+    }
+  }
+
+**this** désigne l'instance courante de l'objet dans une méthode.
+On peut l'envisager comme une variable implicite accessible à un objet pour le désigner lui-même.
+Avec **this**, on peut accéder aux attributs et aux méthodes de l'objet. Il est
+même possible de retourner la valeur **this** ou la passer en paramètre pour
+indiquer une référence de l'objet courant :
+
+::
+
+  public class Voiture {
+    private float vitesse;
+
+    public Voiture getPlusRapide(Voiture voiture) {
+      return this.vitesse >= voiture.vitesse ? this : voiture;
+    }
+  }
+
+S'il n'y a pas d'ambiguïté de nom, l'utilisation du mot-clé **this** est inutile.
+Cependant, certains développeurs préfèrent l'utiliser systématiquement pour indiquer
+explicitement l'accès à un attribut.
+
+.. caution::
+
+  **this** désignant l'objet courant, ce mot-clé n'est pas disponible dans une méthode
+  de classe (méthode **static**). Pour résoudre le problème du masquage des attributs
+  de classe dans ces méthodes, il suffit d'accéder au nom à travers le nom de la classe.
+
 
 principe d'encapsulation
 *************************
