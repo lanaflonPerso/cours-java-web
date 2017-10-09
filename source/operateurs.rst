@@ -499,7 +499,7 @@ ou d'un objet à partir d'une référence.
 .. note ::
 
   On a l'habitude d'utiliser l'opérateur **.** en plaçant à gauche une variable ou
-  un appel de fonction. Cependant comme un chaîne de caractères est une instance
+  un appel de fonction. Cependant comme une chaîne de caractères est une instance
   de String_, on peut aussi écrire :
 
   ::

@@ -8,7 +8,7 @@ pour Windows et MacOS, et sous la forme d'un package ou d'une archive sous Linux
 
   Votre machine dispose déjà très certainement d'un environnement d'exécution
   Java (**JRE**) qui ne contient pas les outils nécessaires pour développer en Java. Vous
-  devez donc installer un JDK
+  devez donc installer un JDK.
 
 .. topic:: Téléchargement du JDK 1.8
 
