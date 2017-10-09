@@ -35,7 +35,7 @@ La portée
 
 Jusqu'à présent, nous avons vu qu'il existe deux portées différentes : *public* et *private*.
 Java est un langage qui supporte l'encapsulation de données. Cela signifie que lorsque
-nous créons une classe nous avons la choix de laisser accessible ou non au reste du programme
+nous créons une classe nous avons le choix de laisser accessible ou non au reste du programme
 des attributs (mais aussi des méthodes). Le mécanisme d'encapsulation permet notamment
 d'implémenter en Java le principe du *ouvert/fermé* qui est un des cinq principes SOLID_
 de la conception objet.
@@ -665,7 +665,7 @@ les méthodes qui n'ont pas de paramètre variable. Donc pour notre exemple ci-d
 la méthode *additionner(int, int)* sera forcément choisie par le compilateur.
 
 
-portée des noms et this
+Portée des noms et this
 ***********************
 
 Lorsqu'on déclare un identifiant, qu'il s'agisse du nom d'une classe, d'un
@@ -791,13 +791,170 @@ explicitement l'accès à un attribut.
   de classe dans ces méthodes, il suffit d'accéder au nom à travers le nom de la classe.
 
 
-principe d'encapsulation
+Principe d'encapsulation
 *************************
+
+Un objet est constitué d'un état interne (l'ensemble de ses attributs) et d'une
+liste d'opérations disponibles pour ses clients (l'ensemble de ses méthodes publiques).
+En programmation objet, il est important que les clients d'un objet en connaissent
+le moins possible sur son état interne. Nous verrons plus tard avec les mécanismes
+d'héritage et d'interface qu'un client demande des services à un objet sans même
+parfois connaître le type exact de l'objet. La programmation objet introduit
+un niveau d'abstraction important et cette abstraction devient un atout pour
+la réutilisation et l'évolutivité.
+
+Prenons l'exemple d'une classe permettant d'effectuer une connexion FTP et de récupérer
+une fichier distant. Les clients d'une telle classe n'ont sans doute aucun intérêt à
+comprendre les mécanismes compliqués du protocole FTP. Ils veulent simplement qu'on leur
+rende un service. Notre classe FTP pourrait très grossièrement ressembler à ceci :
+
+::
+
+  public class ClientFtp {
+
+    /**
+    * @param uri l'adresse FTP du fichier
+    *            par exemple ftp://monserveur/monfichier.txt
+    * @return le fichier sous la forme d'un tableau d'octets
+    */
+    public byte[] getFile(String uri) {
+      // implémentation
+    }
+
+  }
+
+Cette classe a peut-être des attributs pour connaître l'état du réseau et maintenir
+des connexions ouvertes vers des serveurs pour améliorer les performances. Mais tout
+ceci n'est pas de la responsabilité du client de cette classe qui veut simplement
+récupérer un ficher. Il est donc intéressant de cacher aux clients l'état interne
+de l'objet pour assurer un *couplage faible de l'implémentation*. Ainsi, si les
+développeurs de la classe *ClientFtp* veulent modifier son implémentation, ils
+doivent juste s'assurer que les méthodes publiques fonctionneront toujours comme attendues
+par les clients.
+
+En programmation objet, le `principe d'encapsulation`_ nous incite à contrôler
+et limiter l'accès au contenu de nos classes au strict nécessaire afin de permettre
+le couplage le plus faible possible. L'encapsulation en Java est permise grâce aux portées
+**public** et **private**.
+
+On considère que tous les attributs d'une classe **doivent** être déclarés **private**
+afin de satisfaire le `principe d'encapsulation`_.
+
+Cependant, il est parfois utile pour le client d'une classe d'avoir accès à une information
+qui correspond à un attribut de l'état interne de l'objet. Plutôt que de déclarer
+cet attribut **public**, il existe en Java des méthodes dont la signature est facilement
+identifiable et que l'on nomme **getters** et **setters**. Ces méthodes permettent
+d'accéder aux **propriétés** d'un objet ou d'une classe.
+
+**getter**
+  Permet l'accès en lecture à une propriété.
+  La signature de la méthode se présente sous la forme :
+
+  ::
+
+    public type getNomPropriete() {
+      // ...
+    }
+
+  Pour un type booléen, on peut aussi écrire :
+
+  ::
+
+    public boolean isNomPropriete() {
+      // ...
+    }
+
+**setter**
+  Permet l'accès en écriture à une propriété.
+  La signature de la méthode se présente sous la forme :
+
+  ::
+
+    public void setNomPropriete(type arg) {
+      // ...
+    }
+
+
+Ce qui donnera pour notre classe *Voiture* :
+
+::
+
+  public class Voiture {
+
+    // La vitesse en km/h
+    private float vitesse;
+
+    /**
+    * @return La vitesse en km/h
+    */
+    public float getVitesse() {
+      return vitesse;
+    }
+
+    /**
+    * @param vitesse La vitesse en km/h
+    */
+    public void setVitesse(float vitesse) {
+      this.vitesse = vitesse;
+    }
+
+  }
+
+Les *getters/setters* introduisent une abstraction supplémentaire : la **propriété**.
+Une propriété peut correspondre à un attribut ou à une expression. Du point de vue
+du client de la classe, cela n'a pas d'importance. Dans l'exemple ci-dessus, les développeurs
+de la classe *Voiture* peuvent très bien décider que l'état interne de la vitesse
+sera exprimé en mètres par seconde. Il devient possible de conserver la cohérence de notre
+classe en effectuant les conversions nécessaires pour passer de la propriété en
+km/s à l'attribut en m/s et inversement.
+
+::
+
+  public class Voiture {
+
+    // vitesse en m/s
+    private float vitesse;
+
+    private static float convertirEnMetresSeconde(float valeur) {
+      return valeur * 1000f / 3600f
+    }
+
+    private static float convertirEnKilometresHeure(float valeur) {
+      return valeur / 1000f * 3600f
+    }
+
+    /**
+    * @return La vitesse en km/h
+    */
+    public float getVitesse() {
+      return convertirEnKilometresHeure(vitesse);
+    }
+
+    /**
+    * @param vitesse La vitesse en km/h
+    */
+    public void setVitesse(float vitesse) {
+      this.vitesse = convertirEnMetresSeconde(vitesse);
+    }
+
+  }
+
+Avec les *getters/setters*, il est également possible de contrôler si une propriété
+est consultable et/ou modifiable. Si une propriété n'est pas consultable, il ne faut
+pas déclarer de *getter* pour cette propriété. Si une propriété n'est pas modifiable,
+il ne faut pas déclarer de *setter* pour cette propriété.
+
+.. tip::
+
+  Les *getters/setters* sont très utilisés en Java mais leur écriture peut être
+  fastidieuse. Les IDE comme Eclipse introduisent un système de génération automatique.
+  Dans Eclipse, faites un clic droit dans votre fichier de classe et choisissez
+  *Source > Generate Getters and Setters...*
+
 
 .. todo::
 
-  introduction au JavaBeans : notion de getter/setter
-
+  Exercices du chapitre
 
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
@@ -807,3 +964,4 @@ principe d'encapsulation
 .. _java.lang.System: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html
 .. _java.util.Arrays: http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
 .. _java.util.Collections: http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html
+.. _principe d'encapsulation: https://fr.wikipedia.org/wiki/Encapsulation_(programmation)
