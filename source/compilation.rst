@@ -103,9 +103,9 @@ Si votre programme est dépendant d'une bibliothèque tierce en Java, vous devez
 les fichiers de cette bibliothèque au moment de l'exécution.
 
 .. note::
-  Il est impossible d'écrire un programme Java qui n'est aucune dépendance avec d'autres
-  fichiers class. Dans notre exemple, même simple, nous somme dépendant de la classe
-  **System**. Nous sommes même dépendant de la classe **Object** alors que ce mot
+  Il est impossible d'écrire un programme Java qui n'ait aucune dépendance avec d'autres
+  fichiers class. Dans notre exemple, même simple, nous sommes dépendants de la classe
+  **System**. Nous sommes même dépendants de la classe **Object** alors que ce mot
   n'est pas présent dans le fichier source. Heureusement, ces classes font partie
   de la bibliothèque standard de Java qui est disponible avec l'environnement d'exécution.
   Nous n'avons donc pas à nous préoccuper de comment la JVM va trouver le code pour
