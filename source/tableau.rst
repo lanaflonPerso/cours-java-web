@@ -39,18 +39,17 @@ le mot-clé **new**.
   String[] tableauChaine = new String[] {"Bonjour", "le", "monde"};
 
 Si on ne souhaite pas donner de valeurs d'initialisation pour les élements
-du tableau, il suffit d'indiquer uniquement le nombre d'élément du tableau entre crochets.
+du tableau, il suffit d'indiquer uniquement le nombre d'éléments du tableau entre crochets.
 
 ::
 
   int[] tableauEntier = new int[5];
   String[] tableauChaine = new String[3];
 
-Lorsqu'on utilise *new*, il n'est pas possible de préciser des valeurs d'initialisation.
-Dans ce cas, les éléments d'un tableau sont tout de même initialisé avec une valeur par
-défaut (comme pour les attributs d'une classe) :
+Dans ce cas, les éléments d'un tableau sont tout de même initialisés avec une valeur par
+défaut (comme pour un attribut) :
 
-.. list-table:: Initialisation des éléments d'un tableau créé avec **new**
+.. list-table:: Valeur par défaut d'un élément d'un tableau
    :widths: 1 1
    :header-rows: 1
 
@@ -85,7 +84,7 @@ défaut (comme pour les attributs d'une classe) :
      - null
 
 
-La valeur donnant la taille du tableau peut être une constante, une expression ou
+La taille du tableau peut être donnée par une constante, une expression ou
 une variable.
 
 ::
@@ -94,7 +93,7 @@ une variable.
   int[] tableau = new int[t * t * 2];
 
 Par contre, la taille d'un tableau est donné à sa création et ne peut plus être
-modifiée. Il n'est donc pas possible d'ajouter ou d'enlever des éléments d'un tableau.
+modifiée. Il n'est donc pas possible d'ajouter ou d'enlever des éléments à un tableau.
 Dans ce cas, il faut créer un nouveau tableau avec la taille voulue et copier le contenu
 du tableau d'origine vers le nouveau tableau.
 
@@ -105,12 +104,12 @@ L'attribut **length** ne peut pas être modifié.
 
   int t = 6;
   int[] tableau = new int[t * t * 2];
-  System.out.println(tableau.length);
+  System.out.println(tableau.length); // 72
 
 .. note::
 
   Il est tout à fait possible de créer un tableau vide, c'est-à-dire avec une taille
-  de zéro. Par contre donner une taille négative est autorisé par le compilateur
+  de zéro. Par contre, donner une taille négative est autorisé par le compilateur
   mais aboutira à une erreur d'exécution avec une exception de type
   java.lang.NegativeArraySizeException_.
 
@@ -129,8 +128,8 @@ entre crochets. Le premier élément d'un tableau à l'indice **0**. Le dernier
   int premierElement = tableau[0];
   int dernierElement = tableau[tableau.length - 1];
 
-  System.out.println(premierElement);
-  System.out.println(dernierElement);
+  System.out.println(premierElement); // 1
+  System.out.println(dernierElement); // 5
 
   for (int i = 0, j = tableau.length - 1; i < j; ++i, --j) {
     int tmp = tableau[j];
