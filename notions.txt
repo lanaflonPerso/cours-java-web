@@ -15,6 +15,7 @@ Les constructeurs
   portée public et private
   paramètre et initialisation (cas des final)
   appel à un autre constructeur de la classe depuis un constructeur
+  la méthode finalize
 
 blocs d'initialisation
 **********************
@@ -29,12 +30,85 @@ blocs d'initialisation
 package
 
 import
+import static
 
+===================
+
+Les exceptions
+
+===================
+
+L'héritage
+Les constructeurs
+Le polymorphisme (introduction aux annotations avec @Override)
+
+===================
+
+La classe Object
+
+comparaison d'objet
+
+===================
+
+Les génériques
+
+===================
+
+Les collections
+(introduction à equals et hash)
 
 ===================
 
 classe abstraite
 
+===================
+
+interface
+
+===================
+
 enumération
+
+===================
+
+Les dates
+
+===================
+
+Les lambdas
+
+===================
+
+stream et filter/map/reduce
+
+===================
+
+Les entrées/sorties
+
+===================
+
+La reflexivité
+
+===================
+
+Les annotations
+
+===================
+
+La sérialisation
+
+===================
+
+La concurrence
+
+===================
+
+swing
+
+===================
+
+les tests
+
+===================
 
 javabeans
