@@ -131,7 +131,7 @@ attributs finaux
 ================
 
 Un attribut peut être déclaré comme **final**. Cela signifie qu'il n'est plus possible
-de modifier la valeur de cet attribut une fois qu'il a été initialisé.
+d'affecter une valeur à cet attribut une fois qu'il a été initialisé.
 Dans cas, le compilateur exige que l'attribut soit initialisé *explicitement*.
 
 ::
@@ -397,7 +397,8 @@ est défini par son type et par son nom.
 
   }
 
-Il est également possible de créer une méthode avec un nombre variable de paramètres.
+Il est également possible de créer une méthode avec un nombre variable de paramètres
+(*varargs parameter*).
 On utilise pour le cela trois points après le type du paramètre.
 
 ::

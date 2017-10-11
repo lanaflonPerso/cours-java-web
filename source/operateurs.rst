@@ -7,7 +7,7 @@ Les opérateurs en Java sont très proches des langages C et C++ qui l'ont inspi
 L'opérateur d'affectation
 *************************
 
-L'assignation est réalisée grâce à l'opérateur **=**. Cet opérateur, copie
+L'affectation est réalisée grâce à l'opérateur **=**. Cet opérateur, copie
 la valeur du paramètre de droite (appelé *rvalue*) dans le paramètre de gauche
 (appelé *lvalue*). Java opère donc pas copie. Cela signifie que si l'on change
 plus tard la valeur d'un des opérandes, l'autre ne sera pas affecté.
@@ -53,6 +53,26 @@ Elle existe toujours quelque part en mémoire. On dit que cette instance n'est p
 .. important::
 
   Le passage par copie de la référence vaut également pour les paramètres des méthodes.
+
+.. note::
+
+  **=** est plus précisément l'opérateur d'initialisation et d'affectation.
+  Pour une variable, l'initialisation se fait au moment de la déclaration d'une variable
+  et pour un attribut, au moment de la création de l'objet.
+
+  ::
+
+    // Initialisation
+    int a = 1;
+
+  L'affectation est une opération qui se fait, pour une variable, après sa déclaration d'une variable
+  et, pour un attribut, après la construction de l'objet.
+
+  ::
+
+    int a;
+    // Affectation
+    a = 1;
 
 Les opérateurs arithmétiques
 ****************************
