@@ -1,34 +1,13 @@
-
-==================
-Cycle de vie des objets
-garbage collector (gestion de la mémoire)
-
-heap vs stack
-
-Les constructeurs
-*****************
-
-.. todo::
-
-  portée public et private
-  paramètre et initialisation (cas des final)
-  appel à un autre constructeur de la classe depuis un constructeur
-  la méthode finalize
-
-blocs d'initialisation
-**********************
-
-.. todo::
-
-  bloc d'initialisation
-  bloc d'initialisation static
-
-
 ===================
 package
 
+principe (organisation sur le disque)
+convention de nommage
+package
 import
 import static
+portée package
+package-info.java
 
 ===================
 

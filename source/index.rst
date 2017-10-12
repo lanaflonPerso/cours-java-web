@@ -20,6 +20,7 @@ Le langage Java
    attributs_et_methodes
    tableau
    cycle_de_vie
+   package
 
 
 Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <http://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France

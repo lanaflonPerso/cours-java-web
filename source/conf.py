@@ -189,12 +189,12 @@ texinfo_documents = [
 # default language for highlighting
 highlight_language = 'java'
 # replacement for ROOT_PKG in java source
-highlight_java_root_package = 'com.epsi.b3'
+highlight_root_package = 'fr.epsi.b3'
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
 
-def register_pygments_filter(root_package_name):
+def register_pygments_filter(highlight_language, root_package_name):
     from pygments.filter import simplefilter
 
     @simplefilter
@@ -206,8 +206,12 @@ def register_pygments_filter(root_package_name):
 
     from pygments.lexers import get_lexer_by_name
     from sphinx.highlighting import lexers
-    javaLexer = get_lexer_by_name('java', tabsize=0)
+    javaLexer = get_lexer_by_name(highlight_language, tabsize=0)
     javaLexer.add_filter(replace_root_package_filter())
-    lexers['java'] = javaLexer
+    lexers[highlight_language] = javaLexer
 
-register_pygments_filter(highlight_java_root_package)
+register_pygments_filter(highlight_language, highlight_root_package)
+
+rst_epilog = """
+.. |ROOT_PKG| replace:: *%s*
+""" % highlight_root_package
