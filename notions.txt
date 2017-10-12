@@ -32,11 +32,8 @@ import static
 
 ===================
 
-Les exceptions
-
-===================
-
 L'héritage
+is a, has a, is like a
 Les constructeurs
 Le polymorphisme (introduction aux annotations avec @Override)
 
@@ -45,6 +42,19 @@ Le polymorphisme (introduction aux annotations avec @Override)
 La classe Object
 
 comparaison d'objet
+toString
+
+===================
+
+La classe String
+
+(expressions régulières)
+
+===================
+
+Les exceptions
+
+exception comme mécanisme de validation pour la création d'objet (exception lancée dans les constructeurs)
 
 ===================
 
@@ -71,7 +81,11 @@ enumération
 
 ===================
 
-Les dates
+les classes internes
+
+===================
+
+Les dates / time
 
 ===================
 
@@ -119,4 +133,12 @@ programmation native
 
 ===================
 
+javadoc
+
+===================
+
 javabeans
+
+===================
+
+class loader
