@@ -1,6 +1,4 @@
 
-les tableaux
-
 ==================
 Cycle de vie des objets
 garbage collector (gestion de la mémoire)
