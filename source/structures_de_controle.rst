@@ -55,26 +55,26 @@ des choix multiples :
 return
 ******
 
-  **return** est un mot clé permettant d'arrêter immédiatement le traitement
-  d'une méthode et de retourner la valeur de l'expression spécifiée après ce mot-clé. Si la méthode
-  ne retourne pas de valeur (**void**), alors on utilise le mot-clé **return** seul.
-  L'exécution d'un **return** entraîne la fin d'une structure de contrôle.
+**return** est un mot clé permettant d'arrêter immédiatement le traitement
+d'une méthode et de retourner la valeur de l'expression spécifiée après ce mot-clé. Si la méthode
+ne retourne pas de valeur (**void**), alors on utilise le mot-clé **return** seul.
+L'exécution d'un **return** entraîne la fin d'une structure de contrôle.
 
-  ::
+::
 
-    if (i % 2 == 0) {
-      return 0;
-    }
+  if (i % 2 == 0) {
+    return 0;
+  }
 
-  Écrire des instructions immédiatement après une instruction **return** n'a pas de sens puisqu'elles
-  ne seront jamais exécutées. Le compilateur Java le signalera par une erreur *unreachable code*.
+Écrire des instructions immédiatement après une instruction **return** n'a pas de sens puisqu'elles
+ne seront jamais exécutées. Le compilateur Java le signalera par une erreur *unreachable code*.
 
-  ::
+::
 
-    if (i % 2 == 0) {
-      return 0;
-      i++; // Erreur de compilation : unreachable code
-    }
+  if (i % 2 == 0) {
+    return 0;
+    i++; // Erreur de compilation : unreachable code
+  }
 
 while
 *****
