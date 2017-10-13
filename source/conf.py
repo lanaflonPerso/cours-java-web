@@ -196,12 +196,13 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 def register_pygments_filter(highlight_language, root_package_name):
     from pygments.filter import simplefilter
+    from pygments.token import Name
 
     @simplefilter
     def replace_root_package_filter(self, lexer, stream, options):
         for ttype, value in stream:
-            if value == "ROOT_PKG":
-                value = root_package_name
+            if (ttype is Name or ttype is Name.Namespace) and value.startswith("ROOT_PKG"):
+                value = value.replace("ROOT_PKG", root_package_name)
             yield ttype, value
 
     from pygments.lexers import get_lexer_by_name

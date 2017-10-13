@@ -252,6 +252,68 @@ plus vraiment utile.
   n'aura aucun effet. Dans ce cas, vous serez obligé d'accéder à un nom de classe
   avec son nom long afin d'éviter toute ambiguïté.
 
+
+La portée de niveau package
+***************************
+
+Nous avons vu précédemment que les classes, les méthodes et les attributs
+peuvent avoir une portée **public** ou **private**. Il existe également une 
+portée de niveau package. Une classe, une méthode ou un attribut avec cette
+portée n'est accessible qu'aux membres du même package. Cela permet notamment
+de créer des classes nécessaires au fonctionnement du package tout en les
+dissimulant aux éléments qui ne sont pas membres du package.
+
+Il n'y a pas de mot-clé pour désigner la portée de niveau package. Il suffit
+simplement d'omettre l'information de portée.
+
+Imaginons que nous voulions créer une bibliothèque de cryptographie. Nous pouvons
+créer une classe pour chaque algorithme. Par contre, pour simplifier l'utilisation,
+nous pouvons fournir une classe outil de chiffrement. Dans ce cas, il n'est
+pas nécessaire de rendre accessible à l'extérieur du package les classes
+représentant les algorithmes : on les déclare alors avec la portée package.  
+
+
+.. code-block:: java
+  :caption: CypherAlgorithm.java
+  
+  package ROOT_PKG.cypher;
+  
+  class CypherAlgorithm {
+  
+    public CypherAlgorithm() {
+      // ...
+    }
+    
+    public byte[] encrypt(byte[] msg) {
+      // ...
+    }
+  }
+
+
+.. code-block:: java
+  :caption: CypherLibrary.java
+  
+  package ROOT_PKG.cypher;
+  
+  public class CypherLibrary {
+  
+    private CypherLibrary() {
+    }
+    
+    public byte[] cypher(byte[] msg) {
+      CypherAlgorithm algo = new CypherAlgorithm();
+      return algo.cypher(msg);
+    }
+  }
+  
+La classe *CypherAlgorithm* est de portée package, elle est donc invisible
+pour les classes qui ne sont pas membres de son package. Par contre, elle est
+utilisée par la classe *CypherLibrary*.
+
+La portée de niveau package est souvent utilisée pour dissimuler la complexité
+de l'implémentation en ne laissant voir que les classes et/ou les méthodes 
+réellement utiles aux utilisateurs.
+
 Le fichier package-info.java
 ****************************
 
@@ -263,12 +325,12 @@ lui-même. Il peut également contenir des annotations pour le package.
 .. code-block:: java
   :caption: contenu du fichier package-info.java pour |ROOT_PKG|
   
-    package ROOT_PKG;
-    
-    /**
-     * Ceci est le commentaire pour le package.
-     */
-    
+  package ROOT_PKG;
+  
+  /**
+   * Ceci est le commentaire pour le package.
+   */
+
 
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _java.lang.String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
