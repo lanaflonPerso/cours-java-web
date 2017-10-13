@@ -300,7 +300,7 @@ représentant les algorithmes : on les déclare alors avec la portée package.
     private CypherLibrary() {
     }
     
-    public byte[] cypher(byte[] msg) {
+    public static byte[] cypher(byte[] msg) {
       CypherAlgorithm algo = new CypherAlgorithm();
       return algo.cypher(msg);
     }

@@ -1,20 +1,18 @@
 ===================
-package
 
-principe (organisation sur le disque)
-convention de nommage
-package
-import
-import static
-portée package
-package-info.java
+L'héritage
+is a, has a
+héritage unique (présentation de la classe Object)
+instanceof (downcasting, upcasting)
+Principe de substitution de Liskov
+Les constructeurs
+open/close principle
+final
 
 ===================
 
-L'héritage
-is a, has a, is like a
-Les constructeurs
 Le polymorphisme (introduction aux annotations avec @Override)
+appel à la méthode parente avec super
 
 ===================
 
@@ -22,6 +20,9 @@ La classe Object
 
 comparaison d'objet
 toString
+clone
+equals
+finalize
 
 ===================
 
