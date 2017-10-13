@@ -54,7 +54,7 @@ email = 'david.gayerie.epsi@mailoo.org'
 
 copyright = """
 <a ref="author" href="mailto:%s">%s</a>
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/fr/80x15.png" /></a>
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/fr/80x15.png" /></a>
 """ % (email, author)
 
 # The version info for the project you're documenting, acts as replacement for

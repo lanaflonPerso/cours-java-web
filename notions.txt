@@ -28,6 +28,7 @@ toString
 La classe String
 
 (expressions régulières)
+formattage (message format et printf)
 
 ===================
 
@@ -121,3 +122,7 @@ javabeans
 ===================
 
 class loader
+
+===================
+
+Les fichier Properties

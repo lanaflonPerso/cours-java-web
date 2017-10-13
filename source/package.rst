@@ -49,14 +49,14 @@ même nom mais dans des répertoires différents puisque ces classes appartiendr
 .. note::
 
   Quand on spécifie le **classpath** à la compilation ou au lancement d'un
-  programme, on spécifie le ou les répertoires à partir duquel se trouvent
+  programme, on spécifie le ou les répertoires à partir desquels se trouvent
   les packages.
 
 Si une classe ne déclare pas d'instruction **package** au début du fichier,
 on dit qu'elle appartient au package par défaut (qui n'a pas de nom). Même
 si le langage l'autorise, c'est quasiment toujours une mauvaise idée. Les IDE
-comme Eclipse signale d'ailleurs un avertissement si vous voulez créer une classe
-dans le package par défaut. Jusqu'à présent, les exemples données ne mentionnaient
+comme Eclipse signalent d'ailleurs un avertissement si vous voulez créer une classe
+dans le package par défaut. Jusqu'à présent, les exemples donnés ne mentionnaient
 pas de package. Mais maintenant que cette notion a été introduite, les exemples
 à venir préciseront toujours un package.
 
@@ -73,11 +73,26 @@ Un package contenu dans un autre package est appelé un **sous package** :
 Sur le système de fichiers, on trouvera donc un répertoire *monapplication* avec
 à l'intérieur un sous répertoire *monsouspackage*.
 
+Nom d'un package
+****************
+
+Comme le mécanisme des packages a été introduit pour éviter la collision de noms,
+il est conseillé de suivre une convention de nommage de ses packages. Pour une
+organisation, on utilise le nom de domaine inversé comme base de l'arborescence 
+de packages : par exemple |ROOT_PKG|. On ajoute généralement ensuite le nom de 
+l'application ou de la bibliothèque.
+
+Les noms de package contenant mot *java* sont réservés pour la bibliothèque standard.
+On trouve ainsi des packages *java* ou *javax* (pour indiquer une extension de Java)
+dans la bibliothèque standard fournie avec le JDK.
+
+
+
 Nom complet d'une classe
 ************************
 
-Une classe est normalement désignée par son *nom complet*, c'est-à-dire par le chemin
-de packages suivi d'un **.** suivi du nom de la classe.
+Une classe est normalement désignée par son *nom complet*, c'est-à-dire par le 
+chemin de packages suivi d'un **.** suivi du nom de la classe.
 
 Par exemple, la classe String_ s'appelle en fait java.lang.String_ car elle se
 trouve dans le package java.lang_. J'ai donc la possibilité si je le souhaite
@@ -92,11 +107,172 @@ de créer ma propre classe String par exemple dans le package |ROOT_PKG| :
   }
 
 
+Il est possible d'accèder à une classe en spécifiant son nom complet. Par
+exemple, pour accèder à la classe java.util.Arrays_ :
+
+::
+
+  package ROOT_PKG;
+
+  public class MaClasse {
+
+    public static final main(String... args) {
+      int[] tableau = {5, 6, 3, 4};
+      java.util.Arrays.sort(tableau);
+    }    
+  }
+
+Par défaut, une classe a accès à l'espace de nom de son propre package et du
+package java.lang_. Voilà pourquoi, il est possible d'utiliser directement
+les classes String_ ou Math_ sans avoir à donner leur nom complet :
+java.lang.String_, java.lang.Math_.
+
+Si nous créons deux classes : *Voiture* et *Conducteur*, toutes deux dans le
+package |ROOT_PKG| :
+
+::
+ 
+  package ROOT_PKG;
+
+  public class Conducteur {
+  
+    // ...
+
+  }
+
+::
+ 
+  package ROOT_PKG;
+
+  public class Voiture {
+  
+    private Conducteur conducteur;
+    
+    public void setConducteur(Conducteur conducteur) {
+      this.conducteur = conducteur;
+    }
+    
+    // ...
+
+  }
+
+La classe *Voiture* et la classe *Conducteur* appartiennent toutes les deux
+au package |ROOT_PKG|. La classe *Voiture* peut donc référencer la classe
+*Conducteur* sans préciser le package.
+
+Import de noms
+**************
+
+Pour éviter de préfixer systématiquement une classe par son nom de package,
+il est possible d'importer son nom dans l'espace de noms courant grâce au 
+mot-clé **import**. Une instruction **import** **doit** se situer juste après 
+la déclaration de **package** (si cette dernière est présente). Donc, il n'est pas 
+possible d'importer un nom en cours de déclaration d'une classe ou d'une 
+méthode.
+
+Le mot-clé *import* permet d'importer :
+
+* Un nom de classe particulier
+
+  ::
+    
+    import java.util.Arrays;
+    
+* Un nom de méthode de classe ou d'attribut de classe
+
+  ::
+  
+    import static java.lang.Math.abs;
+    import static java.lang.System.out;
+    
+* Un nom de classe interne (inner class)
+
+  ::
+  
+    import java.util.Map.Entry;
+    
+* Tous les noms d'un package
+
+  ::
+  
+    import java.util.*;
+    
+* Tous les noms des méthodes et des attributs de classe
+
+  ::
+  
+    import static java.lang.Math.*;
+
+
+Le caractère **\*** permet d'importer tous les noms d'un package dans l'espace 
+de nom courant. Même si cela peut sembler très pratique, il est pourtant 
+déconseillé de le faire. Tous les IDE Java savent gérer automatiquement les 
+importations. Dans Eclipse, lorsque l'on saisit le nom d'une classe qui ne fait 
+pas partie de l'espace de nom, il suffit de demander la complétion de code 
+(*CTRL + espace*) et de choisir dans la liste la classe appartenant au package 
+voulu et Eclipse génère automatiquement l'instruction **import** pour ce nom de 
+classe. De plus, on peut demander à Eclipse à tout moment de réorganiser les 
+importations (*CTRL + MAJ + O*). Ainsi, la gestion des importations est 
+grandement automatisée et le recours à **\*** comme facilité d'écriture n'est 
+plus vraiment utile.
+
+::
+  
+  package ROOT_PKG;
+
+  import static java.lang.Math.random;
+  import static java.lang.System.out;
+  import static java.util.Arrays.sort;
+
+  import java.time.Duration;
+  import java.time.Instant;
+
+  public class BenchmarkTriTableau {
+
+    public static void main(String[] args) {
+      int[] tableau = new int[1_000_000];
+
+      for (int i = 0; i < tableau.length; ++i) {
+        tableau[i] = (int) random();
+      }
+
+      Instant start = Instant.now();
+      sort(tableau);
+      Duration duration = Duration.between(start, Instant.now());
+
+      out.println("Durée de l'opération de tri du tableau : " + duration);
+    }
+
+  }
+
+
 .. note ::
 
-  package java.lang
-  nom de package réservé java et javax
+  Si vous importez un nom qui est déjà défini dans l'espace courant, alors l'import
+  n'aura aucun effet. Dans ce cas, vous serez obligé d'accéder à un nom de classe
+  avec son nom long afin d'éviter toute ambiguïté.
+
+Le fichier package-info.java
+****************************
+
+Il est possible de créer un fichier spécial dans un package nommé *package-info.java*.
+Au minimum, ce fichier doit contenir une instruction **package**. Ce fichier
+particulier permet d'ajouter un commentaire Javadoc pour documenter le package
+lui-même. Il peut également contenir des annotations pour le package.
+
+.. code-block:: java
+  :caption: contenu du fichier package-info.java pour |ROOT_PKG|
+  
+    package ROOT_PKG;
+    
+    /**
+     * Ceci est le commentaire pour le package.
+     */
+    
 
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _java.lang.String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+.. _Math: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+.. _java.lang.Math: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
 .. _java.lang: https://docs.oracle.com/javase/8/docs/api/java/lang/package-summary.html
+.. _java.util.Arrays: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html

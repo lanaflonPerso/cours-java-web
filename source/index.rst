@@ -23,8 +23,8 @@ Le langage Java
    package
 
 
-Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <http://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
+Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <https://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
 
 .. image:: https://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png
-   :target: http://creativecommons.org/licenses/by-sa/3.0/fr/
+   :target: https://creativecommons.org/licenses/by-sa/3.0/fr/
    :alt: Licence Creative Commons
