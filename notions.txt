@@ -13,6 +13,8 @@ final
 
 Le polymorphisme (introduction aux annotations avec @Override)
 appel à la méthode parente avec super
+name shadowing pour les attributs
+pas de polymorphisme pour les méthodes privées
 
 ===================
 
@@ -36,6 +38,9 @@ formattage (message format et printf)
 Les exceptions
 
 exception comme mécanisme de validation pour la création d'objet (exception lancée dans les constructeurs)
+précondition et postconditions
+
+introduction du mot clé assert.
 
 ===================
 
