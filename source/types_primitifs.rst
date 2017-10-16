@@ -361,7 +361,15 @@ primitif :
   // enfin presque toutes car Character n'a pas cette méthode
 
 Une variable de type d'une des classes enveloppes référence un objet donc elle peut avoir la valeur spéciale **null**.
-Ce cas permet de signifier l'absence de valeur. Enfin les classes enveloppes sont conçues pour être
+Ce cas permet de signifier l'absence de valeur. 
+
+Les classes enveloppes contiennent des constantes pour donner des informations 
+utiles. Par exemple, la classe java.lang.Integer_ déclare les constantes
+MIN_VALUE_ et MAX_VALUE_ qui donnent respectivement la plus petite valeur
+et la plus grande valeur représentables par la primitive associée.
+
+
+Enfin les classes enveloppes sont conçues pour être
 non modifiables. Cela signifie que l'on ne peut pas modifier la valeur qu'elles enveloppent après
 leur création.
 
@@ -460,3 +468,5 @@ de plusieurs centaines (milliers) de lignes de code.
 .. _java.lang.Long: http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html
 .. _java.lang.Float: http://docs.oracle.com/javase/8/docs/api/java/lang/Float.html
 .. _java.lang.Double: http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html
+.. _MIN_VALUE: https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MIN_VALUE
+.. _MAX_VALUE: https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE

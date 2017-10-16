@@ -10,21 +10,17 @@ pas de polymorphisme pour les méthodes privées
 
 ===================
 
-La classe Object
-
-comparaison d'objet
-toString
-clone
-equals
-finalize
+La classe OBJECT (done)
 
 ===================
 
-La classe String
+Les chaînes de caractères
 
-(expressions régulières)
-formattage (message format et printf)
-
+  * tableaux de caractères vs chaîne de caractères
+  * la manipulation de chaîne (StringBuilder)
+  * les expressions régulières
+  * formatage (message format et printf)
+  * optimisation mémoire des chaînes de caractères
 ===================
 
 Les exceptions
@@ -33,6 +29,10 @@ exception comme mécanisme de validation pour la création d'objet (exception la
 précondition et postconditions
 
 changement de la signature des exceptions pour le polymorphisme
+
+multiple exceptions |
+
+try-with-resources
 
 introduction du mot clé assert.
 
@@ -85,7 +85,7 @@ Les entrées/sorties
 
 ===================
 
-La reflexivité
+La réflexivité
 
 ===================
 
