@@ -296,22 +296,22 @@ Prenons l'exemple suivant :
     private float vitesse;
 
     public Vehicule(String marque, int nbRoues, float vitesseInitiale) {
-      faireQuelqueChoseDInattendu();
+      faireQuelqueChoseDInattendue();
       this.marque = marque;
       this.nbRoues = nbRoues < DEFAUT_NBROUES ? nbRoues : DEFAUT_NBROUES;
       this.vitesse = vitesseInitiale;
     }
 
-    private void faireQuelqueChoseDInattendu() {
+    private void faireQuelqueChoseDInattendue() {
       System.out.println(this.nbRoues); // 0
     }
   }
 
-Le constructeur appelle la méthode *faireQuelqueChoseDInattendu* qui affiche
+Le constructeur appelle la méthode *faireQuelqueChoseDInattendue* qui affiche
 la valeur de l'attribut *nbRoues*. Cet attribut est déclaré **final** donc
 il n'est pas modifiable durant la vie de l'objet et la tâche du constructeur
 va être, entre autres, de lui assigner une valeur. Mais comme la méthode
-*faireQuelqueChoseDInattendu* est appelée avant l'initialisation, elle affichera
+*faireQuelqueChoseDInattendue* est appelée avant l'initialisation, elle affichera
 0. Il s'agit d'un comportement aberrant du point de vue de la définition de **final**
 mais qui compile et s'exécute sans erreur.
 
