@@ -533,6 +533,11 @@ downcasting et d'éviter des erreurs d'exécution. Pour cela, le mot-clé **inst
 retourne **true** si l'opérande à gauche est d'un type compatible avec l'opérande
 à droite.
 
+.. info
+
+  Si l'opérande à gauche vaut **null**, **instanceof** retourne **false** pour tout
+  type utilisé comme opérande à droite.
+
 .. code-block:: java
   :linenos:
 

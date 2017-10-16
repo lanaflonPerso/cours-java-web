@@ -1,19 +1,11 @@
-===================
-
-L'héritage
-is a, has a
-héritage unique (présentation de la classe Object)
-instanceof (downcasting, upcasting)
-Principe de substitution de Liskov
-Les constructeurs
-open/close principle
-final
 
 ===================
 
 Le polymorphisme (introduction aux annotations avec @Override)
 appel à la méthode parente avec super
 name shadowing pour les attributs
+changement de niveau de visibilité pour les méthodes
+changement de valeur de retour pour les méthodes
 pas de polymorphisme pour les méthodes privées
 
 ===================
@@ -39,6 +31,8 @@ Les exceptions
 
 exception comme mécanisme de validation pour la création d'objet (exception lancée dans les constructeurs)
 précondition et postconditions
+
+changement de la signature des exceptions pour le polymorphisme
 
 introduction du mot clé assert.
 

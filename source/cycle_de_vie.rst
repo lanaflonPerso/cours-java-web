@@ -500,6 +500,8 @@ comportement difficilement prédictible.
   pas de mécanisme automatique pour réclamer les autres types de ressources,
   notamment les descripteurs de fichier et de socket.
 
+.. _cycle_de_vie_finalize:
+
 La méthode finalize
 *******************
 

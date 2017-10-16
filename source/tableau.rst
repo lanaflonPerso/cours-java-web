@@ -220,7 +220,7 @@ La code précédent affichera sur la sortie standard quelque chose comme ceci :
 
 Cela peut sembler un bug mais il n'en est rien. En fait, la conversion d'un
 objet en chaîne de caractères affiche par défaut son type suivi du caractère
-*@* suivi de la référence mémoire de l'objet. Normalement le type d'un objet
+*@* suivi du code de hachage de l'objet. Normalement le type d'un objet
 correspond au nom de sa classe. Mais le type d'un tableau est noté **[** suivi
 du type des éléments du tableau (**I** indique le type primitif **int**).
 

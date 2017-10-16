@@ -22,6 +22,7 @@ Le langage Java
    cycle_de_vie
    package
    relations_entre_objets
+   la_classe_object
 
 
 Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <https://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
