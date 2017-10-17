@@ -34,6 +34,8 @@ multiple exceptions |
 
 try-with-resources
 
+printStackTrace();
+
 introduction du mot clé assert.
 
 ===================
@@ -61,7 +63,7 @@ enumération
 
 ===================
 
-les classes internes
+les classes internes & classes anonymes
 
 ===================
 

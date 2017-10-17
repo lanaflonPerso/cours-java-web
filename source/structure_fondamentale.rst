@@ -198,8 +198,8 @@ des conventions de nommage.
      - LARGEUR_MAX
        INSCRIPTIONS_PAR_ANNEE
 
-Le mots-clés
-************
+Les mots-clés
+*************
 
 Comme pour la plupart des langages de programmation, il n'est pas possible d'utiliser
 comme nom dans un programme un mot-clé du langage. La liste des mots-clés en Java est :
