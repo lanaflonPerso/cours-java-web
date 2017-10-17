@@ -25,6 +25,7 @@ Le langage Java
    la_classe_object
    les_exceptions
    classe_abstraite
+   enumeration
 
 
 Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <https://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France

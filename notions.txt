@@ -10,7 +10,7 @@ pas de polymorphisme pour les méthodes privées
 
 ===================
 
-La classe OBJECT (done)
+La classe OBJECT (DONE)
 
 ===================
 
@@ -49,7 +49,7 @@ Les collections
 
 ===================
 
-classe abstraite /!\
+classe abstraite (DONE)
 
 ===================
 
@@ -59,7 +59,7 @@ ex : Comparable pour le tri et la recherche de tableau
 
 ===================
 
-enumération /!\
+enumération /!\ (en cours)
 
 ===================
 
