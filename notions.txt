@@ -49,21 +49,21 @@ Les collections
 
 ===================
 
-classe abstraite
+classe abstraite /!\
 
 ===================
 
-interface
+interface /!\
 
 ex : Comparable pour le tri et la recherche de tableau
 
 ===================
 
-enumération
+enumération /!\
 
 ===================
 
-les classes internes & classes anonymes
+les classes internes & classes anonymes /!\
 
 ===================
 
