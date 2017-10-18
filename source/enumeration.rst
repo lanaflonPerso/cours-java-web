@@ -230,7 +230,7 @@ est transcrite comme ceci par le compilateur :
     }
   }
 
-.. todo ::
+.. note ::
 
   Malheureusement le code ci-dessus ne compile pas car le compilateur Java
   n'autorise pas à créer soi-même une énumération.

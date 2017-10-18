@@ -59,7 +59,7 @@ ex : Comparable pour le tri et la recherche de tableau
 
 ===================
 
-enumération /!\ (en cours)
+enumération (DONE)
 
 ===================
 
@@ -118,6 +118,11 @@ programmation native
 javadoc
 
 ===================
+
+
+
+
+
 
 javabeans
 
