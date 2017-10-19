@@ -1,12 +1,12 @@
 Les interfaces
 ##############
 
-Une interface permet de définir en ensemble de service qu'un client peut
+Une interface permet de définir en ensemble de services qu'un client peut
 obtenir d'un objet. Une interface introduit une abstraction pure qui permet
-une découplage maximal entre un service et son implémentation. On retrouve
-ainsi les interfaces au cœur de l'implémentation de beaucoup de frameworks.
-Le mécanisme des interfaces permet d'introduire également une forme simplifiée 
-d'héritage multiple.
+un découplage maximal entre un service et son implémentation. On retrouve
+ainsi les interfaces au cœur de l'implémentation de beaucoup de bibliothèques
+et de frameworks. Le mécanisme des interfaces permet d'introduire également une 
+forme simplifiée d'héritage multiple.
 
 
 Déclaration d'un interface
@@ -22,9 +22,9 @@ Une interface se déclare avec le mot-clé **interface**.
   
   }
   
-Comme pour une classe, une interface a une portée, un nom et une déclaration
-dans un bloc. Une interface est déclarée dans son propre fichier portant le même
-nom que l'interface. Pour l'exemple ci-dessous, le fichier doit s'appeler 
+Comme pour une classe, une interface a une portée, un nom et un bloc de  
+déclaration. Une interface est déclarée dans son propre fichier qui porte le même
+nom que l'interface. Pour l'exemple ci-dessus, le fichier doit s'appeler 
 *Compte.java*.
 
 Une interface décrit un ensemble de méthodes en fournissant uniquement leur
@@ -49,7 +49,7 @@ signature.
 
 Une interface introduit un nouveau type d'abstraction qui définit à travers
 ces méthodes un ensemble d'interactions autorisées. 
-Une classe peut implémenter une ou plusieurs interfaces.
+Une classe peut ensuite implémenter une ou plusieurs interfaces.
 
 .. note ::
 
@@ -62,7 +62,7 @@ Une classe peut implémenter une ou plusieurs interfaces.
 
     public interface Mobile {
       
-      public abstract void deplacer() ;
+      public abstract void deplacer();
 
     }
     
@@ -74,7 +74,7 @@ Une classe peut implémenter une ou plusieurs interfaces.
 
     public interface Mobile {
       
-      void deplacer() ;
+      void deplacer();
 
     }
    
@@ -142,8 +142,8 @@ Une interface introduit un nouveau type de relation qui serait du type *est
 comme un* (*is-like-a*).
 
 Pour une exemple d'application de comptes, cela signifie qu'il est 
-possible de créer tout un système de gestion de comptes à travers l'interface
-*Compte*. Il est facile ensuite de fournir une implémentation de cette interface,
+possible de créer un système de gestion de comptes utilisant l'interface
+*Compte*. Il est facile ensuite de fournir une implémentation de cette interface
 pour un compte bancaire, un porte-monnaie électronique, un compte en ligne...
 
 Une classe peut implémenter plusieurs interfaces si nécessaire. Pour cela, il
@@ -210,7 +210,7 @@ Attributs et méthodes statiques
 Une interface peut déclarer des attributs. Cependant tous les attributs d'une
 interface sont par défaut **public**, **static** et **final**. Il n'est
 pas possible de modifier la portée de ces attributs. Autrement
-dit, une interface peut déclarer uniquement des constantes.
+dit, une interface ne peut déclarer que des constantes.
 
 ::
 
@@ -325,9 +325,9 @@ est bien une instance compatible avec cette interface.
 
 ::
 
-  Humain h = new Humain();
-  if (h instanceof Carnivore) {
-    System.out.println("un humain mange de la viande");
+  Humain bob = new Humain();
+  if (bob instanceof Carnivore) {
+    System.out.println("bob mange de la viande");
   }
 
 En Java, on utilise cette possibilité pour créer des interfaces marqueurs. Une
@@ -365,7 +365,7 @@ si une variable, un paramètre ou un attribut implémente cette interface.
 
 Dans l'exemple ci-dessus, *Cannibale* agit comme une interface marqueur, elle
 permet à une classe héritant de *Humain* de manger une instance d'humain. Pour
-cela, il suffit déclarer que la classe implémente *Cannibale* :
+cela, il suffit de déclarer que cette nouvelle classe implémente *Cannibale* :
 
 ::
 
@@ -383,7 +383,10 @@ son comportement.
 Le principe de l'interface marqueur est quelques fois utilisé dans l'API standard
 de Java. Par exemple, La méthode clone_ déclarée par Object_ jette une 
 CloneNotSupportedException_ si elle est appelée sur une instance qui n'implémente
-pas l'interface marqueur Cloneable_. 
+pas l'interface Cloneable_. Cela permet de fournir une méthode par défaut pour créer
+une copie d'un objet mais sans activer la fonctionnalité. Il faut
+que la classe déclare son intention d'être clonable grâce à l'interface
+marqueur.
 
 Implémentation par défaut
 *************************
@@ -412,17 +415,17 @@ ajouter la méthode *transférer* qui consiste à vider intégralement un compte
   }
 
 En ajoutant une nouvelle méthode à notre interface, nous devons
-fournir une implémentation pour cette méthode à toutes les classes que nous avons
+fournir une implémentation pour cette méthode dans toutes les classes que nous avons
 créées pour qu'elles continuent à compiler. Mais si d'autres équipes de développement
-utilisent notre code et ont elles-aussi créé des implémentations pour l'interface
+utilisent notre code et ont, elles-aussi, créé des implémentations pour l'interface
 *Compte*, alors elles devront adapter leur code au moment d'intégrer la dernière
 version de notre interface.
 
 Comme les interfaces servent précisément à découpler deux implémentations, elles
-sont très souvent utilisées dans les bibliothèques et les frameworks. Donc d'un
-côté, les interfaces introduisent une meilleure souplesse mais également une grande
-rigidité car il peut être difficile de les faire évoluer sans risquer de casser
-des implémentations existantes.
+sont très souvent utilisées dans les bibliothèques et les frameworks. D'un
+côté, les interfaces introduisent une meilleure souplesse mais, d'un autre côté,
+elles entraînent une grande rigidité car il peut être difficile de les faire 
+évoluer sans risquer de casser des implémentations existantes.
 
 Pour palier partiellement à ce problème, une interface peut fournir une implémentation
 par défaut de ses méthodes. Ainsi, si une classe concrète qui implémente cette interface
@@ -467,7 +470,7 @@ s'exécutera. Une méthode par défaut doit obligatoirement avoir le mot-clé
 
   }
 
-Une classe implémentant de *Compte* n'a pas besoin de fournir une 
+Une classe implémentant *Compte* n'a pas besoin de fournir une 
 implémentation pour la méthode *transferer*. La classe *CompteBancaire* que
 nous avons implémenté au début de ce chapitre continuera de compiler et de
 fonctionner comme attendu tout en ayant une méthode supplémentaire.
@@ -487,9 +490,9 @@ La ségrégation d'interface
 **************************
 
 En programmation objet, le `principe de ségrégation d'interface`_ stipule
-qu'un client ne devrait pas avoir à connaître plus de méthodes d'une instance
-d'une objet qu'il n'en a besoins. L'objectif étant de limiter au strict minimum
-les interactions possibles entre un objet et ces clients afin d'assurer une couplage
+qu'un client ne devrait pas avoir accès à plus de méthodes d'un objet 
+que ce dont il a vraiment besoin. L'objectif est de limiter au strict minimum
+les interactions possibles entre un objet et ces clients afin d'assurer un couplage
 minimal et faciliter ainsi les évolutions et le refactoring. En Java, 
 le `principe de ségrégation d'interface`_ a deux conséquences :
 
@@ -497,22 +500,121 @@ le `principe de ségrégation d'interface`_ a deux conséquences :
    judicieusement pour restreindre au type minimum nécessaire par le code.
 2) Une interface ne doit pas déclarer *trop* de méthodes.
 
+
+Le premier point implique qu'il est préférable de manipuler les objets à travers
+leurs interfaces plutôt que d'utiliser le type réel de l'objet. Un exemple
+classique en Java concerne l'API des collections. Un programme qui crée une
+ArrayList_ pour stocker un ensemble d'éléments n'utilisera jamais une variable
+de type ArrayList_ mais plutôt une variable ayant le type d'une interface 
+implémentée par cette classe.
+
+::
+
+  // Utilisation de l'interface List
+  List<Object> maListe = new ArrayList<>();
+  
+::
+
+  // Utilisation de l'interface Collection
+  Collection<Object> maListe = new ArrayList<>();
+  
+::
+
+  // Utilisation de l'interface Iterable
+  Iterable<Object> maListe = new ArrayList<>();
+
+
+Plus une partie d'une application a recours à des interfaces pour interagir
+avec les autres modules d'une application, plus il est simple d'introduire
+des nouvelles classes qui pourront être directement utilisées simplement 
+en implémentant les interfaces attendues.
+
+Le second point est lié au principe SOLID_ de la `responsabilité unique`_.
+Une interface est conçue pour représenter un type de relation entre la classe
+qui l'implémente et ses clients. Plus le nombre de méthodes augmente, plus
+il a de risque que l'interface représente en fait plusieurs types de relation.
+Dans ce cas, l'héritage entre interfaces et/ou l'implémentation de plusieurs
+interfaces deviennent une bonne solution pour isoler chaque relation.
+
+Reprenons notre exemple de l'interface *Compte*. Si notre système
+est composé d'un sous-système de consultation, d'un
+sous-système de retrait et d'un sous-système de gestion de comptes alors cette
+interface devrait probablement être séparée en plusieurs interfaces afin d'isoler
+chaque responsabilité.
+
+
+Une interface utilisée par le sous-système de consultation :
+
+::
+
+  package ROOT_PKG.compte;
+
+  public interface CompteConsultable {
+
+    int getBalance() throws OperationInterrompueException;
+
+  }
+
+
+Une interface utilisée par le sous-système de retrait :
+
+::
+
+  package ROOT_PKG.compte;
+
+  public interface OperationDeRetrait {
+
+    int retirer(int montant) throws OperationInterrompueException, 
+                                    CompteBloqueException;
+
+  }
+
+
+Une interface plus complexe utilisée par le système de gestion de comptes :
+
+::
+
+  package ROOT_PKG.compte;
+
+  public interface Compte extends CompteConsultable, OperationDeRetrait {
+
+    void deposer(int montant) throws OperationInterrompueException, 
+                                     CompteBloqueException;
+
+    int getBalance() throws OperationInterrompueException;
+
+    default void transferer(Compte destination) throws OperationInterrompueException, 
+                                                       CompteBloqueException {
+      if (destination == this) {
+        return;
+      }
+      int montant = this.getBalance();
+      if (montant <= 0) {
+        return;
+      }
+      destination.deposer(montant);
+      boolean retraitOk = false;
+      try {
+        this.retirer(montant);
+        retraitOk = true;
+      } finally {
+        if (!retraitOk) {
+          destination.retirer(montant);          
+        }
+      }
+    }
+  }
+
+
 .. todo ::
 
-  * déclaration
-  * public abstract pour les méthodes
-  * implémentation d'interface (remarque sur les classes abstraites)
-  * is like a
-  * méthodes static et attributs static final (par défaut)
-  * héritage entre interfaces
-  * interface marqueur (exemple Cloneable et Serializable)
-  * implémentation par défaut
-
-  * ségrégation d'interface
-  * exemple Comparable pour le tri et la recherche de tableau
+  * exemple de l'interface Comparable pour le tri et la recherche dans les tableaux
   
 .. _Object: http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _clone: http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--
 .. _CloneNotSupportedException: http://docs.oracle.com/javase/8/docs/api/java/lang/CloneNotSupportedException.html
 .. _Cloneable: http://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html
 .. _principe de ségrégation d'interface: https://en.wikipedia.org/wiki/Interface_segregation_principle
+.. _ArrayList: http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+.. _SOLID: https://fr.wikipedia.org/wiki/SOLID_%28informatique%29
+.. _responsabilité unique: https://fr.wikipedia.org/wiki/Principe_de_responsabilit%C3%A9_unique
