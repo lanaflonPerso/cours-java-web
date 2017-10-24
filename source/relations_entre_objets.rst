@@ -567,6 +567,7 @@ le programme devrait être capable de se comporter correctement si l'instruction
   l'exception dans un programme. Un recours systématique au downcasting est souvent
   le signe d'une mauvaise conception objet.
 
+.. _portee_protected:
 
 La portée protected
 *******************
@@ -663,6 +664,14 @@ le comportement d'une classe.
 Un règle simple consiste a systématiquement déclarer **private** les attributs
 d'une classe sauf si une raison évidente nous suggère de déclarer la portée
 **protected**.
+
+.. note::
+
+  Dans l'exemple précédent, la déclaration de l'attribut *vitesse* comme
+  **protected** est peu satisfaisante car toutes les classes filles ont maintenant
+  accès à cet attribut : cela n'est pas conforme au `principe du ouvert/fermé`_. 
+  Nous verrons au :ref:`chapitre suivant <surcharge_et_signature>` qu'il existe une 
+  solution qui évite de modifier la portée de cet attribut.
 
 .. note::
 

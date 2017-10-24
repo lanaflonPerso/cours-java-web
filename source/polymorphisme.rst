@@ -98,6 +98,17 @@ appelleront toujours la méthode *crier* surchargée par leur classe.
 L'exemple de code ci-dessus montre bien que le type de le comportement de la
 méthode *crier* varie selon le type réel de l'objet que l'on utilise.
 
+Une exception : les méthodes privées
+************************************
+
+Les méthodes de portée **private** ne supportent pas le polymorphisme. En effet,
+une méthode de portée **private** n'est accessible uniquement que par la classe
+qui la déclare. Donc si une classe mère et une classe fille définissent une méthode
+**private** avec la même signature, il s'agit simplement pour le compilateur de 
+deux méthodes différentes.
+
+.. _surcharge_et_signature:
+
 Surcharge et signature de méthode
 *********************************
 
@@ -112,9 +123,8 @@ et mêmes paramètres.
 Cependant, la méthode qui surcharge peut avoir une signature légèrement différente.
 
 Une méthode qui surcharge peut avoir une portée différente si et seulement
-si elle-ci est plus ouverte que celle de la méthode surchargée. Il est donc
-possible d'augmenter la portée de la méthode mais jamais de le réduire. Cette
-possibilité se limite aux cas suivants :
+si celle-ci est plus permissive que celle de la méthode surchargée. Il est donc
+possible d'augmenter la portée de la méthode mais jamais de la réduire :
 
 * Une méthode de portée package peut être surchargée avec la portée package
   mais aussi **protected** ou **public**.
@@ -123,10 +133,129 @@ possibilité se limite aux cas suivants :
 * Une méthode de portée **public** ne peut être surchargée qu'avec la portée
   **public**
 
-.. todo::
+Le changement de portée dans la surcharge sert la plupart du temps à placer
+une implémentation dans la classe parente mais à laisser les classes filles
+qui le désirent offrir publiquement l'accès à cette méthode.
 
-  trouver un exemple de changement de portée pour la surcharge
+Au :ref:`chapitre précédent <portee_protected>`, nous avions introduit les 
+classes *Vehicule*, *Voiture* et *Moto*. En partant du principe que seules les 
+instances de *Voiture* pouvent offrir la méthode *reculer*, nous avons ajouté 
+cette méthode dans la classe *Voiture*. Pour cela, nous avions dû modifier
+l'implémentation de la classe *Vehicule* en utilisant une portée **protected**
+pour l'attribut *vitesse*. Nous avions alors vu que cela n'était pas totalement
+conforme au `principe du ouvert/fermé`_.
+
+::
+
+  package ROOT_PKG.conduite;
   
+  public class Vehicule {
+
+    private final String marque;
+    protected float vitesse;
+    
+    public Vehicule(String marque) {
+      this.marque = marque;
+    }
+    
+    public void accelerer(float deltaVitesse) {
+      this.vitesse += deltaVitesse;
+    }
+
+    public void decelerer(float deltaVitesse) {
+      this.vitesse = Math.max(this.vitesse - deltaVitesse, 0f);
+    }
+
+    // ...
+    
+  }
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class Voiture extends Vehicule {
+  
+    public Voiture(String marque) {
+      super(marque);
+    }
+    
+    public void reculer(float vitesse) {
+      this.vitesse = -vitesse;
+    }
+
+    // ...
+    
+  }
+
+
+Nous pouvons maintenant revoir notre implémentation. En fait, c'est la méthode
+*reculer* qui doit être déclarée dans la classe *Véhicule* avec une portée
+**protected**. La classe *Voiture* peut se limiter à surcharger cette méthode
+en la rendant **public**.
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class Vehicule {
+
+    private final String marque;
+    private float vitesse;
+    
+    public Vehicule(String marque) {
+      this.marque = marque;
+    }
+    
+    public void accelerer(float deltaVitesse) {
+      this.vitesse += deltaVitesse;
+    }
+
+    public void decelerer(float deltaVitesse) {
+      this.vitesse = Math.max(this.vitesse - deltaVitesse, 0f);
+    }
+
+    protected void reculer(float vitesse) {
+      this.vitesse = -vitesse;
+    }
+
+    // ...
+    
+  }
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class Voiture extends Vehicule {
+  
+    public Voiture(String marque) {
+      super(marque);
+    }
+    
+    public void reculer(float vitesse) {
+      super.reculer(vitesse);
+    }
+
+    // ...
+    
+  }
+
+
+Dans l'exemple ci-dessus, le mot-clé **super** permet d'appeler l'implémentation
+de la méthode fournie par la classe *Vehicule*. Ainsi l'attribut *vitesse* peut
+rester de portée **private** et les classes filles de *Vehicule* peuvent ou non
+donner publiquement l'accès à la méthode *reculer*.
+
+Un méthode qui surcharge peut avoir un type de retour différent de la méthode
+surchargée à condition qu'il s'agisse d'une classe qui hérite du type de retour
+surchargé.
+
+
+.. note::
+
+  Exemple de surchage avec changement de type de retour
+
 
 L'annotation @Override
 **********************
@@ -136,7 +265,7 @@ annotations servent à ajouter une information sur une classe, un attribut,
 une méthode, un paramètre ou une variable. Une annotation apporte une information
 au moment de la compilation, du chargement de la classe dans la JVM ou lors
 de l'exécution du code. Le langage Java utilise relativement peu les annotations.
-On trouve cependant l'annotation `@Override`_ qui très utile pour le polymorphisme.
+On trouve cependant l'annotation `@Override`_ qui est très utile pour le polymorphisme.
 Cette annotation s'ajoute au début de la signature d'une méthode pour préciser
 que cette méthode est une surcharge d'une méthode héritée. Cela permet au
 compilateur de vérifier que la signature de la méthode correspond bien à une
@@ -149,14 +278,11 @@ méthode d'une classe parente. Dans le cas contraire, la compilation échoue.
 .. todo::
 
   * appel à la méthode parente avec super
-  * changement de niveau de visibilité pour les méthodes (ex de Object.clone)
-  * changement de valeur de retour pour les méthodes
-  * introduction aux annotations avec @Override
-  * pas de polymorphisme pour les méthodes privées
-  * notion de early binding et late binding
   * final sur une méthode
   * constructeur et polymorphisme
   * open/close principle
   * name shadowing pour les attributs (attention certainement un bug)
 
 .. _@Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
+.. _principe du ouvert/fermé: https://fr.wikipedia.org/wiki/Principe_ouvert/ferm%C3%A9
+
