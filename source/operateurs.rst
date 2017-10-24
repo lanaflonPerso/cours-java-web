@@ -2,15 +2,16 @@ Les opérateurs
 ##############
 
 Un opérateur prend un ou plusieurs opérandes et produit une nouvelle valeur.
-Les opérateurs en Java sont très proches des langages C et C++ qui l'ont inspiré.
+Les opérateurs en Java sont très proches de ceux des langages C et C++ qui 
+les ont inspirés.
 
 L'opérateur d'affectation
 *************************
 
 L'affectation est réalisée grâce à l'opérateur **=**. Cet opérateur, copie
 la valeur du paramètre de droite (appelé *rvalue*) dans le paramètre de gauche
-(appelé *lvalue*). Java opère donc pas copie. Cela signifie que si l'on change
-plus tard la valeur d'un des opérandes, l'autre ne sera pas affecté.
+(appelé *lvalue*). Java opère donc par copie. Cela signifie que si l'on change
+plus tard la valeur d'un des opérandes, la valeur de l'autre ne sera pas affectée.
 
 ::
 
@@ -22,7 +23,7 @@ plus tard la valeur d'un des opérandes, l'autre ne sera pas affecté.
 Pour les variables de type objet, on appelle ces variables des **handlers**
 car la variable ne contient pas à proprement parler un objet mais
 la *référence d'un objet*. On peut dire aussi qu'elle pointe vers la zone mémoire
-de cet objet. Cela à plusieurs conséquences importantes :
+de cet objet. Cela a plusieurs conséquences importantes.
 
 ::
 
@@ -30,7 +31,7 @@ de cet objet. Cela à plusieurs conséquences importantes :
   Voiture v2 = v1;
 
 Dans, l'exemple ci-dessus, **v2** reçoit la copie de l'adresse de l'objet
-contenu dans **v1**. Donc ces deux variables référencent bien le même objet
+contenue dans **v1**. Donc ces deux variables référencent bien le même objet
 et nous pouvons le manipuler à travers l'une ou l'autre de ces variables.
 Si plus loin dans le programme, on écrit :
 
@@ -46,8 +47,8 @@ Si plus loin dans le programme, on écrit :
   v2 = null;
 
 Maintenant, la variable **v2** contient la valeur spéciale **null** qui indique
-qu'elle ne référence rien. Mais l'instance de voiture que la variable
-**v2** référencée précédemment, n'a pas disparue pour autant.
+qu'elle ne référence rien. Mais l'instance de *Voiture* que la variable
+**v2** référençait précédemment, n'a pas disparue pour autant.
 Elle existe toujours quelque part en mémoire. On dit que cette instance n'est plus référencée.
 
 .. important::
@@ -57,7 +58,7 @@ Elle existe toujours quelque part en mémoire. On dit que cette instance n'est p
 .. note::
 
   **=** est plus précisément l'opérateur d'initialisation et d'affectation.
-  Pour une variable, l'initialisation se fait au moment de la déclaration d'une variable
+  Pour une variable, l'initialisation se fait au moment de sa déclaration 
   et pour un attribut, au moment de la création de l'objet.
 
   ::
@@ -65,7 +66,7 @@ Elle existe toujours quelque part en mémoire. On dit que cette instance n'est p
     // Initialisation
     int a = 1;
 
-  L'affectation est une opération qui se fait, pour une variable, après sa déclaration d'une variable
+  L'affectation est une opération qui se fait, pour une variable, après sa déclaration
   et, pour un attribut, après la construction de l'objet.
 
   ::
@@ -183,7 +184,7 @@ la classe enveloppe pour un type primitif.
   L'opérateur de concaténation correspond plus à du sucre syntaxique qu'à un
   véritable opérateur. En effet, il existe la classe StringBuilder_ dont la tâche
   consiste justement à nous aider à construire des chaînes de caractères. Le compilateur
-  remplacera en fait notre code par quelque chose dans ce genre :
+  remplacera en fait notre code précédent par quelque chose dans ce genre :
 
   ::
 
@@ -201,6 +202,18 @@ la classe enveloppe pour un type primitif.
     sb2.append(s3);
 
     String s4 = sb2.toString();
+
+
+.. note::
+
+  Concaténer une chaîne de caractères avec une variable nulle ajoute la chaîne
+  "null" :
+
+  ::
+
+    String s1 = "test ";
+    String s2 = null;
+    String s3 = s1 + s2; // "test null"
 
 
 Les opérateurs relationnels
@@ -261,7 +274,7 @@ objets entre-eux mais simplement les références contenues dans ces variables.
     // sûrement un bug car le résultat est indéterminé
     boolean resultat = (s1 == s2);
 
-  La bonne façon de faire est d'utiliser la méthode Object.equals_ pour comparer
+  La bonne façon de faire est d'utiliser la méthode equals_ pour comparer
   des objets :
 
   ::
@@ -384,7 +397,7 @@ Les opérateurs de décalage
 **************************
 
 Les opérateurs de décalage s'utilisent sur des entiers et permettent de déplacer les bits vers la gauche ou vers la droite.
-Par convention, Java place le bit de poids fort à gauche quelque soit la représentation physique de l'information.
+Par convention, Java place le bit de poids fort à gauche quelle que soit la représentation physique de l'information.
 Il est possible de conserver ou non la valeur du bit de poids fort qui représente le signe pour un décalage à droite.
 
 .. list-table:: Opérateurs de décalage
@@ -400,7 +413,7 @@ Il est possible de conserver ou non la valeur du bit de poids fort qui représen
    * - **>>>**
      - Décalage vers la droite sans préservation du signe
 
-Puisque nous manipulons des nombres en base 2, un décalage vers la gauche équivaut
+Puisque la machine stocke les nombres en base 2, un décalage vers la gauche équivaut
 à multiplier par 2 et un décalage vers la droite équivaut à diviser par 2 :
 
 ::
@@ -419,8 +432,8 @@ au moment de l'affectation. Java étant un langage fortement typé, il autorise 
 uniquement les opérations de trans-typage qui sont sûres. Par exemple : passer d'un entier
 à un entier long puisqu'il n'y aura de perte de données.
 
-Si on le désire, il possible de forcer un trans-typage en indiquant explicitement
-le type attendu entre parenthèse :
+Si on le désire, il est possible de forcer un trans-typage en indiquant explicitement
+le type attendu entre parenthèses :
 
 ::
 
@@ -436,7 +449,7 @@ que les classes aient un lien d'héritage entre elles.
   Si Java impose de spécifier explicitement le trans-typage dans certaines situations alors
   c'est qu'il s'agit de situations qui peuvent être problématiques (perte de données possible
   ou mauvais type d'objet). Il ne faut pas interpréter cela comme une limite du langage : il s'agit
-  peut-être du symptôme d'un bug ou d'une mauvaise conception.
+  peut-être du symptôme d'une erreur de programmation ou d'une mauvaise conception.
 
 .. note::
 
@@ -549,6 +562,6 @@ et l'utilisation de l'opérateur virgule dans ce contexte est donc très rare.
 
 
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
-.. _Object.equals: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object-
+.. _equals: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object-
 .. _StringBuilder: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
 .. _Class.cast: https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#cast-java.lang.Object-

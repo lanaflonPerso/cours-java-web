@@ -2,7 +2,7 @@ Les types primitifs
 ###################
 
 Java n'est pas complètement un langage orienté objet dans la mesure où il supporte
-ce l'on nomme les *types primitifs*. Chaque type primitif est représenté par un mot-clé :
+ce que l'on nomme les *types primitifs*. Chaque type primitif est représenté par un mot-clé :
 
 .. list-table:: Types primitifs
    :widths: 1 1 1
@@ -46,7 +46,7 @@ ce l'on nomme les *types primitifs*. Chaque type primitif est représenté par u
 
 Une variable de type primitif représente juste une valeur stockée dans un espace mémoire
 dont la taille dépend du type. À la différence des langages comme C ou C++, l'espace
-mémoire occupé par un primitif est fixé par le spécification du langage et non par la machine cible.
+mémoire occupé par un primitif est fixé par la spécification du langage et non par la machine cible.
 
 .. list-table:: Taille mémoire
    :widths: 1 1 1
@@ -94,14 +94,14 @@ Le type booléen : boolean
 Les variables de type booléen ne peuvent prendre que deux valeurs : **true** ou **false**.
 Par défaut, un attribut de type **boolean** vaut **false**.
 
-On ne peut utiliser que des opérateurs booléens comme **==** **!=** **!** sur des variables
+On ne peut utiliser que des opérateurs booléens comme **==**, **!=** et **!** sur des variables
 de type booléen (pas d'opération arithmétique autorisée).
 
 Le type caractère : char
 *************************
 
 Les variables de type **char** sont codées sur 2 octets non signés car la représentation
-interne des caractères est UTF-16. Cela signifie que la valeur va de 0 à 2^16 - 1.
+interne des caractères est l'UTF-16. Cela signifie que la valeur va de 0 à 2^16 - 1.
 Par défaut, un attribut de type **char** vaut **0** (c'est-à-dire le caractère de terminaison).
 
 Pour représenter un littéral, on utilise l'apostrophe (**simple quote**) :
@@ -421,7 +421,7 @@ Il faut bien comprendre que le code ci-dessus manipule en fait des objets et qu'
 plusieurs opérations de boxing et de unboxing. Si cela n'est pas strictement nécessaire, alors
 il vaut mieux utiliser des types primitifs.
 
-L'autoboxing fonctionne à chaque fois qu'une affectation à lieu. Il s'applique donc
+L'autoboxing fonctionne à chaque fois qu'une affectation a lieu. Il s'applique donc
 à la déclaration de variable, à l'affection de variable et au passage de paramètre.
 
 L'autoboxing est parfois difficile à utiliser car il conduit à des expressions
@@ -450,7 +450,7 @@ Pire, l'autoboxing peut être source de bug. Le plus évident est l'unboxing d'u
   Integer i = null;
   int j = i; // ERREUR : unboxing de null !
 
-Une variable de type **Integer** peut être **null**. Dans ce cas l'unboxing
+Une variable de type **Integer** peut être **null**. Dans ce cas, l'unboxing
 n'est pas possible et aboutira à une erreur (NullPointerException). Si cet exemple
 est trivial, il peut être beaucoup plus subtil et difficile à comprendre pour un projet
 de plusieurs centaines (milliers) de lignes de code.
