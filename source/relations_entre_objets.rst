@@ -739,7 +739,7 @@ Alors, nous pouvons indiquer que les véhicules **ont des** pneus.
   public class Vehicule {
 
     private final String marque;
-    private float vitesse;
+    protected float vitesse;
     protected Pneu[] pneus;
 
     public Vehicule(String marque) {

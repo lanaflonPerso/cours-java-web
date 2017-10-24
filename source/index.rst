@@ -22,6 +22,7 @@ Le langage Java
    cycle_de_vie
    package
    relations_entre_objets
+   polymorphisme
    la_classe_object
    les_exceptions
    classe_abstraite
