@@ -340,7 +340,15 @@ Exercice
     a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
     x, y, z, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w
 
-  Le programme vérifie que le résultat du chiffrement est bien conforme au ce qui est attendu.
+  Ainsi la phrase :
+
+    In cryptography, a Caesar cipher is one of the simplest and most widely known encryption techniques.
+
+  sera encodée avec un décalage de 23 comme ceci :
+
+    Fk zovmqldoxmev, x Zxbpxo zfmebo fp lkb lc qeb pfjmibpq xka jlpq tfabiv hkltk bkzovmqflk qbzekfnrbp.
+
+  Le programme suivant vérifie que le résultat du chiffrement est bien conforme au ce qui est attendu.
   Dans ce cas, il affichera *true* sur la sortie standard.
 
   .. literalinclude:: samples/structures_de_controle/AlgoCesar.java

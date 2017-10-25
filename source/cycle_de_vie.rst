@@ -384,6 +384,23 @@ est possible de consulter la configuration de l'application pour connaître le n
 de roues par voiture. Le bloc **static** donne la possibilité d'initialiser
 une constante à partir d'un traitement plus complexe.
 
+On peut obtenir un resultat similaire en initialisant la constante *NB_ROUES* à partir
+d'un appel à une méthode de classe :
+
+::
+
+  public class Voiture {
+
+    private static final int NB_ROUES = getConfiguration().nbRouesParVoiture;
+
+    private static Configuration getConfiguration() {
+      // le code ici pour consulter la configuration
+    }
+
+  }
+
+
+
 Mémoire heap et stack
 *********************
 
@@ -462,7 +479,7 @@ Le ramasse-miettes gère également le problème de la référence circulaire. U
 qui contiendrait un attribut qui le référence directement ou indirectement lui-même
 n'est pas réellement considéré comme une référence par le ramasse-miettes.
 
-Donc, si un développeur souhaite que objet soit détruit et son espace mémoire
+Donc, si un développeur souhaite qu'un objet soit détruit et son espace mémoire
 récupéré, il doit s'assurer que plus aucune référence n'existe vers cet objet.
 Par exemple, il peut affecter la valeur **null** aux variables et aux attributs
 qui référencent cet objet.
@@ -545,7 +562,9 @@ explicitement le ramasse-miettes avec la méthode `java.lang.System.gc()`_. Enfi
 une boucle se contente d'afficher mille points sur la sortie standard. Cette boucle **for**
 est utile car généralement le programme s'arrête trop vite et le ramasse-miettes
 n'a pas le temps d'appeler *finalize*. Si vous exécutez ce programme plusieurs fois,
-vous verrez que le message "je vais disparaître !" ne s'affiche pas au même moment.
+vous constaterez que le message "je vais disparaître !" ne s'affiche pas au même moment.
+Cela traduit bien le fait que le comportement du ramasse-miettes varie d'une exécution
+à l'autre.
 
 .. todo ::
 

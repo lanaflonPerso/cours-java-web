@@ -80,7 +80,7 @@ défaut (comme pour un attribut) :
    * - double
      - 0.0
 
-   * - Object
+   * - référence d'objet
      - null
 
 
@@ -109,7 +109,13 @@ L'attribut **length** ne peut pas être modifié.
 .. note::
 
   Il est tout à fait possible de créer un tableau vide, c'est-à-dire avec une taille
-  de zéro. Par contre, donner une taille négative est autorisé par le compilateur
+  de zéro. 
+
+  ::
+  
+    int[] tableau = new int[0];
+
+  Par contre, donner une taille négative est autorisé par le compilateur
   mais aboutira à une erreur d'exécution avec une exception de type
   java.lang.NegativeArraySizeException_.
 
@@ -155,8 +161,8 @@ L'utilisation d'un **for** amélioré est préférable lorsque cela est possible
 Par contre, il n'est pas possible avec un **for** amélioré de connaître l'indice
 de l'élément courant.
 
-Si le programme tente d'accéder à un indice de tableau trop grand, une erreur
-de type java.lang.ArrayIndexOutOfBoundsException_ survient.
+Si le programme tente d'accéder à un indice de tableau trop grand (ou un indice
+négatif), une erreur de type java.lang.ArrayIndexOutOfBoundsException_ survient.
 
 .. code-block:: java
   :emphasize-lines: 2
@@ -188,7 +194,7 @@ le mot-clé **new**.
   int[][] tableauDeuxDimensions = new int[2][10];
   int[][][] tableauTroisDimensions = new int[2][10][5];
 
-Il n'existe pas de type tableau multi-dimensionnel. Le compilateur le traite
+Il n'existe pas réellement de type tableau multi-dimensionnel. Le compilateur le traite
 comme un tableau de tableaux. Il est donc autorisé de déclarer des tableaux
 sans préciser les dimensions au delà de la première et d'affecter ensuite
 des tableaux à chaque valeur. Ces tableaux peuvent d'ailleurs avoir des tailles
@@ -235,8 +241,7 @@ utiliser la classe outil java.util.Arrays_ qui contient des méthodes de classe
 
 .. note::
   Pour les tableaux multi-dimensionnels, vous pouvez utiliser la méthode
-  `java.util.Arrays.deepEquals(Object[], Object[])`_
-
+  `java.util.Arrays.deepToString(Object[])`_.
 
 Égalité de deux tableaux
 ************************
@@ -280,7 +285,7 @@ pour comparer des tableaux en comparant un à un leurs éléments.
 
 
 Il est également possible de comparer des tableaux d'objets. Dans ce cas, la comparaison
-des élements se fait en appelant la méthode **equals** de l'objet. La méthode
+des élements se fait en appelant la méthode **equals** de chaque objet. La méthode
 **equals** possède la signature suivante :
 
 ::
@@ -301,8 +306,7 @@ Par exemple, la classe java.lang.String_ fournit une implémentation de la méth
 
 .. note::
   Pour les tableaux multi-dimensionnels, vous pouvez utiliser la méthode
-  `java.util.Arrays.deepToString(Object[])`_.
-
+  `java.util.Arrays.deepEquals(Object[], Object[])`_
 
 Tri & recherche
 ***************
@@ -341,7 +345,7 @@ de recherche binaire. Ces méthodes attendent comme paramètres un tableau et un
 compatible avec le type des éléments du tableau. Ces méthodes retournent l'index
 de la valeur trouvée. Si la valeur n'est pas dans le tableau, alors ces méthodes
 retournent un nombre négatif. La valeur absolue de ce nombre correspond à l'index
-auquel la valeur aurait dû se trouver.
+auquel la valeur aurait dû se trouver plus un.
 
 ::
 
@@ -373,10 +377,10 @@ s'avérer une opération utile. java.util.Arrays_ fournit des méthodes de class
   nouveauTableau = java.util.Arrays.copyOf(tableau, tableau.length + 1);
   System.out.println(java.util.Arrays.toString(nouveauTableau)); // [1, 2, 3, 4, 5, 0]
 
-  int[] nouveauTableau = java.util.Arrays.copyOfRange(tableau, 2, tableau.length);
-  System.out.println(java.util.Arrays.toString(nouveauTableau)); // [2, 3, 4, 5]
+  nouveauTableau = java.util.Arrays.copyOfRange(tableau, 2, tableau.length);
+  System.out.println(java.util.Arrays.toString(nouveauTableau)); // [3, 4, 5]
 
-  int[] nouveauTableau = java.util.Arrays.copyOfRange(tableau, 2, 3);
+  nouveauTableau = java.util.Arrays.copyOfRange(tableau, 2, 3);
   System.out.println(java.util.Arrays.toString(nouveauTableau)); // [3]
 
 
@@ -442,7 +446,7 @@ Conversion d'un tableau en liste
 
 La plupart des API Java utilisent des collections plutôt que des tableaux.
 Pour transformer un tableau d'objets en liste, on utilise la méthode java.util.Arrays.asList_.
-La liste obtenu possède une taille fixe. Par contre le contenu de la liste est modifiable,
+La liste obtenue possède une taille fixe. Par contre le contenu de la liste est modifiable,
 et toute modification des éléments de cette liste sera répercutée sur le tableau.
 
 ::

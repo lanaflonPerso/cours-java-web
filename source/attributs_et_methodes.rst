@@ -33,12 +33,10 @@ l'opérateur **.** :
 La portée
 =========
 
-Jusqu'à présent, nous avons vu qu'il existe deux portées différentes : *public* et *private*.
+Jusqu'à présent, nous avons vu qu'il existe deux portées différentes : **public** et **private**.
 Java est un langage qui supporte l'encapsulation de données. Cela signifie que lorsque
-nous créons une classe nous avons le choix de laisser accessible ou non au reste du programme
-des attributs (mais aussi des méthodes). Le mécanisme d'encapsulation permet notamment
-d'implémenter en Java le principe du *ouvert/fermé* qui est un des cinq principes SOLID_
-de la conception objet.
+nous créons une classe nous avons le choix de laisser accessible ou non les attributs
+et les méthodes au reste du programme.
 
 Pour l'instant nous distinguerons les portées :
 
@@ -100,7 +98,7 @@ En fait, un attribut possède nécessairement une valeur par défaut qui dépend
    * - double
      - 0.0
 
-   * - Object
+   * - référence d'objet
      - null
 
 Donc, écrire ceci :
@@ -156,8 +154,7 @@ et ne pourra plus être modifié.
 .. caution::
 
   **final** porte sur l'attribut et empêche sa modification. Par contre si l'attribut
-  est du type d'un objet, rien n'empêche de modifier des attributs ou d'appeler des méthodes
-  qui vont modifier l'état de l'objet si ce dernier le permet.
+  est du type d'un objet, il est possible de modifier l'état de cet objet.
 
   Pour une application d'un concessionnaire automobile, nous pouvons créer un objet *Facture*
   qui contient un attribut de type *Voiture* et le déclarer **final**.
@@ -185,7 +182,7 @@ Attributs de classe
 
 Jusqu'à présent, nous avons vu comment déclarer des attributs d'objet. C'est-à-dire
 que chaque instance d'une classe aura ses propres attributs avec ses propres valeurs
-représentant l'état interne de l'objet et qui peut évoluer au fur et à mesure de
+représentant l'état interne de l'objet et qui peuvent évoluer au fur et à mesure de
 l'exécution de l'application.
 
 Mais il est également possible de créer des *attributs de classe*. La valeur de ces attributs
@@ -222,7 +219,7 @@ lorsqu'il n'existe qu'une seule instance d'un objet pour toute une application, 
 est généralement accessible grâce à un attribut **static**. C'est une des façons
 d'implémenter le design pattern singleton_ en Java. Dans notre exemple, out_ est l'objet
 qui représente la sortie standard de notre application. Cet objet est unique pour toute l'application
-et nous n'avons pas à le créer car il existe dès le lancement de l'application.
+et nous n'avons pas à le créer car il existe dès le lancement.
 
 Si le programme modifie un attribut de classe, alors la modification est visible depuis toutes
 les instances :
@@ -245,7 +242,7 @@ les instances :
   System.out.println(v3.nombreDeRoues); // 5
 
 Le code ci-dessus, même s'il est parfaitement correct, peut engendrer des difficultés de compréhension.
-Si on ne sait pas que *nombreDeRoues* est un attribut de classe on peut le modifier en pensant que
+Si on ne sait pas que *nombreDeRoues* est un attribut de classe, on peut le modifier en pensant que
 cela n'aura pas d'impact sur les autres instances. C'est notamment pour cela que Eclipse émet un
 avertissement si on accède ou si on modifie un attribut de classe à travers un objet.
 Même si l'effet est identique, il est plus lisible d'accéder à un tel attribut à travers le nom de la classe uniquement :
@@ -262,10 +259,10 @@ Même si l'effet est identique, il est plus lisible d'accéder à un tel attribu
 Attributs de classe finaux
 ==========================
 
-Il n'existe pas de mot-clés pour déclarer une constante en Java. Même si **const**
+Il n'existe pas de mot-clé pour déclarer une constante en Java. Même si **const**
 est un mot-clé, il n'a aucune signification dans le langage. On utilise donc
-la combinaison des mots clés **static** et **final** pour déclarer une constante.
-Pour les distinguer des autres attributs, on écrit leur nom en majuscules et
+la combinaison des mots-clés **static** et **final** pour déclarer une constante.
+Par convention, pour les distinguer des autres attributs, on écrit leur nom en majuscules et
 les mots sont séparés par _.
 
 ::
@@ -399,7 +396,7 @@ est défini par son type et par son nom.
 
 Il est également possible de créer une méthode avec un nombre variable de paramètres
 (*varargs parameter*).
-On utilise pour le cela trois points après le type du paramètre.
+On le signale avec trois points après le type du paramètre.
 
 ::
 
@@ -428,10 +425,11 @@ il s'agit bien d'une liste de paramètre au moment de l'appel :
 L'utilisation d'un paramètre variable obéit à certaines règles :
 
 1) Le paramètre variable doit être le dernier paramètre
-2) Il n'est pas possible de déclarer un paramètre variable acceptant plusieurs type
+2) Il n'est pas possible de déclarer un paramètre variable acceptant plusieurs types
 
-Par contre, le paramètre variable peut être omis. Dans ce cas le tableau passé
-au corps de la méthode est un tableau vide.
+Au moment de l'appel, le paramètre variable peut être omis. Dans ce cas le tableau passé
+au corps de la méthode est un tableau vide. Un paramètre variable est donc également
+optionnel.
 
 ::
 
@@ -439,7 +437,7 @@ au corps de la méthode est un tableau vide.
 
   System.out.println(calculatrice.additionner()); // 0
 
-Ainsi, il est possible d'utiliser un tableau pour passer des valeurs à un paramètre
+Il est possible d'utiliser un tableau pour passer des valeurs à un paramètre
 variable. Cela permet notamment d'utiliser un paramètre variable dans le corps d'une
 méthode comme paramètre variable à l'appel d'une autre méthode.
 
@@ -498,8 +496,8 @@ des méthodes sur cet objet qui modifient son état interne.
   Cette pratique est généralement considérée comme mauvaise car cela peut rendre
   la compréhension du code de la méthode plus difficile. **final** est donc
   un moyen de nous aider à vérifier au moment de la compilation que nous n'assignons
-  pas par erreur une nouvelle valeur à un paramètre. Son utilisation est tout de
-  même très limitée. Nous reviendrons plus tard sur l'intérêt principal de déclarer
+  pas par erreur une nouvelle valeur à un paramètre. Cet usage reste tout de
+  même très limité. Nous reviendrons plus tard sur l'intérêt principal de déclarer
   un paramètre **final** : la déclaration de classes anonymes.
 
 
@@ -588,7 +586,7 @@ Redéfinition de méthode : overloading
 *************************************
 
 Il est possible de déclarer dans une classe plusieurs méthodes ayant le même nom.
-Dans les méthodes doivent obligatoirement avoir des paramètres différents (le type et/ou le nombre).
+Ces méthodes doivent obligatoirement avoir des paramètres différents (le type et/ou le nombre).
 Il est également possible de déclarer des types de retour différents pour ces méthodes.
 On parle de redéfinition de méthode (**method overloading**). La redéfinition
 de méthode n'a réellement de sens que si les méthodes portant le même nom ont un
@@ -758,9 +756,6 @@ est autorisé car les attributs sont toujours accessibles à travers le mot-clé
     private String marque;
 
     public void setMarque(String marque) {
-      if (marque == null) {
-        return null;
-      }
       this.marque = marque;
     }
   }
@@ -805,7 +800,7 @@ un niveau d'abstraction important et cette abstraction devient un atout pour
 la réutilisation et l'évolutivité.
 
 Prenons l'exemple d'une classe permettant d'effectuer une connexion FTP et de récupérer
-une fichier distant. Les clients d'une telle classe n'ont sans doute aucun intérêt à
+un fichier distant. Les clients d'une telle classe n'ont sans doute aucun intérêt à
 comprendre les mécanismes compliqués du protocole FTP. Ils veulent simplement qu'on leur
 rende un service. Notre classe FTP pourrait très grossièrement ressembler à ceci :
 
@@ -835,8 +830,8 @@ par les clients.
 
 En programmation objet, le `principe d'encapsulation`_ nous incite à contrôler
 et limiter l'accès au contenu de nos classes au strict nécessaire afin de permettre
-le couplage le plus faible possible. L'encapsulation en Java est permise grâce aux portées
-**public** et **private**.
+le couplage le plus faible possible. L'encapsulation en Java est permise grâce à la 
+portée **private**.
 
 On considère que tous les attributs d'une classe **doivent** être déclarés **private**
 afin de satisfaire le `principe d'encapsulation`_.
@@ -844,7 +839,7 @@ afin de satisfaire le `principe d'encapsulation`_.
 Cependant, il est parfois utile pour le client d'une classe d'avoir accès à une information
 qui correspond à un attribut de l'état interne de l'objet. Plutôt que de déclarer
 cet attribut **public**, il existe en Java des méthodes dont la signature est facilement
-identifiable et que l'on nomme **getters** et **setters**. Ces méthodes permettent
+identifiable et que l'on nomme **getters** et **setters** (les accesseurs). Ces méthodes permettent
 d'accéder aux **propriétés** d'un objet ou d'une classe.
 
 **getter**
@@ -871,7 +866,7 @@ d'accéder aux **propriétés** d'un objet ou d'une classe.
 
   ::
 
-    public void setNomPropriete(type arg) {
+    public void setNomPropriete(type nouvelleValeur) {
       // ...
     }
 
