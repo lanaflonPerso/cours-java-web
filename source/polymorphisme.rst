@@ -257,6 +257,72 @@ surchargé.
   Exemple de surchage avec changement de type de retour
 
 
+Le mot-clé super
+****************
+
+Le surcharge de méthode masque la méthode de la classe parente. Cependant, nous 
+avons vu précédemment avec l'exemple de la méthode *reculer* que l'implémentation
+d'une classe fille a la possibilité d'appeler une méthode de la classe parente
+en utilisant le mot-clé **super**. L'appel à l'implémentation parente est très
+utile lorsque l'on veut par exemple effectuer une action avant ou après sans
+avoir besoin de dupliquer le code d'origine.
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class Voiture extends Vehicule {
+  
+    public Voiture(String marque) {
+      super(marque);
+    }
+    
+    public void accelerer(float deltaVitesse) {
+      // faire quelque chose avant
+
+      super.accelerer(deltaVitesse);
+
+      // faire quelque chose après
+    }
+
+    // ...
+    
+  }
+
+
+Il existe tout de même une limitation : si une méthode a été surchargée plusieurs
+fois dans l'arborescence d'héritage, le mot-clé **super** ne permet d'appeler
+que l'implémentation de la classe parente. Si la classe *Voiture* a surchargé
+la méthode *accelerer* et que l'on crée la classe *VoitureDeCourse* héritant
+de la classe *Voiture*.
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class VoitureDeCourse extends Voiture {
+  
+    public Voiture(String marque) {
+      super(marque);
+    }
+    
+    public void accelerer(float deltaVitesse) {
+      // faire quelque chose avant
+
+      super.accelerer(deltaVitesse);
+
+      // faire quelque chose après
+    }
+
+    // ...
+    
+  }
+
+
+La surcharge de la méthode *accelerer* peut appeler l'implémentation de *Voiture*
+mais il est impossible d'appeler directement l'implémentation d'origine de la classe
+*Vehicule* depuis la classe *VoitureDeCourse*.
+
 L'annotation @Override
 **********************
 
@@ -264,25 +330,213 @@ Les annotations sont des types spéciaux en Java qui commence par **@**. Les
 annotations servent à ajouter une information sur une classe, un attribut,
 une méthode, un paramètre ou une variable. Une annotation apporte une information
 au moment de la compilation, du chargement de la classe dans la JVM ou lors
-de l'exécution du code. Le langage Java utilise relativement peu les annotations.
+de l'exécution du code. Le langage Java proprement dit utilise relativement peu les annotations.
 On trouve cependant l'annotation `@Override`_ qui est très utile pour le polymorphisme.
 Cette annotation s'ajoute au début de la signature d'une méthode pour préciser
 que cette méthode est une surcharge d'une méthode héritée. Cela permet au
 compilateur de vérifier que la signature de la méthode correspond bien à une
 méthode d'une classe parente. Dans le cas contraire, la compilation échoue.
 
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class Voiture extends Vehicule {
+  
+    public Voiture(String marque) {
+      super(marque);
+    }
+    
+    @Override
+    public void reculer(float vitesse) {
+      super.reculer(vitesse);
+    }
+
+    // ...
+    
+  }
+
+Les méthodes de classe
+**********************
+
+Les méthodes de classe (déclarées avec le mot-clé **static**) ne sont pas
+assujetties à la surcharge. Si une classe fille déclare une méthode **static**
+avec la même signature que dans la classe parente, ces méthodes seront simplement
+vues par le compilateur comme deux méthodes distinctes.
+
+::
+
+  package ROOT_PKG;
+
+  public class Parent {
+    
+     public static void methodeDeClasse() {
+       System.out.println("appel à la méthode de la classe Parent");
+     }
+
+  }
+
+::
+
+  package ROOT_PKG;
+
+  public class Enfant extends Parent {
+    
+     public static void methodeDeClasse() {
+       System.out.println("appel à la méthode de la classe Enfant");
+     }
+
+  }
+
+
+Dans le code ci-dessus, la classe *Enfant* hérite de la classe *Parent* et toutes
+deux implémentent une méthode **static** appelée *methodeDeClasse*. Le code suivant
+peut être source d'incompréhension :
+
+::
+
+  Parent a = new Enfant();
+  a.methodeDeClasse();
+
+  Enfant b = new Enfant();
+  b.methodeDeClasse();
+
+
+Le résultat de l'exécution de ce code est :
+
+.. code-block:: text
+
+  appel à la méthode de la classe Parent
+  appel à la méthode de la classe Enfant
+
+Comme les méthodes sont **static**, la surcharge ne s'applique pas et la méthode
+appelée dépend du type de la variable et non du type de l'objet référencé par
+la variable. Cet exemple illustre pourquoi il est très fortement conseillé
+d'appeler les méthodes **static** à partir du nom de la classe et non pas d'une
+variable afin d'éviter toute ambiguïté.
+
+::
+
+  Parent.methodeDeClasse();
+  Enfant.methodeDeClasse();
+ 
+
+Méthode finale
+**************
+
+Une méthode peut avoir le mot-clé **final** dans sa signature. Cela signifie
+que cette méthode ne peut plus être surchargée par les classes qui en hériteront.
+Tenter de surcharger une méthode déclarée **final** conduit à une erreur de
+compilation. L'utilisation du mot-clé **final** pour une méthode est réservée
+à des cas très spécifiques (et très rares). Par exemple si on souhaite garantir
+qu'une méthode aura toujours le même comportement même dans les classes qui
+en héritent.
+
+.. note::
+
+  Même si les méthodes **static** n'autorisent pas la surcharge, elles peuvent
+  être déclarées **final**. Dans ce cas, il n'est pas possible d'ajouter une 
+  méthode de classe qui a la même signature dans les classes qui en héritent.
+
+
+Constructeur et polymorphisme
+*****************************
+
+Les constructeurs sont des méthodes particulières qu'il n'est pas possible
+de surcharger. Les constructeurs créent une séquence d'appel qui garantit
+qu'ils seront exécutés en commençant par la classe la plus haute dans la hiérarchie
+d'héritage. Puisque toutes les classes Java héritent de la classe Object_, cela
+signifie que le constructeur de Object_ est toujours appelé en premier.
+
+Cependant un constructeur peut appeler une méthode et dans ce cas le polymorphisme
+peut s'appliquer. Comme les constructeurs sont appelés dans l'ordre
+de la hiérarchie d'héritage, cela signifie qu'un constructeur invoque
+une méthode surchargée avant que la classe fille qui l'implémente n'ait pu être
+initialisée.
+
+Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui surcharge la 
+méthode   *accelerer* pour prendre en compte la consommation d'essence :
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class VehiculeMotorise {
+
+    private Moteur moteur;
+    
+    public VehiculeMotorise(String marque) {
+      super(marque);
+      this.moteur = new Moteur();
+    }
+    
+    @Override
+    public void accelerer(float deltaVitesse) {
+      moteur.consommer(deltaVitesse);
+      super.accelerer(deltaVitesse);
+    }
+
+    // ...
+    
+  }
+
+
+Si maintenant nous faisons évoluer la classe *Vehicule* pour créer une instance
+avec une vitesse minimale :
+
+::
+
+  package ROOT_PKG.conduite;
+  
+  public class Vehicule {
+
+    private final String marque;
+    protected float vitesse;
+    
+    public Vehicule(String marque) {
+      this.marque = marque;
+    }
+    
+    public Vehicule(String marque, float vitesse) {
+      this.marque = marque;
+      this.accelerer(vitesse);
+    }
+
+    public void accelerer(float deltaVitesse) {
+      this.vitesse += deltaVitesse;
+    }
+
+    // ...
+    
+  }
+
+Que va-t-il se passer à l'exécution de ce code :
+
+::
+
+  VehiculeMotorise vehiculeMotorise = new VehiculeMotorise("DeLorean");
+
+Le constructeur de *VehiculeMotorise* commence par appeler le constructeur
+de *Vehicule*. Ce dernier appelle implicitement le constructeur de Object_ (qui
+ne fait rien) puis il initialise l'attribut *marque* et il appelle la méthode
+*accelerer*. Comme cette dernière est surchargée, c'est en fait l'implémentation
+fournie par *VehiculeMotorise* qui est appelée. Cette implémentation commence par appeler
+une méthode sur l'attribut *moteur* qui n'a pas encore été initialisé. Donc sa
+valeur est nulle et donc la création d'une instance de *VehiculeMotorise*
+échoue systématiquement avec une erreur du type NullPointerException_.
+
+On voit par cet exemple que l'appel de méthode dans un constructeur peut amener
+à des situations complexes. Il est fortement recommandé d'appeler dans un constructeur
+des méthodes dont le comportement ne peut pas être modifié par surcharge : soit 
+des méthodes privées soit des méthodes déclarées **final**.
+
 .. todo::
 
-  exemple avec @Override
-
-.. todo::
-
-  * appel à la méthode parente avec super
-  * final sur une méthode
-  * constructeur et polymorphisme
   * open/close principle
+  * méthode static
   * name shadowing pour les attributs (attention certainement un bug)
 
 .. _@Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _principe du ouvert/fermé: https://fr.wikipedia.org/wiki/Principe_ouvert/ferm%C3%A9
-
+.. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
+.. _NullPointerException: https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html
