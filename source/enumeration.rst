@@ -325,7 +325,7 @@ moment de la déclaration des éléments de l'énumération.
   }
 
 
-.. _IllegalArgumentException: http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html  
-.. _Comparable: http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
-.. _compareTo: http://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html#compareTo-E-
-.. _Enum: http://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html
+.. _IllegalArgumentException: https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html  
+.. _Comparable: https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
+.. _compareTo: https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html#compareTo-E-
+.. _Enum: https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html

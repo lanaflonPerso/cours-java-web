@@ -571,5 +571,5 @@ Cela traduit bien le fait que le comportement du ramasse-miettes varie d'une ex�
   Les références : WeakReference, SoftReference, PhantomReference
 
 
-.. _java.lang.System.gc(): http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#gc--
-.. _java.lang.OutOfMemoryError: http://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html
+.. _java.lang.System.gc(): https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#gc--
+.. _java.lang.OutOfMemoryError: https://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html

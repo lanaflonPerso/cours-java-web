@@ -610,11 +610,11 @@ Une interface plus complexe utilisée par le système de gestion de comptes :
 
   * exemple de l'interface Comparable pour le tri et la recherche dans les tableaux
   
-.. _Object: http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
-.. _clone: http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--
-.. _CloneNotSupportedException: http://docs.oracle.com/javase/8/docs/api/java/lang/CloneNotSupportedException.html
-.. _Cloneable: http://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html
+.. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
+.. _clone: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--
+.. _CloneNotSupportedException: https://docs.oracle.com/javase/8/docs/api/java/lang/CloneNotSupportedException.html
+.. _Cloneable: https://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html
 .. _principe de ségrégation d'interface: https://en.wikipedia.org/wiki/Interface_segregation_principle
-.. _ArrayList: http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+.. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_%28informatique%29
 .. _responsabilité unique: https://fr.wikipedia.org/wiki/Principe_de_responsabilit%C3%A9_unique

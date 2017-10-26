@@ -228,9 +228,9 @@ et de choisir *Export*. Dans la boîte de dialogue d'export, il faut chercher "j
 *Java > JAR File*. En cliquant sur *Next*, on spécifie le nom et l'emplacement du fichier JAR
 et il sera créé en cliquant sur *Finish*.
 
-.. _javac: http://docs.oracle.com/javase/8/docs/technotes/tools/windows/javac.html
-.. _java: http://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
-.. _jar: http://docs.oracle.com/javase/8/docs/technotes/tools/windows/jar.html
+.. _javac: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javac.html
+.. _java: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
+.. _jar: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jar.html
 .. _Ant: http://ant.apache.org
 .. _Maven: http://maven.apache.org
 .. _Gradle: https://gradle.org

@@ -834,25 +834,25 @@ invariants d'une classe.
     
 
 .. _Programming With Assertions: https://docs.oracle.com/javase/8/docs/technotes/guides/language/assert.html
-.. _AssertionError: http://docs.oracle.com/javase/8/docs/api/java/lang/AssertionError.html  
-.. _IllegalArgumentException: http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html  
-.. _ClassCastException: http://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html
-.. _ArithmeticException: http://docs.oracle.com/javase/8/docs/api/java/lang/ArithmeticException.html
+.. _AssertionError: https://docs.oracle.com/javase/8/docs/api/java/lang/AssertionError.html  
+.. _IllegalArgumentException: https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html  
+.. _ClassCastException: https://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html
+.. _ArithmeticException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArithmeticException.html
 .. _Exception: https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html
 .. _java.lang.Exception: https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html
 .. _Throwable: https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html
-.. _printStackTrace: http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html#printStackTrace--
+.. _printStackTrace: https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html#printStackTrace--
 .. _Exception: https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html
 .. _NullPointerException: https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html
 .. _NumberFormatException: https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html
 .. _IndexOutOfBoundsException: https://docs.oracle.com/javase/8/docs/api/java/lang/IndexOutOfBoundsException.html
 .. _try-with-resources: http://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
-.. _AutoCloseable: http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
-.. _Closeable: http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html
+.. _AutoCloseable: https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
+.. _Closeable: https://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html
 .. _principe de substitution de Liskov: https://fr.wikipedia.org/wiki/Principe_de_substitution_de_Liskov
-.. _IOException: http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html
-.. _java.io.IOException: http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html
-.. _getCause: http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html#getCause--
-.. _Error: http://docs.oracle.com/javase/8/docs/api/java/lang/Error.html
-.. _OutOfMemoryError: http://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html
-.. _RuntimeException: http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html
+.. _IOException: https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html
+.. _java.io.IOException: https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html
+.. _getCause: https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html#getCause--
+.. _Error: https://docs.oracle.com/javase/8/docs/api/java/lang/Error.html
+.. _OutOfMemoryError: https://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html
+.. _RuntimeException: https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html

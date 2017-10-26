@@ -221,5 +221,5 @@ choisir *Run as > Java Application*.
   Vous pouvez aussi appuyer sur la touche F11 lorsque vous êtes positionné dans le fichier source
   pour lancer l'exécution de la classe.
 
-.. _System: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html
-.. _println: http://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#println-java.lang.Object-
+.. _System: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html
+.. _println: https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#println-java.lang.Object-

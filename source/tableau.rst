@@ -462,16 +462,16 @@ et toute modification des éléments de cette liste sera répercutée sur le tab
   System.out.println(java.util.Arrays.toString(tableau)); // [Hello, the, world]
 
 
-.. _java.lang.NegativeArraySizeException: http://docs.oracle.com/javase/8/docs/api/java/lang/NegativeArraySizeException.html
-.. _java.util.Arrays: http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
-.. _java.lang.String: http://docs.oracle.com/javase/8/docs/api/java/lang/String.html
-.. _java.util.Arrays.deepEquals(Object[], Object[]): http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#deepEquals-java.lang.Object:A-java.lang.Object:A-
-.. _java.util.Arrays.deepToString(Object[]): http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#deepToString-java.lang.Object:A-
-.. _java.util.Arrays.sort(Object[]): http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-
-.. _java.lang.Comparable: http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
-.. _java.lang.System.arraycopy: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#arraycopy-java.lang.Object-int-java.lang.Object-int-int-
-.. _java.lang.Integer: http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html
-.. _java.lang.Number: http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html
-.. _java.lang.ArrayStoreException: http://docs.oracle.com/javase/8/docs/api/java/lang/ArrayStoreException.html
-.. _java.util.Arrays.asList: http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#asList-T...-
-.. _java.lang.ArrayIndexOutOfBoundsException: http://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html
+.. _java.lang.NegativeArraySizeException: https://docs.oracle.com/javase/8/docs/api/java/lang/NegativeArraySizeException.html
+.. _java.util.Arrays: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
+.. _java.lang.String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+.. _java.util.Arrays.deepEquals(Object[], Object[]): https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#deepEquals-java.lang.Object:A-java.lang.Object:A-
+.. _java.util.Arrays.deepToString(Object[]): https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#deepToString-java.lang.Object:A-
+.. _java.util.Arrays.sort(Object[]): https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-
+.. _java.lang.Comparable: https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
+.. _java.lang.System.arraycopy: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#arraycopy-java.lang.Object-int-java.lang.Object-int-int-
+.. _java.lang.Integer: https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html
+.. _java.lang.Number: https://docs.oracle.com/javase/8/docs/api/java/lang/Number.html
+.. _java.lang.ArrayStoreException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayStoreException.html
+.. _java.util.Arrays.asList: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#asList-T...-
+.. _java.lang.ArrayIndexOutOfBoundsException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html

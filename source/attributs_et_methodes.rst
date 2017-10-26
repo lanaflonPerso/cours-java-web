@@ -1004,12 +1004,12 @@ Exercice
 
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
-.. _System: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html
-.. _out: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#out
-.. _java.lang.Math: http://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
-.. _java.lang.System: http://docs.oracle.com/javase/8/docs/api/java/lang/System.html
-.. _java.util.Arrays: http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
-.. _java.util.Collections: http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html
+.. _System: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html
+.. _out: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#out
+.. _java.lang.Math: https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+.. _java.lang.System: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html
+.. _java.util.Arrays: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
+.. _java.util.Collections: https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html
 .. _principe d'encapsulation: https://fr.wikipedia.org/wiki/Encapsulation_(programmation)
 .. _Character.isAlphabetic: https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html#isAlphabetic-int-
 .. _toCharArray: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toCharArray--
