@@ -948,9 +948,59 @@ il ne faut pas déclarer de *setter* pour cette propriété.
   *Source > Generate Getters and Setters...*
 
 
-.. todo::
+Exercice
+********
 
-  Exercices du chapitre
+.. topic:: La classe Phrase
+  :class: exercice
+
+  Implémenter la classe *Phrase*. Cette classe permet de créer une chaîne de
+  caractères en ajoutant des mots qui seront séparés par un séparateur.
+  Par défaut, le séparateur est le caractère espace, mais il peut être changé.
+  
+  La classe *Phrase* doit permettre de :
+  
+    * ajouter un mot
+    * ajouter une serie de mots
+    * ajouter un mot en le répétant n fois
+    * changer le séparateur qui peut être soit une chaîne de caractères soit un seul
+      caractère
+    * générer la phrase terminée par un point lorsqu'on demande la représentation
+      sous la forme d'une chaîne de caractères de l'objet
+    * connaître le nombre de lettres dans la phrase
+    
+  Le code suivant :
+  
+  ::
+  
+    Phrase phrase = new Phrase();
+    phrase.ajouter("Une");
+    phrase.ajouter("classe");
+    phrase.ajouter("pour");
+    phrase.ajouter("ajouter");
+    phrase.ajouter("des mots");
+    phrase.setSeparateur(" et encore ");
+    phrase.ajouter("des mots", 3);
+    phrase.setSeparateur(' ');
+    phrase.ajouter("toujours", "et", "encore");
+    
+    System.out.println(phrase); 
+    System.out.println(phrase.getNbLettres());
+    
+  doit produire sur la sortie standard
+  
+  .. code-block:: text
+  
+    Une classe pour ajouter des mots et encore des mots et encore des mots et encore des mots toujours et encore.
+    88
+  
+  .. hint::
+  
+    On ne peut pas parcourir directement une chaîne de caractères, par contre
+    on peut obtenir un tableau de caractères à partir d'une chaîne avec la méthode
+    toCharArray_. Pour savoir si un caractère est une lettre, on utilise la méthode
+    **static** Character.isAlphabetic_.
+
 
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
@@ -961,3 +1011,5 @@ il ne faut pas déclarer de *setter* pour cette propriété.
 .. _java.util.Arrays: http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
 .. _java.util.Collections: http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html
 .. _principe d'encapsulation: https://fr.wikipedia.org/wiki/Encapsulation_(programmation)
+.. _Character.isAlphabetic: https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html#isAlphabetic-int-
+.. _toCharArray: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toCharArray--

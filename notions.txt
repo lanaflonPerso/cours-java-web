@@ -1,12 +1,9 @@
 
 ===================
 
-Le polymorphisme (introduction aux annotations avec @Override)
-appel à la méthode parente avec super
-name shadowing pour les attributs
-changement de niveau de visibilité pour les méthodes
-changement de valeur de retour pour les méthodes
-pas de polymorphisme pour les méthodes privées
+Le polymorphisme
+
+  * open/close principle
 
 ===================
 
@@ -24,17 +21,6 @@ Les chaînes de caractères
 ===================
 
 Les exceptions
-
-exception comme mécanisme de validation pour la création d'objet (exception lancée dans les constructeurs)
-précondition et postconditions
-
-changement de la signature des exceptions pour le polymorphisme
-
-multiple exceptions |
-
-try-with-resources
-
-printStackTrace();
 
 introduction du mot clé assert.
 
