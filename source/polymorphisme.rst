@@ -1,7 +1,7 @@
 Le polymorphisme
 ################
 
-Le polymorphisme est un mécanisme important dans l'héritage dans la programmation
+Le polymorphisme est un mécanisme important dans la programmation
 objet. Il permet de modifier le comportement d'une classe fille par rapport
 à sa classe mère. Le polymorphisme permet d'utiliser l'héritage comme un mécanisme
 d'extension en adaptant le comportement des objets.
@@ -45,7 +45,7 @@ Nous disposons également des classes *Chat* et *Chien* qui héritent de la clas
   }
 
 
-Ces deux classes peuvent être considérées comme un spécialisation de la classe
+Ces deux classes sont une spécialisation de la classe
 *Animal*. À ce titre, elles peuvent **surcharger** (*override*) la méthode *crier*.
 
 ::
@@ -95,8 +95,8 @@ appelleront toujours la méthode *crier* surchargée par leur classe.
   animal.crier(); // affiche "Whouaf whouaf !"
 
 
-L'exemple de code ci-dessus montre bien que le type de le comportement de la
-méthode *crier* varie selon le type réel de l'objet que l'on utilise.
+L'exemple de code ci-dessus montre que l'implémentation de la méthode *crier*
+dépend du type réel de l'objet et non pas du type de la variable qui le référence.
 
 Une exception : les méthodes privées
 ************************************
@@ -104,7 +104,7 @@ Une exception : les méthodes privées
 Les méthodes de portée **private** ne supportent pas le polymorphisme. En effet,
 une méthode de portée **private** n'est accessible uniquement que par la classe
 qui la déclare. Donc si une classe mère et une classe fille définissent une méthode
-**private** avec la même signature, il s'agit simplement pour le compilateur de 
+**private** avec la même signature, le compilateur les traitera comme 
 deux méthodes différentes.
 
 .. _surcharge_et_signature:
@@ -123,7 +123,7 @@ et mêmes paramètres.
 Cependant, la méthode qui surcharge peut avoir une signature légèrement différente.
 
 Une méthode qui surcharge peut avoir une portée différente si et seulement
-si celle-ci est plus permissive que celle de la méthode surchargée. Il est donc
+si, celle-ci est plus permissive que celle de la méthode surchargée. Il est donc
 possible d'augmenter la portée de la méthode mais jamais de la réduire :
 
 * Une méthode de portée package peut être surchargée avec la portée package
@@ -131,7 +131,7 @@ possible d'augmenter la portée de la méthode mais jamais de la réduire :
 * Une méthode de portée **protected** peut être surchargée avec la portée
   **protected** ou **public**.
 * Une méthode de portée **public** ne peut être surchargée qu'avec la portée
-  **public**
+  **public**.
 
 Le changement de portée dans la surcharge sert la plupart du temps à placer
 une implémentation dans la classe parente mais à laisser les classes filles
@@ -139,7 +139,7 @@ qui le désirent offrir publiquement l'accès à cette méthode.
 
 Au :ref:`chapitre précédent <portee_protected>`, nous avions introduit les 
 classes *Vehicule*, *Voiture* et *Moto*. En partant du principe que seules les 
-instances de *Voiture* pouvent offrir la méthode *reculer*, nous avons ajouté 
+instances de *Voiture* peuvent offrir la méthode *reculer*, nous avons ajouté 
 cette méthode dans la classe *Voiture*. Pour cela, nous avions dû modifier
 l'implémentation de la classe *Vehicule* en utilisant une portée **protected**
 pour l'attribut *vitesse*. Nous avions alors vu que cela n'était pas totalement
@@ -260,11 +260,11 @@ surchargé.
 Le mot-clé super
 ****************
 
-Le surcharge de méthode masque la méthode de la classe parente. Cependant, nous 
+La surcharge de méthode masque la méthode de la classe parente. Cependant, nous 
 avons vu précédemment avec l'exemple de la méthode *reculer* que l'implémentation
 d'une classe fille a la possibilité d'appeler une méthode de la classe parente
 en utilisant le mot-clé **super**. L'appel à l'implémentation parente est très
-utile lorsque l'on veut par exemple effectuer une action avant ou après sans
+utile lorsque l'on veut effectuer une action avant et/ou après sans
 avoir besoin de dupliquer le code d'origine.
 
 ::
@@ -302,7 +302,7 @@ de la classe *Voiture*.
   
   public class VoitureDeCourse extends Voiture {
   
-    public Voiture(String marque) {
+    public VoitureDeCourse(String marque) {
       super(marque);
     }
     
@@ -449,10 +449,10 @@ d'héritage. Puisque toutes les classes Java héritent de la classe Object_, cel
 signifie que le constructeur de Object_ est toujours appelé en premier.
 
 Cependant un constructeur peut appeler une méthode et dans ce cas le polymorphisme
-peut s'appliquer. Comme les constructeurs sont appelés dans l'ordre
+s'applique. Comme les constructeurs sont appelés dans l'ordre
 de la hiérarchie d'héritage, cela signifie qu'un constructeur invoque
-une méthode surchargée avant que la classe fille qui l'implémente n'ait pu être
-initialisée.
+une méthode surchargée toujours avant que la classe fille qui l'implémente n'ait 
+pu être initialisée.
 
 Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui surcharge la 
 méthode   *accelerer* pour prendre en compte la consommation d'essence :
@@ -527,14 +527,40 @@ valeur est nulle et donc la création d'une instance de *VehiculeMotorise*
 
 On voit par cet exemple que l'appel de méthode dans un constructeur peut amener
 à des situations complexes. Il est fortement recommandé d'appeler dans un constructeur
-des méthodes dont le comportement ne peut pas être modifié par surcharge : soit 
+des méthodes dont le comportement ne peut pas être modifié par la surcharge : soit 
 des méthodes privées soit des méthodes déclarées **final**.
+
+
+Masquage des attributs
+**********************
+
+Il est possible de déclarer dans une classe fille un attribut portant
+le même nom que dans la classe parente. Cependant ceci ne correspond pas à une
+surcharge et n'a rien à voir avec le principe du polymorphisme. L'attribut de
+la classe fille se contente de masquer l'attribut de la classe parente.
+
+Si l'attribut est de portée **private**, créer une attribut avec le même nom dans
+une classe fille n'a aucun impact particulier. Cela permet d'isoler l'état
+interne de la classe parente par rapport à sa classe fille.
+
+Si l'attribut est de portée package, **protected** ou **public** alors l'attribut
+de la classe parente est simplement masqué dans la classe fille. Si une classe
+fille veut accéder à l'attribut de la classe parente, elle peut le faire à travers
+le mot-clé **super**.
+
+.. todo::
+
+  exemple d'accès à un attribut avec **super**
+
+En raison de la difficulté de compréhension que cela peut entraîner, il est
+préférable de ne jamais créer dans une classe fille un attribut portant le même
+nom que celui d'un attribut de portée package, **protected** ou **public** d'une
+de ces classes parentes.
+
 
 .. todo::
 
   * open/close principle
-  * méthode static
-  * name shadowing pour les attributs (attention certainement un bug)
 
 .. _@Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _principe du ouvert/fermé: https://fr.wikipedia.org/wiki/Principe_ouvert/ferm%C3%A9
