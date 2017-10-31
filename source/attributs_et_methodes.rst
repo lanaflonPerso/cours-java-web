@@ -639,7 +639,7 @@ ambiguïté de choix. Par exemple :
   public class Calculatrice {
 
     public static int additionner(int v1, int v2) {
-      return v1, v2;
+      return v1 + v2;
     }
 
     public static int additionner(int... valeurs) {
