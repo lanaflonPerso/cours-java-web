@@ -357,4 +357,28 @@ Exercice
   mesure que vous implémentez la méthode *encrypte* afin de vérifier que votre
   algorithme fonctionne correctement.
 
+  .. hint::
+  
+    On peut obtenir un tableau de caractères à partir d'une chaîne avec la méthode
+    toCharArray_. S'il n'est pas possible de parcourir les éléments d'une chaîne de caractères
+    avec un for amélioré, on peut facilement parcourir le tableau de caractères :
+    
+    ::
+    
+      String helloWorld = "Hello world!";
+      for (char c : helloWorld.toCharArray()) {
+        // ...
+      }
+
+    
+    Pour créer une chaîne de caractères à partir d'un tableau de caractères, il est possible de
+    créer une nouvelle chaîne de caractères à partir d'un tableau :
+    
+    ::
+    
+      char[] tableau = "Hello".toCharArray();
+      String chaine = new String(tableau);
+    
+
 .. _Iterable: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
+.. _toCharArray: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toCharArray--
