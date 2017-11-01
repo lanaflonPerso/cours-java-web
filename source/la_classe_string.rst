@@ -381,7 +381,8 @@ Les expressions régulières
 **************************
 
 Certaines méthodes de la classe String_ acceptent comme paramètre une `expression
-régulière`_ (*regular expression*). Une expression régulière permet d'exprimer avec des motifs un ensemble
+régulière`_ (*regular expression* ou *regexp*). Une expression régulière permet 
+d'exprimer avec des motifs un ensemble
 de chaînes de caractères possibles. Par exemple la méthode String.matches_ prend
 un paramètre de type String_ qui est interprété comme une expression régulière.
 Cette méthode retourne **true** si la chaîne de caractères est conforme à l'expression
