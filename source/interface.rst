@@ -609,6 +609,10 @@ Une interface plus complexe utilisée par le système de gestion de comptes :
 .. todo ::
 
   * exemple de l'interface Comparable pour le tri et la recherche dans les tableaux
+
+.. todo ::
+
+  * inversion de dépendance
   
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _clone: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--

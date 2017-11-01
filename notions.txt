@@ -41,6 +41,8 @@ classe abstraite (DONE)
 
 interface /!\
 
+inversion de dépendance
+
 ex : Comparable pour le tri et la recherche de tableau
 
 ===================

@@ -555,7 +555,7 @@ le mot-clé **super**.
 En raison de la difficulté de compréhension que cela peut entraîner, il est
 préférable de ne jamais créer dans une classe fille un attribut portant le même
 nom que celui d'un attribut de portée package, **protected** ou **public** d'une
-de ces classes parentes.
+de ses classes parentes.
 
 
 .. todo::

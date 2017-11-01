@@ -371,8 +371,7 @@ Exercice
       }
 
     
-    Pour créer une chaîne de caractères à partir d'un tableau de caractères, il est possible de
-    créer une nouvelle chaîne de caractères à partir d'un tableau :
+    Il est possible de créer une nouvelle chaîne de caractères à partir d'un tableau :
     
     ::
     
