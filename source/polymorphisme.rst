@@ -531,8 +531,8 @@ des méthodes dont le comportement ne peut pas être modifié par la surcharge :
 des méthodes privées soit des méthodes déclarées **final**.
 
 
-Masquage des attributs
-**********************
+Masquage des attributs par héritage
+***********************************
 
 Il est possible de déclarer dans une classe fille un attribut portant
 le même nom que dans la classe parente. Cependant ceci ne correspond pas à une
@@ -548,9 +548,45 @@ de la classe parente est simplement masqué dans la classe fille. Si une classe
 fille veut accéder à l'attribut de la classe parente, elle peut le faire à travers
 le mot-clé **super**.
 
-.. todo::
+::
 
-  exemple d'accès à un attribut avec **super**
+  package ROOT_PKG;
+
+  public class Personne {
+    
+    protected String nom;
+
+    public Personne(String nom) {
+      this.nom = nom;
+    }
+    
+    // ...
+
+  }
+  
+.. code-block:: java
+  :emphasize-lines: 15
+
+  package ROOT_PKG;
+
+  public class HerosMasque extends Personne {
+
+    private String nom;
+
+    public HerosMasque(String nom, String nomHeros) {
+      super(nom);
+      this.nom = nomHeros;
+    }
+    
+    @Override
+    public String toString() {
+      // mmmmh ! Pas très clair
+      return this.nom + " dont l'identité secrète est " + super.nom;
+    }
+    
+    // ...
+    
+  }
 
 En raison de la difficulté de compréhension que cela peut entraîner, il est
 préférable de ne jamais créer dans une classe fille un attribut portant le même

@@ -1,16 +1,6 @@
 
 ===================
 
-Le polymorphisme
-
-  * open/close principle
-
-===================
-
-La classe OBJECT (DONE)
-
-===================
-
 Les chaînes de caractères
 
   * tableaux de caractères vs chaîne de caractères
