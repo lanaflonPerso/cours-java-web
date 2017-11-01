@@ -558,9 +558,23 @@ nom que celui d'un attribut de portée package, **protected** ou **public** d'un
 de ses classes parentes.
 
 
-.. todo::
+Le principe du ouvert/fermé
+***************************
 
-  * open/close principle
+Le `principe du ouvert/fermé`_ stipule qu'une classe doit être conçue pour être
+ouverte en extension mais fermée en modification. 
+
+D'un côté, si une classe hérite
+d'une autre classe, elle doit pouvoir ajouter des nouveaux comportements avec
+de nouvelles méthodes. Par contre la surcharge de méthode ne doit pas être
+utilisée pour créer une implémentation qui a un comportement trop différent
+de celui de la classe parente.
+
+D'une autre côté, si une classe hérite d'une autre classe, elle ne doit pas
+pouvoir modifier le fonctionnement décrit par la classe parente. En Java, pour 
+interdire de modifier le comportement d'une classe, on peut déclarer ses attributs
+**private** et les méthodes jugées les plus critiques peuvent être déclarées
+**final**.
 
 .. _@Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _principe du ouvert/fermé: https://fr.wikipedia.org/wiki/Principe_ouvert/ferm%C3%A9
