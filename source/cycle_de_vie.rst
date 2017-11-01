@@ -319,9 +319,113 @@ Plus généralement, si vous souhaitez appeler des méthodes de l'objet dans un 
 il faut prendre soin de s'assurer que l'état de l'objet nécessaire à l'exécution
 de ces méthodes est correctement initialisé avant par le constructeur.
 
-.. todo::
+Injection de dépendances par le constructeur
+********************************************
 
-  dépendance d'injection par le constructeur
+L'état interne d'un objet (ses attributs) peut nécessiter des références vers d'autres
+objets. Parfois, ces objets peuvent eux-même avoir une représentation interne complexe
+qui nécessite des références vers d'autres objets... Par exemple, une classe
+*Voiture* peut nécessiter une instance d'une classe *Moteur* :
+
+::
+
+  package ROOT_PKG;
+
+  public class Moteur {
+    
+    private int nbCylindres;
+    private int nbSoupapesParCylindre;
+    private float vitesseMax;
+    
+    public Moteur(int nbCylindres, int nbSoupapesParCylindre, float vitesseMax) {
+      this.nbCylindres = nbCylindres;
+      this.nbSoupapesParCylindre = nbSoupapesParCylindre;
+      this.vitesseMax = vitesseMax;
+    }
+    
+    // ...
+  }
+
+À partir de la classe *Moteur* ci-dessus, nous pouvons fournir l'implémentation
+suivante de la classe *Voiture* :
+
+::
+
+  package ROOT_PKG;
+
+  public class Voiture {
+    
+    private String marque;
+    private Moteur moteur;
+    
+    public Voiture(String marque, int nbCylindres, int nbSoupapesParCylindre, float vitesseMax) {
+      this.marque = marque;
+      this.moteur = new Moteur(nbCylindres, nbSoupapesParCylindre, vitesseMax);
+    }
+    
+    // ...
+  }
+
+Et créer une instance de la classe *Voiture* :
+
+::
+
+  Voiture clio = new Voiture("Clio Williams", 4, 4, 216);
+
+Cependant, si nous considérons le type de relation qui unit la classe *Voiture*
+à la classe *Moteur*, nous constatons que non seulement la classe *Voiture* est
+dépendante de la classe *Moteur* mais qu'en plus la classe *Voiture* crée 
+l'instance de la classe *Moteur* dont elle a besoin. Donc la classe *Voiture*
+a un couplage très fort avec la classe *Moteur*. Par exemple, si le constructeur
+de la classe *Moteur* évolue alors le constructeur de la classe *Voiture* doit
+également évoluer.
+
+En programmation objet, créer une objet n'hésite souvent de disposer des
+informations nécessaires pour invoquer le constructeur de sa classe. La plupart du temps,
+les classes qui sont dépendantes d'autres classes n'ont pas vocation à les
+créer car il n'y a pas vraiment de raison à ce qu'elles connaissent les
+informations nécessaires à leur création. Dans le cas de notre classe *Voiture*
+nous pouvons proposer simplement l'implémentation :
+
+::
+
+  package ROOT_PKG;
+
+  public class Voiture {
+    
+    private String marque;
+    private Moteur moteur;
+    
+    public Voiture(String marque, Moteur moteur) {
+      this.marque = marque;
+      this.moteur = moteur;
+    }
+    
+    // ...
+  }
+
+La création d'une instance de *Voiture* se fait maintenant en deux étapes :
+
+::
+
+  Moteur moteur = new Moteur(4, 4, 216);
+  Voiture clio = new Voiture("Clio Williams", moteur);
+  
+
+On dit qu'une instance de la classe *Moteur* est **injectée** par le constructeur
+dans une instance de *Voiture*. En programmation objet, cela signifie que nous
+avons découplé l'utilisation de l'instance de la classe *Moteur* de sa création.
+
+L'injection de dépendances est une technique de programmation qui permet à une
+classe de disposer des instances d'objet dont elle a besoin sans avoir à les créer
+directement.
+
+.. note::
+
+  L'injection de dépendance est la technique qui est à la base de `l'inversion
+  de dépendances`_ (appelée aussi parfois inversion de contrôle) qui est un des
+  principes SOLID_ en programmation objet. Beaucoup de frameworks Java (comme le
+  `Spring framework`_) sont basés sur ce principe.
 
 Le bloc d'initialisation
 ************************
@@ -566,10 +670,9 @@ vous constaterez que le message "je vais disparaître !" ne s'affiche pas au mê
 Cela traduit bien le fait que le comportement du ramasse-miettes varie d'une exécution
 à l'autre.
 
-.. todo ::
-
-  Les références : WeakReference, SoftReference, PhantomReference
-
 
 .. _java.lang.System.gc(): https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#gc--
 .. _java.lang.OutOfMemoryError: https://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html
+.. _l'inversion de dépendances: https://en.wikipedia.org/wiki/Dependency_inversion_principle
+.. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
+.. _Spring framework: https://fr.wikipedia.org/wiki/Spring_(framework)
