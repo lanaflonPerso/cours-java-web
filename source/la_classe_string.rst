@@ -315,11 +315,69 @@ Le code ci-dessus sera en fait interprété par le compilateur comme ceci :
   String s2 = "the";
   String s3 = "world";
   String message = new StringBuilder().append(s1).append(" ").append(s2).append(" ").append(s3).toString();
+
+
+Formatage de texte
+******************
+
+La méthode de classe String.format_ permet de passer une chaîne de caractères
+décrivant un formatage ainsi que plusieurs objets correspondant à des paramètres
+du formatage.
+
+::
+
+  String who = "the world";
+  String message = String.format("Hello %s!", who);
   
+  System.out.println(message); // "Hello the world!"
+
+Dans l'exemple ci-dessus, la chaîne de formatage "Hello %s" contient un paramètre
+identifié par *%s* (s signifie que le paramètre attendu est de type String_.
+
+Un paramètre dans la chaîne de formatage peut contenir différente information :
+
+  %[index$][flags][taille]conversion
+
+L'index est la place du paramètre dans l'appel à la méthode String.format_.
+
+::
+  
+  int quantite = 12;
+  LocalDate now = LocalDate.now();
+
+  String message = String.format("quantité = %1$010d au %2$te %2$tB %2$tY", quantite, now);
+
+  System.out.println(message); // "quantité = 0000000012 au 5 septembre 2017"
+
+Il existe également une définition de la méthode String.format_ qui attend une
+instance de Locale_ en premier paramètre. La locale indique la langue du message
+et permet de formater les nombres, les dates, etc comme attendu.
+
+::
+  
+  int quantite = 12;
+  LocalDate now = LocalDate.now();
+
+  String message = String.format(Locale.ENGLISH, "quantity = %1$010d on %2$te %2$tB %2$tY", quantite, now);
+
+  System.out.println(message); // "quantity = 0000000012 on 5 september 2017"
+
+Pour mieux comprendre la syntaxe des paramètres dans une chaîne de formatage,
+reportez-vous à la documentation du Formatter_ qui est utilisé par la méthode
+String.format_.
+
+.. note::
+
+  Il est également possible de formater des messages avec la classe MessageFormat_.
+  Il s'agit d'une classes plus ancienne qui offre une syntaxe différente pour décrire
+  les paramètres dans la chaîne de formatage.
+
+Les expressions régulières
+**************************
+
 .. todo::
 
-  * formatage (message format et printf)
-  * les expressions régulières
+  les expressions régulières
 
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _String.charAt: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#charAt-int-
@@ -342,3 +400,7 @@ Le code ci-dessus sera en fait interprété par le compilateur comme ceci :
 .. _String.equalsIgnoreCase: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#equalsIgnoreCase-java.lang.Object-
 .. _StringBuilder: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
 .. _StringBuilder.toString: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#toString--
+.. _String.format: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#format-java.lang.String-java.lang.Object...-
+.. _Locale: https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
+.. _Formatter: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html
+.. _MessageFormat: https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html
