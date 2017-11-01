@@ -24,6 +24,7 @@ Le langage Java
    relations_entre_objets
    polymorphisme
    la_classe_object
+   la_classe_string
    les_exceptions
    classe_abstraite
    enumeration
