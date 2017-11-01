@@ -846,7 +846,7 @@ invariants d'une classe.
 .. _NullPointerException: https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html
 .. _NumberFormatException: https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html
 .. _IndexOutOfBoundsException: https://docs.oracle.com/javase/8/docs/api/java/lang/IndexOutOfBoundsException.html
-.. _try-with-resources: http://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+.. _try-with-resources: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 .. _AutoCloseable: https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
 .. _Closeable: https://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html
 .. _principe de substitution de Liskov: https://fr.wikipedia.org/wiki/Principe_de_substitution_de_Liskov
