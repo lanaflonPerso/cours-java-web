@@ -1,14 +1,3 @@
-
-===================
-
-Les chaînes de caractères
-
-  * tableaux de caractères vs chaîne de caractères
-  * la manipulation de chaîne (StringBuilder)
-  * les expressions régulières
-  * formatage (message format et printf)
-  * immutabilité : permet les constantes et les optimisations de mémoire
-  * optimisation mémoire des chaînes de caractères
 ===================
 
 Les exceptions

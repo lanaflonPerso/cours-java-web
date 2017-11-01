@@ -242,9 +242,14 @@ Cela signifie que des opérations intensives sur les chaînes de caractères peu
 être pénalisantes pour le temps d'exécution et l'occupation mémoire puisque
 toutes les opérations se font finalement par copie.
 
-L'avantage de cette immutabilité et de permettre au compilateur de réaliser
+Nous avons vu qu'il n'existe pas réellement de constante en Java mais
+uniquement des attributs déclarés avec **static** et **final**. Cette immutabilité 
+permet de garantir qu'une instance de String_ déclarée **static** et **final**
+ne peut plus être modifié.
+
+La JVM tire également partie de cette immutabilité afin de réaliser
 des optimisations de place mémoire. Si par exemple vous écrivez plusieurs fois
-dans du code source la même chaîne de caractères, la JVM considérera qu'il s'agit
+dans le code source la même chaîne de caractères, la JVM considérera qu'il s'agit
 de la même chaîne de caractères et ne créera pas une nouvelle emplacement mémoire
 pour cette chaîne. Ainsi, il est possible d'avoir des comportements assez déroutants
 au premier abord en Java :
@@ -375,9 +380,102 @@ String.format_.
 Les expressions régulières
 **************************
 
-.. todo::
+Certaines méthodes de la classe String_ acceptent comme paramètre une `expression
+régulière`_ (*regular expression*). Une expression régulière permet d'exprimer avec des motifs un ensemble
+de chaînes de caractères possibles. Par exemple la méthode String.matches_ prend
+un paramètre de type String_ qui est interprété comme une expression régulière.
+Cette méthode retourne **true** si la chaîne de caractères est conforme à l'expression
+régulière passée en paramètre.
 
-  les expressions régulières
+::
+
+  boolean match = "hello".matches("hello");
+  System.out.println(match); // true
+
+L'intérêt des expressions régulières est qu'elles peuvent contenir des classes
+de caractères, c'est-à-dire des caractères qui sont interprétés comme 
+représentant un ensemble de caractères.
+
+.. csv-table:: Les classes de caractères dans une expression régulière
+  :widths: 1,5
+
+  ., "N'importe quel caractère"
+  [abc], "Soit le caractère a, soit le caractère b, soit le caractère c"
+  [a-z], "N'importe quel caractère de a à z"
+  [^a-z], "N'importe quel caractère qui n'est pas entre a et z"
+  \\s, "Un caractère d'espacement (espace, tabulation, retour à la ligne, retour chariot, saut de ligne)"
+  \\S, "Un caractère qui n'est pas un caractère d'espacement (équivalent à [^\\s]"
+  \\d, "Un caractère représentant un chiffre (équivalent à [0-9]"
+  \\D, "Un caractère ne représentant pas un chiffre (équivalent à [^0-9])"
+  \\w, "Un caractère composant un mot (équivalent à [a-zA-Z_0-9]"
+  \\W, "Un caractère ne composant pas un mot (équivalent à [^\\w])"
+
+::
+
+  String s = "hello";
+  System.out.println(s.matches("....."));           // true
+  System.out.println(s.matches("h[a-m]llo"));       // true
+  System.out.println(s.matches("\\w\\w\\w\\w\\w")); // true
+  System.out.println(s.matches("h\\D\\S.o"));       // true
+
+Une expression régulière peut contenir des quantificateurs qui permettent d'indiquer
+une séquence de caractères dans la chaîne.
+
+.. csv-table:: Les quantificateurs dans une expression régulière
+  :widths: 1,5
+
+  X?, X est présent zéro ou une fois
+  X*, X est présent zéro ou n fois
+  X+, X est présent au moins une fois
+  X{n}, X est présent exactement n fois
+  "X{n,}", X est présent au moins n fois
+  "X{n,m}", X est présent entre n et m fois
+
+::
+
+  String s = "hello";
+  System.out.println(s.matches(".*"));                 // true
+  System.out.println(s.matches(".+"));                 // true
+  System.out.println(s.matches("X?hel+oW?"));          // true
+  System.out.println(s.matches(".+l{2}o"));            // true
+  System.out.println(s.matches("[eh]{0,2}l{1,100}o")); // true
+
+.. note::
+
+  Il existe beaucoup d'autres motifs qui peuvent être utilisés dans une expression
+  régulière. Reportez-vous à la `documentation Java`_.
+
+Il est possible d'utiliser la méthode String.replaceFirst_ ou String.replaceAll_
+pour remplacer respectivement la première ou toutes les occurrences d'une
+séquence de caractères définie par une expression régulière.
+
+::
+
+  String s = "hello";
+  System.out.println(s.replaceAll("[aeiouy]", "^_^")); // h^_^ll^_^
+
+La méthode String.split_ permet de découper une chaîne de caractères en tableau
+de chaînes de caractère en utilisant une expression régulière pour identifier
+le séparateur.
+
+::
+
+  String s = "hello the world";
+
+  // ["hello", "the", "world"]
+  String[] tab = s.split("\\W");
+
+  // ["hello", "world"]  
+  tab = s.split(" the ");
+  
+  // ["he", "", "", "the w", "r", "d"]
+  tab = s.split("[ol]");
+
+.. note::
+
+  Les expressions régulières sont représentées en Java par la classe Pattern_.
+  Il est possible de créer des instances de cette classe en compilant une
+  expression régulière à l'aide de la méthode de classe Pattern.compile_.
 
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _String.charAt: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#charAt-int-
@@ -404,3 +502,11 @@ Les expressions régulières
 .. _Locale: https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
 .. _Formatter: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html
 .. _MessageFormat: https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html
+.. _String.matches: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#matches-java.lang.String-
+.. _String.replaceFirst: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#replaceFirst-java.lang.String-java.lang.String-
+.. _String.replaceAll: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#replaceAll-java.lang.String-java.lang.String-
+.. _String.split: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-
+.. _expression régulière: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum
+.. _documentation Java: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum
+.. _Pattern: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
+.. _Pattern.compile: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#compile-java.lang.String-
