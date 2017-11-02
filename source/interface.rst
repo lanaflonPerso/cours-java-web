@@ -581,8 +581,6 @@ Une interface plus complexe utilisée par le système de gestion de comptes :
     void deposer(int montant) throws OperationInterrompueException, 
                                      CompteBloqueException;
 
-    int getBalance() throws OperationInterrompueException;
-
     default void transferer(Compte destination) throws OperationInterrompueException, 
                                                        CompteBloqueException {
       if (destination == this) {
