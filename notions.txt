@@ -8,8 +8,6 @@ introduction du mot clé assert.
 
 Les génériques
 
-* Pourquoi les génériques : les classes de qqchose (liste de, facture de, conteneur de)
-* Le cas de la classe ArrayList
 * utiliser des génériques (la notation en diamand pour l'initialisation)
 * Les règles de typage pour l'affectation et les paramètres (ArrayList<T> -> ArrayList<V>)
 * écrire des méthodes génériques (paramètres et type de retour)
