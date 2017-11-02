@@ -82,7 +82,7 @@ organisation, on utilise le nom de domaine inversé comme base de l'arborescence
 de packages : par exemple |ROOT_PKG|. On ajoute généralement ensuite le nom de 
 l'application ou de la bibliothèque.
 
-Les noms de package contenant mot *java* sont réservés pour la bibliothèque standard.
+Les noms de packages contenant le mot *java* sont réservés pour la bibliothèque standard.
 On trouve ainsi des packages *java* ou *javax* (pour indiquer une extension de Java)
 dans la bibliothèque standard fournie avec le JDK.
 
@@ -95,7 +95,7 @@ Une classe est normalement désignée par son *nom complet*, c'est-à-dire par l
 chemin de packages suivi d'un **.** suivi du nom de la classe.
 
 Par exemple, la classe String_ s'appelle en fait java.lang.String_ car elle se
-trouve dans le package java.lang_. J'ai donc la possibilité si je le souhaite
+trouve dans le package java.lang_. J'ai donc la possibilité, si je le souhaite,
 de créer ma propre classe String par exemple dans le package |ROOT_PKG| :
 
 ::
@@ -170,7 +170,7 @@ la déclaration de **package** (si cette dernière est présente). Donc, il n'es
 possible d'importer un nom en cours de déclaration d'une classe ou d'une 
 méthode.
 
-Le mot-clé *import* permet d'importer :
+Le mot-clé **import** permet d'importer :
 
 * Un nom de classe particulier
 

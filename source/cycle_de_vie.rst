@@ -281,7 +281,7 @@ Il est tout à fait possible d'appeler une méthode de l'objet dans un construct
 est même très utile pour éviter la duplication de code et favoriser la réutilisation.
 Attention cependant au statut particulier des constructeurs. Tant qu'un constructeur
 n'a pas achevé son exécution, l'objet n'est pas totalement initialisé. Il peut
-donc y avoir des cas où l'appel à une méthode peu avoir des comportements inattendues.
+donc y avoir des cas où l'appel à une méthode peut avoir des comportements inattendus.
 
 Prenons l'exemple suivant :
 
@@ -322,7 +322,7 @@ de ces méthodes est correctement initialisé avant par le constructeur.
 Injection de dépendances par le constructeur
 ********************************************
 
-L'état interne d'un objet (ses attributs) peut nécessiter des références vers d'autres
+L'état interne d'un objet (ses attributs) inclut souvent des références vers d'autres
 objets. Parfois, ces objets peuvent eux-même avoir une représentation interne complexe
 qui nécessite des références vers d'autres objets... Par exemple, une classe
 *Voiture* peut nécessiter une instance d'une classe *Moteur* :
@@ -452,7 +452,7 @@ au constructeur. Il suffit de déclarer un bloc anonyme dans la classe.
 
 Dans l'exemple précédent, on suppose qu'il existe une classe *Configuration* et qu'il
 est possible de consulter la configuration de l'application pour connaître le nombre
-de roues par voiture. Le bloc d'initialisation accède à la configuration affecte la
+de roues par voiture. Le bloc d'initialisation accède à la configuration et affecte la
 bonne valeur à l'attribut **final** *nbRoues*.
 
 Le bloc d'initialisation est très rarement employé en Java. On peut systématiquement
@@ -589,7 +589,7 @@ Par exemple, il peut affecter la valeur **null** aux variables et aux attributs
 qui référencent cet objet.
 
 Il est également possible de forcer l'appel au ramasse-miettes gâce à la méthode
-`java.lang.System.gc()`_. Cependant, cet méthode ne donne aucune garantie quant au résultat.
+`java.lang.System.gc()`_. Cependant, cette méthode ne donne aucune garantie quant au résultat.
 Vous ne pouvez pas vous baser sur son appel pour garantir la suppression d'un objet
 non référencé. Le ramasse-miettes utilise un algorithme complexe qui rend son
 comportement difficilement prédictible.

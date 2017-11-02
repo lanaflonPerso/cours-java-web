@@ -124,8 +124,8 @@ Accès aux éléments d'un tableau
 *******************************
 
 L'accès aux éléments d'un tableau se fait en donnant l'indice d'un élément
-entre crochets. Le premier élément d'un tableau à l'indice **0**. Le dernier
-élément d'un tableau à donc comme indice la taille du tableau moins un.
+entre crochets. Le premier élément d'un tableau a l'indice **0**. Le dernier
+élément d'un tableau a donc comme indice la taille du tableau moins un.
 
 ::
 
@@ -316,7 +316,7 @@ La classe outil java.util.Arrays_ offrent un ensemble de méthodes de classe pou
 nous aider dans ces opérations.
 
 Tout d'abord, java.util.Arrays_ fournit plusieurs méthodes **sort**. Celles
-prenant un tableau de primitives en parallèle trient selon l'ordre naturel
+prenant un tableau de primitives en paramètre trient selon l'ordre naturel
 des éléments.
 
 ::
@@ -419,7 +419,7 @@ du langage. Ainsi on ne peut mettre dans un tableau que des valeurs qui peuvent
   tableau[8] = new Voiture(); // ERREUR DE COMPILATION
 
 De plus, les tableaux peuvent être affectés à des variables dont le type correspond
-à un tableau d'élement de type parent.
+à un tableau d'éléments de type parent.
 
 ::
 
@@ -475,3 +475,4 @@ et toute modification des éléments de cette liste sera répercutée sur le tab
 .. _java.lang.ArrayStoreException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayStoreException.html
 .. _java.util.Arrays.asList: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#asList-T...-
 .. _java.lang.ArrayIndexOutOfBoundsException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html
+

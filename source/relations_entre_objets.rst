@@ -3,7 +3,7 @@ Les relations entre objets
 
 Une application Java est composée d'un ensemble d'objets. Un des intérêts de la
 programmation objet réside dans les relations que ces objets entretiennent les 
-uns avec les autres. Ces relations sont construitent par les développeurs et
+uns avec les autres. Ces relations sont construites par les développeurs et
 constituent ce que l'on appelle l'architecture d'une application. Il existe
 deux relations fondamentales en programmation objet :
 
@@ -233,9 +233,9 @@ Héritage et constructeur
 ************************
 
 Dans notre exemple précédent, l'attribut *marque* pourrait tout aussi bien être
-mutualisé dans la classe *Vehicule*. Cependant, La présence des constructeurs de
-*Voiture* et *Moto* permettent une initialisation de cet attribut à partir du 
-paramètre.
+mutualisé dans la classe *Vehicule*. Cependant, il va falloir tenir compte
+des constructeurs de *Voiture* et *Moto* qui garantissent une initialisation 
+de cet attribut à partir du paramètre.
 
 En Java, nous avons vu qu'un constructeur peut appeler un autre constructeur
 déclaré dans la même classe grâce au mot-clé *this*. De la même manière, un 
@@ -362,7 +362,7 @@ en Java ne possède qu'une seule classe racine : la classe Object_.
 
 .. note ::
 
-  C'est La classe Object_ qui déclare notamment les méthodes toString_ et equals_.
+  C'est la classe Object_ qui déclare notamment les méthodes toString_ et equals_.
   Voilà pourquoi tous les objets Java peuvent avoir par défaut une représentation
   sous forme de chaîne de caractères et qu'ils peuvent être comparés aux autres.
   
@@ -412,10 +412,8 @@ qui est incrémenté à chaque fois que le constructeur de *Vehicule* est appel�
 ::
 
   Voiture voiture = new Voiture("DeLorean");
-  voiture.accelerer(88);
 
   Moto moto = new Moto("Kaneda");
-  moto.accelerer(120);
 
   System.out.println(Vehicule.getNbInstances()); // 2
   System.out.println(Voiture.getNbInstances());  // 2
@@ -465,7 +463,7 @@ Lorsqu'on crée une classe par héritage, cela signifie qu'il faut faire attenti
   conception objet.
 
 Le principe de substituabilité est une application du trans-typage (*casting*).
-Comme pour les types primitifs, il est possible d'affecter une instance d'un
+Comme pour les types primitifs, il est possible d'affecter une référence d'un
 objet à une variable, attribut ou paramètre d'un type différent. Pour que cette
 affectation soit possible il faut que les deux types fassent partie de la même 
 hiérarchie d'héritage.

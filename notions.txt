@@ -8,10 +8,26 @@ introduction du mot clé assert.
 
 Les génériques
 
+* Pourquoi les génériques : les classes de qqchose (liste de, facture de, conteneur de)
+* Le cas de la classe ArrayList
+* utiliser des génériques (la notation en diamand pour l'initialisation)
+* Les règles de typage pour l'affectation et les paramètres (ArrayList<T> -> ArrayList<V>)
+* écrire des méthodes génériques (paramètres et type de retour)
+* écrire des classes génériques
+* Bounded type <T extends XXX> <T super XXX>
+* ? le caractère générique
+* Limitation : instanceof, pas d'instanciation générique
+
+
 ===================
 
 Les collections
 (introduction à equals et hash)
+
+* ArrayList, LinkedList, List et Collection (le cas Vector)
+* HashMap, TreeMap, Map (parcourir des maps)
+* HashSet, Set
+* java.util.Collections
 
 ===================
 
