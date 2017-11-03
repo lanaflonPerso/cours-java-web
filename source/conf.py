@@ -22,6 +22,13 @@
 # sys.path.insert(0, os.path.abspath
 
 
+import os
+profile = {}
+if 'BUILD_PROFILE' in os.environ:
+  import importlib
+  profile = importlib.import_module('conf-%s' % os.environ['BUILD_PROFILE'])
+
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -50,7 +57,7 @@ master_doc = 'index'
 # General information about the project.
 project = 'Le langage Java'
 author = 'David Gayerie'
-email = 'david.gayerie.epsi@mailoo.org'
+email = getattr(profile, 'email', 'dagaydevel@free.fr')
 
 copyright = """
 <a ref="author" href="mailto:%s">%s</a>
@@ -189,10 +196,11 @@ texinfo_documents = [
 # default language for highlighting
 highlight_language = 'java'
 # replacement for ROOT_PKG in java source
-highlight_root_package = 'fr.epsi.b3'
+highlight_root_package = getattr(profile, 'highlight_root_package', 'io.github.spoonless')
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+
 
 def register_pygments_filter(highlight_language, root_package_name):
     from pygments.filter import simplefilter
