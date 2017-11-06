@@ -319,6 +319,8 @@ Plus généralement, si vous souhaitez appeler des méthodes de l'objet dans un 
 il faut prendre soin de s'assurer que l'état de l'objet nécessaire à l'exécution
 de ces méthodes est correctement initialisé avant par le constructeur.
 
+.. _injection_des_dependances:
+
 Injection de dépendances par le constructeur
 ********************************************
 

@@ -129,9 +129,10 @@ espace privé. Mais il y a également d'autres conséquences :
   d'exécution associé à une instance de la classe englobante. Donc, on ne peut
   créer une instance d'une classe interne que dans un constructeur ou dans
   une méthode de la classe englobante ou dans une de ses classes internes.
-* une instance d'une classe interne a accès directement au attribut de l'instance
+* une instance d'une classe interne a accès directement aux attributs de l'instance
   dans le contexte de laquelle elle a été créée.
-  
+
+
 
 .. todo::
 

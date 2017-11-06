@@ -164,24 +164,284 @@ détecter le problème :
   
   listeString.add(new Voiture()); // Il vaut mieux ne pas pouvoir faire cela !
 
+Pour les types génériques, il est nécessaire d'introduire la notion de type borné
+(*bounded type*) pour pouvoir efficacement la substitution. Avant cela, il est
+important de comprendre qu'il existe deux cas fondamentaux. Prenons une exemple
+de classes qui héritent les unes des autres : *Vehicule*, *Voiture*, *VoitureDeCourse*.
+
+::
+
+  package ROOT_PKG;
+  
+  public class Vehicule {
+    // ...
+  }
+
+::
+
+  package ROOT_PKG;
+  
+  public class Voiture extends Vehicule {
+    // ...
+  }
+
+::
+
+  package ROOT_PKG;
+  
+  public class VoitureDeCourse extends Voiture {
+    // ...
+  }
+
+Si nous créons une instance de ArrayList_ pour le type *Voiture* :
+
+::
+
+  ArrayList<Voiture> listeVoitures = new ArrayList<>();
+  
+Si on souhaite ajouter des objets dans cette liste, le principe de substitution
+nous assure que nous pouvons ajouter sans risque une instance de la classe *Voiture* ou
+une instance de la classe *VoitureDeCourse* (puisqu'une *VoitureDeCourse* est
+une *Voiture*).
+
+::
+
+  listeVoitures.add(new Voiture());
+  listeVoitures.add(new VoitureDeCourse());
+
+Si on souhaite accéder à une élément de cette liste, le principe de substitution
+nous dit que nous pouvons affecter sans risque un élément de cette liste à une
+variable de type *Voiture* ou de type *Vehicule* (puisqu'une *Voiture* est un
+*Vehicule*).
+
+::
+
+  Voiture voiture = listeVoitures.get(0);
+  Vehicule vehicule = listeVoitures.get(0);
+  
+Il y a donc une différence si nous souhaitons ajouter un élément à cette liste 
+ou si nous souhaitons consulter un élément de cette liste. L'ajout s'apparente
+à utiliser le type paramétré comme paramètre d'entrée et la consultation 
+s'apparente à utiliser le type paramétré comme paramètre de sortie.
+
+Une liste de *Voiture* peut donc aussi être considérée comme :
+
+* une liste de quelque chose qui est au moins de type *Voiture* dans
+  le cas où on ne souhaite qu'ajouter de nouveaux éléments à la liste.
+* une liste de quelque chose qui au mieux de type *Voiture* dans le cas où l'on 
+  souhaite uniquement consulter les éléments de la liste.
+
+Il est possible d'exprimer cela en Java. Pour le premier cas, *Voiture* 
+correspond à la borne inférieure (*lower bounded type*) et nous pouvons écrire
+l'expression suivante :
+
+::
+
+  ArrayList<? extends Voiture> listePourConsultation = listeVoitures;
+  Voiture voiture = listePourConsultation.get(0);
+
+L'expression **<? extends Voiture>** désigne une **capture** et permet au compilateur
+de déterminer l'ensemble des classes acceptables.
+
+Pour le second cas, *Voiture* correspond à la borne supérieure (*upper bounded 
+type*) et nous pouvons écrire l'expression suivante :
+
+::
+
+  ArrayList<? super Voiture> listePourAjout = listeVoitures;
+  listePourAjout.add(new Voiture());
+  listePourAjout.add(new VoitureDeCourse());
+
+Il est également possible d'utiliser uniquement le caractère de subsitution **?**
+dans la déclaration de la capture :
+
+::
+
+  ArrayList<?> listePourAjout = listeVoitures;
+
+Dans ce cas, on ne fournit aucune information au compilateur sur le type paramétré
+de l'instance de la classe.
+
+.. note::
+
+  Pour une classe supportant plusieurs types génériques, on peut au besoin déclarer
+  une capture pour chaque type :
+  
+  ::
+  
+    HashMap<?, ? extends Personne> tableauAssociatif = new HashMap<String, Personne>();
+  
+
+La déclaration de capture est surtout utile pour la création de méthodes et classes
+supportant les types génériques.
+
+Écrire une méthode générique
+****************************
+
+L'utilisation des captures devient utile lorsque l'on veut écrire une méthode
+qui supporte les types génériques. Reprenons notre exemple ci-dessus des classes
+*Vehicule*, *Voiture* et *VoitureDeCourse*. La classe *Vehicule* définit la propriété
+*vitesse* accessible en lecture :
+
+::
+
+  package ROOT_PKG;
+
+  public class Vehicule {
+    
+    private int vitesse;
+    
+    public int getVitesse() {
+      return vitesse;
+    }
+
+  }
+
+Nous voulons ajouter la méthode de classe *getPlusRapide* qui retourne le véhicule
+le plus rapide parmi une liste de vehicules :
+
+::
+
+  package ROOT_PKG;
+
+  import java.util.List;
+
+  public class Vehicule {
+    
+    private int vitesse;
+    
+    public int getVitesse() {
+      return vitesse;
+    }
+    
+    public static Vehicule getPlusRapide(List<Vehicule> vehicules) {
+      Vehicule plusRapide = null;
+      int vitesse = 0;
+      for (Vehicule vehicule : vehicules) {
+        if(vehicule.getVitesse() >= vitesse) {
+          plusRapide = vehicule;
+        }
+      }
+      return plusRapide;
+    }
+  }
+
+.. note::
+
+  List_ est une interface supportée notamment par la classe ArrayList_.
+
+Si nous nous contentons de cette implémentation, nous allons certainement
+rencontrer quelques problèmes lors de l'utilisation de la méthode
+*Vehicule.getPlusRapide* :
+
+.. code-block:: java
+  :emphasize-lines: 5
+  
+  List<Voiture> listeVoitures = new ArrayList<>();
+  listeVoitures.add(new Voiture());
+  listeVoitures.add(new VoitureDeCourse());
+
+  Vehicule plusRapide = Vehicule.getPlusRapide(listeVoitures); // ERREUR DE COMPILATION
+  
+Le code ci-dessus ne compile pas. En effet, on tente de passer à la méthode
+*Vehicule.getPlusRapide* une liste de *Voiture* alors que la méthode est écrite
+pour une liste de *Vehicule*. Nous pourrions utiliser la redéfinition en fournissant
+une implémentation pour chaque type de liste, mais la bonne solution est de déclarer
+*Vehicule.getPlusRapide* comme une méthode générique :
+
+::
+
+  package ROOT_PKG;
+
+  import java.util.ArrayList;
+  import java.util.List;
+
+  public class Vehicule {
+    
+    private int vitesse;
+    
+    public int getVitesse() {
+      return vitesse;
+    }
+    
+    public static <T extends Vehicule> T getPlusRapide(List<T> vehicules) {
+      T plusRapide = null;
+      int vitesse = 0;
+      for (T vehicule : vehicules) {
+        if(vehicule.getVitesse() >= vitesse) {
+          plusRapide = vehicule;
+        }
+      }
+      return plusRapide;
+    }
+  }
+
+Pour déclarer une méthode générique, il faut décrire le type ou les types
+génériques supportés entre **<** **>**. Pour l'exemple ci-dessus, on utilise
+la capture **<T extends Vehicule>**. T est le nom du type générique que l'on
+peut utiliser dans la signature et le code de la méthode. Dans notre exemple T
+représente donc le type *Vehicule* ou un type qui hérite de *Vehicule*. On peut
+donc parcourir les éléments de type **T** de la liste et lire leur propriété *vitesse*
+et retourner l'instance pour laquelle la vitesse est la plus élevée.
+
+Maintenant nous pouvons utiliser cette méthode en passant une liste de *Vehicule*,
+de *Voiture* ou de *VoitureDeCourse*
+
+::
+
+  List<Voiture> listeVoitures = new ArrayList<>();
+  listeVoitures.add(new Voiture());
+  listeVoitures.add(new VoitureDeCourse());
+
+  Voiture plusRapide = Vehicule.getPlusRapide(listeVoitures); // ERREUR DE COMPILATION
+
+Notez que la méthode *Voiture.getPlusRapide* retourne le type générique **T**. Donc
+le compilateur infère que si on appelle cette méthode avec une liste de *Voiture*
+en paramètre alors cette méthode retourne une instance assignable à une variable 
+de type *Voiture*.
+
+.. note::
+
+  Par convention un type paramétré s'écrit avec une seule lettre en majuscule :
+  
+  * T pour identifier un type générique en général
+  * E pour identifier un type générique qui représente un élément
+  * K pour identifier un type générique qui est utilisé comme clé (*key*)
+  * V pour identifier un type générique qui est utilisé comme une valeur
+  * U, V, W pour identifier une suite de types génériques si la méthode supporte
+    plusieurs types génériques.
+
+
+Écrire une classe générique
+***************************
+
+Limitations
+***********
+
+La déclaration d'un type paramétré ne fait pas partie du nom du nom d'une classe.
+Donc il n'est pas possible de spécifier un type paramétré avec le mot-clé
+**instanceof** :
+
+.. code-block:: java
+  :emphasize-lines: 1
+  
+  if (listeVoiture instanceof List<Voiture>) { // ERREUR DE COMPILATION
+    // ...
+  }
 
 
 .. todo::
 
-  * Pourquoi les génériques : les classes de qqchose (liste de, facture de, conteneur de)
-  * Le cas de la classe ArrayList
-  * utiliser des génériques (la notation en diamant pour l'initialisation)
-  * Les règles de typage pour l'affectation et les paramètres (ArrayList<T> -> ArrayList<V>)
   * écrire des méthodes génériques (paramètres et type de retour)
   * écrire des classes génériques
-  * Bounded type <T extends XXX> <T super XXX>
-  * ? le caractère générique
-  * Limitation : instanceof, pas d'instanciation générique
+  * inférence du type uniquement sur le type de retour d'une méthode.
+  * Limitation : instanceof, type erasure, pas d'instanciation générique
   * le cas du @SuppressWarnings
   
 .. _java.util.ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html 
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _ArrayList.add: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#add-E-
+.. _List: https://docs.oracle.com/javase/8/docs/api/java/util/List.html
 .. _ArrayList.get: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#get-int-
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html

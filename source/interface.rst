@@ -608,9 +608,93 @@ Une interface plus complexe utilisée par le système de gestion de comptes :
 
   * exemple de l'interface Comparable pour le tri et la recherche dans les tableaux
 
-.. todo ::
+L'inversion de dépendance
+*************************
 
-  * inversion de dépendance
+Lorsque nous avons vu les constructeurs, nous avons vu que nous pouvions réaliser
+de :ref:`l'injection de dépendance <injection_des_dependances>` en passant comme 
+paramètres de constructeurs les objets nécessaires au fonctionnement d'une classe 
+plutôt que de laisser la nouvelle instance créer ces objets elle-même. Grâce à la notion
+d'interface, nous pouvons réaliser une injection de dépendance en découplant
+totalement l'utilisation de l'objet passé par injection de son implémentation.
+
+Si nous souhaitons créer une classe pour reprénsenter une transaction bancaire,
+nous pouvons réaliser l'implémentation suivante :
+
+::
+
+  package ROOT_PKG.compte;
+
+  import java.time.Instant;
+
+  public class TransactionBancaire {
+
+    private final Compte compte;
+    private final int montant;
+    private Instant date;
+
+    public TransactionBancaire(Compte compte, int montant) {
+      this.compte = compte;
+      this.montant = montant;
+    }
+
+    public void effectuer() throws OperationInterrompueException, CompteBloqueException {
+      if (isEffectuee()) {
+        return;
+      }
+      compte.retirer(montant);
+      date = Instant.now();
+    }
+    
+    public void annuler() throws OperationInterrompueException, CompteBloqueException {
+      if (! isEffectuee()) {
+        return;
+      }
+      compte.deposer(montant);
+      date = null;
+    }
+
+    public boolean isEffectuee() {
+      return date != null;
+    }
+    
+    public Instant getDate() {
+      return date;
+    }
+  }
+
+L'implémentation précédente permet d'effectuer une transaction pour un compte donné
+et un montant donné et mémorise la date. Elle permet également d'annuler la transaction.
+Dans cette implémentation, nous avons réalisé une inversion de contrôle.
+La transaction ne connaît pas la nature exacte de l'objet *Compte* qu'elle manipule.
+La classe *TransactionBancaire* fonctionnera quelle que soit l'implémentation
+sous-jacente de l'interface *Compte*.
+
+L'inversion de dépendance est un principe de programmation objet qui stipule que
+si une classe A est dépendante d'une classe B, alors il peut être souhaitable que
+que non seulement la classe A reçoive une instance de B par injection mais également
+que B ne soit connu qu'à travers une interface.
+
+L'inversion de dépendance est très souvent utilisée pour isoler les couches logicielles
+d'une architecture. Au sein d'une application, nous pouvons disposer par exemple d'un ensemble
+de classes pour gérer des opérations utilisateur et d'un ensemble de classes pour
+assurer la persistance des informations.
+
+.. todo::
+
+  schéma de classes en exemple
+  
+L'architecture logicielle peut utiliser l'inversion de dépendance pour assurer que
+les opérations utilisateur qui ont besoin de réaliser des opérations persistantes
+réalisent des appels à travers des interfaces qui sont injectées. D'un côté, on peut
+imaginer implémenter différentes classes gérant la persistance pour sauver les informations
+dans des fichiers, dans des bases de données ou sur des serveurs distants (et même
+nulle part si on souhaite exécuter le code dans un environnement de test). D'un autre
+côté on peut créer et faire évoluer un système de persistance en ayant une dépendance
+minimale aux opérations utilisateurs puisque le système de persistance doit juste
+fournir des implémentations conformes aux interfaces.
+
+
   
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _clone: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--

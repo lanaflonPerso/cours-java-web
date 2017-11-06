@@ -8,15 +8,6 @@ introduction du mot clé assert.
 
 Les génériques
 
-* utiliser des génériques (la notation en diamand pour l'initialisation)
-* Les règles de typage pour l'affectation et les paramètres (ArrayList<T> -> ArrayList<V>)
-* écrire des méthodes génériques (paramètres et type de retour)
-* écrire des classes génériques
-* Bounded type <T extends XXX> <T super XXX>
-* ? le caractère générique
-* Limitation : instanceof, pas d'instanciation générique
-
-
 ===================
 
 Les collections
@@ -29,7 +20,7 @@ Les collections
 
 ===================
 
-classe abstraite (DONE)
+classe abstraite
 
 ===================
 
