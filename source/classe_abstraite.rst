@@ -169,6 +169,58 @@ précédent, elle peut servir à gagner en abstraction dans notre modèle. Mais
 elle peut aussi permettre à une classe fille d'adapter le comportement
 d'un algorithme ou d'un composant logiciel.
 
-.. todo ::
+::
 
-  un exemple de composant logiciel avec une méthode abstraite.
+  package ROOT_PKG.tableur;
+
+  public abstract class Tableur {
+    
+    public void mettreAJour() {
+      tracerLignesEtColonnes();
+      int premiereLigne = getPremiereLigneAffichee();
+      int premiereColonne = getPremierColonneAffichee();
+      int derniereLigne = getDerniereLigneAffichee();
+      int derniereColonne = getDerniereColonneAffichee();
+      
+      for (int ligne = premiereLigne; ligne <= derniereLigne; ++ligne) {
+        for (int colonne = premiereColonne; colonne <= derniereColonne; ++colonne) {
+          String contenu = getContenu(ligne, colonne);
+          afficherContenu(ligne, colonne, contenu);
+        }
+      }
+    }
+
+    protected abstract String getContenu(int ligne, int colonne);
+
+    private void afficherContenu(int ligne, int colonne, String contenu) {
+      // ...
+    }
+    
+    private int getDerniereColonneAffichee() {
+      // ...
+    }
+
+    private int getDerniereLigneAffichee() {
+      // ...
+    }
+
+    private int getPremierColonneAffichee() {
+      // ...
+    }
+
+    private int getPremiereLigneAffichee() {
+      // ...
+    }
+
+    private void tracerLignesEtColonnes() {
+      // ...
+    }
+
+  }
+
+Dans l'exemple ci-dessus, on imagine une classe *Tableur* qui permet d'afficher
+un tableau à l'écran en fonction des lignes et des colonnes visibles. Il s'agit
+d'une classe abstraite et les classes qui spécialisent cette classe doivent
+fournir une implémentation de la méthode abstraite *getContenu* afin de fournir
+le contenu de chaque cellule affichée par le tableur.
+

@@ -20,15 +20,11 @@ Les collections
 
 ===================
 
-classe abstraite
+classe abstraite (DONE)
 
 ===================
 
-interface /!\
-
-inversion de dépendance
-
-ex : Comparable pour le tri et la recherche de tableau
+interface (DONE)
 
 ===================
 
@@ -60,15 +56,9 @@ Les entrées/sorties
 
 ===================
 
-La réflexivité
-
-===================
-
 Les annotations
 
-===================
-
-La sérialisation
+et introduction à la réflexivité
 
 ===================
 
@@ -80,14 +70,6 @@ swing
 
 ===================
 
-les tests
-
-===================
-
-programmation native
-
-===================
-
 javadoc
 
 ===================
@@ -96,6 +78,19 @@ javadoc
 
 
 
+===================
+
+La réflexivité
+
+===================
+
+les tests
+
+===================
+
+La sérialisation
+
+===================
 
 javabeans
 
@@ -106,3 +101,10 @@ class loader
 ===================
 
 Les fichier Properties
+
+===================
+
+programmation native
+
+===================
+
