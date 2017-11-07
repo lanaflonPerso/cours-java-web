@@ -694,7 +694,7 @@ NullPointerException_
   référence **null**.
 
 ClassCastException_
-  signale qu'un trans-typage invalide a été réalisé.
+  signale qu'un transtypage invalide a été réalisé.
 
 Généralement, les exceptions qui héritent de RuntimeException_ ne sont pas 
 interceptées ni traitées par l'application. Au mieux, elles sont interceptées

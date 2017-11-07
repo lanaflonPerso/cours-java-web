@@ -424,15 +424,15 @@ Puisque la machine stocke les nombres en base 2, un décalage vers la gauche éq
   i = i >> 2 // i vaut 4
 
 
-Le trans-typage (cast)
+Le transtypage (cast)
 **********************
 
 Il est parfois nécessaire de signifier que l'on désire passer d'un type vers un autre
 au moment de l'affectation. Java étant un langage fortement typé, il autorise par défaut
-uniquement les opérations de trans-typage qui sont sûres. Par exemple : passer d'un entier
+uniquement les opérations de transtypage qui sont sûres. Par exemple : passer d'un entier
 à un entier long puisqu'il n'y aura de perte de données.
 
-Si on le désire, il est possible de forcer un trans-typage en indiquant explicitement
+Si on le désire, il est possible de forcer un transtypage en indiquant explicitement
 le type attendu entre parenthèses :
 
 ::
@@ -446,14 +446,14 @@ que les classes aient un lien d'héritage entre elles.
 
 .. caution::
 
-  Si Java impose de spécifier explicitement le trans-typage dans certaines situations alors
+  Si Java impose de spécifier explicitement le transtypage dans certaines situations alors
   c'est qu'il s'agit de situations qui peuvent être problématiques (perte de données possible
   ou mauvais type d'objet). Il ne faut pas interpréter cela comme une limite du langage : il s'agit
   peut-être du symptôme d'une erreur de programmation ou d'une mauvaise conception.
 
 .. note::
 
-  Le trans-typage peut se faire également par un appel à la méthode Class.cast_.
+  Le transtypage peut se faire également par un appel à la méthode Class.cast_.
   Il s'agit d'une utilisation avancée du langage puisqu'elle fait intervenir la notion
   de réflexivité.
 

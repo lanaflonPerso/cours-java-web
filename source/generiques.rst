@@ -45,7 +45,7 @@ Pour des instances de la classe ArrayList_, on peut ajouter des éléments avec 
 ArrayList.add_ et accéder à un élément selon son index avec la méthode ArrayList.get_.
 Dans l'exemple précédent, on voit que cela n'est pas sans risque. En effet, un objet de
 type ArrayList_ peut contenir tout type d'objet. Donc quand le programme accède à un élément
-d'une instance de ArrayList_, il doit réaliser explicitement un trans-typage (*cast*) avec le risque
+d'une instance de ArrayList_, il doit réaliser explicitement un transtypage (*cast*) avec le risque
 que cela suppose de se tromper de type. Ce type de classe exige donc beaucoup de rigueur
 d'utilisation pour les développeurs.
 
@@ -71,12 +71,12 @@ chaînes de caractères :
 On ajoute entre les signes **<** et **>** le paramètre de type géré par la liste. 
 À partir de cette information, le compilateur va pouvoir nous aider à résoudre 
 les ambiguïtés. Il peut maintenant déterminer si un élément peut être ajouté ou 
-assigné à une variable sans nécessiter un trans-typage explicite du développeur.
+assigné à une variable sans nécessiter un transtypage explicite du développeur.
 
 ::
 
   list.add("bonjour");
-  String s = list.get(0); // l'opération de trans-typage n'est plus nécessaire
+  String s = list.get(0); // l'opération de transtypage n'est plus nécessaire
 
 Par contre :
 

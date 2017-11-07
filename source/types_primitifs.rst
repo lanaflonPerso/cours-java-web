@@ -129,7 +129,7 @@ alors le code caractère :
 
 Affecter une variable de type entier à un variable de type **char** conduit à une erreur
 de compilation. En effet, le type **char** est un nombre signé sur 2 octets. Pour passer
-la compilation, il faut trans-typer (**cast**) la variable :
+la compilation, il faut transtyper (**cast**) la variable :
 
 ::
 
@@ -164,7 +164,7 @@ La règle de conversion implicite est simple : on peut affecter une variable d'u
   l = s;
   l = i;
 
-Dans tous les autres cas, il faut réaliser un trans-typage avec un risque de perte
+Dans tous les autres cas, il faut réaliser un transtypage avec un risque de perte
 de valeur :
 
 ::
@@ -247,7 +247,7 @@ Par défaut, un attribut de type **float** ou **double** vaut 0.
 **double** est dit en double précision et est codé sur 8 octets (64 bits).
 
 Il est possible d'ajouter une valeur entière à un type à virgule flottante mais l'inverse
-nécessite une trans-typage (**cast**) avec une perte éventuelle de valeur.
+nécessite une transtypage (**cast**) avec une perte éventuelle de valeur.
 
 ::
 

@@ -462,7 +462,7 @@ Lorsqu'on crée une classe par héritage, cela signifie qu'il faut faire attenti
   entre un type et son sous-type et les contraintes qui en découlent pour la
   conception objet.
 
-Le principe de substituabilité est une application du trans-typage (*casting*).
+Le principe de substituabilité est une application du transtypage (*casting*).
 Comme pour les types primitifs, il est possible d'affecter une référence d'un
 objet à une variable, attribut ou paramètre d'un type différent. Pour que cette
 affectation soit possible il faut que les deux types fassent partie de la même 
@@ -471,8 +471,8 @@ hiérarchie d'héritage.
 .. image:: images/heritage/heritage_downcasting_casting.png
 
 Si le type d'arrivée correspond à un type parent, on parle *d'upcasting*
-(trans-typage vers le haut). Si le type d'arrivée correspond à un type enfant, 
-on parle de *downcasting* (trans-typage vers le bas).
+(transtypage vers le haut). Si le type d'arrivée correspond à un type enfant, 
+on parle de *downcasting* (transtypage vers le bas).
 
 À partir du moment où l'implémentation des classes respectent le 
 `principe de substitution de Liskov`_, l'upcasting est une opération sûre en
@@ -505,7 +505,7 @@ Prenons l'exemple trivial suivant :
 La variable *vehicule* référence un objet de type Voiture, il n'est donc pas possible
 d'affecter cet objet à une variable de type *Moto*. Pour cette raison, le
 langage Java, n'autorise pas par défaut le downcasting : l'exemple ci-dessus
-ne compilera pas. Il est cependant possible de forcer le trans-typage en
+ne compilera pas. Il est cependant possible de forcer le transtypage en
 utilisant la même syntaxe que pour les types primitifs.
 
 .. code-block:: java
@@ -518,8 +518,8 @@ utilisant la même syntaxe que pour les types primitifs.
 Le code précédent compile puisque le développeur déclare explicitement le downcasting.
 Cependant, l'affectation à la ligne 3 est erronée puisque la variable *vehicule*
 référence une instance de *Voiture* que l'on veut affecter à une variable de type
-*Moto*. Pour les types primitifs, un trans-typage invalide conduit à une possible
-perte de données. Par contre, pour des objets, un trans-typage invalide génère à
+*Moto*. Pour les types primitifs, un transtypage invalide conduit à une possible
+perte de données. Par contre, pour des objets, un transtypage invalide génère à
 l'exécution une erreur de type java.lang.ClassCastException_.
 
 Le mot-clé instanceof
