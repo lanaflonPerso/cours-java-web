@@ -604,16 +604,12 @@ Une interface plus complexe utilisée par le système de gestion de comptes :
   }
 
 
-.. todo ::
-
-  * exemple de l'interface Comparable pour le tri et la recherche dans les tableaux
-
 L'inversion de dépendance
 *************************
 
 Lorsque nous avons vu les constructeurs, nous avons vu que nous pouvions réaliser
 de :ref:`l'injection de dépendance <injection_des_dependances>` en passant comme 
-paramètres de constructeurs les objets nécessaires au fonctionnement d'une classe 
+paramètres de constructeur les objets nécessaires au fonctionnement d'une classe 
 plutôt que de laisser la nouvelle instance créer ces objets elle-même. Grâce à la notion
 d'interface, nous pouvons réaliser une injection de dépendance en découplant
 totalement l'utilisation de l'objet passé par injection de son implémentation.
@@ -673,16 +669,14 @@ sous-jacente de l'interface *Compte*.
 L'inversion de dépendance est un principe de programmation objet qui stipule que
 si une classe A est dépendante d'une classe B, alors il peut être souhaitable que
 que non seulement la classe A reçoive une instance de B par injection mais également
-que B ne soit connu qu'à travers une interface.
+que B ne soit connue qu'à travers une interface.
 
 L'inversion de dépendance est très souvent utilisée pour isoler les couches logicielles
 d'une architecture. Au sein d'une application, nous pouvons disposer par exemple d'un ensemble
 de classes pour gérer des opérations utilisateur et d'un ensemble de classes pour
 assurer la persistance des informations.
 
-.. todo::
-
-  schéma de classes en exemple
+.. image:: images/interface/inversion_de_dependance.png
   
 L'architecture logicielle peut utiliser l'inversion de dépendance pour assurer que
 les opérations utilisateur qui ont besoin de réaliser des opérations persistantes
