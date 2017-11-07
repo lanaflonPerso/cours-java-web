@@ -6,7 +6,7 @@ introduction du mot clé assert.
 
 ===================
 
-Les génériques
+Les génériques (DONE)
 
 ===================
 

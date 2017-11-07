@@ -35,8 +35,8 @@ et le parcours complet des éléments.
       list.add(new Object());
       
       String s1 = (String) list.get(0);
-      String s2 = (String) list.get(1); // ERREUR à l'execution : ClassCastException
-      String s3 = (String) list.get(2); // ERREUR à l'execution : ClassCastException
+      String s2 = (String) list.get(1); // ERREUR à l'exécution : ClassCastException
+      String s3 = (String) list.get(2); // ERREUR à l'exécution : ClassCastException
     }
 
   }
