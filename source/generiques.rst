@@ -12,7 +12,7 @@ L'exemple de la classe ArrayList
 ********************************
 
 En Java, l'API standard fournit un ensemble de classes que l'on appelle couramment
-les *collections*. Ces classes permettent de gérer un ensemble d'objets. Elles apportent
+les :doc:`collections </les_collections>`. Ces classes permettent de gérer un ensemble d'objets. Elles apportent
 des fonctionnalités plus avancées que les tableaux. Par exemple la classe java.util.ArrayList_
 permet de gérer une liste d'objets. Cette classe autorise l'ajout en fin de liste,
 l'insertion, la suppression et bien évidemment l'accès à un élément selon son index
@@ -24,11 +24,12 @@ et le parcours complet des éléments.
   package ROOT_PKG;
 
   import java.util.ArrayList;
+  import java.util.List;
 
   public class TestArrayList {
     
     public static void main(String[] args) {
-      ArrayList list = new ArrayList();
+      List list = new ArrayList();
       
       list.add("bonjour le monde");
       list.add(1); // boxing ! list.add(Integer.valueOf(1));
@@ -60,13 +61,19 @@ d'écrire des programmes plus robustes.
 Création et assignation d'une classe générique
 **********************************************
 
-La classe ArrayList_ est justement une classe générique supportant un type paramétré. 
+La classe ArrayList_ et l'interface List_ sont justement une classe générique
+et une interface générique supportant un type paramétré. 
+
+.. note::
+
+  List_ est une interface implémentée notamment par la classe ArrayList_.
+
 Il est possible, par exemple, de déclarer qu'une instance est une liste de 
 chaînes de caractères :
 
 ::
 
-  ArrayList<String> list = new ArrayList<String>();
+  List<String> list = new ArrayList<String>();
 
 On ajoute entre les signes **<** et **>** le paramètre de type géré par la liste. 
 À partir de cette information, le compilateur va pouvoir nous aider à résoudre 
@@ -108,8 +115,12 @@ une instance de la classe *Personne*, on peut écrire :
 
 ::
 
-  HashMap<String, Personne> tableauAssociatif = new HashMap<String, Personne>();
+  Map<String, Personne> tableauAssociatif = new HashMap<String, Personne>();
   
+.. note::
+
+  Map_ est une interface implémentée notamment par la classe HashMap_.
+
 Notation en diamant
 *******************
 
@@ -119,8 +130,8 @@ Lors de l'initialisation, il n'est pas nécessaire de préciser le type des para
 
 ::
 
-  HashMap<String, Personne> tableauAssociatif = new HashMap<>();
-  ArrayList<Integer> listeDeNombres = new ArrayList<>();
+  Map<String, Personne> tableauAssociatif = new HashMap<>();
+  List<Integer> listeDeNombres = new ArrayList<>();
 
 Il s'agit d'un raccourci d'écriture qui évite de se répéter. On appelle la notation
 **<>**, la notation en diamant.
@@ -144,7 +155,7 @@ plus complexe. Par exemple :
 .. code-block:: java
   :emphasize-lines: 1
   
-  ArrayList<Object> listeString = new ArrayList<String>(); // ERREUR DE COMPILATION
+  List<Object> listeString = new ArrayList<String>(); // ERREUR DE COMPILATION
 
 Il n'est pas possible d'affecter une ArrayList_ de String_ à une variable de type
 ArrayList_ de Object_. En effet, si cela était autorisé, il serait alors possible
@@ -231,7 +242,7 @@ l'expression suivante :
 
 ::
 
-  ArrayList<? extends Voiture> listePourConsultation = listeVoitures;
+  List<? extends Voiture> listePourConsultation = listeVoitures;
   Voiture voiture = listePourConsultation.get(0);
 
 L'expression **<? extends Voiture>** désigne une **capture** et permet au compilateur
@@ -242,7 +253,7 @@ type*) et nous pouvons écrire l'expression suivante :
 
 ::
 
-  ArrayList<? super Voiture> listePourAjout = listeVoitures;
+  List<? super Voiture> listePourAjout = listeVoitures;
   listePourAjout.add(new Voiture());
   listePourAjout.add(new VoitureDeCourse());
 
@@ -251,7 +262,7 @@ dans la déclaration de la capture :
 
 ::
 
-  ArrayList<?> listePourAjout = listeVoitures;
+  List<?> listePourAjout = listeVoitures;
 
 Dans ce cas, on ne fournit aucune information au compilateur sur le type paramétré
 de l'instance de la classe.
@@ -263,7 +274,7 @@ de l'instance de la classe.
   
   ::
   
-    HashMap<?, ? extends Personne> tableauAssociatif = new HashMap<String, Personne>();
+    Map<?, ? extends Personne> tableauAssociatif = new HashMap<String, Personne>();
   
 
 La déclaration de capture est surtout utile pour la création de méthodes et classes
@@ -319,10 +330,6 @@ le plus rapide parmi une liste de véhicules :
       return plusRapide;
     }
   }
-
-.. note::
-
-  List_ est une interface supportée notamment par la classe ArrayList_.
 
 Si nous nous contentons de cette implémentation, nous allons certainement
 rencontrer quelques problèmes lors de l'utilisation de la méthode
@@ -614,6 +621,7 @@ le type paramétré d'un paramètre :
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _ArrayList.add: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#add-E-
 .. _List: https://docs.oracle.com/javase/8/docs/api/java/util/List.html
+.. _Map: https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
 .. _ArrayList.get: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#get-int-
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html

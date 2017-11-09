@@ -26,10 +26,11 @@ Le langage Java
    la_classe_object
    la_classe_string
    les_exceptions
-   generiques
    classe_abstraite
-   enumeration
    interface
+   generiques
+   les_collections
+   enumeration
    classe_interne
 
 

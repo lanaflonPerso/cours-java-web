@@ -810,7 +810,7 @@ Les assertions
 Java dispose du mot-clé **assert** qui permet d'ajouter des assertions dans le code
 source.
 
-Une assertion est condition qui doit être vraie. Sinon une AssertionError_ est jetée.
+Une assertion est une condition qui doit être vraie. Sinon une AssertionError_ est jetée.
 La syntaxe est la suivante :
 
 ::
@@ -825,7 +825,6 @@ une information de contexte d'erreur.
 Les assertions servent à vérifier les préconditions, les postconditions ou les
 invariants d'une classe.
 
-  
 .. todo::
 
   * exemple d'assertion

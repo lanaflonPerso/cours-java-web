@@ -503,25 +503,31 @@ le `principe de ségrégation d'interface`_ a deux conséquences :
 
 Le premier point implique qu'il est préférable de manipuler les objets à travers
 leurs interfaces plutôt que d'utiliser le type réel de l'objet. Un exemple
-classique en Java concerne l'API des collections. Un programme qui crée une
-ArrayList_ pour stocker un ensemble d'éléments n'utilisera jamais une variable
-de type ArrayList_ mais plutôt une variable ayant le type d'une interface 
-implémentée par cette classe.
+classique en Java concerne l'API des :doc:`collections </les_collections>`. 
+Il s'agit de classes permettant de gérer un ensemble d'objets. Elles apportent
+des fonctionnalités plus avancées que les tableaux. Par exemple la classe java.util.ArrayList_
+permet de gérer une liste d'objets. Cette classe autorise l'ajout en fin de liste,
+l'insertion, la suppression et bien évidemment l'accès à un élément selon son index
+et le parcours complet des éléments.
+
+Un programme qui crée une ArrayList_ pour stocker un ensemble d'éléments 
+n'utilisera jamais une variable de type ArrayList_ mais plutôt une variable 
+ayant le type d'une interface implémentée par cette classe.
 
 ::
 
   // Utilisation de l'interface List
-  List<Object> maListe = new ArrayList<>();
+  List maListe = new ArrayList();
   
 ::
 
   // Utilisation de l'interface Collection
-  Collection<Object> maListe = new ArrayList<>();
+  Collection maListe = new ArrayList();
   
 ::
 
   // Utilisation de l'interface Iterable
-  Iterable<Object> maListe = new ArrayList<>();
+  Iterable maListe = new ArrayList();
 
 
 Plus une partie d'une application a recours à des interfaces pour interagir
@@ -695,6 +701,7 @@ fournir des implémentations conformes aux interfaces.
 .. _CloneNotSupportedException: https://docs.oracle.com/javase/8/docs/api/java/lang/CloneNotSupportedException.html
 .. _Cloneable: https://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html
 .. _principe de ségrégation d'interface: https://en.wikipedia.org/wiki/Interface_segregation_principle
+.. _java.util.ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_%28informatique%29
 .. _responsabilité unique: https://fr.wikipedia.org/wiki/Principe_de_responsabilit%C3%A9_unique
