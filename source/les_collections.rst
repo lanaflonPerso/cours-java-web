@@ -152,12 +152,10 @@ vous devriez y accéder à partir de l'interface Queue_ si vous n'effectuez que
 des opérations d'ajout, de suppression ou de consultation des éléments.
 
 Iterable_
-
   Cette interface permet d'obtenir un Iterator_ pour parcourir la liste. Elle
   permet également de parcourir la liste avec un **for** amélioré (*foreach*).
   
 Collection_
-
   Il s'agit de l'interface racine pour les collections. Elle déclare beaucoup de méthodes
   pour consulter ou modifier une collection. C'est également cette interface
   qui déclare la méthode size_ pour connaître la taille de la collection et les
@@ -166,20 +164,17 @@ Collection_
   (c'est-à-dire à partir de son index).
 
 List_
-
   Cette interface représente une collection ordonnée (une séquence) d'éléments.
   Elle déclare des méthodes pour accéder, pour modifier ou pour supprimer des
   éléments à partir de leur index (on parle aussi d'accès aléatoire). Cette
   interface déclare également la méthode sort_ pour permettre de trier la liste.
 
 Queue_
-
   Une file (*queue*) est une structure de données pour laquelle l'ordre des éléments
   est important mais les opérations de consultation, d'ajout et de suppression se 
   font uniquement sur la tête de la file (le premier élément).
   
 Deque_
-
   Deque_ est la contraction de *double ended queue*. Cette interface représente une structure
   de données pour laquelle l'ordre des éléments est important mais les opération
   des consultation, d'ajout et de suppression se font soit sur le premier élément
@@ -297,30 +292,25 @@ type de l'interface adaptée. Par exemple, si vous utilisez une instance de Hash
 vous devriez y accéder à partir de l'interface Set_.
 
 Iterable_
-
   Cette interface permet d'obtenir un Iterator_ pour parcourir la liste. Elle
   permet également de parcourir l'ensemble avec un **for** amélioré (*foreach*).
   
 Collection_
-
   Il s'agit de l'interface racine pour les collections. Elle déclare beaucoup de méthodes
   pour consulter ou modifier une collection. C'est également cette interface
   qui déclare la méthode size_ pour connaître la taille de la collection et les
   méthodes toArray_ pour obtenir un tableau à partir d'une collection.
 
 Set_
-
   Il s'agit de l'interface qui définit la collection comme un ensemble, c'est-à-dire
   comme une liste d'éléments sans doublon.
   
 SortedSet_
-
   Cette interface indique que l'ensemble maintient en interne un ordre naturel
   de ses éléments. Elle offre notamment des méthodes pour accéder au premier et
   au dernier élément de l'ensemble.
   
 NavigableSet_
-
   Cette interface déclare des méthodes de navigation permettant par exemple
   de créer un sous ensemble à partir des éléments qui sont plus grands qu'un
   élément donné.
@@ -468,7 +458,6 @@ le type de l'interface adaptée. Par exemple, si vous utilisez une instance de H
 vous devriez y accéder à partir de l'interface Map_.
 
 Map_
-
   Il s'agit de l'interface qui définit un tableau associatif. Elle déclare
   les méthodes d'ajout de clé et de valeur, de consultation et de suppression
   à partir de la clé. Il est également possible d'obtenir l'ensemble des clés
@@ -476,13 +465,11 @@ Map_
   de connaître la taille du tableau associatif.
   
 SortedMap_
-
   Cette interface indique que le tableau associatif maintient en interne un ordre naturel
   de ses clés. Elle offre notamment des méthodes pour accéder à la première et
   à la dernière clé de l'ensemble.
   
 NavigableMap_
-
   Cette interface déclare des méthodes de navigation permettant par exemple
   de créer un sous ensemble à partir des clés qui sont plus grandes qu'une
   clé donnée.

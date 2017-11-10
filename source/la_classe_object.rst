@@ -183,9 +183,9 @@ l'API standard ou par des bibliothèques tierces.
 La méthode hashCode
 *******************
 
-La méthode hashCode_ est fournit pour l'utilisation de certains algorithme,
+La méthode hashCode_ est fournit pour l'utilisation de certains algorithmes,
 notamment pour l'utilisation de table de hachage. Le principe d'un algorithme
-de hachage est d'associer un nombre à un objet. Cet identifiant doit être
+de hachage est d'associer un identifiant à un objet. Cet identifiant doit être
 le même pour la durée de vie de l'objet. De plus deux objets égaux doivent
 avoir le même code de hachage.
 
@@ -195,7 +195,7 @@ equals_ pour en déduire le code de hachage.
 
 Cette méthode ne doit être surchargée que si cela est réellement utile.
 Par exemple si une instance de cette classe doit servir de clé pour une
-HashMap_.
+instance de HashMap_.
 
 ::
 
