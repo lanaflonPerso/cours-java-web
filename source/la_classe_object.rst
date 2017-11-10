@@ -279,10 +279,10 @@ La méthode finalize
 *******************
 
 La méthode finalize_ est appelée par le ramasse-miettes avant que l'objet ne soit
-supprimé est la mémoire récupérée. Surcharger cette méthode, donne donc l'opportunité
+supprimé et la mémoire récupérée. Surcharger cette méthode, donne donc l'opportunité
 au développeur de déclencher un traitement avant que l'objet ne disparaisse.
 Cependant, nous avons déjà vu dans le chapitre sur le :ref:`cycle de vie <cycle_de_vie_finalize>`
-que le fonctionnement du ramasse-miettes rendait cette méthode relativement
+que le fonctionnement du ramasse-miettes rend cette méthode relativement
 difficile à utiliser.
 
 La méthode clone
@@ -326,7 +326,7 @@ La méthode getClass
 La méthode getClass_ permet d'accéder à l'objet représentant la classe de l'instance.
 Cela signifie qu'un programme Java peut accéder par programmation à la définition
 de la classe d'une instance. Cette méthode est notamment très utilisée dans des
-usages avancées impliquant la *réflexivité*.
+usages avancés impliquant la *réflexivité*.
 
 L'exemple ci-dessous, affiche le nom complet (c'est-à-dire en incluant son package)
 de l'objet créé :

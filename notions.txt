@@ -11,12 +11,8 @@ Les génériques (DONE)
 ===================
 
 Les collections
-(introduction à equals et hash)
 
-* ArrayList, LinkedList, List et Collection (le cas Vector)
-* HashMap, TreeMap, Map (parcourir des maps)
-* HashSet, Set
-* java.util.Collections
+exemple pour java.util.Collections
 
 ===================
 
@@ -75,7 +71,9 @@ javadoc
 ===================
 
 
+Pour la MAIF
 
+JDBC
 
 
 ===================

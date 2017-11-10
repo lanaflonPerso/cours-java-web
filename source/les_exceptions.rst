@@ -785,16 +785,16 @@ au cours des versions de Java.
 
 On considère généralement qu'il est préférable de créer une *unchecked exception*
 lorsque l'exception représente une erreur technique, un événement qui ne relève
-pas du domaine de l'application mais qui est plutôt liée à son contexte
-d'exécution. Généralement il s'agit d'exceptions dont l'application ne pourra
-faire grand chose à part signaler un problème aux utilisateurs ou aux administrateurs.
+pas du domaine de l'application mais qui est plutôt lié à son contexte
+d'exécution. Généralement il s'agit d'exceptions que l'application ne pourra pas
+traiter correctement à part signaler un problème aux utilisateurs ou aux administrateurs.
 Par exemple, si votre application se connecte à un service distant, vous
-pouvez avoir le besoin de créer une exception *RemoteServiceUnavailableException*
+pouvez avoir besoin de créer une exception *RemoteServiceUnavailableException*
 pour signaler que le service ne répond pas. Ce type d'exception est probablement
 une *unchecked exception* et devrait hériter de RuntimeException_.
 
-Par contre les exceptions qui peuvent avoir une valeur pour le domaine
-applicatif devrait sans doute être des *checked exception*. Généralement, elles
+Par contre, les exceptions qui peuvent avoir une valeur pour le domaine
+applicatif devraient être des *checked exception*. Généralement, elles
 traduisent des états particuliers identifiés par les analystes du domaine.
 
 Par exemple, si vous développez une application bancaire pour réaliser des

@@ -252,7 +252,7 @@ surchargée à condition qu'il s'agisse d'une classe qui hérite du type de reto
 surchargé.
 
 
-.. note::
+.. todo::
 
   Exemple de surchage avec changement de type de retour
 

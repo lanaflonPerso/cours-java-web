@@ -225,7 +225,7 @@ Pour cela, il suffit de déclarer tous ses constructeurs avec une portée **priv
 Comme montré dans l'exemple ci-dessus, un cas d'usage courant est la création
 d'une classe outil. Une classe outil ne contient que des méthodes de classe.
 Il n'y a donc aucun intérêt à instancier une telle classe. Donc, on déclare un
-constructeur privée pour éviter une utilisation incorrecte.
+constructeur privé pour éviter une utilisation incorrecte.
 
 .. note::
 
