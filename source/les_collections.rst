@@ -47,9 +47,39 @@ aux éléments de la liste. Par contre, les opérations d'ajout et de suppressio
 d'un élement se font en temps linéaire. Elle est donc moins performante que la
 classe LinkedList_ sur ce point.
 
-.. todo::
+::
 
-  code
+  List<String> liste = new ArrayList<String>();
+  
+  liste.add("une première chaîne");
+  liste.add("une troisième chaîne");
+  
+  System.out.println(liste.size()); // 2
+  
+  // insertion d'un élément
+  liste.add(1, "une seconde chaîne");
+
+  System.out.println(liste.size()); // 3
+  
+  for (String s : liste) {
+    System.out.println(s);
+  }
+  
+  String premierElement = liste.get(0);
+  
+  System.out.println(liste.contains("une première chaîne")); // true
+  System.out.println(liste.contains("quelque chose qui n'est pas dans la liste")); // false
+  
+  // suppression du dernier élément de la liste
+  liste.remove(liste.size() - 1);
+  
+  // ajout de tous les éléments d'une autre liste à la fin de la liste
+  liste.addAll(Arrays.asList("une autre chaîne", "et encore une autre chaîne"));
+
+  System.out.println(liste.size()); // 4
+  
+  // [une première chaîne, une seconde chaîne, une autre chaîne, et encore une autre chaîne]
+  System.out.println(liste);
 
 Il est possible de réserver de l'espace mémoire pour une liste pouvant contenir
 n éléments. Pour cela, on peut passer la taille voulue à la création d'une
@@ -57,9 +87,16 @@ instance de ArrayList_ ou en appelant la méthode ArrayList.ensureCapacity_.
 La liste ne change pas de taille pour autant, un espace mémoire est simplement
 alloué en prévision.
 
-.. todo::
+::
 
-  code
+  // capacité de 10
+  ArrayList<String> liste = new ArrayList<String>(10);
+
+  // capacité d'au moins 100
+  liste.ensureCapacity(100);
+
+  System.out.println(liste.size()); // 0
+
   
 La classe LinkedList
 ====================
@@ -71,17 +108,76 @@ de suppression d'éléments. Par contre, l'accès aléatoire en lecture aux él�
 se fait en temps linéaire. Elle est donc moins performante que la classe
 ArrayList_ sur ce point.
 
-.. todo::
+::
 
-  code
+  List<String> liste = new LinkedList<String>();
+
+  
+  liste.add("une première chaîne");
+  liste.add("une troisième chaîne");
+  
+  System.out.println(liste.size()); // 2
+  
+  // insertion d'un élément
+  liste.add(1, "une seconde chaîne");
+
+  System.out.println(liste.size()); // 3
+  
+  for (String s : liste) {
+    System.out.println(s);
+  }
+  
+  String premierElement = liste.get(0);
+  
+  System.out.println(liste.contains("une première chaîne")); // true
+  System.out.println(liste.contains("quelque chose qui n'est pas dans la liste")); // false
+  
+  // suppression du dernier élément de la liste
+  liste.remove(liste.size() - 1);
+  
+  // ajout de tous les éléments d'une autre liste à la fin de la liste
+  liste.addAll(Arrays.asList("une autre chaîne", "et encore une autre chaîne"));
+
+  System.out.println(liste.size()); // 4
+  System.out.println(liste);
   
 La classe LinkedList_ implémente également les interfaces Queue_ et Deque_ (*double
 ended queue*), elle peut donc représenter des structures
 de type LIFO (*Last In First Out*) ou FIFO (*First In First Out*).
 
-.. todo::
+::
 
-  code
+  Queue<String> queue = new LinkedList<String>();
+  
+  // insère un élément dans la file
+  queue.offer("un élément");
+  
+  // lit l'élément en tête de la file sans l'enlever de la file
+  System.out.println(queue.peek()); // "un élément"
+  // lit l'élément en tête de la file et l'enleve de la file
+  System.out.println(queue.poll()); // "un élément"
+  
+  System.out.println(queue.isEmpty()); // true
+
+::
+
+  Deque<String> deque = new LinkedList<String>();
+
+  // empile deux éléments
+  deque.push("élément 1");
+  deque.push("élément 2");
+
+  // lit le premier élément de la file sans l'enlever
+  System.out.println(deque.peekFirst()); // élément 2
+  // lit le dernier élément de la file sans l'enlever
+  System.out.println(deque.peekLast()); // élément 1
+  // lit l'élément de tête de la file sans l'enlever
+  System.out.println(deque.peek()); // élément 2
+  // lit l'élément de tête de la file et l'enlève
+  System.out.println(deque.pop()); // élément 2
+  System.out.println(deque.pop()); // élément 1
+  
+  System.out.println(deque.isEmpty()); // true
 
 La classe ArrayDeque
 ====================
@@ -94,16 +190,51 @@ représenter une file ou une pile de type LIFO (*Last In First Out*) ou FIFO
 (*First In First Out*), alors il est préférable de créer une instance de la classe
 ArrayDeque_.
 
-.. todo::
+::
 
-  code
+  Queue<String> queue = new ArrayDeque<String>();
   
+  // insère un élément dans la file
+  queue.offer("un élément");
+  
+  // lit l'élément en tête de la file sans l'enlever de la file
+  System.out.println(queue.peek()); // "un élément"
+  // lit l'élément en tête de la file et l'enleve de la file
+  System.out.println(queue.poll()); // "un élément"
+  
+  System.out.println(queue.isEmpty()); // true
+
+  
+::
+
+  Deque<String> deque = new ArrayDeque<String>();
+
+  // empile deux éléments
+  deque.push("élément 1");
+  deque.push("élément 2");
+
+  // lit le premier élément de la file sans l'enlever
+  System.out.println(deque.peekFirst()); // élément 2
+  // lit le dernier élément de la file sans l'enlever
+  System.out.println(deque.peekLast()); // élément 1
+  // lit l'élément de tête de la file sans l'enlever
+  System.out.println(deque.peek()); // élément 2
+  // lit l'élément de tête de la file et l'enlève
+  System.out.println(deque.pop()); // élément 2
+  System.out.println(deque.pop()); // élément 1
+  
+  System.out.println(deque.isEmpty()); // true
+
 Comme pour la classe ArrayList_, il est possible de réserver un espace mémoire
 pour n éléments au moment de la création d'une instance de ArrayDeque.
 
-.. todo::
+::
 
-  code
+  // Assurer une capacité minimale de 100 éléments
+  ArrayDeque<String> arrayDeque = new ArrayDeque<>(100);
+  
+  System.out.println(arrayDeque.size()); // 0
+
 
 La classe PriorityQueue
 =======================
@@ -111,11 +242,31 @@ La classe PriorityQueue
 La classe java.util.PriorityQueue_ permet d'ajouter des éléments dans une file
 selon un ordre naturel : soit parce que les éléments de la file implémentent l'interface
 Comparable_, soit parce qu'une instance de Comparator_ a été fournie à la création
-de l'instance de PriorityQueue_.
+de l'instance de PriorityQueue_. Quel que soit l'ordre d'insertion, les éléments
+seront extraits de la file selon l'ordre naturel.
 
-.. todo::
+::
 
-  code
+  Queue<String> queue = new PriorityQueue<>();
+  
+  queue.add("i");
+  queue.add("e");
+  queue.add("u");
+  queue.add("o");
+  queue.add("a");
+  queue.add("y");
+  
+  System.out.println(queue.poll()); // a
+  System.out.println(queue.poll()); // e
+  System.out.println(queue.poll()); // i
+  System.out.println(queue.poll()); // o
+  System.out.println(queue.poll()); // u
+  System.out.println(queue.poll()); // y
+  
+.. caution::
+
+  La classe PriorityQueue ne garantit pas que l'ordre naturel sera respecté
+  si on parcourt la file à l'aide d'un **for**.
 
 Les classes Vector et Stack
 ===========================
@@ -181,7 +332,6 @@ Deque_
   soit sur le dernier élément.
   
 RandomAccess_
-
   Il s'agit d'une :ref:`interface marqueur <interface_marqeur>` qui signale que
   l'implémentation associée supporte les accès aléatoire en un temps constant. Par
   exemple, ArrayList_ implémente RandomAccess_ mais pas LinkedList_. Cette interface
@@ -217,9 +367,20 @@ parce que les éléments implémentent l'interface Comparable_ soit parce qu'une
 implémentation de Comparator_ est passée en paramètre de constructeur au moment
 de la création de l'instance de TreeSet_.
 
-.. todo::
+::
 
-  code
+  Set<String> ensemble = new TreeSet<String>();
+  
+  ensemble.add("élément");
+  ensemble.add("élément");
+  ensemble.add("élément");
+  ensemble.add("élément");
+  
+  System.out.println(ensemble.size()); // 1
+
+  ensemble.remove("élément");
+ 
+  System.out.println(ensemble.isEmpty()); // true
   
 La classe TreeSet_ a donc comme particularité de toujours conserver ses éléments
 triés.
@@ -249,9 +410,21 @@ ou non au nouvel élément.
   par défaut. Beaucoup de classes surchargent donc cette méthode (c'est notamment le
   cas de la classe String_).
 
-.. todo::
+::
 
-  code
+  Set<String> ensemble = new HashSet<String>();
+  
+  ensemble.add("élément");
+  ensemble.add("élément");
+  ensemble.add("élément");
+  ensemble.add("élément");
+  
+  System.out.println(ensemble.size()); // 1
+
+  ensemble.remove("élément");
+ 
+  System.out.println(ensemble.isEmpty()); // true
+
 
 L'implémentation de la classe HashSet_ a des performances en temps très supérieures 
 à TreeSet_ pour les opérations d'ajout et de suppression d'élément.
@@ -268,9 +441,25 @@ de hachage mais elle garantit en plus que l'ordre de parcours des éléments ser
 même que l'ordre d'insertion. Cette implémentation garantit également que si 
 elle est créée à partir d'un autre Set_, l'ordre des éléments sera maintenu.
 
-.. todo::
+::
 
-  code
+  Set<String> ensemble = new LinkedHashSet<String>();
+  
+  ensemble.add("premier élément");
+  ensemble.add("premier élément");
+  ensemble.add("premier élément");
+  ensemble.add("premier élément");
+
+  ensemble.add("deuxième élément");
+  
+  ensemble.add("premier élément");
+  
+  ensemble.add("troisième élément");
+  
+  ensemble.add("premier élément");
+  
+  // [premier élément, deuxième élément, troisième élément]
+  System.out.println(ensemble);
 
 La classe LinkedHashSet_ a été créée pour réaliser un compromis entre la classe
 HashSet_ et la classe TreeSet_ afin d'avoir des performances proches de la première
@@ -332,9 +521,28 @@ dans un tableau :
   type que celui passé en paramètre est créé et les références des éléments
   de la collection y sont copiées.
   
-.. todo::
+::
 
-  code
+  Collection<String> collection = new ArrayList<>();
+  collection.add("un");
+  collection.add("deux");
+  collection.add("trois");
+  
+  Object[] tableauObjet = collection.toArray();
+  
+  String[] tableauString = collection.toArray(new String[0]);
+  
+  String[] autreTableauString = new String[collection.size()];
+  String[] memeTableauString = collection.toArray(autreTableauString);
+  
+  // Tous les tableaux contiennent les mêmes éléments
+  System.out.println(Arrays.equals(tableauObjet, tableauString)); // true
+  System.out.println(Arrays.equals(tableauObjet, autreTableauString)); // true
+  System.out.println(Arrays.equals(tableauObjet, memeTableauString)); // true
+  
+  // Les variables référencent le même tableau
+  System.out.println(autreTableauString == memeTableauString); // true
+
 
 Les tableaux associatifs (maps)
 *******************************
@@ -368,9 +576,28 @@ parce que les éléments implémentent l'interface Comparable_ soit parce qu'une
 implémentation de Comparator_ est passée en paramètre de constructeur au moment
 de la création de l'instance de TreeMap_.
 
-.. todo::
+::
 
-  code
+  Map<String, Integer> tableauAssociatif = new TreeMap<>();
+  tableauAssociatif.put("un", 1);
+  tableauAssociatif.put("deux", 2);
+  tableauAssociatif.put("trois", 3);
+  
+  System.out.println(tableauAssociatif.get("deux")); // 2
+  
+  int resultat = 0;
+  for (String s : "un deux trois".split(" ")) {
+    resultat += tableauAssociatif.get(s);
+  }
+  
+  System.out.println(resultat); // 6
+  
+  tableauAssociatif.remove("trois");
+  tableauAssociatif.put("deux", 1000);
+  
+  System.out.println(tableauAssociatif.keySet()); // [deux, un]
+  System.out.println(tableauAssociatif.values()); // [1000, 1]
+
   
 La classe TreeMap_ a donc comme particularité de conserver toujours ses clés
 triées.
@@ -400,9 +627,28 @@ sa valeur.
   par défaut. Beaucoup de classes surchargent donc cette méthode (c'est notamment le
   cas de la classe String_).
 
-.. todo::
+::
 
-  code
+  Map<String, Integer> tableauAssociatif = new HashMap<>();
+  tableauAssociatif.put("un", 1);
+  tableauAssociatif.put("deux", 2);
+  tableauAssociatif.put("trois", 3);
+  
+  System.out.println(tableauAssociatif.get("deux")); // 2
+  
+  int resultat = 0;
+  for (String s : "un deux trois".split(" ")) {
+    resultat += tableauAssociatif.get(s);
+  }
+  
+  System.out.println(resultat); // 6
+  
+  tableauAssociatif.remove("trois");
+  tableauAssociatif.put("deux", 1000);
+  
+  System.out.println(tableauAssociatif.keySet()); // [deux, un]
+  System.out.println(tableauAssociatif.values()); // [1, 1000]
+
 
 L'implémentation de la classe HashSet_ a des performances en temps supérieures 
 à TreeSet_ pour les opérations d'ajout et d'accès.
@@ -419,9 +665,17 @@ de hachage mais elle garantit en plus que l'ordre de parcours des clés sera le
 même que l'ordre d'insertion. Cette implémentation garantit également que si 
 elle est créée à partir d'une autre Map_, l'ordre des clés sera maintenu.
 
-.. todo::
+::
 
-  code
+  Map<String, Integer> tableauAssociatif = new LinkedHashMap<>();
+  tableauAssociatif.put("rouge", 0xff0000);
+  tableauAssociatif.put("vert", 0x00ff00);
+  tableauAssociatif.put("bleu", 0x0000ff);
+  
+  // affichera : rouge puis vert puis bleu
+  for (String k: tableauAssociatif.keySet()) {
+    System.out.println(k);
+  }
 
 La classe LinkedHashMap_ a été créée pour réaliser un compromis entre la classe
 HashMap_ et la classe TreeMap_ afin d'avoir des performances proches de la première
