@@ -170,10 +170,47 @@ et des applications qui ont été développées avant puis portées vers Java 8.
 
 Afin d'éviter aux développeurs de créer systématiquement leurs interfaces, le
 package java.util.function_ déclare les interfaces fonctionnelles les plus utiles.
+Par exemple, l'interface java.util.function.IntUnaryOperator_ permet d'utiliser
+une interface fonctionnelle qui accepte un entier en paramètre et qui retourne
+un autre entier. Nous pouvons nous en servir pour définir un régulateur de vitesse
+dans une classe *Voiture*.
 
-.. todo::
+::
 
-  exemple d'interface de java.util.functional
+  package ROOT_PKG;
+
+  import java.util.function.IntUnaryOperator;
+
+  public class Voiture {
+    
+    private int vitesse;
+    private IntUnaryOperator regulateurDeVitesse = v -> v;
+    
+    public void accelerer(int deltaVitesse) {
+      this.vitesse = regulateurDeVitesse.applyAsInt(this.vitesse + deltaVitesse);
+    }
+    
+    public void setRegulateurDeVitesse(IntUnaryOperator regulateur) {
+      this.regulateurDeVitesse = regulateur;
+    }
+    
+    public int getVitesse() {
+      return vitesse;
+    }
+
+  }
+
+
+::
+
+  Voiture v = new Voiture();
+  v.setRegulateurDeVitesse(vitesse -> vitesse > 110 ? 110 : vitesse);
+  
+  v.accelerer(90);
+  System.out.println(v.getVitesse()); // 90
+
+  v.accelerer(90);
+  System.out.println(v.getVitesse()); // 110
 
 
 L'opérateur :: de référence de méthode
@@ -218,7 +255,7 @@ référence de la méthode println_ :
   de l'instance de l'objet contenu dans l'attribut *out*.
   
 Il est également possible de référencer les constucteurs d'une classe. Cela aboutira
-à la création de nouvel objet à chaque appel. Par exemple, nous pouvons utiliser
+à la création d'un nouvel objet à chaque appel. Par exemple, nous pouvons utiliser
 l'interface fonctionnelle
 Supplier_. Cette interface fonctionnelle peut être implémentée en utilisant un
 constructeur sans paramètre. Ainsi, si nous définissons une classe
@@ -228,7 +265,7 @@ constructeur sans paramètre. Ainsi, si nous définissons une classe
 
   package ROOT_PKG;
 
-  public class Voiture extends Vehicule {
+  public class Voiture {
 
       public Voiture() {
         // ...
@@ -254,6 +291,7 @@ Les constructeurs peuvent être référencés grâce à la syntaxe
   
 
 .. _lambda-calcul: https://fr.wikipedia.org/wiki/Lambda-calcul
+.. _@FunctionalInterface: https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html
 .. _closures: https://fr.wikipedia.org/wiki/Fermeture_(informatique)
 .. _java.util.function: https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
 .. _Iterable: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
@@ -262,4 +300,6 @@ Les constructeurs peuvent être référencés grâce à la syntaxe
 .. _sort: https://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-
 .. _Consumer: https://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html
 .. _Supplier: https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html
+.. _IntUnaryOperator: https://docs.oracle.com/javase/8/docs/api/java/util/function/IntUnaryOperator.html
+.. _java.util.function.IntUnaryOperator: https://docs.oracle.com/javase/8/docs/api/java/util/function/IntUnaryOperator.html
 .. _println: https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#println-java.lang.Object-
