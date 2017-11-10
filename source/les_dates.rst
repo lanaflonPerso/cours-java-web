@@ -171,7 +171,7 @@ On peut facilement passer d'un type à une autre. Par exemple la méthode
 LocalDate.atTime_ permet d'ajouter une heure à une date, créant ainsi une instance
 de LocalDateTime_. Toutes les instances de ces classes sont immutables.
 
-Si on veut avoir l'information de la date ou de l'heure d'ajourd'hui, on peut 
+Si on veut avoir l'information de la date ou de l'heure d'aujourd'hui, on peut 
 créer une instance grâce à la méthode *now*.
 
 ::

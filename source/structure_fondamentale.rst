@@ -143,7 +143,7 @@ Les conventions de nommage
 Chaque langage de programmation et chaque communauté de développeurs définissent
 des conventions sur la façon de nommer les identifiants dans un programme. Comme
 pour le formatage de code, cela n'a pas d'impact sur le compilateur mais permet
-de garantir un bonne lisibilité et donc une bonne compréhension de son code
+de garantir une bonne lisibilité et donc une bonne compréhension de son code
 par ses pairs. Les développeurs Java sont particulièrement attachés au respect
 des conventions de nommage.
 
@@ -156,7 +156,7 @@ des conventions de nommage.
      - Exemple
 
    * - Packages
-     - Un nom de package s'écrit toujours en minuscule. L'utilisation d'un _ est toléré
+     - Un nom de package s'écrit toujours en minuscule. L'utilisation d'un _ est tolérée
        pour représenter une séparation.
      - java.utils
        com.company.extra_utils
