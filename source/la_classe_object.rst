@@ -57,9 +57,9 @@ entre elles. L'implémentation par défaut est donc simplement :
   
   
 Parfois, l'implémentation par défaut peut suffire. C'est notamment le cas
-lorsque l'unicité en mémoire suffit à identifier un objet.
-Si nous ajoutons la notion de plaque d'immatriculation à notre classe
-*Vehicule*.
+lorsque l'unicité en mémoire suffit à identifier un objet. Cepedant,
+si nous ajoutons la notion de plaque d'immatriculation à notre classe
+*Vehicule* :
 
 ::
 
@@ -123,7 +123,7 @@ L'implémentation de equals_ doit être conforme à certaines règles pour s'ass
 qu'elle fonctionnera correctement, notamment lorsqu'elle est utilisée par
 l'API standard ou par des bibliothèques tierces.
 
-* Son implémentation doit être reflexive :
+* Son implémentation doit être réflexive :
     Pour x non nul, x.equals(x) doit être vrai
 * Son implémentation doit être symétrique :
     Si x.equals(y) est vrai alors y.equals(x) doit être vrai
@@ -152,8 +152,8 @@ l'API standard ou par des bibliothèques tierces.
       // ...
     }
   
-  Le code ci-dessus ne teste pas la possibilité pour la variable *x* de n'avoir
-  aucune référence, entraînant ainsi une erreur de type NullPointerException_.
+  Le code ci-dessus ne teste pas la possibilité pour la variable *x* de valoir
+  **null**, entraînant ainsi une erreur de type NullPointerException_.
   Il ne faut donc pas oublier de tester la valeur **null** :
   
   ::
@@ -183,7 +183,7 @@ l'API standard ou par des bibliothèques tierces.
 La méthode hashCode
 *******************
 
-La méthode hashCode_ est fournit pour l'utilisation de certains algorithmes,
+La méthode hashCode_ est fournie pour l'utilisation de certains algorithmes,
 notamment pour l'utilisation de table de hachage. Le principe d'un algorithme
 de hachage est d'associer un identifiant à un objet. Cet identifiant doit être
 le même pour la durée de vie de l'objet. De plus deux objets égaux doivent
@@ -282,8 +282,8 @@ La méthode finalize_ est appelée par le ramasse-miettes avant que l'objet ne s
 supprimé et la mémoire récupérée. Surcharger cette méthode, donne donc l'opportunité
 au développeur de déclencher un traitement avant que l'objet ne disparaisse.
 Cependant, nous avons déjà vu dans le chapitre sur le :ref:`cycle de vie <cycle_de_vie_finalize>`
-que le fonctionnement du ramasse-miettes rend cette méthode relativement
-difficile à utiliser.
+que le fonctionnement du ramasse-miettes ne donne aucune garantie sur le fait
+que cette méthode sera appelée.
 
 La méthode clone
 ****************
@@ -295,17 +295,18 @@ classes ne désirent pas permettre de cloner une instance.
 Pour qu'un objet soit clonable, sa classe doit implémenter l'interface marqueur
 Cloneable_. L'implémentation par défaut de la méthode dans Object_ consiste à jeter
 une exception CloneNotSupportedException_ si l'interface Cloneable_ n'est pas
-implémentée ou sinon, la méthode crée une nouvelle instance de la classe et affecte
+implémentée. Si l'interface est implémentée alors la méthode crée une nouvelle 
+instance de la classe et affecte
 la même valeur que l'instance d'origine aux attributs de la nouvelle instance.
-L'implémentation par défaut de clone_ n'utilise pas les constructeurs pour créer
+L'implémentation par défaut de clone_ n'appelle pas les constructeurs pour créer
 la nouvelle instance.
 
 .. caution ::
 
   L'implémentation par défaut de la méthode clone_ ne réalise pas un clonage
   en profondeur. Cela signifie que si les attributs de la classe d'origine
-  pointent sur des références d'objet, les attributs du clone pointeront sur
-  les mêmes références. Si ce comportement n'est pas celui désiré, alors il 
+  référencent des objets, les attributs du clone référenceront les mêmes objets. 
+  Si ce comportement n'est pas celui désiré, alors il 
   faut fournit une nouvelle implémentation de la méthode clone_ dans la classe.
 
 .. note ::
