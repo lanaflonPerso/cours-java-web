@@ -36,9 +36,7 @@ Les dates / time (DONE)
 
 ===================
 
-Les lambdas
-
-ex : Comparator pour le tri et la recherche de tableau
+Les lambdas (DONE)
 
 ===================
 
@@ -52,9 +50,7 @@ Les entrées/sorties
 
 ===================
 
-Les annotations
-
-et introduction à la réflexivité
+Les annotations (DONE)
 
 ===================
 

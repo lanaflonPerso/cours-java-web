@@ -560,6 +560,7 @@ Il n'est pas possible de créer des tableaux en spécifiant des types paramétr�
 
   List<String>[] tableau = new List<String>[10]; // ERREUR DE COMPILATION
 
+
 Il n'est pas possible d'utiliser un type paramétré dans une expression **catch** :
 
 .. code-block:: java

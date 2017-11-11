@@ -115,6 +115,7 @@ capturé par la closure.
   int i = 0;
   liste.forEach(e -> i += e); // ERREUR DE COMPILATION : la variable i ne peut pas être modifiée
 
+.. _functionalInterface:
 
 Les interfaces fonctionnelles
 *****************************

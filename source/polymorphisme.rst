@@ -254,7 +254,7 @@ surchargé.
 
 .. todo::
 
-  Exemple de surchage avec changement de type de retour
+  Exemple de surcharge avec changement de type de retour
 
 
 Le mot-clé super
