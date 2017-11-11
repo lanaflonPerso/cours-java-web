@@ -19,7 +19,7 @@ l'insertion, la suppression et bien évidemment l'accès à un élément selon s
 et le parcours complet des éléments.
 
 .. code-block:: java
-  :emphasize-lines: 15,16
+  :emphasize-lines: 16,17
    
   package ROOT_PKG;
 

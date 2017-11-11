@@ -31,8 +31,9 @@ Le langage Java
    generiques
    les_collections
    enumeration
-   classe_interne
    les_dates
+   entrees_sorties
+   classe_interne
    les_lambdas
    les_annotations
 

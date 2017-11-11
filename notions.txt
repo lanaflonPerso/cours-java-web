@@ -28,11 +28,15 @@ enumération (DONE)
 
 ===================
 
-les classes internes & classes anonymes /!\
+Les dates / time (DONE)
 
 ===================
 
-Les dates / time (DONE)
+Les entrées/sorties
+
+===================
+
+les classes internes & classes anonymes /!\
 
 ===================
 
@@ -43,10 +47,6 @@ Les lambdas (DONE)
 stream et filter/map/reduce
 
 ex: tableaux et collections
-
-===================
-
-Les entrées/sorties
 
 ===================
 
