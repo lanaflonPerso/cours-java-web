@@ -10,8 +10,8 @@ deux relations fondamentales en programmation objet :
 **est un** (*is-a*)
   Cette relation permet de créer une chaîne de relation d'identité entre des
   classes. Elle indique qu'une classe peut être assimilée à une autre classe 
-  représentant une notion plus abstraite ou plus générale. 
-  On parle plus couramment **d'héritage** pour désigner ce type de relation.
+  qui correspond à une notion plus abstraite ou plus générale. 
+  On parle **d'héritage** pour désigner le mécanisme qui permet d'implémenter ce type de relation.
   
 **a un** (*has-a*)
   Cette relation permet de créer une relation de dépendance d'une classe envers
@@ -87,7 +87,9 @@ véhicule et une moto **est un** véhicule.
 .. image:: images/heritage/heritage_vehicule.png
 
 En Java, l'héritage est indiqué par le mot clé **extends** après le nom de la
-classe. On dit donc qu'une classe en *étend* une autre.
+classe. On dit donc qu'une classe en *étend* une autre. La classe qui est étendue
+est appelée *classe mère* ou *classe parente* et la classe qui étend est appelée 
+*classe fille* ou *classe enfant*.
 
 ::
 
@@ -342,7 +344,7 @@ Le compilateur génèrera le bytecode correspondant au code suivant :
 Si vous omettez d'appeler un constructeur, alors le compilateur part du principe
 qu'il en existe un de disponible dans la classe parente et que ce constructeur 
 ne prend pas de paramètre. Ainsi, Java garantit qu'un constructeur de la classe
-parente est toujours appelé avant l'excution du constructeur courant. Cela signifie
+parente est toujours appelé avant l'exécution du constructeur courant. Cela signifie
 que, lors de la création d'un objet, on commence toujours par initialiser la
 classe la plus haute dans la hiérarchie d'héritage.
 
@@ -356,8 +358,8 @@ Héritage simple : Object
 
 Java ne supporte pas l'héritage multiple. Soit le développeur déclare avec
 le mot-clé **extends** une seule classe parente, soit le compilateur part
-du principe que la classe hérite de la classe Object_. Il n'est donc pas possible
-en Java de disposer d'une classe qui n'hériterait de rien. L'arbre d'héritage
+du principe que la classe hérite de la classe Object_. Toutes les classes
+en Java ont une classe parente (hormis la classe Object_). L'arbre d'héritage
 en Java ne possède qu'une seule classe racine : la classe Object_.
 
 .. note ::
@@ -371,7 +373,7 @@ Héritage des méthodes et attributs de classe
 ********************************************
 
 Comme leur nom l'indique, les méthodes et les attributs de classe appartiennent
-à un classe. Il est possible d'accéder à une méthode de classe par la classe 
+à une classe. Il est possible d'accéder à une méthode de classe par la classe 
 dans laquelle la méthode a été déclarée ou par n'importe quelle classe qui en
 hérite. Il en va de même pour les attributs de classe. Attention cependant,
 si l'attribut de classe est modifiable, sa valeur est partagée par l'ensemble
@@ -659,7 +661,7 @@ de modifier l'état d'un attribut en le déclarant **private** est une bonne
 façon d'éviter aux développeurs d'une sous-classe de modifier involontairement
 le comportement d'une classe.
 
-Un règle simple consiste a systématiquement déclarer **private** les attributs
+Un règle simple consiste à systématiquement déclarer **private** les attributs
 d'une classe sauf si une raison évidente nous suggère de déclarer la portée
 **protected**.
 

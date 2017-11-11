@@ -613,8 +613,7 @@ le fichier ou le supprimer.
       }
 
       if (fichier.canWrite()) {
-        try (
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fichier))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fichier))) {
           writer.write("Hello world!");
         }
       }
