@@ -248,8 +248,7 @@ rester de portée **private** et les classes filles de *Vehicule* peuvent ou non
 donner publiquement l'accès à la méthode *reculer*.
 
 Un méthode qui surcharge peut avoir un type de retour différent de la méthode
-surchargée à condition qu'il s'agisse d'une classe qui hérite du type de retour
-surchargé.
+surchargée à condition qu'il s'agisse d'une classe qui hérite du type de retour.
 
 
 .. todo::
@@ -359,8 +358,8 @@ méthode d'une classe parente. Dans le cas contraire, la compilation échoue.
 Les méthodes de classe
 **********************
 
-Les méthodes de classe (déclarées avec le mot-clé **static**) ne sont pas
-assujetties à la surcharge. Si une classe fille déclare une méthode **static**
+Les méthodes de classe (déclarées avec le mot-clé **static**) ne supportent pas
+la surcharge. Si une classe fille déclare une méthode **static**
 avec la même signature que dans la classe parente, ces méthodes seront simplement
 vues par le compilateur comme deux méthodes distinctes.
 
@@ -495,13 +494,9 @@ avec une vitesse minimale :
     
     public Vehicule(String marque) {
       this.marque = marque;
+      this.accelerer(10);
     }
     
-    public Vehicule(String marque, float vitesse) {
-      this.marque = marque;
-      this.accelerer(vitesse);
-    }
-
     public void accelerer(float deltaVitesse) {
       this.vitesse += deltaVitesse;
     }
@@ -535,8 +530,8 @@ Masquage des attributs par héritage
 ***********************************
 
 Il est possible de déclarer dans une classe fille un attribut portant
-le même nom que dans la classe parente. Cependant ceci ne correspond pas à une
-surcharge et n'a rien à voir avec le principe du polymorphisme. L'attribut de
+le même nom que dans la classe parente. Cependant ceci ne correspond ni à une
+surcharge et ni au principe du polymorphisme. L'attribut de
 la classe fille se contente de masquer l'attribut de la classe parente.
 
 Si l'attribut est de portée **private**, créer une attribut avec le même nom dans
