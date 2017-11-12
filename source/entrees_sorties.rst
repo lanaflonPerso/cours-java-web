@@ -22,7 +22,7 @@ un tableau de **byte**.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.ByteArrayInputStream;
 
@@ -45,7 +45,7 @@ La classe FileInputStream_ permet d'ouvrir un flux de lecture binaire sur un fic
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.FileInputStream;
   import java.io.IOException;
@@ -133,7 +133,7 @@ grâce à la méthode toByteArray_.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.ByteArrayOutputStream;
   import java.util.Arrays;
@@ -158,7 +158,7 @@ La classe FileOutputStream_ permet d'ouvrir un flux d'écriture binaire sur un f
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.FileOutputStream;
   import java.io.IOException;
@@ -210,7 +210,7 @@ d'un flux de caractères.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.IOException;
   import java.io.Reader;
@@ -240,7 +240,7 @@ La classe FileReader_ permet de lire le contenu d'un fichier texte.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.FileReader;
   import java.io.IOException;
@@ -284,7 +284,7 @@ une chaîne de caractères.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.IOException;
   import java.io.StringWriter;
@@ -311,7 +311,7 @@ La classe FileWriter_ permet d'écrire un flux de caractères dans un fichier.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.FileWriter;
   import java.io.IOException;
@@ -359,7 +359,7 @@ ou sur un réseau afin de limiter les accès système et améliorer les performa
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.BufferedWriter;
   import java.io.FileWriter;
@@ -387,7 +387,7 @@ pour lire une ligne complète.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.IOException;
   import java.io.LineNumberReader;
@@ -422,7 +422,7 @@ caractères et vice-versa.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.FileInputStream;
   import java.io.IOException;
@@ -454,7 +454,7 @@ Il est possible de créer très facilement des chaînes de décorateurs.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.FileInputStream;
   import java.io.IOException;
@@ -510,7 +510,7 @@ et de validation de données plus complexes que les classes du packages java.io_
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.IOException;
   import java.util.Scanner;
@@ -541,7 +541,7 @@ sur les données saisies par l'utilisateur :
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.IOException;
   import java.util.InputMismatchException;
@@ -596,7 +596,7 @@ le fichier ou le supprimer.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.BufferedWriter;
   import java.io.File;
@@ -642,7 +642,7 @@ On peut accéder à une instance de FileSystem_ grâce à la méthode
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.File;
   import java.io.IOException;
@@ -675,7 +675,7 @@ un minimum d'appel.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.BufferedWriter;
   import java.io.IOException;
@@ -744,7 +744,7 @@ retournées par le serveur.
 
 ::
 
-  package ROOT_PKG;
+  package ROOT_PKG.io;
 
   import java.io.IOException;
   import java.io.InputStreamReader;
@@ -785,10 +785,307 @@ méthode qui manipule des flux fonctionnera pour des fichiers, des flux
 mémoire et des flux réseaux.
 
 
-.. todo::
+La sérialisation d'objets
+*************************
 
-  La sérialisation d'objet.
+Les classes ObjectOutputStream_ et ObjectInputStream_  permettent de réaliser la 
+sérialisation/désérialisation d'objets : un objet (et tous les objets qu'il référence) 
+peut être écrit dans un flux ou lu depuis un flux. Cela peut permettre de sauvegarder dans
+un fichier un état de l'application ou bien d'échanger des données entre deux programmes
+Java à travers un réseau. La sérialisation d'objets a des limites :
 
+* Seul l'état des objets est écrit ou lu, cela signifie que les fichiers *class*
+  ne font pas partie de la sérialisation et doivent être disponibles pour la JVM
+  au moment de la lecture (opération de désérialisation réalisée avec la classe
+  ObjectInputStream_).
+   
+* Le format des données sérialisées est propre à Java, ce mécanisme n'est donc
+  pas adapté pour échanger des informations avec des applications qui ne seraient
+  pas écrites en Java.
+  
+* Les données sérialisées sont très dépendantes de la structure des classes. Si
+  des modifications sont apportées à ces dernières, une grappe d'objets préalablement
+  sérialisée dans un fichier ne sera sans doute plus lisible.
+   
+Pour qu'un objet puisse être sérialisé, il faut que sa classe implémente 
+:ref:`l'interface marqueur <interface_marqeur>` Serializable_. Si un objet
+référence d'autres objets dans ses attributs alors il faut également que les classes
+de ces objets implémentent l'interface Serializable_. Beaucoup de classes de l'API standard de
+Java implémentent l'interface Serializable_, à commencer par la classe String_.
+
+.. note::
+
+  Tenter de sérialiser un objet dont la classe n'implémente pas Serializable_ 
+  produit une exception de type java.io.NotSerializableException_.
+  
+Prenons comme exemple une classe *Personne* qui contient la liste de ses enfants
+(eux-mêmes de type *Personne*). Cette classe implémente l'interface Serializable_ :
+
+::
+
+  package ROOT_PKG;
+
+  import java.io.Serializable;
+  import java.util.ArrayList;
+  import java.util.Collections;
+  import java.util.List;
+
+  public class Personne implements Serializable {
+    
+    private String prenom;
+    private String nom;
+    private List<Personne> enfants = new ArrayList<>();
+
+    public Personne(String prenom, String nom) {
+      this.prenom = prenom;
+      this.nom = nom;
+    }
+    
+    public String getNom() {
+      return nom;
+    }
+    
+    public String getPrenom() {
+      return prenom;
+    }
+    
+    public void ajouterEnfants(Personne... enfants) {
+      Collections.addAll(this.enfants, enfants);
+    }
+    
+    public List<Personne> getEnfants() {
+      return enfants;
+    }
+    
+    @Override
+    public String toString() {
+      return this.prenom + " " + this.nom;
+    }
+  }
+
+
+Le code ci-dessous sérialise les données dans le fichier *arbre_genialogique.bin*
+
+::
+
+  package ROOT_PKG.io;
+
+  import java.io.IOException;
+  import java.io.ObjectOutputStream;
+  import java.io.OutputStream;
+  import java.nio.file.Files;
+  import java.nio.file.Paths;
+
+  import ROOT_PKG.Personne;
+
+  public class TestSerialisation {
+   
+    public static void main(String[] args) throws IOException {
+      
+      Personne personne = new Personne("Donald", "Duck");
+      personne.ajouterEnfants(new Personne("Riri", "Duck"), 
+                              new Personne("Fifi", "Duck"), 
+                              new Personne("Loulou", "Duck"));
+      
+      OutputStream outputStream = Files.newOutputStream(Paths.get("arbre_genialogique.bin"));
+      try(ObjectOutputStream objectStream = new ObjectOutputStream(outputStream);) {
+        objectStream.writeObject(personne);
+      }
+    }
+  }
+
+
+Un autre code qui a accès à la même classe *Personne* peut ensuite lire le fichier 
+*arbre_genialogique.bin* pour retrouver les objets dans l'état attendu.
+
+::
+
+  package ROOT_PKG.io;
+
+  import java.io.IOException;
+  import java.io.InputStream;
+  import java.io.ObjectInputStream;
+  import java.nio.file.Files;
+  import java.nio.file.Paths;
+
+  import ROOT_PKG.Personne;
+
+  public class TestDeserialisation {
+   
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+      
+      InputStream outputStream = Files.newInputStream(Paths.get("arbre_genialogique.bin"));
+      try(ObjectInputStream objectStream = new ObjectInputStream(outputStream);) {
+        Personne personne = (Personne) objectStream.readObject();
+        
+        System.out.println(personne);
+        for (Personne enfant : personne.getEnfants()) {
+          System.out.println(enfant);
+        }
+      }
+
+    }
+  }
+
+L'exécution du programme ci-dessus affichera :
+
+.. code-block:: text
+
+  Donald Duck
+  Riri Duck
+  Fifi Duck
+  Loulou Duck
+
+Donnée transient
+=================
+
+Parfois une classe contient des informations que l'on ne souhaite pas sérialiser.
+Cela peut être dû à des limitations techniques (par exemple la classe associée n'implémente
+pas l'interface Serializable_). Mais il peut aussi s'agir de données sensibles
+ou volatiles qui n'ont pas à être sérialisées. Pour que les processus de 
+sérialisation/désérialisation ignorent ces attributs, il faut leur ajouter
+le mot-clé **transient**.
+
+Pour la classe *Personne*, si on veut exclure la liste des enfants de la
+sérialisation/désérialisation, on peut modifier les attributs comme suit :
+
+::
+
+  package ROOT_PKG;
+
+  import java.io.Serializable;
+  import java.util.ArrayList;
+  import java.util.Collections;
+  import java.util.List;
+
+  public class Personne implements Serializable {
+    
+    private String prenom;
+    private String nom;
+    private transient List<Personne> enfants = new ArrayList<>();
+
+    public Personne(String prenom, String nom) {
+      this.prenom = prenom;
+      this.nom = nom;
+    }
+    
+    // ...
+  }
+
+Si nous exécutons à nouveau les programmes de sérialisation et de désérialisation
+du paragraphe précédent, la sortie standard affichera alors :
+
+.. code-block:: text
+
+  Donald Duck
+
+Car l'état de la liste des enfants ne sera plus écrit dans le fichier 
+*arbre_genialogique.bin*.
+
+
+Identifiant de version de sérialisation
+=======================================
+
+La principale difficulté dans la mise en pratique des mécanismes de 
+sérialisation/désérialisation provient de leur extrême dépendance au format des 
+classes.
+
+Si la sérialisation est utilisée pour sauvegarder dans un fichier l'état des objets entre deux
+exécutions, alors il n'est pas possible de modifier significativement puis de 
+recompiler les classes sérialisables (sinon l'opération de désérialisation 
+échouera avec une erreur InvalidClassException_). Si la sérialisation est utilisée
+pour échanger des informations entre deux applications sur un réseau, alors
+le deux applications doivent disposer dans leur *classpath* des mêmes définitions
+de classes.
+
+En fait les classes qui implémentent l'interface Serializable_ possèdent un
+numéro de version interne qui change à la compilation si des modifications
+substantielles ont été apportées (ajout ou suppression d'attributs ou de méthodes
+par exemple). Lorsqu'un objet est sérialisé, le numéro de version de sa classe
+est également sérialisé. Ainsi, lors de la désérialisation, il est facile de comparer
+ce numéro avec celui de la classe disponible. Si ces numéros ne correspondent pas,
+alors le processus de désérialisation échoue en considérant que la classe disponible
+n'est pas compatible avec la classe qui a été utilisée pour créer l'objet sérialisé.
+
+Si on ne souhaite pas utiliser ce mécanisme implicite de version, il est possible
+de spécifier un numéro de version de sérialisation pour ses classes. À charge
+du développeur de changer ce numéro lorsque les modifications de la classe sont
+trop importantes pour ne plus garantir la compatibilité ascendante avec des versions antérieures
+de cette classe. Le numéro de version est une constante de classe de type **long**
+qui doit s'appeler *serialVersionUID*.
+
+::
+
+  package ROOT_PKG;
+
+  import java.io.Serializable;
+  import java.util.ArrayList;
+  import java.util.Collections;
+  import java.util.List;
+
+  public class Personne implements Serializable {
+    
+    private static final long serialVersionUID = 1775245980933452908L;
+
+    // ...
+  }
+
+.. note::
+
+  Eclipse produit un avertissement si une classe qui implémente Serializable_
+  ne déclare pas une constante *serialVersionUID*.
+  
+.. tip::
+
+  Pour contourner le problème de dépendance entre le format de sérialisation
+  et la déclaration de la classe, il est possible d'implémenter soi-même l'écriture
+  et la lecture des données. Pour cela, il faut déclarer deux méthodes privées dans
+  la classe : *writeObject* et *readObject*. Ces méthodes seront appelées (même
+  si elles sont privées) en lieu et place de l'algorithme par défaut de 
+  sérialisation/désérialisation.
+  
+  ::
+  
+    package ROOT_PKG;
+
+    import java.io.IOException;
+    import java.io.ObjectInputStream;
+    import java.io.ObjectOutputStream;
+    import java.io.Serializable;
+    import java.util.ArrayList;
+    import java.util.Collections;
+    import java.util.List;
+
+    public class Personne implements Serializable {
+      
+      private static final long serialVersionUID = 1775245980933452908L;
+
+      private String prenom;
+      private String nom;
+      private List<Personne> enfants = new ArrayList<>();
+      
+      private void writeObject(ObjectOutputStream s) throws IOException {
+        // on ne sérialise que le prénom et le nom
+        s.writeObject(prenom);
+        s.writeObject(nom);
+      }
+
+      private void readObject(ObjectInputStream s) throws ClassNotFoundException, IOException {
+        // on lit les données dans le même ordre qu'elles ont été écrites
+        this.prenom = (String) s.readObject();
+        this.nom = (String) s.readObject();
+        this.enfants = new ArrayList<>();
+      }
+      
+      // ...
+
+    }
+
+
+.. _java.io.NotSerializableException: https://docs.oracle.com/javase/8/docs/api/java/io/NotSerializableException.html
+.. _InvalidClassException: https://docs.oracle.com/javase/8/docs/api/java/io/InvalidClassException.html
+.. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+.. _Serializable: https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html
 .. _BufferedInputStream: https://docs.oracle.com/javase/8/docs/api/java/io/BufferedInputStream.html
 .. _BufferedOutputStream: https://docs.oracle.com/javase/8/docs/api/java/io/BufferedOutputStream.html
 .. _BufferedReader: https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html
@@ -801,6 +1098,8 @@ mémoire et des flux réseaux.
 .. _FileReader: https://docs.oracle.com/javase/8/docs/api/java/io/FileReader.html
 .. _FileWriter: https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html
 .. _LineNumberReader: https://docs.oracle.com/javase/8/docs/api/java/io/LineNumberReader.html
+.. _ObjectInputStream: https://docs.oracle.com/javase/8/docs/api/java/io/ObjectInputStream.html
+.. _ObjectOutputStream: https://docs.oracle.com/javase/8/docs/api/java/io/ObjectOutputStream.html
 .. _StringReader: https://docs.oracle.com/javase/8/docs/api/java/io/StringReader.html
 .. _StringWriter: https://docs.oracle.com/javase/8/docs/api/java/io/StringWriter.html
 .. _InputStreamReader: https://docs.oracle.com/javase/8/docs/api/java/io/InputStreamReader.html
