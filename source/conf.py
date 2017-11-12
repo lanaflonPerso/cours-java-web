@@ -148,12 +148,12 @@ htmlhelp_basename = 'Javadoc'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
-    # 'papersize': 'letterpaper',
+    'papersize': 'a4paper',
 
     # The font size ('10pt', '11pt' or '12pt').
     #
-    # 'pointsize': '10pt',
-
+    'pointsize': '11pt',
+    
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
@@ -161,13 +161,16 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    
+    'sphinxsetup': 'TitleColor={rgb}{.1,.1,.1}, verbatimwithframe=false, VerbatimBorderColor={rgb}{.5,.5,.5}, verbatimsep=10pt, VerbatimColor={rgb}{.95,.95,.97}', 
 }
+
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Java.tex', 'Java Documentation',
+    (master_doc, 'Java.tex', 'Le Langage Java',
      'David Gayerie', 'manual'),
 ]
 

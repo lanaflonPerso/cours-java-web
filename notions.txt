@@ -34,6 +34,8 @@ Les dates / time (DONE)
 
 Les entrées/sorties
 
+* sérialisation d'objets
+
 ===================
 
 les classes internes & classes anonymes /!\

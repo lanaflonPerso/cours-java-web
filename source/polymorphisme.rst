@@ -247,13 +247,42 @@ de la méthode fournie par la classe *Vehicule*. Ainsi l'attribut *vitesse* peut
 rester de portée **private** et les classes filles de *Vehicule* peuvent ou non
 donner publiquement l'accès à la méthode *reculer*.
 
-Un méthode qui surcharge peut avoir un type de retour différent de la méthode
+Une méthode qui surcharge peut avoir un type de retour différent de la méthode
 surchargée à condition qu'il s'agisse d'une classe qui hérite du type de retour.
+Si nous reprenons l'exemple d'héritage des classes *Animal*, *Chien* et *Chat*,
+nous pouvons définir une classe *EleveurAnimal* qui permet de créer une instance
+de *Animal* quand on appelle la méthode *elever* :
+
+::
+
+  package ROOT_PKG.animal;
+
+  public class EleveurAnimal {
+    
+    public Animal elever() {
+      return new Animal();
+    }
+
+  }
 
 
-.. todo::
+Si maintenant nous créons la classe *EleveurChien* qui hérite de la classe
+*EleveurAnimale*, la surcharge de la méthode
+*elever* peut déclarer qu'elle retourne un type *Chien*. Comme *Chien* hérite
+de *Animal*, la méthode qui surcharge se présente comme une spécialisation.
 
-  Exemple de surcharge avec changement de type de retour
+::
+
+  package ROOT_PKG.animal;
+
+  public class EleveurChien extends EleveurAnimal {
+
+    @Override
+    public Chien elever() {
+      return new Chien();
+    }
+    
+  }
 
 
 Le mot-clé super
