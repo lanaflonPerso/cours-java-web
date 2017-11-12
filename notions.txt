@@ -44,9 +44,7 @@ Les lambdas (DONE)
 
 ===================
 
-stream et filter/map/reduce
-
-ex: tableaux et collections
+stream et filter/map/reduce (DONE)
 
 ===================
 

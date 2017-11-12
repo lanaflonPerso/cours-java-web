@@ -35,6 +35,7 @@ Le langage Java
    entrees_sorties
    classe_interne
    les_lambdas
+   streams
    les_annotations
 
 

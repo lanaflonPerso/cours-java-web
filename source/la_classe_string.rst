@@ -1,14 +1,18 @@
 La classe String
 ################
 
-En Java, les chaînes de caractères sont des instances de la classe String_. En
-Java, les chaînes de caractères écrites littéralement sont toujours délimitées
-guillemets : "Hello World".
+En Java, les chaînes de caractères sont des instances de la classe String_.
+Les chaînes de caractères écrites littéralement sont toujours délimitées par des
+guillemets : 
+
+::
+
+  "Hello World"
 
 String et tableau de caractères
 *******************************
 
-Contrairement, à d'autres langages de programmation, une chaîne de caractères
+Contrairement à d'autres langages de programmation, une chaîne de caractères
 ne peut pas être traitée comme un tableau. Si on souhaite accéder à un caractère
 de la chaîne à partir de son index, il faut utiliser la méthode String.charAt_.
 On peut ainsi parcourir les caractères d'une chaîne :
