@@ -736,9 +736,55 @@ méthodes pour les listes, les ensembles et les tableaux associatifs. Elle conti
 également des attributs de classes correspondant à une liste, un ensemble et
 un tableau associatif vides et immutables.
 
-.. todo::
-    
-  code
+.. code-block:: java
+  :emphasize-lines: 41
+
+  package ROOT_PKG;
+
+  import java.util.ArrayList;
+  import java.util.Collections;
+  import java.util.List;
+
+  public class TestCollections {
+
+    public static void main(String[] args) {
+
+      List<String> liste = new ArrayList<>();
+      Collections.addAll(liste, "un", "deux", "trois", "quatre");
+
+      // La chaîne a plus grande dans la liste : "un"
+      String max = Collections.max(liste);
+      System.out.println(max);
+
+      // Inverse l'ordre de la liste
+      Collections.reverse(liste);
+      // [quatre, trois, deux, un]
+      System.out.println(liste);
+
+      // Trie la liste
+      Collections.sort(liste);
+      // [deux, quatre, trois, un]
+      System.out.println(liste);
+
+      // Recherche de l'index de la chaîne "deux" dans la liste triée : 0
+      int index = Collections.binarySearch(liste, "deux");
+      System.out.println(index);
+
+      // Remplace tous les éléments par la même chaîne
+      Collections.fill(liste, "même chaîne partout");
+      // [même chaîne partout, même chaîne partout, même chaîne partout, même chaîne partout]
+      System.out.println(liste);
+
+      // Enveloppe la liste dans une liste qui n'autorise plus a modifier son contenu
+      liste = Collections.unmodifiableList(liste);
+
+      // On tente de modifier une liste qui n'est plus modifiable
+      liste.add("Test"); // ERREUR à l'exécution : UnsupportedOperationException
+
+    }
+
+  }
+
   
 
 .. _Java Collections Framework: https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html
