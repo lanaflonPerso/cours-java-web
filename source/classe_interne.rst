@@ -1,9 +1,9 @@
 Les classes internes
 ####################
 
-La façon la plus courante de déclarer une classe en Java est de créer un fichier
-portant le nom de la classe avec l'extension *.java*. Cependant, il est également
-possible de déclarer des classes dans des classes. On parle alors de classes
+La plupart du temps, une classe en Java est déclarée dans un fichier
+portant le même nom que la classe avec l'extension *.java*. Cependant, il est également
+possible de déclarer des classes dans une classe. On parle alors de classes
 internes (*inner classes*). Cela est également possible, dans une certaine limite, 
 pour les interfaces et les énumérations. 
 
@@ -29,9 +29,8 @@ usages particuliers des classes internes.
 Les classes internes static
 ***************************
 
-Les classes internes déclarées **static** sont des classes comme les autres sauf
-que l'espace de noms dans lequel elles sont déclarées est celui de la classe
-englobante.
+Les classes internes déclarées **static** sont des classes pour lesquelles
+l'espace de noms est celui de la classe englobante.
 
 
 ::
@@ -62,16 +61,7 @@ Pour une classe interne **static** :
   attributs et aux méthodes de la classe englobante qui sont déclarés
   **static**.
 
-Une classe interne **static** est un moyen de dissimuler l'implémentation
-d'une interface. En effet, une classe interne possède une portée. Il est donc
-possible de déclarer une classe interne avec une portée **private**. 
-La classe englobante agit alors comme une *fabrique abstraite*.
-
-.. todo::
-
-  exemple de classe interne static private qui implémente une interface
-
-Une classe interne **static** est également utile pour éviter de séparer
+Une classe interne **static** est souvent utilisée pour éviter de séparer
 dans des fichiers différents de petites classes utilitaires et ainsi de faciliter
 la lecture du code. Dans l'exemple ci-dessous, plutôt que de créer un fichier
 spécifique pour l'implémentation d'un comparateur, on ajoute son implémentation
@@ -146,13 +136,13 @@ inclus celui de la classe englobante et les deux classes partagent le même
 espace privé. Mais surtout, une classe interne maintient une référence implicite
 sur un objet de la classe englobante. Cela signifie que :
 
-* une instance d'une classe interne ne peut être créée que part un objet de
+* une instance d'une classe interne ne peut être créée que par un objet de
   classe englobante : c'est-à-dire dans le corps d'une méthode ou dans le corps
   d'un constructeur de la classe englobante.
 * une instance d'une classe interne a accès directement aux attributs de l'instance
   dans le contexte de laquelle elle a été créée.
 
-Une classe interne est utilisé pour créer un objet qui a couplage très
+Une classe interne est utilisée pour créer un objet qui a couplage très
 fort avec un objet du type de la classe englobante. On utilise fréquemment le
 mécanisme de classe interne lorsque l'on veut réaliser une interface graphique
 en Java avec l'API Swing_.
@@ -226,16 +216,18 @@ en Java avec l'API Swing_.
 
 L'exemple ci-dessus est un programme complet qui crée une boite de dialogue
 contenant deux boutons qui permettent respectivement d'incrémenter et de 
-décrémenter un nombre qui est affiché. La classe JButton qui représente un
-boutons attend comme paramètre de construction une instance
+décrémenter un nombre qui est affiché. La classe JButton_ qui représente un
+bouton attend comme paramètre de construction une instance
 implémentant l'interface Action_. Cette instance définit le libellé du bouton et l'action
 à réaliser lorsque l'utilisateur clique sur le bouton. Les boutons sont créés
 aux lignes 44 et 45. Les classes d'action utilisées pour chaque bouton sont 
 définies aux lignes 13 et 24. Ces classes sont
 des classes internes. Dans leur méthode actionPerformed_, elles appellent soit
 la méthode *incrementer* soit la méthode *decrementer*. Ces deux méthodes
-sont définies par la classe englobante BoiteDeDialogue. Les classes internes
-possèdent donc une référence sur l'objet BoiteDeDialogue qui les a créées.
+sont définies par la classe englobante BoiteDeDialogue. Donc les instances de
+ces classes d'action appellent ces méthodes sur l'instance de l'objet englobant 
+qui les a créées. Ainsi, les classes internes
+possèdent une référence sur l'objet BoiteDeDialogue qui les a créées.
 
 .. note::
 
@@ -250,8 +242,8 @@ Les classes anonymes
 
 Une classe anonyme est une classe qui n'a pas de nom. Elle est déclarée au moment
 de l'instanciation d'un objet. Comme une classe anonyme n'a pas de nom, il n'est
-pas possible de déclarer une variable qui serait un type de cette classe. Les
-classes anonyme sont donc utilisée pour créer à la volée une classe qui spécialise
+pas possible de déclarer une variable qui serait un type de cette classe. Une
+classe anonyme est donc utilisée pour créer à la volée une classe qui spécialise
 une autre classe ou qui implémente une interface. Pour déclarer une classe anonyme,
 on déclare le bloc de la classe au moment de l'instantiation avec **new**.
 
@@ -303,7 +295,7 @@ l'interface *Logger*.
 
   }
 
-L'implémentation de la méthode *creerConsoleLogger crée une instance 
+L'implémentation de la méthode *creerConsoleLogger* crée une instance 
 implémentant l'interface *Logger* à partir d'une classe anonyme. L'implémentation
 de la méthode *log* affiche sur la sortie standard une chaîne de caractères
 formatée contenant la date et l'heure, le nom de l'application et le message
@@ -437,8 +429,8 @@ Accès aux éléments de l'objet englobant
 
 Si nous reprenons notre code de la classe *GenerateurLogger*, nous nous
 rendons compte que le formatage du message a été dupliqué pour le logger
-qui écrit sur la sortie standard et celui qui écrit dans un fichier. Afin
-de mutualiser de le code, nous pouvons créer une méthode *genererLogMessage*
+qui écrit sur la sortie standard et pour celui qui écrit dans un fichier. Afin
+de mutualiser le code, nous pouvons créer une méthode *genererLogMessage*
 dans la classe englobante qui pourra être appelée par chaque classe anonyme.
 
 ::
@@ -504,8 +496,8 @@ dans la classe englobante qui pourra être appelée par chaque classe anonyme.
 
   }
 
-Mais nous pouvons également désirer cette nouvelle méthode *log*. Hors cela
-rentrerai en collision avec le nom de le méthode *log* de l'interface *Logger*.
+Mais nous voulons appeler cette nouvelle méthode *log*. Ce nom rentrera
+en collision avec le nom de le méthode *log* de l'interface *Logger*.
 Il existe une syntaxe particulière qui permet de référencer explicitement
 le contexte de la classe englobante en utilisant :
 
@@ -513,8 +505,8 @@ le contexte de la classe englobante en utilisant :
 
   NomDeLaClasse.this
   
-Ainsi nous pouvons bien renommer notre méthode *genererLogMessage* en *log*
-et l'invoquer explicitement dans les méthodes des classes anonymes avec la
+Ainsi nous pouvons renommer notre méthode *genererLogMessage* en *log*
+et nous pouvons l'invoquer explicitement dans les méthodes des classes anonymes avec la
 syntaxe :
 
 ::
@@ -523,8 +515,8 @@ syntaxe :
 
 .. note::
 
-  Cette syntaxe permet d'accéder aux attributs et aux méthodes de la classe
-  englobante.  
+  Cette syntaxe permet d'accéder aux attributs et aux méthodes de l'instance de
+  la classe englobante.  
   
 ::
 
@@ -592,20 +584,24 @@ syntaxe :
 
 .. note::
 
-  Il n'est pas possible de créer des constructeurs dans une classe anonyme. En
+  Il n'est pas possible de déclarer un constructeur dans une classe anonyme. En
   effet, un constructeur porte le même nom que sa classe et justement, par
-  définition, les classes anonymes n'ont pas de nom. Cela entraîne une 
-  limitation : il n'est pas possible de déclarer une classe anonyme
+  définition, les classes anonymes n'ont pas de nom. Le compilateur générera
+  néanmoins un constructeur par défaut. 
+  
+  Cela entraîne une limitation : il n'est pas possible de déclarer une classe anonyme
   qui étendrait une classe ne possédant pas de constructeur sans paramètre.
 
 Classe interne à une méthode
 ****************************
 
 Il est possible de déclarer une classe dans une méthode. Dans ce cas, il n'est
-pas possible de préciser la porter de la classe. Une classe déclarée dans une
+pas possible de préciser la portée de la classe. La classe a automatiquement
+une portée très particulière puisqu'elle n'est visible que depuis la méthode
+dans laquelle elle est déclarée. Une classe déclarée dans une
 méthode peut fonctionner de la même manière qu'une classe anonyme : elle
 peut accéder aux paramètres et aux variables de la méthode qui la déclare (à
-condition qu'ils ne soient modifiés ni par la méthode ni par la classe.
+condition qu'ils ne soient modifiés ni par la méthode ni par la classe).
 
 ::
 
@@ -681,4 +677,5 @@ implicitement comme **static**. On peut ou non préciser le mot-clé.
 .. _Swing: https://docs.oracle.com/javase/tutorial/uiswing/index.html
 .. _Action: https://docs.oracle.com/javase/8/docs/api/javax/swing/Action.html
 .. _actionPerformed: https://docs.oracle.com/javase/8/docs/api/javax/swing/Action.html
+.. _JButton: https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html
 
