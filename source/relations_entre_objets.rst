@@ -829,7 +829,32 @@ Exercice
   Réalisez les implémentations de ces classes en Java. Écrivez une méthode **main**
   qui crée une instance de *Diplome*, y ajoute tous les types d'examen de manière
   à ce que le diplôme soit validé (la méthode *Diplome.isValide* retourne **true**).
-  
+
+
+.. only:: not epsi
+
+  .. topic:: Diplôme et examens (Bonus)
+    :class: exercice
+
+    Reprenez l'exercice précédent et ajoutez une nouvelle classe : *Appreciation*.
+    La classe *Appreciation* est un nouveau type d'examen. Une instance de la
+    classe *Appreciation* déclare une méthode pour positionner une des
+    appréciations suivantes : "non acquis", "en cours d'acquisition", "acquis".
+    On associe une note à chaque valeur d'appréciation :
+    
+    ====================== ====
+         Appréciation      Note
+    ====================== ====
+    non acquis             5
+    en cours d'acquisition 10
+    acquis                 15
+    ====================== ====
+    
+    Vérifiez que cette nouvelle classe peut être utilisée dans le système de
+    remise de diplôme. Pour cela ajoutez, des appréciations à une instance de la
+    classe Diplôme et vérifiez que le système fonctionne toujours comme attendu.
+
+
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _toString: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#toString--
 .. _equals: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object-
