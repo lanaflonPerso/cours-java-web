@@ -73,9 +73,10 @@ Ces deux classes sont une spécialisation de la classe
   }
 
 
-Chaque classe fille change le comportement de la méthode *crier*. L'intérêt du 
-polymorphisme vient du fait que maintenant, les instances des classes filles
-appelleront toujours la méthode *crier* surchargée par leur classe.
+Chaque classe fille change le comportement de la méthode *crier*. Cela signifie
+qu'un objet de type *Chien* pour lequel on invoque le méthode *crier* ne fournira
+pas le même comportement qu'un objet de type *Chat*. Et cela, quel que soit le 
+type de la variable qui référence ces objets.
 
 ::
 
@@ -277,7 +278,6 @@ de *Animal*, la méthode qui surcharge se présente comme une spécialisation.
 
   public class EleveurChien extends EleveurAnimal {
 
-    @Override
     public Chien elever() {
       return new Chien();
     }
@@ -479,7 +479,7 @@ signifie que le constructeur de Object_ est toujours appelé en premier.
 Cependant un constructeur peut appeler une méthode et dans ce cas le polymorphisme
 s'applique. Comme les constructeurs sont appelés dans l'ordre
 de la hiérarchie d'héritage, cela signifie qu'un constructeur invoque
-une méthode surchargée toujours avant que la classe fille qui l'implémente n'ait 
+toujours une méthode surchargée avant que la classe fille qui l'implémente n'ait 
 pu être initialisée.
 
 Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui surcharge la 
@@ -552,7 +552,7 @@ valeur est nulle et donc la création d'une instance de *VehiculeMotorise*
 On voit par cet exemple que l'appel de méthode dans un constructeur peut amener
 à des situations complexes. Il est fortement recommandé d'appeler dans un constructeur
 des méthodes dont le comportement ne peut pas être modifié par la surcharge : soit 
-des méthodes privées soit des méthodes déclarées **final**.
+des méthodes déclarées **private** soit des méthodes déclarées **final**.
 
 
 Masquage des attributs par héritage
@@ -560,7 +560,7 @@ Masquage des attributs par héritage
 
 Il est possible de déclarer dans une classe fille un attribut portant
 le même nom que dans la classe parente. Cependant ceci ne correspond ni à une
-surcharge et ni au principe du polymorphisme. L'attribut de
+surcharge ni au principe du polymorphisme. L'attribut de
 la classe fille se contente de masquer l'attribut de la classe parente.
 
 Si l'attribut est de portée **private**, créer une attribut avec le même nom dans
@@ -636,7 +636,34 @@ interdire de modifier le comportement d'une classe, on peut déclarer ses attrib
 **private** et les méthodes jugées les plus critiques peuvent être déclarées
 **final**.
 
+Exercice
+********
+
+.. topic:: Diplôme et examens (suite)
+  :class: exercice
+
+  On souhaite faire évoluer le système de remise de diplôme du chapitre précédente.
+  
+  Pour les classes *Examen*, *Qcm* et *Projet*, on doit pouvoir ajouter une appréciation.
+  
+    * Pour *Examen*, l'appréciation peut être positionnée par une méthode.
+    * Pour *Qcm*, l'appréciation est déterminée en fonction de la note :
+    
+      * < 8 : insuffisant
+      * entre 8 et 12 : passable
+      * entre 12 et 15 : bien
+      * >= 16 : très bien
+  
+    * Pour *Projet*, il doit y avoir une appréciation pour l'oral et une appréciation
+      pour l'écrit, chacune positionnée par une méthode.
+  
+  Modifiez le système existant pour prendre en compte ces modifications. Ajoutez
+  la méthode *afficherDetailDesNotes* dans la classe *Diplome* pour afficher la liste
+  des notes et l'appréciation. On utilisera le polymorphisme pour réaliser cette nouvelle
+  fonctionnalité.
+  
 .. _@Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _principe du ouvert/fermé: https://fr.wikipedia.org/wiki/Principe_ouvert/ferm%C3%A9
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _NullPointerException: https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html
+

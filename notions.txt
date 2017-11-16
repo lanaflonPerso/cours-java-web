@@ -52,9 +52,27 @@ Les annotations (DONE)
 
 La concurrence
 
+Notion de processus léger (threads)
+L'accés concurrent et synchronized (les dangers de synchronized)
+Les types atomiques.
+Exemple d'utilisation de blocking queue (les moniteurs).
+Le package java.concurrent
+volatile
+
 ===================
 
 swing
+
+JFrame
+Les layouts
+Les principaux composants simples (label, texte, boutton, JTextEdit)
+La notion de listeners
+La notion d'action et les boutons
+Les menus (JMenu et JMenuItem)
+Les boites de dialogues
+Les boites de dialogues spécialisées (sélection de fichiers...)
+La pompe à événements
+Principe du Worker thread
 
 ===================
 

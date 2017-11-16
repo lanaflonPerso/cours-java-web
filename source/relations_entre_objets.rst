@@ -369,69 +369,6 @@ en Java ne possède qu'une seule classe racine : la classe Object_.
   sous forme de chaîne de caractères et qu'ils peuvent être comparés aux autres.
   
 
-Héritage des méthodes et attributs de classe
-********************************************
-
-Comme leur nom l'indique, les méthodes et les attributs de classe appartiennent
-à une classe. Il est possible d'accéder à une méthode de classe par la classe 
-dans laquelle la méthode a été déclarée ou par n'importe quelle classe qui en
-hérite. Il en va de même pour les attributs de classe. Attention cependant,
-si l'attribut de classe est modifiable, sa valeur est partagée par l'ensemble
-des classes qui font partie de la hiérarchie d'héritage.
-
-Un exemple classique est l'implémentation d'un compteur qui permet de savoir
-combien d'instances ont été créées. Il suffit de créer un compteur comme
-attribut de classe.
-
-::
-
-  package ROOT_PKG.conduite;
-
-  public class Vehicule {
-	
-    private static int nbInstances = 0;
-
-    private final String marque;
-    private float vitesse;
-
-    public Vehicule(String marque) {
-      ++Vehicule.nbInstances;
-      this.marque = marque;
-    }
-
-    public static int getNbInstances() {
-      return nbInstances;
-    }
-    
-    // ...
-  }
-
-Dans l'exemple précédent, nous avons ajouté l'attribut de classe *nbInstances*
-et la méthode de classe *getNbInstances*. L'attribut de classe est un compteur
-qui est incrémenté à chaque fois que le constructeur de *Vehicule* est appelé.
-
-
-::
-
-  Voiture voiture = new Voiture("DeLorean");
-
-  Moto moto = new Moto("Kaneda");
-
-  System.out.println(Vehicule.getNbInstances()); // 2
-  System.out.println(Voiture.getNbInstances());  // 2
-  System.out.println(Moto.getNbInstances());     // 2
-
-
-Dans l'exemple ci-dessus, la création d'une instance de *Voiture* et d'une
-instance de *Moto* incrémente le compteur *nbInstances*. L'appel à la méthode
-*getNbInstances* retournera le chiffre 2 quelle que soit la classe utilisée
-pour invoquer cette méthode. On voit ici, qu'il est parfois important, pour
-des raisons de lisibilité, d'utiliser la classe dans laquelle la méthode a été 
-déclarée pour l'invoquer. En effet, une lecture rapide du code, pourrait nous 
-faire croire que l'appel à *Voiture.getNbInstances* retourne le nombre 
-d'instances de type *Voiture* créées alors qu'il s'agit du nombre d'instances 
-de type *Vehicule* (donc incluant les instances de *Moto*).
-
 Héritage et affectation
 ***********************
 
@@ -679,6 +616,70 @@ d'une classe sauf si une raison évidente nous suggère de déclarer la portée
   l'acronyme SOLID_. Cet acronyme rassemble cinq notions fondamentales dans
   la conception objet.
  
+
+Héritage des méthodes et attributs de classe
+********************************************
+
+Comme leur nom l'indique, les méthodes et les attributs de classe appartiennent
+à une classe. Il est possible d'accéder à une méthode de classe par la classe 
+dans laquelle la méthode a été déclarée ou par n'importe quelle classe qui en
+hérite. Il en va de même pour les attributs de classe. Attention cependant,
+si l'attribut de classe est modifiable, sa valeur est partagée par l'ensemble
+des classes qui font partie de la hiérarchie d'héritage.
+
+Un exemple classique est l'implémentation d'un compteur qui permet de savoir
+combien d'instances ont été créées. Il suffit de créer un compteur comme
+attribut de classe.
+
+::
+
+  package ROOT_PKG.conduite;
+
+  public class Vehicule {
+	
+    private static int nbInstances = 0;
+
+    private final String marque;
+    private float vitesse;
+
+    public Vehicule(String marque) {
+      ++Vehicule.nbInstances;
+      this.marque = marque;
+    }
+
+    public static int getNbInstances() {
+      return nbInstances;
+    }
+    
+    // ...
+  }
+
+Dans l'exemple précédent, nous avons ajouté l'attribut de classe *nbInstances*
+et la méthode de classe *getNbInstances*. L'attribut de classe est un compteur
+qui est incrémenté à chaque fois que le constructeur de *Vehicule* est appelé.
+
+
+::
+
+  Voiture voiture = new Voiture("DeLorean");
+
+  Moto moto = new Moto("Kaneda");
+
+  System.out.println(Vehicule.getNbInstances()); // 2
+  System.out.println(Voiture.getNbInstances());  // 2
+  System.out.println(Moto.getNbInstances());     // 2
+
+
+Dans l'exemple ci-dessus, la création d'une instance de *Voiture* et d'une
+instance de *Moto* incrémente le compteur *nbInstances*. L'appel à la méthode
+*getNbInstances* retournera le chiffre 2 quelle que soit la classe utilisée
+pour invoquer cette méthode. On voit ici, qu'il est parfois important, pour
+des raisons de lisibilité, d'utiliser la classe dans laquelle la méthode a été 
+déclarée pour l'invoquer. En effet, une lecture rapide du code, pourrait nous 
+faire croire que l'appel à *Voiture.getNbInstances* retourne le nombre 
+d'instances de type *Voiture* créées alors qu'il s'agit du nombre d'instances 
+de type *Vehicule* (donc incluant les instances de *Moto*).
+
 
 Héritage et final
 *****************
