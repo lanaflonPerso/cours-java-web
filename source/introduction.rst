@@ -38,8 +38,52 @@ sous licence libre GNU GPL_. Il existe une version de l'environnement Java inclu
 le code libre : `Open JDK`_. De son côté, Oracle distribue son propre JDK basé sur l'Open JDK et
 incluant également des outils et du code source toujours sous licence fermée.
 
-.. todo:: historique des versions de Java
 
+Un bref historique des versions
+*******************************
+
+
+.. list-table:: 
+  :widths: 10 20 50
+  :header-rows: 1
+  
+  * - version
+    - date
+    - faits notables
+  * - 1.0
+    - janvier 1996
+    - La naissance
+  * - 1.1
+    - février 1997
+    - Ajout de JDBC et définition des JavaBeans
+  * - 1.2
+    - décembre 1998
+    - | Ajout de Swing, des collections (JCF), de l'API de réflexion.
+      | La machine virtuelle inclut la compilation à la volée (Just In Time)
+  * - 1.3
+    - mai 2000
+    - JVM HotSpot
+  * - 1.4
+    - février 2002
+    - support des regexp et premier parser de XML
+  * - 5
+    - septembre 2004
+    - | évolutions majeures du langage : autoboxing, énumérations, varargs, imports
+        statiques, foreach, types génériques, annotations.
+      | Nombreux ajout dans l'API standard
+  * - 6
+    - décembre 2006
+    - 
+  * - 7
+    - juillet 2011
+    - Quelques évolutions du langage et l'introduction de java.nio
+  * - 8
+    - mars 2014
+    - évolutions majeures du langage : les lambdas et les streams et une nouvelle API pour les dates
+  * - 9
+    - septembre 2017
+    - les modules (projet Jigsaw) et jshell
+    
 .. _site d'Oracle: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 .. _bytecode: https://fr.wikipedia.org/wiki/Bytecode_Java
 .. _GPL: https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU
