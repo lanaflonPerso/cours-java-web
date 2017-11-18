@@ -669,9 +669,16 @@ implicitement comme **static**. On peut ou non préciser le mot-clé.
 
   }
 
-.. todo::
+Plusieurs classes dans un même fichier
+**************************************
 
-  Plusieurs classes dans une unité de compilation
+Même s'il ne s'agit pas de classes internes, il est possible de déclarer 
+plusieurs classes dans un même fichier en Java. Mais les classes supplémentaires
+sont forcément de portée package.
+
+En pratique cette possibilité n'est jamais utilisée par les développeurs qui
+préfèrent utiliser des classes internes **static** ou un fichier propre à
+chaque classe.
 
 .. _Comparator: https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html
 .. _Swing: https://docs.oracle.com/javase/tutorial/uiswing/index.html
