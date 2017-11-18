@@ -34,7 +34,7 @@ Les entrées/sorties (DONE)
 
 ===================
 
-les classes internes & classes anonymes /!\
+les classes internes & classes anonymes (DONE)
 
 ===================
 

@@ -808,7 +808,7 @@ Java à travers un réseau. La sérialisation d'objets a des limites :
   sérialisée dans un fichier ne sera sans doute plus lisible.
    
 Pour qu'un objet puisse être sérialisé, il faut que sa classe implémente 
-:ref:`l'interface marqueur <interface_marqeur>` Serializable_. Si un objet
+:ref:`l'interface marqueur <interface_marqueur>` Serializable_. Si un objet
 référence d'autres objets dans ses attributs alors il faut également que les classes
 de ces objets implémentent l'interface Serializable_. Beaucoup de classes de l'API standard de
 Java implémentent l'interface Serializable_, à commencer par la classe String_.

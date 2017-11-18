@@ -332,7 +332,7 @@ Deque_
   soit sur le dernier élément.
   
 RandomAccess_
-  Il s'agit d'une :ref:`interface marqueur <interface_marqeur>` qui signale que
+  Il s'agit d'une :ref:`interface marqueur <interface_marqueur>` qui signale que
   l'implémentation associée supporte les accès aléatoire en un temps constant. Par
   exemple, ArrayList_ implémente RandomAccess_ mais pas LinkedList_. Cette interface
   existe avant tout pour des raisons d'optimisation de parcours de liste.

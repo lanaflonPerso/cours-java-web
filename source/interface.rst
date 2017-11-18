@@ -316,7 +316,7 @@ L'héritage d'interface permet d'introduire de nouveaux types par agrégat. Dans
 l'exemple ci-dessus, nous faisons apparaître la notion d'omnivore simplement
 comme étant à la fois un carnivore et un herbivore.
 
-.. _interface_marqeur:
+.. _interface_marqueur:
 
 Les interfaces marqueurs
 ************************
