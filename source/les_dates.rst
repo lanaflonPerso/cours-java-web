@@ -5,7 +5,7 @@ Les dates et le temps sont représentés en Java par des classes. Cependant, au 
 des versions de l'API standard, de nouvelles classes ont été proposées pour représenter
 les dates et le temps. Pour des raisons de compatibilité ascendante, les anciennes
 classes sont demeurées même si une partie de leurs méthodes ont été dépréciées.
-Ainsi, il existe plusieurs façon de représenter les dates et le temps en Java.
+Ainsi, il existe plusieurs façons de représenter les dates et le temps en Java.
 
 Date : la classe historique
 ***************************

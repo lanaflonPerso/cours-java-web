@@ -5,10 +5,10 @@ Ce chapitre est une introduction au développement d'application graphique en
 Java à l'aide de la bibliothèque Swing.
 
 Swing permet de développer des applications graphiques portables en Java. Cela
-signifie que ces applications fonctionneront de manière identique quel que soit
+signifie que ces applications fonctionneront de manière identique quels que soient
 le système d'exploitation et l'environnement graphique utilisé. Swing a été conçu
 plus spécifiquement pour créer des applications pour ordinateur de bureau (*desktop environment*).
-Elle est composée d'un ensemble de classes qui se trouvent dans le package
+Il est composé d'un ensemble de classes qui se trouvent dans le package
 javax.swing_ ainsi que dans ses sous-packages.
 
 .. note::
@@ -21,15 +21,15 @@ javax.swing_ ainsi que dans ses sous-packages.
   (*Abstract Window Toolkit*). Cette dernière offrait un accès en Java à l'API
   graphique du système alors que Swing offre des composants graphiques totalement
   implémentés en Java (et donc avec un comportement et un rendu identiques 
-  quelque soit le système sous-jacent). AWT est toujours présent dans Java 8 et
-  ses classes se trouvent dans le package java.awt_. Parfois, Swing utilise
-  et est compatbile avec quelques classes de AWT. 
+  quel que soit le système sous-jacent). AWT est toujours présent dans la bibliothèque
+  standard de Java et ses classes se trouvent dans le package java.awt_. 
+  Swing utilise une partie des classes fournies par AWT. 
 
 Une première application
 ************************
 
 Dans une interface graphique, le composant graphique fondamental est la fenêtre.
-Un fenêtre dispose généralement d'une barre de titre, un cadre et éventuellement
+Une fenêtre dispose généralement d'une barre de titre, un cadre et éventuellement
 une barre de menu et une barre d'état. Dans Swing, une fenêtre correspond à la
 classe JFrame_.
 
@@ -61,31 +61,31 @@ Le code ci-dessus crée une fenêtre dans laquelle est écrit "Hello world!".
   titre à afficher dans la barre de titre.
 * ligne 11 : on ajoute un composant graphique de type JLabel_ qui correspond à un
   libellé.
-* ligne 12 : on indique la dimension en pixel de la fenêtre (largeur puis hauteur)
+* ligne 12 : on indique la dimension en pixels de la fenêtre (largeur puis hauteur)
 * ligne 13 : on indique la position à l'écran de la fenêtre. La position est donnée
   en pixels depuis le bord supérieur gauche de l'écran.
-* ligne 14 : on associe une opération par défaut lorsque la fenêtre est fermée
+* ligne 14 : on spécifie une opération par défaut lorsque la fenêtre est fermée
   par l'utilisateur (par exemple lorsqu'il clique sur le bouton *fermer* de 
-  la barre de titre). Pour cette exemple, on indique que la constante *EXIT_ON_CLOSE*
+  la barre de titre). Pour cet exemple, on indique la constante *EXIT_ON_CLOSE*
   qui indique que le programme doit s'arrêter lorsque cette fenêtre est fermée.
-* ligne 15 : on indique que la fenêtre est visible, ce qui déclenche son affichage.
+* ligne 15 : on rend la fenêtre visible, ce qui déclenche son affichage.
 
 Une chose peut paraître surprenante : après la ligne 15, le programme ci-dessus
 ne fait plus rien, la méthode *main* se termine et donc le programme devrait
 s'arrêter. Mais il n'en est rien. Si vous exécutez ce code, une fenêtre s'affiche
 et le programme continue de s'exécuter tant que la fenêtre n'est pas fermée. En
 fait la méthode *main* se termine effectivement mais comme la fenêtre a été rendue
-visible à la ligne 15, cela a déclenché la boucle des événements (*event loop*).
+visible à la ligne 15, cela a déclenché la boucle des événements Swing (*event loop*).
 La boucle des événements est une boucle qui s'exécute dans un processus
 léger (*thread*). Elle traite continuellement les événements que reçoit l'application graphique. Par
-exemple si l'utilisateur appuie sur une touche du clavier ou bouge la souris,
+exemple, si l'utilisateur appuie sur une touche du clavier ou bouge la souris,
 la boucle des événements en est alertée et crée des objets pour représenter
 ces événements. Pour les exemples données, il s'agira d'instances de 
-KeyEvent_ et de MouseEvent_. Tant que la boucle d'événements s'exécute l'application
+KeyEvent_ et de MouseEvent_. Tant que la boucle des événements s'exécute, l'application
 ne peut pas s'arrêter (même si toutes les fenêtres de l'application ont été fermées).
 C'est pour cela qu'à la ligne 14, on précise que si la fenêtre est fermée, alors
-il faudra déclencher un événement de sortie (*EXIT_ON_CLOSE*) qui mettre fin à
-boucle des événements.
+il faudra déclencher un événement de sortie (*EXIT_ON_CLOSE*) qui mettra fin à
+boucle des événements et arrêtera l'application.
 
 Les principaux composants
 *************************
@@ -100,14 +100,14 @@ composant graphique, on peut utiliser une des méthodes add_ héritées de Conta
 On peut également supprimer un composant d'un autre avec la méthode Container.remove_
 ou Container.removeAll_.
 
-Parmi les composants graphiques les plus courant en Swing, on trouve :
+Parmi les composants graphiques les plus couramment utilisés en Swing, on trouve :
 
 JPanel_
-  Ce composant n'a pas de représentation graphique proprement dit. Il sert à grouper
-  des composants en les ajoutant à une instance de JPanel_
+  Ce composant n'a pas de représentation graphique proprement dite. Il sert à grouper
+  des composants dans une arborescence de composants graphiques.
 
 JLabel_
-  Ce composant représente une zone de texte ou une image à afficher. Généralement il est utilisé
+  Ce composant représente une zone de texte ou une image à afficher. Généralement, il est utilisé
   pour afficher des textes cours. Une instance de JLabel_ ne réagit pas aux événements
   (notamment de type clavier). Il est conçu pour fournir un libellé ou une icône
   pour un champ de saisi (d'où son nom).
@@ -123,7 +123,7 @@ JTextArea_
 JEditorPane_
   Ce composant correspond à un éditeur de texte riche. Il peut afficher du texte
   avec des informations de formatage (comme des balises). Par défaut, il supporte
-  le texte brut (*text/plain*), le HTML (*text/html*) ou le RTF (*text/rtf*).
+  le texte brut (*text/plain*), le HTML (*text/html*) et le RTF (*text/rtf*).
 
 JCheckBox_
   Ce composant correspond à une case à cocher.
@@ -136,7 +136,7 @@ JComboBox_
   La JComboBox_ supporte la sélection unique ou la multi sélection.
 
 JProgressBar_
-  Ce composant fait dessine une barre de progression.
+  Ce composant dessine une barre de progression.
 
 JButton_
   Ce composant représente un bouton.
@@ -221,11 +221,11 @@ JTabbedPane_
 
 Le programme ci-dessus présente un exemple d'affichage des principaux composants
 graphiques. Il définit la classe *ExempleComposant* qui hérite de JFrame_. Il
-s'agit d'un exemple assez courant pour créer des applications graphiques avec
+s'agit d'un méthode assez courante pour créer des applications graphiques avec
 Swing. On crée un nouveau composant qui hérite de JFrame_ pour jouer le rôle
 d'une fenêtre dans notre application. Ce composant surcharge la méthode
 JFrame.frameInit_ (à partir de la ligne 23) qui lui permet d'effectuer toutes les opérations d'initialisation.
-Dans notre cas, il s'agit de créer une instance de JTabbedPane_ puis de créer
+Dans notre cas, il s'agit de créer une instance de JTabbedPane_, puis de créer
 un exemple de chaque composant et de l'ajouter dans le *tabbedPane* grâce à la
 méthode privée *addComponent* déclarée à la ligne 46. Notez que les composants
 ne sont pas directement ajoutés au *tabbedPane* mais à une instance de JPanel_
@@ -243,7 +243,7 @@ Les layouts
 ***********
 
 Lorsqu'on ajoute plusieurs composants graphiques dans un conteneur, on souhaite
-organiser visuellement ces composants d'une certaines manières. Par exemple, pour
+organiser visuellement ces composants d'une certaine manière. Par exemple, pour
 un formulaire de saisie, on souhaite afficher ligne par ligne un champ libellé
 avec son champ de texte de saisie. Si le conteneur graphique change de taille
 (parce que la fenêtre change de dimension ou parce que les autres composants 
@@ -251,13 +251,14 @@ autour du conteneur changent), on souhaite que le contenu conserve une cohérenc
 dans son organisation. Un type d'agencement est appelé un *layout* et il existe
 en Swing des objets qui représentent des types de *layout* particulier.
 
-Chaque composant Swing à une taille préférée (une hauteur et une largeur en 
-pixels) qui est donnée la méthode Container.getPreferredSize_. Par exemple, une
-instance de JButton_ va donner une taille qui lui permette d'afficher correctement
+Chaque composant Swing a une taille préférée (une hauteur et une largeur en 
+pixels) qui est donnée par la méthode Container.getPreferredSize_. Par exemple, une
+instance de JButton_ va donner une taille qui lui permet d'afficher correctement
 son libellé ainsi que le dessin qui représente le cadre du bouton lui-même. Un
 *layout* doit tenir compte de la taille préférée de tous les composants dont
 il a la charge. Swing fournit huit *layouts* différents : BorderLayout_,
-BoxLayout_, CardLayout_, FlowLayout_, GridBagLayout_, GridLayout_, SpringLayout_.
+BoxLayout_, CardLayout_, FlowLayout_, GridBagLayout_, GroupLayout_, GridLayout_, 
+SpringLayout_.
 
 .. note::
 
@@ -356,7 +357,7 @@ Le programme ci-dessus produit une fenêtre de formulaire :
   Comme il représente une fenêtre, il peut posséder une barre de menu, une barre
   de statut et une zone de contenu appelée le *content pane*. Lorsqu'on ajoute
   un composant dans une instance de JFrame_, on ajoute en fait le composant
-  au *ContentPane*. Si on veut modifier le type de *layout* de la fenêtre, il
+  à son *content pane*. Si on veut modifier le type de *layout* de la fenêtre, il
   s'agit en fait du *layout* de sa zone centrale et donc du *content pane*.
 
 La méthode *addRow* déclarée à la ligne 36 permet d'ajouter les lignes du
@@ -373,21 +374,35 @@ de spécifier un alignement. Pour notre application on demande que les boutons
 soient alignés à droite (FlowLayout.Right_).
 
 À la ligne 32, on appelle la méthode pack_. Comme son nom l'indique, cette méthode
-compacte le composant graphique que ses dimensions soient minimales. Appliquée
+compacte les dimensions du composant graphique afin que sa taille soit minimale. Appliquée
 à notre classe qui représente la fenêtre de l'application, cette méthode force
 les gestionnaires de *layout* à organiser visuellement les composants graphiques
 pour qu'ils s'affichent correctement. Puis, à la ligne 33, on spécifie que la
 fenêtre de l'application ne peut pas être redimensionnée.
 
+.. _swingGridBagLayout:
+
 Le GridBagLayout
 ================
 
-Le GrigBagLayout_ permet de gérer le *layout* comme une grille. Chaque composant
-ajouté peut avoir des contraintes de positionnement (représentées par une
-instance de GridBagConstraints_). On peut indiquer la position dans la grille
-représentée par des coordonnées x et y, si le composant s'étend sur plusieurs 
-cases de la grille ou encore le poids du composant (c'est-à-dire l'espace qu'il 
-occupe par comparaison aux autres) à l'horizontal et à la verticale. 
+Le GridBagLayout_ permet de gérer le *layout* comme une grille fictive. Chaque composant
+a des contraintes de positionnement. Ces contraintes sont
+représentées par les attributs d'une instance de GridBagConstraints_ :
+
+gridx, gridy
+  Ces attributs indiquent la position dans la grille (colonne et ligne).
+
+gridwidth, gridheight
+  Ces attributs indiquent si le composant s'étend sur plusieurs 
+  cases (horizontalement et verticalement) de la grille.
+
+weightx, weighty
+ Ces attributs donnent le poids du composant : c'est-à-dire le pourcentage de 
+ l'espace qu'il occupe par comparaison aux autres à l'horizontal et à la verticale. 
+
+fill
+  Cet attribut indique comment le composant remplit la case dans laquelle il se 
+  trouve.
 
 .. code-block:: java
   :linenos:
@@ -493,9 +508,9 @@ de GridBagConstraints de manière à spécifier les contraintes de placement qui
 sont ensuite passées en paramètres au moment de l'ajout des composants aux lignes
 60 et 80.
 
-Le GridBagLayout_ est particulièrement utile pour aligner des composants sur
-une grille (comme dans cet exemple de formulaire) car il évite d'avoir à créer
-des objets de type JPanel_ juste pour grouper les composants entre eux. 
+Le GridBagLayout_ est particulièrement utile pour des fenêtres de type formulaire
+qui sont le plus souvent organisées par rapport à une grille. Il évite d'avoir à créer
+des objets de type JPanel_ pour grouper les composants entre eux. 
 
 Le SpringLayout
 ===============
@@ -600,11 +615,12 @@ Le programme ci-dessus produit une fenêtre de formulaire :
 Le look & feel
 **************
 
-Swing introduit un découplage entre les composants graphiques et les classes
-chargées de représenter ces composants à l'écran. Il est donc possible de
-modifier l'aspect général (le *look and feel*) d'une application. Par défaut,
+Avec Swing, les composants graphiques manipulés par une application ne sont
+pas directement responsables de leur représentation à l'écran. Il est possible de
+modifier l'aspect général (le *look and feel*) d'une application sans changer
+significativement l'implémentation. Par défaut,
 Swing utilise un *look and feel* identique sur toutes les plates-formes. Mais
-il est possible de demander d'utiliser un rendu qui corresponde à celui
+il est possible de demander d'utiliser un rendu qui corresponde plus à celui
 de l'environnement graphique de l'utilisateur ou même de fournir un *look
 and feel* personnalisé.
 
@@ -680,10 +696,49 @@ and feel* personnalisé.
 
 L'exemple ci-dessus reprend l'application qui affiche différents composants
 graphiques. La seule différence se situe des lignes 55 à 59. Avant de créer
-la fenêtre principale, on utilise la classe UIManager_ pour utiliser un
+la fenêtre principale, on utilise la classe UIManager_ pour sélectionner le
 *look and feel* correspondant au système sur lequel l'application s'exécute.
 
 
 .. _JavaFX: https://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 .. _javax.swing: https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html
-.. _java.awt: https://docs.oracle.com/javase/8/docs/api/java/awt/package-summary.html11
+.. _java.awt: https://docs.oracle.com/javase/8/docs/api/java/awt/package-summary.html
+.. _JFrame: https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html
+.. _JLabel: https://docs.oracle.com/javase/8/docs/api/javax/swing/JLabel.html
+.. _JPanel: https://docs.oracle.com/javase/8/docs/api/javax/swing/JPanel.html
+.. _JTextField: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextField.html
+.. _JTextArea: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextArea.html
+.. _JCheckBox: https://docs.oracle.com/javase/8/docs/api/javax/swing/JCheckBox.html
+.. _JRadioButton: https://docs.oracle.com/javase/8/docs/api/javax/swing/JRadioButton.html
+.. _JComboBox: https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html
+.. _JProgressBar: https://docs.oracle.com/javase/8/docs/api/javax/swing/JProgressBar.html
+.. _JButton: https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html
+.. _JSeparator: https://docs.oracle.com/javase/8/docs/api/javax/swing/JSeparator.html
+.. _JSpinner: https://docs.oracle.com/javase/8/docs/api/javax/swing/JSpinner.html
+.. _JTabbedPane: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTabbedPane.html
+.. _JEditorPane: https://docs.oracle.com/javase/8/docs/api/javax/swing/JEditorPane.html
+.. _BoxLayout: https://docs.oracle.com/javase/8/docs/api/javax/swing/BoxLayout.html
+.. _BorderLayout: https://docs.oracle.com/javase/8/docs/api/java/awt/BorderLayout.html
+.. _CardLayout: https://docs.oracle.com/javase/8/docs/api/java/awt/CardLayout.html
+.. _FlowLayout: https://docs.oracle.com/javase/8/docs/api/java/awt/FlowLayout.html
+.. _GridBagLayout: https://docs.oracle.com/javase/8/docs/api/java/awt/GridBagLayout.html
+.. _GridLayout: https://docs.oracle.com/javase/8/docs/api/java/awt/GridLayout.html
+.. _GroupLayout: https://docs.oracle.com/javase/8/docs/api/javax/swing/GroupLayout.html
+.. _SpringLayout: https://docs.oracle.com/javase/8/docs/api/javax/swing/SpringLayout.html
+.. _KeyEvent: https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html
+.. _MouseEvent: https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html
+.. _Container: https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html
+.. _add: https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.awt.Component-
+.. _Container.add: https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#add-java.awt.Component-
+.. _Container.remove: https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#remove-java.awt.Component-
+.. _Container.removeAll: https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#removeAll--
+.. _JFrame.frameInit: https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#frameInit--
+.. _window.setLocationRelativeTo: https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#setLocationRelativeTo-java.awt.Component-
+.. _Container.getPreferredSize: https://docs.oracle.com/javase/8/docs/api/java/awt/Container.html#getPreferredSize--
+.. _Box: https://docs.oracle.com/javase/8/docs/api/javax/swing/Box.html
+.. _Box.createHorizontalStrut: https://docs.oracle.com/javase/8/docs/api/javax/swing/Box.html#createHorizontalStrut-int-
+.. _GridBagConstraints: https://docs.oracle.com/javase/8/docs/api/java/awt/GridBagConstraints.html
+.. _FlowLayout.RIGHT: https://docs.oracle.com/javase/8/docs/api/java/awt/FlowLayout.html#RIGHT
+.. _UIManager: https://docs.oracle.com/javase/8/docs/api/javax/swing/UIManager.html
+.. _pack: https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#pack--
+

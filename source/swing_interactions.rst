@@ -1,7 +1,7 @@
 Swing : les interactions
 ########################
 
-Ce chapitre présente les différents types d'interaction que l'on peut mettre
+Ce chapitre présente différents types d'interaction que l'on peut mettre
 en place dans les applications graphiques basées sur Swing.
 
 Les listeners
@@ -108,21 +108,23 @@ qui représentent des *listeners* pour des événéments particuliers.
   }
 
 Dans l'exemple ci-dessus, l'application affiche un éditeur de texte sous la forme
-d'un carré de 300 pixels sur 300 pixels. On ajoute à ce composant un MouseListener_
-et un KeyListener_ qui sont déclarés sous la forme de classes internes. Ces
+d'un carré de 300 pixels sur 300 pixels. Aux lignes 72 et 73, on ajoute à ce composant 
+une instance de MouseListener_ et une instance de KeyListener_ (les classes
+implémentant ces interfaces sont déclarées sous la forme de classes internes). Ces
 *listeners* se contentent d'afficher sur la sortie standard la représentation
 sous forme de chaîne de caractères de chaque événement.
 
 Chaque événement fournit des informations liées à son origine. Par exemple, un
-MouseEvent_ indique si un bouton de la souris est préssé. Un KeyEvent_ indique
-la touche du clavier qui est soit pressée ou relachée. Un composant peut utiliser
-ces informations pour modifier son état. Ainsi la classe JEditorPane utilisée
-dans l'exemple précédent enregistre en interne un KeyListener_ pour savoir
+MouseEvent_ indique si un bouton de la souris est pressé. Un KeyEvent_ indique
+la touche du clavier qui est soit pressée soit relâchée. Un composant peut utiliser
+ces informations pour modifier son état. Ainsi, la classe JEditorPane_, utilisée
+dans l'exemple précédent, enregistre en interne un KeyListener_ pour savoir
 si une touche a été pressée et en déduit le caractère qui doit être ajouté dans
 l'éditeur.
 
-Un *listener* couramment utilisé est le type ActionListener_. Une action est
-une interaction utilisateur simple. Elle est associée à une commande qui est
+Un *listener* couramment utilisé est le type ActionListener_. Ce *listener* 
+écoute les événements de type ActionEvent_. Un ActionEvent_ représente
+une interaction utilisateur simple. Il est associé à une commande qui est
 un simple identifiant sous la forme d'une chaîne de caractères. Les boutons
 acceptent des *listeners* de ce type.
 
@@ -246,8 +248,8 @@ acceptent des *listeners* de ce type.
   }
 
 Le code ci-dessus reprend l'application de saisie de formulaire qui utilisait
-le GridBagLayout_. Entre les lignes 44 et 58, on crée les boutons de l'application
-en ajoutant des ActionListener_ sous la forme de classes anonymes. Lorsque
+le GridBagLayout_ dans le :ref:`chapitre précédent <swingGridBagLayout>`. Entre les lignes 44 et 58, on crée les boutons de l'application
+en ajoutant des instances de ActionListener_ sous la forme de classes anonymes. Lorsque
 l'utilisateur clique sur le bouton *Ok* (respectivement *Annuler*), la méthode
 privée *onOk* (respectivement *onCancel*) est appelée. La méthode *onOk* (lignes
 64-68) affiche sur la sortie standard les informations récupérées des différentes
@@ -267,13 +269,13 @@ JMenu_
 
 JMenuItem_
   Cette classe représente une entrée cliquable dans un menu. Elle se comporte
-  comme un JButton_
+  comme un JButton_.
 
 De plus, il existe des sous classes de JMenuItem_ pour représenter des entrées
 de menu plus complexes.
 
-La classe JFrame_ gère déjà en interne une instance de JMenuBar_. Il suffit
-d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de menu.
+La classe JFrame_ est déjà capable de gérer en interne une instance de JMenuBar_. 
+Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de menu.
 
 .. code-block:: java
   :linenos:
@@ -355,7 +357,7 @@ ActionListener_ pour terminer l'application.
 .. note::
 
   À la ligne 37, on enregistre un ActionListener_ en utilisant une lambda. En
-  effet même si cette interface ne possède pas l'annotation FunctionalInterface_,
+  effet, même si cette interface ne possède pas l'annotation FunctionalInterface_,
   elle possède les caractéristiques nécessaires pour qu'on puisse lui substituer
   une lambda.
 
@@ -371,12 +373,12 @@ plusieurs façons par un utilisateur :
 * en cliquant sur un bouton dans une boite de dialogue
 
 Swing permet de gérer ce phénomème grâce à l'interface Action_. Plutôt que d'ajouter
-un *listener*, il est possible d'associer une action à une objet de type JMenuItem_,
+un *listener*, il est possible d'associer une action à une objet de type JMenuItem_ ou
 JButton_. L'interface Action_ hérite de ActionListener_ pour pouvoir fournir un
 comportement lorsque l'utilisateur clique sur un bouton. Mais l'interface Action_
 permet également de définir un libellé, une icône, une description et un raccourci
 clavier. Tous les composants associés s'adapteront en fonction de l'état de l'action.
-Si une action est désactivée avec sa méthode setEnable_ alors tous les boutons
+Si une action est désactivée avec sa méthode setEnabled_ alors tous les boutons
 associés apparaîtront grisés.
 
 .. code-block:: java
@@ -639,8 +641,8 @@ et donner son URL au composant JEditorPane_ qui l'affiche.
 Boite de sélection de couleur
 =============================
 
-La classe JColorChooser_ permet d'afficher une boite de dialogue permettant
-de choisir une couleur.
+La classe JColorChooser_ affiche une boite de dialogue permettant de choisir une 
+couleur.
 
 .. code-block:: java
   :linenos:
@@ -698,4 +700,31 @@ de choisir une couleur.
   }
 
 L'application ci-dessus offre un menu pour changer la couleur de fond de la fenêtre.
+
+
+.. _JFrame: https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html
+.. _JButton: https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html
+.. _JMenuBar: https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuBar.html
+.. _JMenu: https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenu.html
+.. _JMenuItem: https://docs.oracle.com/javase/8/docs/api/javax/swing/JMenuItem.html
+.. _GridBagLayout: https://docs.oracle.com/javase/8/docs/api/java/awt/GridBagLayout.html
+.. _JDialog: https://docs.oracle.com/javase/8/docs/api/javax/swing/JDialog.html
+.. _JOptionPane: https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html
+.. _JFileChooser: https://docs.oracle.com/javase/8/docs/api/javax/swing/JFileChooser.html
+.. _JEditorPane: https://docs.oracle.com/javase/8/docs/api/javax/swing/JEditorPane.html
+.. _JColorChooser: https://docs.oracle.com/javase/8/docs/api/javax/swing/JColorChooser.html
+.. _KeyEvent: https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyEvent.html
+.. _MouseEvent: https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html
+.. _EventListener: https://docs.oracle.com/javase/8/docs/api/java/util/EventListener.html
+.. _MouseListener: https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html
+.. _KeyListener: https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html
+.. _ActionListener: https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionListener.html
+.. _AbstractAction: https://docs.oracle.com/javase/8/docs/api/javax/swing/AbstractAction.html
+.. _Action: https://docs.oracle.com/javase/8/docs/api/javax/swing/Action.html
+.. _FunctionalInterface: https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html
+.. _dispose: https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#dispose--
+.. _JFrame.setJMenuBar: https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html#setJMenuBar-javax.swing.JMenuBar-
+.. _setEnabled: https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setEnabled-boolean-
+.. _actionPerformed: https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionListener.html#actionPerformed-java.awt.event.ActionEvent-
+.. _ActionEvent: https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionEvent.html
 
