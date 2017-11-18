@@ -853,7 +853,7 @@ Exercice
     Vérifiez que cette nouvelle classe peut être utilisée dans le système de
     remise de diplôme. Pour cela ajoutez, des appréciations à une instance de la
     classe Diplôme et vérifiez que le système fonctionne toujours comme attendu.
-
+      
 
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _toString: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#toString--

@@ -357,7 +357,96 @@ Finalement, nous pouvons écrire une pseudo-classe de tests :
     }
   }
 
+Exercice
+********
 
+.. topic:: Java et XML
+  :class: exercice
+  
+  Java propose une API nommée JAXB qui permet de transformer un document XML
+  en objets Java ou de transformer des objets Java en document XML. JAXB fournit
+  des annotations qui indiquent la correspondance en XML des classes et de leurs
+  attributs.
+  
+  Parmi ces annotations, il y a :
+  
+  * XmlRootElement_
+  * XmlElement_
+  * XmlAttribute_
+  
+  Par ailleurs, JAXB permet de créer des instances de *Marshaller* et de *Unmarshaller*.
+  Le premier type permet de passer de Java à un document XML et le second type
+  réalise l'opération inverse.
+  
+  .. code-block:: java
+    :caption: Utilisation d'un Marshaller JAXB
+    
+    package ROOT_PKG.xml;
+
+    import java.io.File;
+
+    import javax.xml.bind.JAXBContext;
+    import javax.xml.bind.Marshaller;
+
+    public class XmlMarshaller {
+      
+      public static void main(String[] args) throws Exception {
+        
+        JAXBContext ctx = JAXBContext.newInstance(Personne.class, Adresse.class);
+        
+        Marshaller marshaller = ctx.createMarshaller();
+        marshaller.marshal(createPersonne(), new File("personne.xml"));
+      }
+
+      private static Personne createPersonne() {
+        // TODO à implémenter
+      }
+
+    }
+    
+  .. code-block:: java
+    :caption: Utilisation d'un Unmarshaller JAXB
+    
+    package ROOT_PKG.xml;
+
+    import java.io.File;
+
+    import javax.xml.bind.JAXBContext;
+    import javax.xml.bind.Unmarshaller;
+
+    public class XmlUnmarshaller {
+
+      public static void main(String[] args) throws Exception {
+        
+        JAXBContext ctx = JAXBContext.newInstance(Personne.class, Adresse.class);
+        
+        Unmarshaller unmarshaller = ctx.createUnmarshaller();
+        Personne personne = (Personne) unmarshaller.unmarshal(new File("personne.xml"));
+
+        System.out.println(personne);
+      }
+      
+    }
+
+  Étant donné le document XML suivant :
+  
+  .. code-block:: xml
+  
+    <?xml version="1.0" encoding="UTF-8"?>
+    <personne id="0001">
+      <nom>Doe</nom>
+      <prenom>John</prenom>
+      <age>31</age>
+      <adresse type="personnelle">
+        <rue>9 allée des vignes</rue>
+        <codePostal>33000</codePostal>
+        <ville>Bordeaux</ville>
+      </adresse>
+    </personne>
+
+  Créez les classes *Personne* et *Adresse* et utilisez les annotations JAXB
+  de manière à pouvoir passer d'un représentation Java à une représentation XML
+  (et vice-versa).
 .. _Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _Deprecated: https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html
 .. _FunctionalInterface: https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html
@@ -379,3 +468,6 @@ Finalement, nous pouvons écrire une pseudo-classe de tests :
 .. _Repeatable: https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Repeatable.html
 .. _lombok: https://projectlombok.org/
 .. _getClass: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#getClass--
+.. _XmlRootElement: https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/XmlRootElement.html
+.. _XmlElement: https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/XmlElement.html
+.. _XmlAttribute: https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/XmlAttribute.html

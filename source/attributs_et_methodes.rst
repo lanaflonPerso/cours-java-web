@@ -1001,7 +1001,16 @@ Exercice
     toCharArray_. Pour savoir si un caractère est une lettre, on utilise la méthode
     **static** Character.isAlphabetic_.
 
+.. only:: boomerang
 
+  .. topic:: Méthode et attribut de classe
+    :class: exercice
+    
+    Ajoutez une méthode de classe à la classe *Phrase* qui retourne le nombre de mots
+    de la plus grande phrase créée.
+    
+  
+  
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
 .. _System: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html

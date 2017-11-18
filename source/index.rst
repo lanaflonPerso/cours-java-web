@@ -17,8 +17,8 @@ Le langage Java
    types_primitifs
    operateurs
    structures_de_controle
-   attributs_et_methodes
    tableau
+   attributs_et_methodes
    cycle_de_vie
    package
    relations_entre_objets
