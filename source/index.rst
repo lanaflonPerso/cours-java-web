@@ -37,6 +37,7 @@ Le langage Java
    les_lambdas
    streams
    les_annotations
+   jdbc
    swing_interfaces_graphiques
    swing_interactions
    swing_notions_avancees
