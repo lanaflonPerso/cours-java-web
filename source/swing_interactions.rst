@@ -13,7 +13,7 @@ en conséquence. Pour associer un comportement à un événement, on ajoute un
 écouteur d'événement (*listener*) au composant, c'est-à-dire un objet 
 qui implémente l'interface EventListener_. Cette interface est simplement une 
 :ref:`interface marqueur <interface_marqueur>` dont héritent toutes les interfaces
-qui représentent des *listeners* pour des événéments particuliers.
+qui représentent des *listeners* pour des événements particuliers.
 
 .. code-block:: java
   :linenos:
@@ -372,7 +372,7 @@ plusieurs façons par un utilisateur :
 * en exécutant un raccourci clavier
 * en cliquant sur un bouton dans une boite de dialogue
 
-Swing permet de gérer ce phénomème grâce à l'interface Action_. Plutôt que d'ajouter
+Swing permet de gérer ce phénomène grâce à l'interface Action_. Plutôt que d'ajouter
 un *listener*, il est possible d'associer une action à une objet de type JMenuItem_ ou
 JButton_. L'interface Action_ hérite de ActionListener_ pour pouvoir fournir un
 comportement lorsque l'utilisateur clique sur un bouton. Mais l'interface Action_
