@@ -1,52 +1,13 @@
 ===================
 
-Les exceptions
+swing
 
-introduction du mot clé assert.
-
-===================
-
-Les génériques (DONE)
+JTable, JList et MVC
+Principe du Worker thread
 
 ===================
 
-Les collections (DONE)
-
-===================
-
-classe abstraite (DONE)
-
-===================
-
-interface (DONE)
-
-===================
-
-enumération (DONE)
-
-===================
-
-Les dates / time (DONE)
-
-===================
-
-Les entrées/sorties (DONE)
-
-===================
-
-les classes internes & classes anonymes (DONE)
-
-===================
-
-Les lambdas (DONE)
-
-===================
-
-stream et filter/map/reduce (DONE)
-
-===================
-
-Les annotations (DONE)
+javadoc
 
 ===================
 
@@ -61,76 +22,11 @@ volatile
 
 ===================
 
-swing
-
-JFrame
-Les layouts
-Les principaux composants simples (label, texte, boutton, JTextEdit)
-La notion de listeners
-La notion d'action et les boutons
-Les menus (JMenu et JMenuItem)
-Les boites de dialogues
-Les boites de dialogues spécialisées (sélection de fichiers...)
-La pompe à événements
-Principe du Worker thread
-
-===================
-
-javadoc
-
-===================
-
-
-Pour la MAIF
-
-JDBC
-
-
-
-================================
-Exos
-
-----------------------------
-Méthodes statiques
-
-String Phrase.create(mot, mot, mot, mot) 
-
-donner le nombre de mots de la phrase la plus longue créée.
-
-----------------------------
-Constructeurs
-
-Phrase(caractèreDeTerminaison)
-Phrase()
-Phrase(mot, mot, mot)
-
------------------------------
-Exception
-
-ajout des exceptions sur le projet Diplôme
-construction d'une hiérarchie applicative d'exception
-
-------------------------------
-Annotations
-
-exo JAXB : lire et écrire un document XML
-
-------------------------------
-Stream
-
-Lecture d'un fichier csv
-
-===================
-
 La réflexivité
 
 ===================
 
 les tests
-
-===================
-
-La sérialisation
 
 ===================
 

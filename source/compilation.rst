@@ -228,6 +228,75 @@ et de choisir *Export*. Dans la boîte de dialogue d'export, il faut chercher "j
 *Java > JAR File*. En cliquant sur *Next*, on spécifie le nom et l'emplacement du fichier JAR
 et il sera créé en cliquant sur *Finish*.
 
+.. only:: boomerang
+
+  Exercice
+  ********
+  
+  .. topic:: Utilisation de bibliothèques JAR
+    :class: exercice
+    
+    Pour cet exercice, nous allons créer un document PDF grâce à la bibliothèque
+    iText_. Pour cela, téléchargez les fichiers JAR suivants :
+    
+    * `http://central.maven.org/maven2/com/itextpdf/itextpdf/5.5.12/itextpdf­5.5.12.jar <http://central.maven.org/maven2/com/itextpdf/itextpdf/5.5.12/itextpdf­5.5.12.jar>`_
+    * `http://central.maven.org/maven2/org/bouncycastle/bcprov­jdk15on/1.58/bcprov­jdk15on­1.58.jar <http://central.maven.org/maven2/org/bouncycastle/bcprov­jdk15on/1.58/bcprov­jdk15on­1.58.jar>`_
+    * `http://central.maven.org/maven2/org/bouncycastle/bcpkix­jdk15on/1.58/bcpkix­jdk15on­1.58.jar <http://central.maven.org/maven2/org/bouncycastle/bcpkix­jdk15on/1.58/bcpkix­jdk15on­1.58.jar>`_
+  
+    Créez une projet Java dans Eclipse et copiez les fichiers JAR téléchargés dans
+    un répertoire *lib* que vous créerez dans le projet Eclipse.
+    
+    Ajoutez maintenant les fichiers JAR comme bibliothèques du projet. Pour cela,
+    faites une clic droit sur le nom du projet dans le *Package Explorer* et choisissez
+    *Properties*. Dans la boite de dialogue des propriétés du projet, choisissez
+    *Java Buid Path* et enfin cliquez sur l'onglet *Libraries*. Utilisez le bouton
+    *Add JARs...* pour déclarer les fichiers téléchargés comme des bibliothèques
+    de votre projet.
+    
+    .. image:: images/eclipse_build_path.png
+
+    .. tip::
+    
+      Dans le *Package Explorer*, vous pouvez directement faire un clic droit
+      sur chaque fichier JAR et choisir *Build Path > Add to Build Path*.
+
+    Créer ensuite la classe *PremierPdf* et ajoutez le code suivant :
+    
+    ::
+    
+      import java.io.FileOutputStream;
+
+      import com.itextpdf.text.Document;
+      import com.itextpdf.text.Paragraph;
+      import com.itextpdf.text.pdf.PdfWriter;
+
+      public class PremierPdf {
+
+        public static void main(String[] args) throws Exception {
+          Document document = new Document();
+          PdfWriter.getInstance(document, new FileOutputStream("premier-pdf.pdf"));
+          document.open();
+          document.addTitle("Mon premier PDF");
+          document.add(new Paragraph("Hello the world en PDF grâce à iText"));
+          document.close();
+        }
+      }
+    
+    En exécutant cette classe, vous obtenez à la racine de votre projet le fichier
+    *premier-pdf.pdf* créé grâce à la bibliothèque iText_.
+    
+    .. tip::
+    
+      Si vous ne voyez pas le fichier PDF apparaître dans le *Package Explorer*,
+      faites un clic droit sur le nom du projet et choisissez *Refresh*.
+
+    .. note::
+    
+      Pour cet exercice , les fichiers JAR sont téléchargés depuis le site
+      http://central.maven.org qui référence des milliers de bibliothèques Java.
+      Maven_ est un outil de *build* qui permet de gérer les étapes de construction
+      de votre projet et notamment de déclarer les dépendances logicielles.
+
 .. _javac: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javac.html
 .. _java: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
 .. _jar: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jar.html
