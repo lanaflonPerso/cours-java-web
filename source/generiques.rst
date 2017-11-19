@@ -621,6 +621,7 @@ le type paramétré d'un paramètre :
 .. _java.util.ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html 
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _ArrayList.add: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#add-E-
+.. _List.add: https://docs.oracle.com/javase/8/docs/api/java/util/List.html#add-E-
 .. _List: https://docs.oracle.com/javase/8/docs/api/java/util/List.html
 .. _Map: https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
 .. _ArrayList.get: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#get-int-

@@ -304,3 +304,4 @@ et il sera créé en cliquant sur *Finish*.
 .. _Maven: http://maven.apache.org
 .. _Gradle: https://gradle.org
 .. _Eclipse: https://eclipse.org
+.. _iText: https://itextpdf.com/
