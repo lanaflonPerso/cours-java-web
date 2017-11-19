@@ -1,7 +1,7 @@
 Les interfaces
 ##############
 
-Une interface permet de définir en ensemble de services qu'un client peut
+Une interface permet de définir un ensemble de services qu'un client peut
 obtenir d'un objet. Une interface introduit une abstraction pure qui permet
 un découplage maximal entre un service et son implémentation. On retrouve
 ainsi les interfaces au cœur de l'implémentation de beaucoup de bibliothèques
@@ -141,11 +141,11 @@ il est relativement simple d'adapter une classe pour qu'elle implémente une int
 Une interface introduit un nouveau type de relation qui serait du type *est
 comme un* (*is-like-a*).
 
-Pour une exemple d'application de comptes, cela signifie qu'il est 
+Par exemple, il est 
 possible de créer un système de gestion de comptes utilisant l'interface
 *Compte*. Il est facile ensuite de fournir une implémentation de cette interface
 pour un compte bancaire, un porte-monnaie électronique, un compte en ligne...
-
+t
 Une classe peut implémenter plusieurs interfaces si nécessaire. Pour cela, il
 suffit de donner les noms des interfaces séparés par une virgule.
 
@@ -395,7 +395,7 @@ Implémentation par défaut
 
 Il est parfois difficile de faire évoluer une application qui utilise intensivement
 les interfaces. Reprenons notre exemple du *Compte*. Imaginons que nous souhaitions
-ajouter la méthode *transférer* qui consiste à vider intégralement un compte vers un autre.
+ajouter la méthode *transférer* qui consiste à transférer le solde d'un compte vers un autre.
 
 ::
 
@@ -474,7 +474,7 @@ s'exécutera. Une méthode par défaut doit obligatoirement avoir le mot-clé
 
 Une classe implémentant *Compte* n'a pas besoin de fournir une 
 implémentation pour la méthode *transferer*. La classe *CompteBancaire* que
-nous avons implémenté au début de ce chapitre continuera de compiler et de
+nous avons implémentée au début de ce chapitre continuera de compiler et de
 fonctionner comme attendu tout en ayant une méthode supplémentaire.
 
 .. caution::
@@ -533,9 +533,9 @@ ayant le type d'une interface implémentée par cette classe.
 
 
 Plus une partie d'une application a recours à des interfaces pour interagir
-avec les autres modules d'une application, plus il est simple d'introduire
-des nouvelles classes qui pourront être directement utilisées simplement 
-en implémentant les interfaces attendues.
+avec les autres parties d'une application, plus il est simple d'introduire
+des nouvelles classes implémentant les interfaces attendues et qui pourront être 
+directement utilisées.
 
 Le second point est lié au principe SOLID_ de la `responsabilité unique`_.
 Une interface est conçue pour représenter un type de relation entre la classe
@@ -669,18 +669,18 @@ nous pouvons réaliser l'implémentation suivante :
 
 L'implémentation précédente permet d'effectuer une transaction pour un compte donné
 et un montant donné et mémorise la date. Elle permet également d'annuler la transaction.
-Dans cette implémentation, nous avons réalisé une inversion de contrôle.
+Dans cette implémentation, nous avons réalisé une **inversion de dépendance**.
 La transaction ne connaît pas la nature exacte de l'objet *Compte* qu'elle manipule.
 La classe *TransactionBancaire* fonctionnera quelle que soit l'implémentation
 sous-jacente de l'interface *Compte*.
 
 L'inversion de dépendance est un principe de programmation objet qui stipule que
-si une classe A est dépendante d'une classe B, alors il peut être souhaitable que
-que non seulement la classe A reçoive une instance de B par injection mais également
+si une classe A est dépendante d'une classe B, alors il peut être souhaitable que,
+non seulement la classe A reçoive une instance de B par injection, mais également
 que B ne soit connue qu'à travers une interface.
 
 L'inversion de dépendance est très souvent utilisée pour isoler les couches logicielles
-d'une architecture. Au sein d'une application, nous pouvons disposer par exemple d'un ensemble
+d'une architecture. Au sein d'une application, nous pouvons disposer d'un ensemble
 de classes pour gérer des opérations utilisateur et d'un ensemble de classes pour
 assurer la persistance des informations.
 
@@ -693,7 +693,7 @@ imaginer implémenter différentes classes gérant la persistance pour sauver le
 dans des fichiers, dans des bases de données ou sur des serveurs distants (et même
 nulle part si on souhaite exécuter le code dans un environnement de test). D'un autre
 côté on peut créer et faire évoluer un système de persistance en ayant une dépendance
-minimale aux opérations utilisateurs puisque le système de persistance doit juste
+minimale aux opérations utilisateur puisque le système de persistance doit juste
 fournir des implémentations conformes aux interfaces.
 
 
