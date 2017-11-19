@@ -313,6 +313,19 @@ la somme totale.
 Exercice
 ********
 
+.. topic:: Chaîne de caractères et streams
+  :class: exercice
+
+  Utilisez l'API des Streams pour compter le nombre de lettres dans une chaîne 
+  de caractères.
+  
+  .. tip::
+  
+    * La méthode chars_ permet d'obtenir un stream de caractères depuis un objet
+      de type String_.
+    * La méthode Character.isAlphabetic_ retourne **true** si le caractère passé
+      en paramètre est une lettre.
+
 .. topic:: Lecture d'un fichier CSV
   :class: exercice
   
@@ -363,4 +376,6 @@ Exercice
 .. _Set: https://docs.oracle.com/javase/8/docs/api/java/util/Set.html
 .. _Map: https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+.. _chars: https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html#chars--
+.. _Character.isAlphabetic: https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html#isAlphabetic-int-
 
