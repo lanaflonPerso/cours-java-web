@@ -239,9 +239,9 @@ et il sera créé en cliquant sur *Finish*.
     Pour cet exercice, nous allons créer un document PDF grâce à la bibliothèque
     iText_. Pour cela, téléchargez les fichiers JAR suivants :
     
-    * `http://central.maven.org/maven2/com/itextpdf/itextpdf/5.5.12/itextpdf­5.5.12.jar <http://central.maven.org/maven2/com/itextpdf/itextpdf/5.5.12/itextpdf­5.5.12.jar>`_
-    * `http://central.maven.org/maven2/org/bouncycastle/bcprov­jdk15on/1.58/bcprov­jdk15on­1.58.jar <http://central.maven.org/maven2/org/bouncycastle/bcprov­jdk15on/1.58/bcprov­jdk15on­1.58.jar>`_
-    * `http://central.maven.org/maven2/org/bouncycastle/bcpkix­jdk15on/1.58/bcpkix­jdk15on­1.58.jar <http://central.maven.org/maven2/org/bouncycastle/bcpkix­jdk15on/1.58/bcpkix­jdk15on­1.58.jar>`_
+    * http://central.maven.org/maven2/com/itextpdf/itextpdf/5.5.12/itextpdf-5.5.12.jar
+    * http://central.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.58/bcprov-jdk15on-1.58.jar
+    * http://central.maven.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.58/bcpkix-jdk15on-1.58.jar
   
     Créez une projet Java dans Eclipse et copiez les fichiers JAR téléchargés dans
     un répertoire *lib* que vous créerez dans le projet Eclipse.
