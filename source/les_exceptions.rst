@@ -197,7 +197,7 @@ la ligne 3 ou la *FinDuMondeException* à la ligne 10.
 
 Les blocs **catch** sont pris en compte à l'exécution dans l'ordre de leur 
 déclaration. Déclarer un bloc **catch** pour une exception parente avant
-**catch** pour une exception enfant est considéré comme une erreur de compilation.
+un bloc **catch** pour une exception enfant est considéré comme une erreur de compilation.
 
 .. code-block:: java
   :linenos:
@@ -226,7 +226,7 @@ déclaration. Déclarer un bloc **catch** pour une exception parente avant
 Dans, l'exemple précédent, il faut bien comprendre que Exception_ est la classe
 parente de *FinDuMondeException*. Donc si une exception de type *FinDuMondeException*
 est lancée, alors seul le premier bloc **catch** sera exécuté. Le second est
-donc simplement du code mort est génèrera une erreur de compilation. Pour
+donc simplement du code mort est générera une erreur de compilation. Pour
 que cela fonctionne, il faut inverser l'ordre des blocs **catch** :
 
 .. code-block:: java
@@ -254,9 +254,9 @@ que cela fonctionne, il faut inverser l'ordre des blocs **catch** :
 
 Maintenant, un premier bloc **catch** fournit un traitement particulier pour
 les exceptions de type *FinDuMondeException* ou de type enfant et un second
-bloc **catch** fournit une traitement pour les autres exceptions.
+bloc **catch** fournit un traitement pour les autres exceptions.
 
-Parfois, le code du bloc **catch** est identique pour différent types d'exception.
+Parfois, le code du bloc **catch** est identique pour différents types d'exception.
 Si ces exceptions ont une classe parente commune, il est possible de déclarer
 un bloc **catch** simplement pour cette classe parente afin d'éviter la duplication
 de code. Dans notre exemple, la classe ancêtre commune entre NullPointerException_
@@ -305,7 +305,7 @@ en erreur.
 Le mécanisme de propagation permet de séparer la partie de l'application qui génère
 l'exception de la partie qui traite cette exception.
 
-Si nous reprenons notre exemple précédent, nous pouvons grandement l'amélioré.
+Si nous reprenons notre exemple précédent, nous pouvons grandement l'améliorer.
 En effet, les méthodes *combattre* et *desamorcer* devraient s'interrompre
 par une exception plutôt que de retourner un booléen. L'exception jetée
 porte une information plus riche qu'un simple booléen car elle dispose d'un type
@@ -398,7 +398,7 @@ Comme la déclaration des exceptions jetées par une méthode fait partie de
 sa signature, certaines règles doivent être respectées pour la surcharge
 de méthode afin que le polymorphisme fonctionne correctement.
 
-Selon le `principe de substitution de Liskov`_, dans la surcharge d'une méthode
+Selon le `principe de substitution de Liskov`_, dans la surcharge d'une méthode,
 les préconditions ne peuvent pas être renforcées par la sous-classe et les
 postconditions ne peuvent pas être affaiblies par la sous-classe. Rapporté
 au mécanisme des exceptions, cela signifie qu'une méthode surchargée ne peut
@@ -446,8 +446,7 @@ des exceptions d'origine.
   }
 
 Le code précédent ne compile que si l'exception *PlanMachiaveliqueException*
-hérite directement ou indirectement de *FinDuMondeException*. Sinon ce code
-ne compilera pas.
+hérite directement ou indirectement de *FinDuMondeException*.
 
 ::
 
@@ -470,7 +469,7 @@ Le bloc finally
 ***************
 
 À la suite des blocs **catch** il est possible de déclarer un bloc **finally**.
-Un bloc **finally** est exécuté systématiquement que le bloc **try** se soit
+Un bloc **finally** est exécuté systématiquement, que le bloc **try** se soit
 terminé normalement ou par une exception.
 
 .. note::
@@ -504,7 +503,7 @@ terminé normalement ou par une exception.
   l'instruction **return**.
   
 Le bloc **finally** est le plus souvent utilisé pour gérer les ressources autre
-que la mémoire. Si le ouvre une connexion, un fichier..., le traitement est
+que la mémoire. Si le programme ouvre une connexion, un fichier..., le traitement est
 effectué dans le bloc **try** puis le bloc **finally** se charge de libérer
 la ressource.
 
@@ -548,9 +547,9 @@ du try-with-resources_.
   }
 
 Après le mot-clé **try**, on déclare entre parenthèse une ou plusieurs
-initialisation de variables. Ces variables doivent être d'un type qui implémente
+initialisations de variable. Ces variables doivent être d'un type qui implémente
 l'interface AutoCloseable_ ou Closeable_. Ces interfaces ne déclarent qu'une
-seule méthodes : **close**. Le compilateur ajoute automatiquement
+seule méthode : **close**. Le compilateur ajoute automatiquement
 un bloc **finally** à la suite du bloc **try** pour appeler la méthode **close**
 sur chacune des variables qui ne valent pas **null**.
 
@@ -593,9 +592,9 @@ en Java.
 
   Un extrait de la hiérarchie de java.io.IOException_
 
-La hiérarchie d'exception permet de créer des familles d'exception de plus en plus
-générale. Une application pourra donc traiter à sa convenance des exceptions générales
-comme IOException_ mais pourra au besoin fournit une bloc **catch** pour 
+La hiérarchie d'exception permet de grouper des erreurs en concevant des types d'exception
+de plus en plus généraux. Une application pourra donc traiter à sa convenance des exceptions générales
+comme IOException_ mais pourra, au besoin, fournir une bloc **catch** pour 
 traiter des exceptions plus spécifiques.
 
 ::
@@ -674,13 +673,12 @@ standard la pile d'appel de l'application.
     e.printStackTrace();
   }
 
-La classe Error_ hérite de Throwable comme Exception_. Error_ est la classe de base
+La classe Error_ hérite de Throwable_ comme Exception_. Error_ est la classe de base
 pour représenter les erreurs sérieuses que l'application ne devrait pas intercepter.
 Lorsqu'une erreur survient cela signifie souvent que l'environnement d'exécution
 est dans un état instable. Par exemple, la classe OutOfMemoryError_ hérite
 indirectement de cette classe. Cette erreur signale que la JVM ne dispose plus d'assez
-de mémoire (généralement pour allouer de l'espace pour les nouvelles instances
-d'objets).
+de mémoire (généralement pour allouer de l'espace pour les nouveaux objets).
 
 La classe RuntimeException_ représente des problèmes d'exécution qui proviennent
 la plupart du temps de bug dans l'application. Parmi les classes filles de cette
@@ -770,7 +768,7 @@ déclarée dans la signature de la méthode.
       this.vitesse += deltaVitesse;
     }
 
-Par opposition toutes les autres exceptions sont appelées des *checked exception*.
+Par opposition, toutes les autres exceptions sont appelées des *checked exception*.
 Une méthode qui est susceptible de laisser se propager une *checked exception*
 doit le signaler dans sa signature à l'aide du mot-clé **throws**.
 
@@ -782,6 +780,11 @@ des exceptions, nous avons le choix entre hériter de la classe Exception_ ou
 de la classe RuntimeException_. C'est-à-dire entre créer une *checked* ou 
 une *unchecked* exception. La frontière entre les deux familles a évolué
 au cours des versions de Java.
+
+.. note::
+
+  Il ne faut jamais créer un classe qui hérite de Error_. Les classes qui en héritent
+  sont faites pour signaler un problème dans la JVM.
 
 On considère généralement qu'il est préférable de créer une *unchecked exception*
 lorsque l'exception représente une erreur technique, un événement qui ne relève
@@ -800,7 +803,7 @@ traduisent des états particuliers identifiés par les analystes du domaine.
 Par exemple, si vous développez une application bancaire pour réaliser des
 transactions, certaines transactions peuvent échouer lorsqu'un compte bancaire
 n'est pas suffisamment approvisionné. Pour représenter cet état, on peut
-créer une classe *BalanceInsuffisanteException*. Il est probable que cette
+créer une classe *SoldeInsuffisantException*. Il est probable que cette
 exception devrait être une *checked exception* afin que le compilateur puisse
 vérifier qu'elle est correctement traitée.
 
@@ -823,6 +826,8 @@ Exercice
   * Le nombre de réponses correctes à un *Qcm* est compris entre zéro et
     le nombre de questions
   * Les notes orale et écrite d'un *Projet* sont comprises entre 0 et 10.
+  * Dans la classe *Diplome*, ajoutez une méthode *delivrer* qui doit jeter 
+    une exception si la note moyenne de tous les examens est inférieure à 10.
   
   Proposez une hiérarchie applicative de vos exceptions.
   
