@@ -323,7 +323,7 @@ arborescentes de données.
 
   * Principe du Worker thread
 
-.. _MVC: http://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
+.. _MVC: https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
 .. _JTable: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTable.html
 .. _JTree: https://docs.oracle.com/javase/8/docs/api/javax/swing/JTree.html
 .. _JList: https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html

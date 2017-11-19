@@ -159,7 +159,7 @@ plus complexe. Par exemple :
 
 Il n'est pas possible d'affecter une ArrayList_ de String_ à une variable de type
 ArrayList_ de Object_. En effet, si cela était autorisé, il serait alors possible
-d'ajouter avec la méthode ArrayList.add_ n'importe quel objet de type Object_ ou
+d'ajouter avec la méthode List.add_ n'importe quel objet de type Object_ ou
 d'un type héritant de Object_. Donc un développeur pourrait ajouter à cette liste
 une instance d'une classe *Voiture* par exemple sans que le compilateur puisse
 détecter le problème :
@@ -170,7 +170,7 @@ détecter le problème :
   listeString.add(new Voiture()); // Il vaut mieux ne pas pouvoir faire cela !
 
 Pour les types génériques, il est nécessaire d'introduire la notion de type borné
-(*bounded type*) pour pouvoir gérer la substitution. Mais avant d'aller plus loin, il est
+(*bounded type*) pour pouvoir gérer la substitution correctement. Mais avant d'aller plus loin, il est
 important de comprendre qu'il existe deux cas fondamentaux. Prenons une exemple
 de classes qui héritent les unes des autres : *Vehicule*, *Voiture*, *VoitureDeCourse*.
 
@@ -231,10 +231,10 @@ s'apparente à utiliser le type paramétré comme paramètre de sortie.
 
 Une liste de *Voiture* peut donc aussi être considérée comme :
 
+* une liste de quelque chose qui est au mieux de type *Voiture* dans le cas où l'on 
+  souhaite uniquement consulter les éléments de la liste.
 * une liste de quelque chose qui est au moins de type *Voiture* dans
   le cas où on ne souhaite qu'ajouter de nouveaux éléments à la liste.
-* une liste de quelque chose qui au mieux de type *Voiture* dans le cas où l'on 
-  souhaite uniquement consulter les éléments de la liste.
 
 Il est possible d'exprimer cela en Java. Pour le premier cas, *Voiture* 
 correspond à la borne supérieure (*upper bounded type*) et nous pouvons écrire
@@ -345,8 +345,8 @@ rencontrer quelques problèmes lors de l'utilisation de la méthode
   Vehicule plusRapide = Vehicule.getPlusRapide(listeVoitures); // ERREUR DE COMPILATION
   
 Le code ci-dessus ne compile pas. En effet, on tente de passer en paramètre à la méthode
-*Vehicule.getPlusRapide* une liste de *Voiture* alors que la méthode est écrite
-pour une liste de *Vehicule*. Nous pourrions utiliser la redéfinition en fournissant
+*Vehicule.getPlusRapide* une liste de type *Voiture* alors que la méthode est écrite
+pour une liste de type *Vehicule*. Nous pourrions utiliser la redéfinition en fournissant
 une implémentation pour chaque type de liste, mais la bonne solution est de déclarer
 *Vehicule.getPlusRapide* comme une méthode générique :
 
@@ -385,7 +385,7 @@ représente donc le type *Vehicule* ou un type qui hérite de *Vehicule*. On peu
 donc parcourir les éléments de type **T** de la liste, lire leur propriété *vitesse*
 et retourner l'instance pour laquelle la vitesse est la plus élevée.
 
-Maintenant nous pouvons utiliser cette méthode en passant une liste de *Vehicule*,
+Maintenant nous pouvons utiliser cette méthode en passant une liste de type *Vehicule*,
 de *Voiture* ou de *VoitureDeCourse*
 
 ::
@@ -394,10 +394,10 @@ de *Voiture* ou de *VoitureDeCourse*
   listeVoitures.add(new Voiture());
   listeVoitures.add(new VoitureDeCourse());
 
-  Voiture plusRapide = Vehicule.getPlusRapide(listeVoitures); // ERREUR DE COMPILATION
+  Voiture plusRapide = Vehicule.getPlusRapide(listeVoitures);
 
 Notez que la méthode *Voiture.getPlusRapide* retourne le type générique **T**. Donc
-le compilateur infère que si on appelle cette méthode avec une liste de *Voiture*
+le compilateur infère que si on appelle cette méthode avec une liste de type *Voiture*
 en paramètre alors cette méthode retourne une instance assignable à une variable 
 de type *Voiture*.
 
@@ -508,7 +508,7 @@ nous limitons le premier type paramétré au type Number_ ou un type qui en hér
 Limitations
 ***********
 
-Les méthodes et classes génériques ont des limitations.
+Les méthodes et les classes génériques ont des limitations.
 
 Les types paramétrés ne s'appliquent que pour des classes. On ne peut pas spécifier
 un type primitif. Si on désire créer une instance
