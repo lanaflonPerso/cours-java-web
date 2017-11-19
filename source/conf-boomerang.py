@@ -10,3 +10,6 @@ html_theme_options = {
     'logo_name': True,
     'logo_text_align': 'center',
 }
+
+todo_include_todos = False
+
