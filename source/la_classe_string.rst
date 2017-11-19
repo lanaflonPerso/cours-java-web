@@ -86,7 +86,7 @@ String.compareToIgnoreCase_
 String.compareTo_
 
   Compare la chaîne de caractères avec une autre chaînes de caractères. La comparaison
-  se fait en suivant l'ordre lexicographique et la taille des chaînes. Cette méthode
+  se fait suivant la taille des chaînes et l'ordre lexicographique des caractères. Cette méthode
   retourne 0 si les deux chaînes sont identiques, une valeur négative si la première 
   est inférieure à la seconde et une valeur positive si la première est plus grande 
   que la seconde.
@@ -182,7 +182,7 @@ String.replace_
     
 String.substring_
 
-  Crée une nouvelle sous-chaîne à partir à partir de l'index de début et jusqu'à
+  Crée une nouvelle sous-chaîne à partir de l'index de début et jusqu'à
   l'index de fin (non inclus).
   
   ::
@@ -192,7 +192,7 @@ String.substring_
 
 String.toLowerCase_
 
-  Crée une chaîne de caractères en minuscules.
+  Crée une chaîne de caractères équivalente en minuscules.
 
   ::
   
@@ -200,7 +200,7 @@ String.toLowerCase_
   
 String.toUpperCase_
 
-  Crée une chaîne de caractères en majuscules.
+  Crée une chaîne de caractères équivalente en majuscules.
 
   ::
   
@@ -248,13 +248,12 @@ toutes les opérations se font finalement par copie.
 
 Nous avons vu qu'il n'existe pas réellement de constante en Java mais
 uniquement des attributs déclarés avec **static** et **final**. Cette immutabilité 
-permet de garantir qu'une instance de String_ déclarée **static** et **final**
+permet de garantir qu'une variable de String_ déclarée **static** et **final**
 ne peut plus être modifié.
 
 La JVM tire également partie de cette immutabilité afin de réaliser
 des optimisations de place mémoire. Si par exemple vous écrivez plusieurs fois
-dans le code source la même chaîne de caractères, la JVM considérera qu'il s'agit
-de la même chaîne de caractères et ne créera pas une nouvelle emplacement mémoire
+dans le code source la même chaîne de caractères, la JVM ne créera pas un nouvel emplacement mémoire
 pour cette chaîne. Ainsi, il est possible d'avoir des comportements assez déroutants
 au premier abord en Java :
 
@@ -286,7 +285,7 @@ La classe StringBuilder_ permet de construire une chaîne de caractères par ajo
 La quasi totalité des méthodes de la classe StringBuilder_ retourne l'instance
 courante du StringBuilder_ ce qui permet de chaîner les appels en une seule
 instruction.
-Pour obtenir la chaînes de caractère, il suffit d'appeler la méthode StringBuilder.toString_.
+Pour obtenir la chaîne de caractères, il suffit d'appeler la méthode StringBuilder.toString_.
 
 ::
 
@@ -294,7 +293,7 @@ Pour obtenir la chaînes de caractère, il suffit d'appeler la méthode StringBu
   sb.append("Hello")
     .append(" ")
     .append("world")
-    .insert(5, " the")
+    .insert(5, " the")    // On insère la chaîne à l'index 5
     .append('!'); 
   System.out.println(sb); // "Hello the world!"
 
@@ -378,7 +377,7 @@ String.format_.
 .. note::
 
   Il est également possible de formater des messages avec la classe MessageFormat_.
-  Il s'agit d'une classes plus ancienne qui offre une syntaxe différente pour décrire
+  Il s'agit d'une classe plus ancienne qui offre une syntaxe différente pour décrire
   les paramètres dans la chaîne de formatage.
 
 Les expressions régulières

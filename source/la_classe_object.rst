@@ -7,7 +7,8 @@ ne précise pas de classe parente dans la déclaration d'une classe, alors
 la classe hérite implicitement de Object_.
 
 La classe Object_ fournit des méthodes communes à toutes les classes. Certaines
-de ces méthodes doivent être surchargées dans les classes filles.
+de ces méthodes doivent être surchargées dans les classes filles pour fonctionner
+correctement.
 
 .. note::
 
@@ -57,7 +58,7 @@ entre elles. L'implémentation par défaut est donc simplement :
   
   
 Parfois, l'implémentation par défaut peut suffire. C'est notamment le cas
-lorsque l'unicité en mémoire suffit à identifier un objet. Cepedant,
+lorsque l'unicité en mémoire suffit à identifier un objet. Cependant,
 si nous ajoutons la notion de plaque d'immatriculation à notre classe
 *Vehicule* :
 
@@ -134,7 +135,7 @@ l'API standard ou par des bibliothèques tierces.
     
     Et si y.equals(z) est vrai
     
-    Alors x.equals(y) doit être vrai
+    Alors x.equals(z) doit être vrai
 * Son implémentation doit être consistante
     Pour x et y non nuls
     
@@ -186,7 +187,7 @@ La méthode hashCode
 La méthode hashCode_ est fournie pour l'utilisation de certains algorithmes,
 notamment pour l'utilisation de table de hachage. Le principe d'un algorithme
 de hachage est d'associer un identifiant à un objet. Cet identifiant doit être
-le même pour la durée de vie de l'objet. De plus deux objets égaux doivent
+le même pour la durée de vie de l'objet. De plus, deux objets égaux doivent
 avoir le même code de hachage.
 
 L'implémentation de cette méthode peut se révéler assez technique. En général,
@@ -279,7 +280,7 @@ La méthode finalize
 *******************
 
 La méthode finalize_ est appelée par le ramasse-miettes avant que l'objet ne soit
-supprimé et la mémoire récupérée. Surcharger cette méthode, donne donc l'opportunité
+supprimé et la mémoire récupérée. Surcharger cette méthode donne donc l'opportunité
 au développeur de déclencher un traitement avant que l'objet ne disparaisse.
 Cependant, nous avons déjà vu dans le chapitre sur le :ref:`cycle de vie <cycle_de_vie_finalize>`
 que le fonctionnement du ramasse-miettes ne donne aucune garantie sur le fait
@@ -295,7 +296,7 @@ classes ne désirent pas permettre de cloner une instance.
 Pour qu'un objet soit clonable, sa classe doit implémenter l'interface marqueur
 Cloneable_. L'implémentation par défaut de la méthode dans Object_ consiste à jeter
 une exception CloneNotSupportedException_ si l'interface Cloneable_ n'est pas
-implémentée. Si l'interface est implémentée alors la méthode crée une nouvelle 
+implémentée. Si l'interface est implémentée, alors la méthode crée une nouvelle 
 instance de la classe et affecte
 la même valeur que l'instance d'origine aux attributs de la nouvelle instance.
 L'implémentation par défaut de clone_ n'appelle pas les constructeurs pour créer
@@ -307,7 +308,7 @@ la nouvelle instance.
   en profondeur. Cela signifie que si les attributs de la classe d'origine
   référencent des objets, les attributs du clone référenceront les mêmes objets. 
   Si ce comportement n'est pas celui désiré, alors il 
-  faut fournit une nouvelle implémentation de la méthode clone_ dans la classe.
+  faut fournir une nouvelle implémentation de la méthode clone_ dans la classe.
 
 .. note ::
 
@@ -330,7 +331,7 @@ de la classe d'une instance. Cette méthode est notamment très utilisée dans d
 usages avancés impliquant la *réflexivité*.
 
 L'exemple ci-dessous, affiche le nom complet (c'est-à-dire en incluant son package)
-de l'objet créé :
+de la classe d'un objet :
 
 ::
 
