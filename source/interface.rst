@@ -696,6 +696,26 @@ côté on peut créer et faire évoluer un système de persistance en ayant une 
 minimale aux opérations utilisateur puisque le système de persistance doit juste
 fournir des implémentations conformes aux interfaces.
 
+.. only:: boomerang
+
+  Exercice
+  ********
+  
+  .. topic:: Trie des étudiants
+  
+    Reprenez l'exercice du système de diplôme.
+    
+    Vous devez ajouter sur la classe *Diplome* la méthode *getMoyenne* qui retourne
+    la moyenne des notes de l'ensemble des *Examens*. Créez ensuite la classe
+    *Etudiant* qui possède un attribut de type *Diplome*.
+    
+    Vous devez implémenter une application qui crée un tableau d'instances de la
+    classe *Etudiant*. L'application doit trier le tableau des étudiants
+    selon la moyenne obtenue au diplôme.
+    
+    Pour trier, utilisez la méthode `Arrays.sort(Object[])`_. Pour que le tri soit
+    possible, il faut que les éléments du tableau implémentent l'interface
+    Comparable_.
 
   
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
@@ -707,3 +727,5 @@ fournir des implémentations conformes aux interfaces.
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_%28informatique%29
 .. _responsabilité unique: https://fr.wikipedia.org/wiki/Principe_de_responsabilit%C3%A9_unique
+.. _Arrays.sort(Object[]): https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-
+.. _Comparable: https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
