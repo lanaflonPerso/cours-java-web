@@ -274,7 +274,7 @@ Les classes Vector et Stack
 La version 1.0 de Java a d'abord inclus les classes java.util.Vector_ et java.util.Stack_.
 La classe Vector_ permet de représenter une liste d'éléments comme la classe ArrayList_.
 La classe Stack_ qui hérite de Vector_ permet de représenter des piles de type 
-LIFO (*Last In First Out*). Ces deux classes sont toujours présentent dans
+LIFO (*Last In First Out*). Ces deux classes sont toujours présentes dans
 l'API pour des raisons de compatibilité ascendante mais il ne faut **surtout pas**
 s'en servir. En effet, ces classes utilisent des mécanismes de synchronisation
 internes dans le cas où elles sont utilisées pour des accès concurrents 
