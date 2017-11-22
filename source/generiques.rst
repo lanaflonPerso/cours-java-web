@@ -324,6 +324,7 @@ le plus rapide parmi une liste de véhicules :
       int vitesse = 0;
       for (Vehicule vehicule : vehicules) {
         if(vehicule.getVitesse() >= vitesse) {
+          vitesse = vehicule.getVitesse();
           plusRapide = vehicule;
         }
       }
@@ -370,6 +371,7 @@ une implémentation pour chaque type de liste, mais la bonne solution est de dé
       int vitesse = 0;
       for (T vehicule : vehicules) {
         if(vehicule.getVitesse() >= vitesse) {
+          vitesse = vehicule.getVitesse();
           plusRapide = vehicule;
         }
       }

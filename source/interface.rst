@@ -622,7 +622,7 @@ plutôt que de laisser la nouvelle instance créer ces objets elle-même. Grâce
 d'interface, nous pouvons réaliser une injection de dépendance en découplant
 totalement l'utilisation de l'objet passé par injection de son implémentation.
 
-Si nous souhaitons créer une classe pour reprénsenter une transaction bancaire,
+Si nous souhaitons créer une classe pour représenter une transaction bancaire,
 nous pouvons réaliser l'implémentation suivante :
 
 ::

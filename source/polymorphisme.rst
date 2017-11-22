@@ -489,7 +489,7 @@ méthode   *accelerer* pour prendre en compte la consommation d'essence :
 
   package ROOT_PKG.conduite;
   
-  public class VehiculeMotorise {
+  public class VehiculeMotorise extends Vehicule {
 
     private Moteur moteur;
     
