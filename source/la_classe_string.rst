@@ -68,20 +68,20 @@ String.equals_
   
   ::
 
-    System.out.println("a".equals("a"));      // true
-    System.out.println("a".equals("ab"));     // false
-    System.out.println("ab".compareTo("AB")); // false
+    System.out.println("a".equals("a"));   // true
+    System.out.println("a".equals("ab"));  // false
+    System.out.println("ab".equals("AB")); // false
 
-String.compareToIgnoreCase_
+String.equalsIgnoreCase
   
   Comme la méthode précédente sauf que deux chaînes qui ne diffèrent que par
   la casse seront considérées comme identiques.
   
   ::
 
-    System.out.println("a".equals("a"));      // true
-    System.out.println("a".equals("ab"));     // false
-    System.out.println("ab".compareTo("AB")); // true
+    System.out.println("a".equalsIgnoreCase("a"));   // true
+    System.out.println("a".equalsIgnoreCase("ab"));  // false
+    System.out.println("ab".equalsIgnoreCase("AB")); // true
 
 String.compareTo_
 
