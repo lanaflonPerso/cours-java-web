@@ -224,3 +224,20 @@ d'une classe abstraite et les classes qui spécialisent cette classe doivent
 fournir une implémentation de la méthode abstraite *getContenu* afin de fournir
 le contenu de chaque cellule affichée par le tableur.
 
+Exercice
+********
+
+.. topic:: Diplôme et classe abstraite
+
+  Reprenez l'implémentation du système de gestion des diplômes des chapitres précédents.
+  
+  Si nous analysons notre hiérarchie d'héritage, nous voyons que toutes les classes
+  qui héritent de *Examen* héritent également de la méthode *Examen.setNote*.
+  Or les classes *Qcm* et *Projet* ont une façon particulière de positionner une note.
+  Donc ces classes ne devraient pas posséder cette méthode.
+  
+  .. tip::
+  
+    Transformez la classe *Examen* en classe abstraite. Créez un classe concrète *Controle*
+    pour remplacer la classe *Examen* comme classe concrète.
+
