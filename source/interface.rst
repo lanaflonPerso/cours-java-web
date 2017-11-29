@@ -717,6 +717,68 @@ fournir des implémentations conformes aux interfaces.
     possible, il faut que les éléments du tableau implémentent l'interface
     Comparable_.
 
+.. only:: udev
+
+  Exercice
+  ********
+  
+  .. topic:: Tri des notes
+  
+    Reprenez l'implémentation du système de gestion des diplômes des chapitres
+    précédents.
+    
+    Faites évoluer la classe *Examen* afin d'ajouter un code pour un examen.
+    Par exemple, un contrôle peut avoir le code "JAVA-LANG001" et un projet "PHP-PRJ".
+    
+    Ajoutez la méthode *getExamens* dans la classe *Diplome*. Cette méthode doit
+    retourner un tableau des examens du diplôme trié selon un critère fourni en paramètre.
+    
+    Modifiez votre programme pour afficher successivement la liste des examens d'un diplôme
+    triée suivant :
+    
+    * le code des examens
+    * la note des examens
+    * la date des examens
+    
+    .. tip::
+    
+      Pour trier un tableau en Java, vous devez utiliser la méthode
+      `Arrays.sort(Object[], Comparator)`_. Cette méthode prend en premier paramètre
+      le tableau à trier et en deuxième paramètre une implémentation de l'interface
+      Comparator_. C'est l'implémentation de cette interface qui va être en charge
+      de comparer les éléments deux à deux lors du tri. Ainsi, vous devez fournir
+      une implémentation pour les trois tris demandés et la méthode *getExamens*
+      attend un paramètre de type Comparator_.
+      
+  .. topic:: Mise en place d'une interface de sauvegarde (à suivre) 
+     
+     On souhaite faire évoluer notre système de gestion des diplômes afin qu'il 
+     puisse permettre de sauver les informations relatives à un étudiant et son diplôme.
+     
+     Ajoutez une classe *Etudiant* qui contient au moins son code étudiant, son
+     nom et un diplôme.
+     
+     Créer un interface *EtudiantDao*. **DAO** signifie *Data Access Object*.
+     On utilise cet acronyme pour désigner des classes dont la responsabilité
+     est d'accéder à des systèmes de sauvegardes (fichiers, bases de données...).
+     Comme on souhaite créer une abstraction du système de données, il est souhaitable
+     de déclarer une interface.
+     
+     L'interface doit permettre de :
+     
+     * sauvegarder un étudiant, son diplôme et ses examens 
+     * accéder à un étudiant selon son numéro.
+     
+     Comme nous ne disposons pas encore des outils nécessaires pour gérer des accès
+     aux fichiers ou aux bases de données, nous commencerons par une implémentation
+     naïve de l'interface qui garde simplement en mémoire l'étudiant sauvé.
+     
+     .. tip:: 
+     
+      Si votre programme principal est constitué d'une seule méthode **main**
+      peut être devriez-vous penser à isoler chaque étape dans des méthodes ou mieux
+      des classes distinctes.
+
   
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _clone: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#clone--
@@ -729,3 +791,5 @@ fournir des implémentations conformes aux interfaces.
 .. _responsabilité unique: https://fr.wikipedia.org/wiki/Principe_de_responsabilit%C3%A9_unique
 .. _Arrays.sort(Object[]): https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-java.lang.Object:A-
 .. _Comparable: https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
+.. _Comparator: https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html
+.. _Arrays.sort(Object[], Comparator): https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#sort-T:A-java.util.Comparator-
