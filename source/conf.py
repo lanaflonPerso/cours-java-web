@@ -91,6 +91,7 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = getattr(profile, 'todo_include_todos', True)
 
+today_fmt = '%d %B %Y'
 
 # -- Options for HTML output ----------------------------------------------
 

@@ -27,12 +27,12 @@ Le langage Java
    la_classe_string
    les_exceptions
    classe_abstraite
+   enumeration
+   les_dates
    interface
    generiques
    les_collections
    entrees_sorties
-   enumeration
-   les_dates
    les_lambdas
    streams
    classe_interne
