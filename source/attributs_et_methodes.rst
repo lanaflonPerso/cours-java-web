@@ -8,7 +8,12 @@ Les attributs
 *************
 
 Les attributs représentent l'état interne d'un objet. Nous avons vu précédemment
-qu'un attribut a une portée, un type et un identifiant :
+qu'un attribut a une portée, un type et un identifiant. Il est déclaré de la façon 
+suivante dans le corps de la classe :
+
+.. code-block :: text
+
+  [portée] [type] [identifiant];
 
 ::
 
@@ -286,8 +291,17 @@ Les méthodes
 
 Les méthodes permettent de définir le comportement des objets. nous avons vu précédemment
 qu'une méthode est définie pas sa **signature** qui spécifie sa portée, son type
-de retour, son nom et ses paramètres. La signature est suivie d'un bloc de code
-que l'on appelle le **corps** de méthode. Dans ce corps de méthode, il est possible
+de retour, son nom et ses paramètres entre parenthèses. La signature est suivie d'un bloc de code
+que l'on appelle le **corps** de méthode. 
+
+.. code-block :: text
+
+  [portée] [type de retour] [identifiant] ([liste des paramètres]) {
+    [code]
+  }
+
+
+Dans ce corps de méthode, il est possible
 d'avoir accès au attribut de l'objet. Si la méthode modifie la valeur des attributs
 de l'objet, elle a un *effet de bord* qui change l'état interne de l'objet. C'est le
 cas dans l'exemple ci-dessous pour la méthode *accelerer* :
