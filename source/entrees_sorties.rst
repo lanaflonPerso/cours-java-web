@@ -1082,6 +1082,30 @@ qui doit s'appeler *serialVersionUID*.
     }
 
 
+.. only:: udev
+
+  Exercice
+  ********
+  
+  .. topic:: Application de gestion des diplômes en ligne de commande (partie 1)
+  
+    Reprenez l'implémentation du système de gestion des diplômes des chapitres
+    précédents.
+
+    L'objectif est de créer un programme qui permet de saisir les notes d'un étudiant.
+    Le programme demande successivement à l'utilisateur de saisir le code de l'étudiant,
+    son nom et sa date de naissance.
+    
+    Puis le programme demande de choisir le type d'examen. Ensuite le programme
+    demande de saisir les informations nécessaires en fonction du type :
+    
+    * Pour un contrôle, il faut saisir le code du contrôle et sa note sur 20
+    * Pour un projet, il faut saisir le code du projet et les notes d'oral et d'écrit sur 10
+    * Pour un QCM, il faut saisir le code du QCM, le nombre de questions et le nombre de réponses correctes
+    
+    Le programme affiche ensuite si l'étudiant a réussi ou non son examen.
+    
+
 .. _java.io.NotSerializableException: https://docs.oracle.com/javase/8/docs/api/java/io/NotSerializableException.html
 .. _InvalidClassException: https://docs.oracle.com/javase/8/docs/api/java/io/InvalidClassException.html
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html

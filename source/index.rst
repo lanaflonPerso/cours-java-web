@@ -37,6 +37,7 @@ Le langage Java
    streams
    classe_interne
    les_annotations
+   jdbc
 
 Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <https://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
 

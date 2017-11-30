@@ -377,8 +377,8 @@ DateTimeFormatter_.
     précédents.
 
     Un *Examen* doit avoir une date. Attention, pour être valide, la date de l'examen
-    doit être comprise entre le 1er octobre et le 31 juin de l'année scolaire courante. 
-    De plus une date d'examen ne peut pas être un samedi ou un dimanche.
+    doit être comprise entre le 1er octobre et le 30 juin de l'année scolaire courante. 
+    De plus, une date d'examen ne peut pas être un samedi ou un dimanche.
     
     Surchargez la méthode *toString* de manière à ce qu'un *Examen* (et toutes les
     classes qui en héritent) génère une chaîne de caractères de la forme :
