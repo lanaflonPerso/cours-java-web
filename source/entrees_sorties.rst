@@ -1087,7 +1087,9 @@ qui doit s'appeler *serialVersionUID*.
   Exercice
   ********
   
-  .. topic:: Application de gestion des diplômes en ligne de commande (partie 1)
+  Réalisez **UN** des deux exercices suivants :
+  
+  .. topic:: Application de gestion des diplômes en ligne de commande
   
     Reprenez l'implémentation du système de gestion des diplômes des chapitres
     précédents.
@@ -1099,13 +1101,48 @@ qui doit s'appeler *serialVersionUID*.
     Puis le programme demande de choisir le type d'examen. Ensuite le programme
     demande de saisir les informations nécessaires en fonction du type :
     
-    * Pour un contrôle, il faut saisir le code du contrôle et sa note sur 20
-    * Pour un projet, il faut saisir le code du projet et les notes d'oral et d'écrit sur 10
-    * Pour un QCM, il faut saisir le code du QCM, le nombre de questions et le nombre de réponses correctes
+    * Pour un contrôle, il faut saisir le code du contrôle, la date du contrôle et sa note sur 20
+    * Pour un projet, il faut saisir le code du projet, la date du projet et les notes d'oral et d'écrit sur 10
+    * Pour un QCM, il faut saisir le code du QCM, la date du projet, le nombre de questions et le nombre de réponses correctes
     
     Le programme affiche ensuite si l'étudiant a réussi ou non son examen.
     
+  .. topic:: Application de gestion des diplômes depuis un fichier
+  
+    Reprenez l'implémentation du système de gestion des diplômes des chapitres
+    précédents.
 
+    L'objectif est de créer un programme qui permet de lire un fichier CSV_ contenant
+    les informations sur des étudiants et leur résultat aux examens. 
+    Voici un exemple de contenu du fichier :
+    
+    .. code-block:: text
+    
+      E34531;John Doe;CONTROLE;29/11/2015;14
+      E34531;John Doe;QCM;30/11/2015;30;12
+      E34531;John Doe;PROJET;25/11/2015;7;8    
+
+    Les lignes contiennent le code de l'étudiant, son nom puis le type de l'examen
+    (QCM, CONTROLE ou PROJET). En fonction du type d'examen, les informations suivantes
+    sur la ligne doivent être interprétées comme suit :
+    
+    CONTROLE
+      la date du contrôle puis la note sur 20
+
+    QCM
+      la date du QCM puis le nombre de questions puis le nombre de réponses correctes
+    
+    PROJET
+      la date du projet puis la note pour l'oral puis la note pour l'écrit    
+    
+    Le programme doit afficher sur la sortie standard le code des étudiants, leur
+    nom et s'ils ont eu leur diplôme.
+    
+    .. tip::
+    
+      Vous pouvez utiliser une Map_ pour associer le code à son instance de *Etudiant*.
+       
+    
 .. _java.io.NotSerializableException: https://docs.oracle.com/javase/8/docs/api/java/io/NotSerializableException.html
 .. _InvalidClassException: https://docs.oracle.com/javase/8/docs/api/java/io/InvalidClassException.html
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
@@ -1168,4 +1205,6 @@ qui doit s'appeler *serialVersionUID*.
 .. _Files: https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
 .. _FileSystem: https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html
 .. _FileSystems.getDefault(): https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystems.html#getDefault--
+.. _CSV: https://fr.wikipedia.org/wiki/Comma-separated_values
+.. _Map: https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
 
