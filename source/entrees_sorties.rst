@@ -1107,6 +1107,15 @@ qui doit s'appeler *serialVersionUID*.
     
     Le programme affiche ensuite si l'étudiant a réussi ou non son examen.
     
+    .. note::
+    
+      Pour cet exercice, vous allez lire des données sur l'entrée standard grâce 
+      à System.in_. Vous **ne devez pas** fermer ce flux en appelant sa méthode *close()*.
+      En effet, les flux d'entrée et de sortie standard System.in_, System.out_ et System.err_
+      sont créés par la JVM au lancement de l'application et seront fermés par
+      la JVM à la fin de l'application.
+      
+    
   .. topic:: Application de gestion des diplômes depuis un fichier
   
     Reprenez l'implémentation du système de gestion des diplômes des chapitres

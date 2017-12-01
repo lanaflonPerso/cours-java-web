@@ -148,7 +148,7 @@ est possible de fournir une lambda :
 Une interface qui ne déclare qu'une seule méthode abstraite est appelée *interface
 fonctionnelle*.
 
-L'annotation @FunctionalInterface_ peut être utilisée lors de la déclaration de
+L'annotation FunctionalInterface_ peut être utilisée lors de la déclaration de
 l'interface. Elle permet d'identifier pour le compilateur que cette interface
 peut être implémentée par des lambdas. Le compilateur peut ainsi contrôler
 que l'interface ne comporte qu'une seule méthode abstraite et signaler une erreur

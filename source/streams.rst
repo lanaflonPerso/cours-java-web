@@ -313,6 +313,12 @@ la somme totale.
 Exercice
 ********
 
+.. only:: udev
+
+  Les exercices sur les streams **ne sont pas obligatoires**. Vous pouvez essayez
+  de faire ces exercices uniquement si vous avez terminé les précédents.
+  
+
 .. topic:: Chaîne de caractères et streams
   :class: exercice
 
@@ -326,6 +332,20 @@ Exercice
     * La méthode Character.isAlphabetic_ retourne **true** si le caractère passé
       en paramètre est une lettre.
 
+.. only:: udev
+
+  .. topic:: Système de gestion des diplômes
+    :class: exercice
+    
+    Reprenez votre implémentation du système de gestion des diplômes.
+    
+    * Essayez d'utiliser des lambdas pour remplacer l'implémentation des Comparator_.
+    * Utilisez un *stream* pour calculer la moyenne des notes pour un *Diplome*.
+    * Utilisez un *stream* pour retourner la liste des examens pour lesquels la note
+      est inférieure à la valeur passée en paramètre de la méthode.
+    * Utilisez un *stream* pour supprimer tous les examens dont le code correspond à la
+      valeur passée en paramètre de la méthode.
+    
 .. topic:: Lecture d'un fichier CSV
   :class: exercice
   
@@ -378,4 +398,5 @@ Exercice
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _chars: https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html#chars--
 .. _Character.isAlphabetic: https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html#isAlphabetic-int-
+.. _Comparator: https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html
 

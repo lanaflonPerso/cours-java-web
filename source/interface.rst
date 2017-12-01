@@ -771,13 +771,15 @@ fournir des implémentations conformes aux interfaces.
      
      Comme nous ne disposons pas encore des outils nécessaires pour gérer des accès
      aux fichiers ou aux bases de données, nous commencerons par une implémentation
-     naïve de l'interface qui garde simplement en mémoire l'étudiant sauvé.
+     naïve de l'interface qui garde simplement en mémoire l'étudiant sauvé. Pour cela,
+     créez une classe qui implémente l'interface *EtudiantDao* et qui se contente
+     de conserver dans un attribut l'instance de *Etudiant* à sauver.
      
      .. tip:: 
      
       Si votre programme principal est constitué d'une seule méthode **main**
-      peut être devriez-vous penser à isoler chaque étape dans des méthodes ou mieux
-      des classes distinctes.
+      peut être devriez-vous penser à isoler chaque étape dans des méthodes, ou mieux,
+      dans des classes distinctes.
 
   
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
