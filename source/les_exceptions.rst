@@ -830,29 +830,29 @@ Exercice
     une exception si la note moyenne de tous les examens est inférieure à 10.
   
   Proposez une hiérarchie applicative de vos exceptions.
-  
-Les assertions
-**************
 
-Java dispose du mot-clé **assert** qui permet d'ajouter des assertions dans le code
-source.
+.. only:: assertion  
 
-Une assertion est une condition qui doit être vraie. Sinon une AssertionError_ est jetée.
-La syntaxe est la suivante :
+  Les assertions
+  **************
 
-::
+  Java dispose du mot-clé **assert** qui permet d'ajouter des assertions dans le code
+  source.
 
-  assert expression;
-  assert expression : valeur;
-  
-L'expression doit être une expression booléenne, la valeur sera passée comme message
-à l'instance de AssertionError_ si l'expression est fausse. Cela permet d'avoir
-une information de contexte d'erreur.
+  Une assertion est une condition qui doit être vraie. Sinon une AssertionError_ est jetée.
+  La syntaxe est la suivante :
 
-Les assertions servent à vérifier les préconditions, les postconditions ou les
-invariants d'une classe.
+  ::
 
-.. todo::
+    assert expression;
+    assert expression : valeur;
+    
+  L'expression doit être une expression booléenne, la valeur sera passée comme message
+  à l'instance de AssertionError_ si l'expression est fausse. Cela permet d'avoir
+  une information de contexte d'erreur.
+
+  Les assertions servent à vérifier les préconditions, les postconditions ou les
+  invariants d'une classe.
 
   * exemple d'assertion
   * limite des assertions
