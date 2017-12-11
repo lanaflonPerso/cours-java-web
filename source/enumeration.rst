@@ -324,8 +324,6 @@ moment de la déclaration des éléments de l'énumération.
 
   }
 
-.. only:: udev
-
   Exercice
   ********
 
