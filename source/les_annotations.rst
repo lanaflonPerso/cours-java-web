@@ -360,8 +360,8 @@ Finalement, nous pouvons écrire une pseudo-classe de tests :
 Exercice
 ********
 
-.. topic:: Java et XML
-  :class: exercice
+.. admonition:: Java et XML
+  :class: hint
   
   Java propose une API nommée JAXB qui permet de transformer un document XML
   en objets Java ou de transformer des objets Java en document XML. JAXB fournit
@@ -447,6 +447,7 @@ Exercice
   Créez les classes *Personne* et *Adresse* et utilisez les annotations JAXB
   de manière à pouvoir passer d'un représentation Java à une représentation XML
   (et vice-versa).
+
 .. _Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _Deprecated: https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html
 .. _FunctionalInterface: https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html

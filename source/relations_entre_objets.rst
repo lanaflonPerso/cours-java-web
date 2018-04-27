@@ -793,66 +793,6 @@ Alors, nous pouvons indiquer que les véhicules **ont des** pneus.
     // ...
 
   }
-
-
-Exercice
-********
-
-.. topic:: Diplôme et examens
-  :class: exercice
-
-  On veut modéliser une système de remise de diplôme. Le système est constitué
-  des classes *Diplome*, *Examen*, *Qcm* et *Projet*.
-  
-  *Diplome*
-    Cette classe contient un ensemble d'examens. Sa méthode
-    *isValide* retourne **true** si la moyenne des notes de tous les examens est
-    supérieure à 10.
-  
-  *Examen*
-    Une classe qui contient une note sur 20.
-    
-  *Projet*
-    Le projet est un type spécialisé d'examen. Il est défini par une note d'écrit
-    sur 10 et une note d'oral sur 10. La note finale est la somme de ces deux notes.
-
-  *Qcm*
-    Le QCM est un type spécialisé d'examen. Il est défini par un nombre de questions.
-    On calcule la note sur 20 en faisant le rapport entre le nombre de réponses correctes
-    et le nombre total de questions.
-
-  Les relations entre ces classes sont résumées par le diagramme
-  de classes ci-dessous :
-  
-  .. image:: images/heritage/exercice_examen.png
-
-  Réalisez les implémentations de ces classes en Java. Écrivez une méthode **main**
-  qui crée une instance de *Diplome*, y ajoute tous les types d'examen de manière
-  à ce que le diplôme soit validé (la méthode *Diplome.isValide* retourne **true**).
-
-
-.. only:: not epsi
-
-  .. topic:: Diplôme et examens (Bonus)
-    :class: exercice
-
-    Reprenez l'exercice précédent et ajoutez une nouvelle classe : *Appreciation*.
-    La classe *Appreciation* est un nouveau type d'examen. Une instance de la
-    classe *Appreciation* déclare une méthode pour positionner une des
-    appréciations suivantes : "non acquis", "en cours d'acquisition", "acquis".
-    On associe une note à chaque valeur d'appréciation :
-    
-    ====================== ====
-         Appréciation      Note
-    ====================== ====
-    non acquis             5
-    en cours d'acquisition 10
-    acquis                 15
-    ====================== ====
-    
-    Vérifiez que cette nouvelle classe peut être utilisée dans le système de
-    remise de diplôme. Pour cela ajoutez, des appréciations à une instance de la
-    classe Diplôme et vérifiez que le système fonctionne toujours comme attendu.
       
 
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html

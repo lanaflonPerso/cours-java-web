@@ -326,8 +326,8 @@ On peut ajouter une cas **default** qui servira de point d'exécution si aucun *
 Exercice
 ********
 
-.. topic:: Implémenter le code de César
-  :class: exercice
+.. admonition:: Implémenter le code de César
+  :class: hint
 
   Implémenter le `code de César <https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage>`_
   en utilisant le code ci-dessous. Cet algorithme de chiffrement classique, utilisé par Jules

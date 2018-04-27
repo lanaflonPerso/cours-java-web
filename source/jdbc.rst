@@ -747,46 +747,6 @@ Pour cela, on utilise la démarcation transactionnelle.
   souhaite ou non qu'une DataSource_ soit gérable avec **JTA**. 
   Nous reviendrons sur **JTA** lorsque nous parlerons de JPA et des EJB.
   
-.. only:: udev
-
-  Exercice
-  ********
-  
-  .. topic:: Gestion des étudiants et des diplômes
-  
-    On souhaite faire évoluer le système de gestion des diplômes afin qu'il 
-    sauve les informations relatives à un étudiant et son diplôme
-    dans une base de données.
-    
-    Reprenez l'exercice sur les entrées/sorties. Lorsque les données sont entrées
-    par l'utilisateur ou sont lues depuis un fichier CSV (selon l'exercice que
-    vous avez réalisé), les informations doivent être sauvées dans la base données.
-    
-    Fournissez également une application qui demande le code d'un étudiant sur
-    l'entrée standard, qui va récupérer les informations d'un étudiant et qui affiche
-    si l'étudiant a eu son diplôme.
-    
-    Pour cet exercice, il va falloir :
-    
-    * concevoir le schéma de base de données pour stocker les étudiants, les diplômes
-      et les examens.
-      
-    * reprendre l'interface *EtudiantDao* afin de créer une implémentation de cette
-      interface qui réalise les échanges avec la base de données
-      
-    * faire évoluer votre application afin qu'elle sauve en base de données les informations
-      d'un étudiant
-      
-    * créer une application qui permet de saisir en ligne de commande le code d'un utilisateur
-      et qui affiche le nom de l'utilisateur et les informations de son diplôme. L'application
-      peut se présenter sous la forme d'une classe Java dans le projet avec sa propre
-      méthode *main*.
-  
-    .. warning::
-    
-      N'oubliez pas d'ajouter le script SQL qui permet de créer la base de données dans votre
-      projet Eclipse.
-  
 .. _try-with-resources: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 .. _AutoCloseable: https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
 .. _java.sql.Connection: https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html

@@ -506,19 +506,17 @@ d'un appel à une méthode de classe :
   }
 
 
-.. only:: boomerang
+Exercice
+********
 
-  Exercice
-  ********
+.. admonition:: Les constructeurs pour la classe Phrase
+    :class: hint
 
-  .. topic:: Les constructeurs pour la classe Phrase
-    :class: exercice
-    
     En reprenant la classe *Phrase* implémentée à l'exercice du chapitre précédent,
     ajoutez les constructeurs suivants :
-    
+
     ::
-    
+
       // constructeur sans paramètre
       Phrase phrase = new Phrase(); 
 
@@ -526,10 +524,10 @@ d'un appel à une méthode de classe :
       phrase = new Phrase(Phrase.INTERROGATION); // ? 
       phrase = new Phrase(Phrase.EXCLAMATION);   // !
       phrase = new Phrase(Phrase.DECLARATION);   // .
-  
+
       // constructeur pour passer des mots à la phrase
       phrase = new Phrase("une", "phrase"); 
-  
+
       // constructeur pour indiquer quel caractère fini la phrase
       // et passer des mots à la phrase
       phrase = new Phrase(Phrase.INTERROGATION, "une", "phrase"); 
@@ -538,7 +536,7 @@ d'un appel à une méthode de classe :
     selon son type :
 
     ::
-   
+
       Phrase phrase = Phrase.interrogation("Comme", "allez", "vous");
       phrase = Phrase.exclamation("Dormez");
       phrase = Phrase.declaration("Brian", "est", "dans", "la", "cuisine");

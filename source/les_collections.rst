@@ -786,30 +786,6 @@ un tableau associatif vides et immutables.
   }
 
 
-.. only:: udev
-
-  Exercice
-  ********
-  
-  .. topic:: Ajout d'examen dans un diplôme
-  
-    Reprenez l'implémentation du système de gestion des diplômes des chapitres
-    précédents.
-
-    Dans la représentation interne de la classe *Diplome*, remplacez le tableau
-    des examens pour un attribut de type List_.
-    
-    Pour la classe *Diplome*, ajoutez les méthodes suivantes :
-    
-    * une méthode pour ajouter un examen à un diplôme
-    * une méthode pour retourner la liste des examens pour lesquels la note
-      est inférieure à la valeur passée en paramètre. 
-    * une méthode pour supprimer tous les examens dont le code correspond à la
-      valeur passée en paramètre
-      
-    Écrivez un programme qui utilise ces nouvelles méthodes.
-
-
 .. _Java Collections Framework: https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 .. _Integer: https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html

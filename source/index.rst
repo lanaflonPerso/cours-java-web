@@ -3,6 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. admonition:: Liens utiles
+
+    L'API Java
+        http://docs.oracle.com/javase/8/docs/api/index.html
+    Documentation Java
+        http://docs.oracle.com/javase/8/docs/
+
 Le langage Java
 ===============
 

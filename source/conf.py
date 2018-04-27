@@ -58,11 +58,7 @@ master_doc = 'index'
 project = 'Le langage Java'
 author = 'David Gayerie'
 email = getattr(profile, 'email', 'dagaydevel@free.fr')
-
-copyright = """
-<a ref="author" href="mailto:%s">%s</a>
-<a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/fr/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/fr/80x15.png" /></a>
-""" % (email, author)
+copyright = "%s - %s - CC-BY-SA" % (author, email)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -86,7 +82,7 @@ language = 'fr'
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'lovelace'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = getattr(profile, 'todo_include_todos', True)
@@ -98,24 +94,16 @@ today_fmt = '%d %B %Y'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 html_theme_options = {
-    'show_powered_by': False,
-    'fixed_sidebar': False,
-    'page_width': '75%',
-    'sidebar_width': '25%',
-    'font_family': '"Open Sans", sans-serif',
-    'font_size': '12pt',
-    'head_font_family': '"Quicksand", sans-serif',
-    'extra_nav_links': {
-        'API Java': 'http://docs.oracle.com/javase/8/docs/api/index.html?overview-summary.html',
-        'Documentation Java': 'http://docs.oracle.com/javase/8/docs/',
-    }
+    'prev_next_buttons_location': 'both',
+    'collapse_navigation': False,
+    'sticky_navigation': False,
 }
 
 html_theme_options.update(getattr(profile, 'html_theme_options', {}))
@@ -124,19 +112,6 @@ html_theme_options.update(getattr(profile, 'html_theme_options', {}))
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'searchbox.html',
-    ]
-}
 
 html_copy_source = False
 
@@ -215,15 +190,16 @@ def register_pygments_filter(highlight_language, root_package_name):
     @simplefilter
     def replace_root_package_filter(self, lexer, stream, options):
         for ttype, value in stream:
-            if (ttype is Name or ttype is Name.Namespace) and value.startswith("ROOT_PKG"):
-                value = value.replace("ROOT_PKG", root_package_name)
+            value = value.replace("ROOT_PKG", root_package_name)
             yield ttype, value
 
     from pygments.lexers import get_lexer_by_name
     from sphinx.highlighting import lexers
-    javaLexer = get_lexer_by_name(highlight_language, tabsize=0)
-    javaLexer.add_filter(replace_root_package_filter())
-    lexers[highlight_language] = javaLexer
+    for language in ('java', 'xml'):
+        lexer = get_lexer_by_name(language, tabsize=0)
+        lexer.add_filter(replace_root_package_filter())
+        lexers[language] = lexer
+
 
 register_pygments_filter(highlight_language, highlight_root_package)
 

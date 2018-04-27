@@ -965,8 +965,8 @@ il ne faut pas déclarer de *setter* pour cette propriété.
 Exercice
 ********
 
-.. topic:: La classe Phrase
-  :class: exercice
+.. admonition:: La classe Phrase
+  :class: hint
 
   Implémenter la classe *Phrase*. Cette classe permet de créer une chaîne de
   caractères en ajoutant des mots qui seront séparés par un séparateur.
@@ -1015,11 +1015,9 @@ Exercice
     toCharArray_. Pour savoir si un caractère est une lettre, on utilise la méthode
     **static** Character.isAlphabetic_.
 
-.. only:: boomerang
+.. admonition:: Méthode et attribut de classe
+  :class: hint
 
-  .. topic:: Méthode et attribut de classe
-    :class: exercice
-    
     Ajoutez une méthode de classe à la classe *Phrase* qui retourne le nombre de mots
     de la plus grande phrase créée.
     

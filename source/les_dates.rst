@@ -365,37 +365,6 @@ DateTimeFormatter_.
   Il est toujours possible d'utiliser la classe SimpleDateFormat_ pour formater
   une instance de la classe java.util.Date_.
 
-.. only:: udev
-
-  Exercice
-  ********
-
-  .. topic:: Date des examens
-    :class: exercice
-
-    Reprenez l'implémentation du système de gestion des diplômes des chapitres
-    précédents.
-
-    Un *Examen* doit avoir une date. Attention, pour être valide, la date de l'examen
-    doit être comprise entre le 1er octobre et le 30 juin de l'année scolaire courante. 
-    De plus, une date d'examen ne peut pas être un samedi ou un dimanche.
-    
-    Surchargez la méthode *toString* de manière à ce qu'un *Examen* (et toutes les
-    classes qui en héritent) génère une chaîne de caractères de la forme :
-    
-      12,00/20 à l'examen du |today|  
-
-    Affichez la note sur 20 et la date pour chaque examen d'un diplôme.
-    
-    .. note::
-    
-      Pour la création de la chaîne de caractères, pensez à afficher correctement
-      les notes avec des virgules en tronquant à deux décimales après la virgule.
-      Il serait plus lisible d'aligner les notes en ajoutant des espaces à gauche.
-      Vous pouvez vous reporter à la méthode String.format_ et aux motifs de formatage
-      décrit dans la classe Formatter_ pour produire cette chaîne de caractères.
-      
-    
 .. _String.format: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#format-java.lang.String-java.lang.Object...-
 .. _Formatter: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html
 .. _System.currentTimeMillis: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#currentTimeMillis--
