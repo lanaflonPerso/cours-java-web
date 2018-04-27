@@ -1,55 +1,35 @@
-.. Java documentation master file, created by
-   sphinx-quickstart on Fri Sep 29 15:00:41 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-.. admonition:: Liens utiles
-
-    L'API Java
-        http://docs.oracle.com/javase/8/docs/api/index.html
-    Documentation Java
-        http://docs.oracle.com/javase/8/docs/
-
-Le langage Java
-===============
-
 .. toctree::
+   :caption: Le langage Java
    :maxdepth: 2
 
-   introduction
-   installation
-   compilation
-   structure_fondamentale
-   premiere_classe
-   types_primitifs
-   operateurs
-   structures_de_controle
-   tableau
-   attributs_et_methodes
-   cycle_de_vie
-   package
-   relations_entre_objets
-   polymorphisme
-   la_classe_object
-   la_classe_string
-   les_exceptions
-   classe_abstraite
-   enumeration
-   les_dates
-   interface
-   generiques
-   les_collections
-   entrees_sorties
-   les_lambdas
-   streams
-   classe_interne
-   les_annotations
-   swing_interfaces_graphiques
-   swing_interactions
-   swing_notions_avancees
-
-Cette œuvre est mise à disposition selon les termes de la `Licence Creative Commons Attribution <https://creativecommons.org/licenses/by-sa/3.0/fr/>`_ -  Partage dans les Mêmes Conditions 3.0 France
-
-.. image:: https://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png
-   :target: https://creativecommons.org/licenses/by-sa/3.0/fr/
-   :alt: Licence Creative Commons
+   /langage_java/introduction
+   /langage_java/installation
+   /langage_java/compilation
+   /langage_java/structure_fondamentale
+   /langage_java/premiere_classe
+   /langage_java/types_primitifs
+   /langage_java/operateurs
+   /langage_java/structures_de_controle
+   /langage_java/tableau
+   /langage_java/attributs_et_methodes
+   /langage_java/cycle_de_vie
+   /langage_java/package
+   /langage_java/relations_entre_objets
+   /langage_java/polymorphisme
+   /langage_java/la_classe_object
+   /langage_java/la_classe_string
+   /langage_java/les_exceptions
+   /langage_java/classe_abstraite
+   /langage_java/enumeration
+   /langage_java/les_dates
+   /langage_java/interface
+   /langage_java/generiques
+   /langage_java/les_collections
+   /langage_java/entrees_sorties
+   /langage_java/les_lambdas
+   /langage_java/streams
+   /langage_java/classe_interne
+   /langage_java/les_annotations
+   /langage_java/swing_interfaces_graphiques
+   /langage_java/swing_interactions
+   /langage_java/swing_notions_avancees
