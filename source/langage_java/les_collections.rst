@@ -1,7 +1,7 @@
 Les collections
 ###############
 
-Lors d'un :doc:`chapitre précédent </tableau>`, nous avons vu qu'il est possible
+Lors d'un :doc:`chapitre précédent </langage_java/tableau>`, nous avons vu qu'il est possible
 de déclarer des tableaux en Java pour gérer un ensemble d'éléments. Cependant, 
 ce type de structure reste limité : un tableau a une taille fixe (il est impossible
 d'ajouter ou d'enlever des éléments d'un tableau). De plus, il est souvent utile

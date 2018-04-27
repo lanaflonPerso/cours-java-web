@@ -12,7 +12,7 @@ L'exemple de la classe ArrayList
 ********************************
 
 En Java, l'API standard fournit un ensemble de classes que l'on appelle couramment
-les :doc:`collections </les_collections>`. Ces classes permettent de gérer un ensemble d'objets. Elles apportent
+les :doc:`collections </langage_java/les_collections>`. Ces classes permettent de gérer un ensemble d'objets. Elles apportent
 des fonctionnalités plus avancées que les tableaux. Par exemple la classe java.util.ArrayList_
 permet de gérer une liste d'objets. Cette classe autorise l'ajout en fin de liste,
 l'insertion, la suppression et bien évidemment l'accès à un élément selon son index

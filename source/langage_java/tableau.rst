@@ -444,7 +444,7 @@ java.lang.ArrayStoreException_ au moment de l'exécution.
 Conversion d'un tableau en liste
 ********************************
 
-La plupart des API Java utilisent des :doc:`collections </les_collections>` plutôt que des tableaux.
+La plupart des API Java utilisent des :doc:`collections </langage_java/les_collections>` plutôt que des tableaux.
 Pour transformer un tableau d'objets en liste, on utilise la méthode java.util.Arrays.asList_.
 La liste obtenue possède une taille fixe. Par contre le contenu de la liste est modifiable,
 et toute modification des éléments de cette liste sera répercutée sur le tableau.

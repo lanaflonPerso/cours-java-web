@@ -505,7 +505,7 @@ le `principe de ségrégation d'interface`_ a deux conséquences :
 
 Le premier point implique qu'il est préférable de manipuler les objets à travers
 leurs interfaces plutôt que d'utiliser le type réel de l'objet. Un exemple
-classique en Java concerne l'API des :doc:`collections </les_collections>`. 
+classique en Java concerne l'API des :doc:`collections </langage_java/les_collections>`. 
 Il s'agit de classes permettant de gérer un ensemble d'objets. Elles apportent
 des fonctionnalités plus avancées que les tableaux. Par exemple la classe java.util.ArrayList_
 permet de gérer une liste d'objets. Cette classe autorise l'ajout en fin de liste,
