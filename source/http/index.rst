@@ -1,6 +1,6 @@
 .. toctree::
    :caption: HTTP, REST et les API Web
-   :maxdepth: 2
+   :maxdepth: 1
 
    /http/http
    /http/http_cas_utilisation

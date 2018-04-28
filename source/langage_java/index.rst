@@ -1,6 +1,6 @@
 .. toctree::
    :caption: Le langage Java
-   :maxdepth: 2
+   :maxdepth: 1
 
    /langage_java/introduction
    /langage_java/installation

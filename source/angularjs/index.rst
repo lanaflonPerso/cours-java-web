@@ -1,6 +1,6 @@
 .. toctree::
    :caption: AngularJS
-   :maxdepth: 2
+   :maxdepth: 1
 
    /angularjs/angularjs
    /angularjs/validation_formulaire

@@ -1,6 +1,6 @@
 .. toctree::
    :caption: Java EE ORM
-   :maxdepth: 2
+   :maxdepth: 1
 
    /javaee_orm/jdbc
    /javaee_orm/jpa_entites

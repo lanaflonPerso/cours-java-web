@@ -1,6 +1,6 @@
 .. toctree::
    :caption: Java EE pour le Web
-   :maxdepth: 2
+   :maxdepth: 1
    
    /javaee_web/environnement_developpement
    /javaee_web/premiere_application

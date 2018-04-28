@@ -1,6 +1,6 @@
 .. toctree::
    :caption: Spring MVC
-   :maxdepth: 2
+   :maxdepth: 1
 
    /spring_mvc/spring_mvc
    /spring_mvc/spring_mvc_apiweb

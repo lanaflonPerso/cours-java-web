@@ -6,10 +6,10 @@ Sommaire
     .. only:: langage_java
 
         L'API Java
-            http://docs.oracle.com/javase/8/docs/api/index.html
+            https://docs.oracle.com/javase/8/docs/api/index.html
 
         Documentation Java
-            http://docs.oracle.com/javase/8/docs/
+            https://docs.oracle.com/javase/8/docs/
 
     .. only:: javaee_web or javaee_orm
 

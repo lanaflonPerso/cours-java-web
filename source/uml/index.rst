@@ -1,6 +1,6 @@
 .. toctree::
    :caption: Unified Modeling Language (UML)
-   :maxdepth: 2
+   :maxdepth: 1
 
    /uml/uml
 
