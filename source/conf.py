@@ -191,6 +191,10 @@ texinfo_documents = [
      'Langage de programmation'),
 ]
 
+# A list of regular expressions that match URIs that should not be checked 
+# when doing a linkcheck build.
+linkcheck_ignore = [r'.+\.zip$', r'.+\.tar.gz$', r'http://localhost:\d+.*', r'http://www\.meteo-villes\.com.*', r'http://exemple\.fr.*', r'http://formation\.fr.*', r'http://xmlns\.jcp\.org/.*']
+
 # default language for highlighting
 highlight_language = 'java'
 # replacement for ROOT_PKG in java source
