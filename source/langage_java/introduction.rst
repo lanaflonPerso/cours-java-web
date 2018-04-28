@@ -83,6 +83,9 @@ Un bref historique des versions
   * - 9
     - septembre 2017
     - les modules (projet Jigsaw) et jshell
+  * - 10
+    - mars 2018
+    - inférence des types pour les variables locales (mot-clé ``var``)
     
 .. _site d'Oracle: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 .. _bytecode: https://fr.wikipedia.org/wiki/Bytecode_Java
