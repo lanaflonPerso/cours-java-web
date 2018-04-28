@@ -268,7 +268,7 @@ configurable l'URI d'accès au service distant.
     c'est le cas dans l'exemple ci-dessus pour récupérer le service `$http`_.
 
 .. |ajs| replace:: `AngularJS <https://docs.angularjs.org/guide>`__
-.. _XMLHttpRequest: https://developer.mozilla.org/en/xmlhttprequest
+.. _XMLHttpRequest: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 .. _JSONP: https://en.wikipedia.org/wiki/JSONP
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
 .. _$interpolate: https://docs.angularjs.org/api/ng/service/$interpolate

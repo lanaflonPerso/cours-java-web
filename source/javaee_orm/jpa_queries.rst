@@ -119,7 +119,7 @@ basées sur le modèle relationnel des tables mais sur le modèle objet des
 classes Java.
 
 Pour une **introduction à la syntaxe du JPQL**, reportez-vous au
-`Wikibook <http://en.wikibooks.org/wiki/Java_Persistence/JPQL>`__.
+`Wikibook <https://en.wikibooks.org/wiki/Java_Persistence/JPQL>`__.
 
 On crée une requête JPQL à partir des méthodes ``EntityManager.createQuery(...)``.
 
@@ -223,10 +223,10 @@ crée cette requête à travers un CriteriaBuilder_ que l'on peut récupérer gr
     long result = entityManager.createQuery(query).getSingleResult();
 
 Pour des exemples supplémentaires d'utilisation du CriteriaBuilder_,
-reportez-vous au `Wikibook <http://en.wikibooks.org/wiki/Java_Persistence/Criteria>`__.
+reportez-vous au `Wikibook <https://en.wikibooks.org/wiki/Java_Persistence/Criteria>`__.
 
-.. _CriteriaBuilder: http://docs.oracle.com/javaee/7/api/javax/persistence/criteria/CriteriaBuilder.html
+.. _CriteriaBuilder: https://docs.oracle.com/javaee/7/api/javax/persistence/criteria/CriteriaBuilder.html
 .. _EntityManager: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html
-.. _Query: http://docs.oracle.com/javaee/7/api/javax/persistence/Query.html
-.. _TypedQuery: http://docs.oracle.com/javaee/7/api/javax/persistence/TypedQuery.html
+.. _Query: https://docs.oracle.com/javaee/7/api/javax/persistence/Query.html
+.. _TypedQuery: https://docs.oracle.com/javaee/7/api/javax/persistence/TypedQuery.html
 

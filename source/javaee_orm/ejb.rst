@@ -166,7 +166,7 @@ qu'\ **UNE** instance d'un EJB singleton pour une application.
     }
 
 L'annotation
-`@Lock <http://docs.oracle.com/javaee/7/api/javax/ejb/Lock.html>`__
+`@Lock <https://docs.oracle.com/javaee/7/api/javax/ejb/Lock.html>`__
 permet de contrôler si l'instance ou une méthode autorise des accès
 concurrents (lock de type READ) ou des accès avec acquisition d'un
 verrou (lock de type WRITE).
@@ -192,7 +192,7 @@ la crée pas**, elle demande au conteneur EJB de la lui fournir par
 injection.
 
 La méthode la plus simple, consiste à utiliser l'annotation
-`@EJB <http://docs.oracle.com/javaee/7/api/javax/ejb/EJB.html>`__ sur un
+`@EJB <https://docs.oracle.com/javaee/7/api/javax/ejb/EJB.html>`__ sur un
 attribut d'un autre composant Java EE (Servlet, bean CDI ou même EJB).
 
 .. code-block:: java
@@ -258,17 +258,17 @@ effectue un commit ou un rollback.
 Deux annotations permettent de déclarer le support transactionnel pour
 les EJB :
 
-`@TransactionManagement <http://docs.oracle.com/javaee/7/api/javax/ejb/TransactionManagement.html>`__
+`@TransactionManagement <https://docs.oracle.com/javaee/7/api/javax/ejb/TransactionManagement.html>`__
     Définit si la transaction est gérée par le conteneur (valeur
     CONTAINER par défaut) ou si la transaction est gérée par le bean
     lui-même (valeur BEAN). Une transaction gérée par le bean signifie
     que le développeur souhaite gérer la transaction par programmation.
-`@TransactionAttribute <http://docs.oracle.com/javaee/7/api/javax/ejb/TransactionAttribute.html>`__
+`@TransactionAttribute <https://docs.oracle.com/javaee/7/api/javax/ejb/TransactionAttribute.html>`__
     Permet de déclarer sous quelle condition une transaction gérée par
     le conteneur peut être démarrée lors de l'appel à une méthode de
     l'EJB. Pour plus d'information, on se reportera à la documentation
     de l'énumération
-    `TransactionAttributeType <http://docs.oracle.com/javaee/7/api/javax/ejb/TransactionAttributeType.html>`__
+    `TransactionAttributeType <https://docs.oracle.com/javaee/7/api/javax/ejb/TransactionAttributeType.html>`__
     qui est spécifiée dans cette annotation. Si l'annotation est omise,
     cela signifie que la transaction est de type ``REQUIRED``.
     ``REQUIRED`` signifie que si une transaction existe au moment de
@@ -299,9 +299,9 @@ transaction sur un EJB session, ce service est tout de même activé.
 
 Le développeur d'EJB peut décider de gérer la transaction par
 programmation grâce à l'objet
-`UserTransaction <http://docs.oracle.com/javaee/7/api/javax/transaction/UserTransaction.html>`__
+`UserTransaction <https://docs.oracle.com/javaee/7/api/javax/transaction/UserTransaction.html>`__
 injecté par le conteneur grâce à l'annotation
-`@Resource <http://docs.oracle.com/javaee/7/api/javax/annotation/Resource.html>`__.
+`@Resource <https://docs.oracle.com/javaee/7/api/javax/annotation/Resource.html>`__.
 Dans ce cas, l'utilisation de l'annotation ``@TransactionManagement``
 est obligatoire pour indiquer au conteneur que l'EJB gère lui-même les
 transactions.
@@ -336,7 +336,7 @@ transaction **sera rollbackée** si :
 
 -  la méthode de l'EJB se termine par une exception runtime
 -  la méthode de l'EJB se termine par une exception portant l'annotation
-   `@ApplicationException <http://docs.oracle.com/javaee/7/api/javax/ejb/ApplicationException.html>`__
+   `@ApplicationException <https://docs.oracle.com/javaee/7/api/javax/ejb/ApplicationException.html>`__
    avec l'attribut **rollback** avec la valeur true
 
 Dans tous les autres cas, la transaction est **commitée**.

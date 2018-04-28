@@ -10,7 +10,7 @@ Les relations sont spécifiées par les annotations : `@OneToOne`_, `@ManyToOne
 `@OneToMany`_, `@ManyToMany`_.
 
 Pour une présentation approfondie des relations dans JPA, reportez-vous
-au `Wikibook <http://en.wikibooks.org/wiki/Java_Persistence/Relationships>`__.
+au `Wikibook <https://en.wikibooks.org/wiki/Java_Persistence/Relationships>`__.
 
 La relation 1:1 (one to one)
 ****************************
@@ -459,11 +459,11 @@ La définition des stratégies de fetch est une partie importante du
 tuning dans le développement d'une application utilisant JPA.
 
 
-.. _@OneToOne: http://docs.oracle.com/javaee/7/api/javax/persistence/OneToOne.html
-.. _@ManyToOne: http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToOne.html
-.. _@OneToMany: http://docs.oracle.com/javaee/7/api/javax/persistence/OneToMany.html
-.. _@ManyToMany: http://docs.oracle.com/javaee/7/api/javax/persistence/ManyToMany.html
-.. _@JoinColumn: http://docs.oracle.com/javaee/7/api/javax/persistence/JoinColumn.html
-.. _@JoinTable: http://docs.oracle.com/javaee/7/api/javax/persistence/JoinTable.html
+.. _@OneToOne: https://docs.oracle.com/javaee/7/api/javax/persistence/OneToOne.html
+.. _@ManyToOne: https://docs.oracle.com/javaee/7/api/javax/persistence/ManyToOne.html
+.. _@OneToMany: https://docs.oracle.com/javaee/7/api/javax/persistence/OneToMany.html
+.. _@ManyToMany: https://docs.oracle.com/javaee/7/api/javax/persistence/ManyToMany.html
+.. _@JoinColumn: https://docs.oracle.com/javaee/7/api/javax/persistence/JoinColumn.html
+.. _@JoinTable: https://docs.oracle.com/javaee/7/api/javax/persistence/JoinTable.html
 .. _@Basic: https://docs.oracle.com/javaee/7/api/javax/persistence/Basic.html
 

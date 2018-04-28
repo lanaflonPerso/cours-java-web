@@ -358,7 +358,7 @@ l'annotation ``@Named`` :
     dans les implications de la passivation/activation, il suffit de savoir
     que les classes annotées avec ``@SessionScoped`` doivent implémenter
     l'interface marqueur
-    `java.io.Serializable <http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html>`__.
+    `java.io.Serializable <https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html>`__.
 
     .. code-block:: java
         :caption: Une déclaration de portée session
@@ -678,7 +678,7 @@ vous reporter à ce
 Il est également possible de fournir sa propre implémentation d'un
 validateur. Pour cela, il suffit de créer une classe qui implémente
 l'interface
-`javax.faces.validator.Validator <http://docs.oracle.com/javaee/7/api/javax/faces/validator/Validator.html>`__.
+`javax.faces.validator.Validator <https://docs.oracle.com/javaee/7/api/javax/faces/validator/Validator.html>`__.
 Cette interface ne contient la déclaration que d'une seule méthode :
 
 ::
@@ -686,20 +686,20 @@ Cette interface ne contient la déclaration que d'une seule méthode :
   void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException
 
 La validation échoue si un appel à cette méthode lance une
-`ValidatorException <http://docs.oracle.com/javaee/7/api/javax/faces/validator/ValidatorException.html>`__.
+`ValidatorException <https://docs.oracle.com/javaee/7/api/javax/faces/validator/ValidatorException.html>`__.
 Le premier paramètre représente le contexte d'exécution JSF, le deuxième
 paramètre représente le composant graphique pour lequel la validation a
 été demandée. Par exemple, pour un champ de formulaire de type
 ``input``, ce composant sera une instance de
-`UIInput <http://docs.oracle.com/javaee/7/api/javax/faces/component/UIInput.html>`__
+`UIInput <https://docs.oracle.com/javaee/7/api/javax/faces/component/UIInput.html>`__
 qui hérite de
-`UIComponent <http://docs.oracle.com/javaee/7/api/javax/faces/component/UIComponent.html>`__.
+`UIComponent <https://docs.oracle.com/javaee/7/api/javax/faces/component/UIComponent.html>`__.
 Enfin le troisième paramètre représente la valeur qui doit être validée.
 Selon le type de composant, cette valeur peut être de type String,
 Boolean...
 
 La classe du validateur doit également porter l'annotation
-`@FacesValidator <http://docs.oracle.com/javaee/7/api/javax/faces/validator/FacesValidator.html>`__
+`@FacesValidator <https://docs.oracle.com/javaee/7/api/javax/faces/validator/FacesValidator.html>`__
 indiquant le nom du validateur qui sera utilisé pour le référencer dans
 les facelets.
 
@@ -816,7 +816,7 @@ d'ajouter des annotations directement sur le bean ``Personne`` :
 
 La documentation des annotations de Bean Validation est disponible dans
 la documentation de l'API Java EE :
-http://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html
+https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html
 
 Bean Validation est une bonne alternative aux balises JSF de validation
 si un bean doit être réutilisé comme modèle dans des facelets
@@ -937,7 +937,7 @@ facelet vos propres composants graphiques réutilisables.
 Vous pouvez également enrichir votre application avec des composants
 graphiques plus complexes. On pourra par exemple incorporer des
 bibliothèques tierces comme la très impressionnante
-`PrimeFaces <http://primefaces.org/>`__.
+`PrimeFaces <https://www.primefaces.org/>`__.
 
 .. |Configuration de JSF dans Eclipse| image:: assets/jsf/eclipse_configure_jsf.png
    :width: 90.0%
