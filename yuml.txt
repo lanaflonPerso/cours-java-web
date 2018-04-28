@@ -1,5 +1,0 @@
-
-[Diplome|isValide():boolean]-*>[Examen|getNote():float;setNote(note:float)]
-[Examen|getNote():float;setNote(note:float)]^--[Projet|setNote(noteEcrite:float noteOrale:float)]
-[Examen|getNote():float;setNote(note:float)]^--[Qcm|Qcm(nbQuestions:int);setReponsesCorrectes(nb:int)]
-
