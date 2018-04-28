@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Le langage Java'
+project = getattr(profile, 'project', 'Java / Web')
 author = 'David Gayerie'
 email = getattr(profile, 'email', 'dagaydevel@free.fr')
 copyright = "%s - %s - CC-BY-SA" % (author, email)
@@ -79,7 +79,22 @@ language = 'fr'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = []
+exclude_patterns = getattr(profile, 'exclude_patterns', [])
+
+def select_chapters(exclude_patterns):
+    # non sphinx attributs
+    # Specify the list of chapters to include (name of their directory).
+    existing_chapters = [c for c in os.listdir('.') if os.path.isdir(c) and not c.startswith('_')]
+    chapters = getattr(profile, 'chapters', existing_chapters)
+    excluding_chapters = [c for c in existing_chapters if c not in chapters]
+
+    for c in chapters:
+        tags.add(c)
+
+    for c in excluding_chapters:
+        exclude_patterns.append("%s/*" % c)
+
+select_chapters(exclude_patterns)
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'lovelace'
@@ -114,6 +129,8 @@ html_theme_options.update(getattr(profile, 'html_theme_options', {}))
 html_static_path = ['_static']
 
 html_copy_source = False
+
+html_show_sphinx = False
 
 # -- Options for HTMLHelp output ------------------------------------------
 

@@ -3,26 +3,32 @@ Sommaire
 
 .. admonition:: Liens utiles
 
-    L'API Java
-        http://docs.oracle.com/javase/8/docs/api/index.html
+    .. only:: langage_java
 
-    Documentation Java
-        http://docs.oracle.com/javase/8/docs/
+        L'API Java
+            http://docs.oracle.com/javase/8/docs/api/index.html
 
-    L'API Java EE 
-        https://docs.oracle.com/javaee/7/api/
+        Documentation Java
+            http://docs.oracle.com/javase/8/docs/
 
-    Tutoriels Oracle Java EE 7 
-        https://docs.oracle.com/javaee/7/index.html
+    .. only:: javaee_web or javaee_orm
 
-    L'API Spring
-        https://docs.spring.io/spring/docs/current/javadoc-api/
+        L'API Java EE 
+            https://docs.oracle.com/javaee/7/api/
 
-    Documentation Spring Web 
-        https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+        Tutoriels Oracle Java EE 7 
+            https://docs.oracle.com/javaee/7/index.html
 
-    Guide Spring 
-        https://spring.io/guides
+    .. only:: spring or spring_mvc
+
+        L'API Spring
+            https://docs.spring.io/spring/docs/current/javadoc-api/
+
+        Documentation Spring Web 
+            https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+
+        Guide Spring 
+            https://spring.io/guides
 
 .. include:: uml/index.rst
 
