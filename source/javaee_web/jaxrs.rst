@@ -137,7 +137,7 @@ l'annotation `@Path <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`
         }
 
     Pour l'exemple ci-dessus, la ressource sera identifiée par l'URI :
-    **http://[hôte]/[contexte racine]/user**
+    **http://[hôte]/[contexte racine]/[mapping servlet]/user**
 
     Utilisée sur une méthode, cette annotation permet de spécifier une
     sous-chemin dans la ressource. Si cette méthode retourne une classe
@@ -162,7 +162,7 @@ l'annotation `@Path <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`
 
     Pour l'exemple ci-dessus, l'instance de la classe ``GeoLocation``
     retournée par la méthode est accessible par l'URI :
-    **http://[hôte]/[contexte racine]/user/geo**
+    **http://[hôte]/[contexte racine]/[mapping servlet]/user/geo**
 
     Dans l'exemple précédent, si la classe ``GeoLocation`` utilise
     elle-même des annotations JAX-RS alors on dit qu'il s'agit d'une
