@@ -12,4 +12,5 @@
    /javaee_web/request_dispatcher
    /javaee_web/web_listeners_filters
    /javaee_web/jsf
+   /javaee_web/jaxrs
 
