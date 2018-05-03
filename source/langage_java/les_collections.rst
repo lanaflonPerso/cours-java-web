@@ -407,7 +407,7 @@ ou non au nouvel élément.
   effet, elle retourne un code différent pour des objets différents en mémoire.
   Deux objets qui ont un état considéré comme identique mais qui existent de
   manière distincte en mémoire auront un code de hachage différent si on utilise l'implémentation
-  par défaut. Beaucoup de classes surchargent donc cette méthode (c'est notamment le
+  par défaut. Beaucoup de classes redéfinissent donc cette méthode (c'est notamment le
   cas de la classe String_).
 
 ::
@@ -624,7 +624,7 @@ sa valeur.
   effet, elle retourne un code différent pour des objets différents en mémoire.
   Deux objets qui ont un état considéré comme identique mais qui existent de
   manière distincte en mémoire auront un code de hachage différent si on utilise l'implémentation
-  par défaut. Beaucoup de classes surchargent donc cette méthode (c'est notamment le
+  par défaut. Beaucoup de classes redéfinissent donc cette méthode (c'est notamment le
   cas de la classe String_).
 
 ::

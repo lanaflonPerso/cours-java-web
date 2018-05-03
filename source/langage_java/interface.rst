@@ -123,7 +123,7 @@ d'une interface, soit dans sa déclaration, soit parce qu'elle en hérite.
 
   }
 
-L'implémentation des méthodes d'une interface suit les mêmes règles que la surcharge.
+L'implémentation des méthodes d'une interface suit les mêmes règles que la redéfinition.
 
 .. note ::
   
@@ -378,7 +378,7 @@ cela, il suffit de déclarer que cette nouvelle classe implémente *Cannibale* :
   }
 
 
-Même si la classe *Anthropophage* ne surcharge aucune méthode de sa classe
+Même si la classe *Anthropophage* ne redéfinit aucune méthode de sa classe
 parente, le fait de déclarer l'interface marqueur *Cannibale* suffit a modifier
 son comportement.
 

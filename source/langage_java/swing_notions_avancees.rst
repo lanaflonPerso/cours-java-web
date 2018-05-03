@@ -208,7 +208,7 @@ Nous créons une implémentation de TableModel_ que nous appelons *IndividuTable
   }
 
 La classe *IndividuTableModel* hérite de AbstractTableModel_ qui implémente déjà
-une bonne partie de l'interface TableModel_. Notre classe surcharge des méthodes
+une bonne partie de l'interface TableModel_. Notre classe redéfinit des méthodes
 comme getColumnName_, getColumnCount_ et getRowCount_ pour fournir à la vue
 les informations nécessaires pour connaître le nom de chaque colonne, leur nombre
 et le nombre de lignes. Le modèle maintient en interne une liste d'instances

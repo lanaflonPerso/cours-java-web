@@ -223,7 +223,7 @@ Le programme ci-dessus présente un exemple d'affichage des principaux composant
 graphiques. Il définit la classe *ExempleComposant* qui hérite de JFrame_. Il
 s'agit d'un méthode assez courante pour créer des applications graphiques avec
 Swing. On crée un nouveau composant qui hérite de JFrame_ pour jouer le rôle
-d'une fenêtre dans notre application. Ce composant surcharge la méthode
+d'une fenêtre dans notre application. Ce composant redéfinit la méthode
 JFrame.frameInit_ (à partir de la ligne 23) qui lui permet d'effectuer toutes les opérations d'initialisation.
 Dans notre cas, il s'agit de créer une instance de JTabbedPane_, puis de créer
 un exemple de chaque composant et de l'ajouter dans le *tabbedPane* grâce à la

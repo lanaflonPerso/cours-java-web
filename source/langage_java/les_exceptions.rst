@@ -395,20 +395,20 @@ Exceptions et polymorphisme
 ***************************
 
 Comme la déclaration des exceptions jetées par une méthode fait partie de
-sa signature, certaines règles doivent être respectées pour la surcharge
+sa signature, certaines règles doivent être respectées pour la redéfinition
 de méthode afin que le polymorphisme fonctionne correctement.
 
-Selon le `principe de substitution de Liskov`_, dans la surcharge d'une méthode,
+Selon le `principe de substitution de Liskov`_, dans la redéfinition d'une méthode,
 les préconditions ne peuvent pas être renforcées par la sous-classe et les
 postconditions ne peuvent pas être affaiblies par la sous-classe. Rapporté
-au mécanisme des exceptions, cela signifie qu'une méthode surchargée ne peut
+au mécanisme des exceptions, cela signifie qu'une méthode redéfinie ne peut
 pas lancer des exceptions supplémentaires. Par contre, elle peut lancer des exceptions
 plus spécifiques. Le langage Java ne permet pas de distinguer les exceptions
 qui signalent une violation des préconditions ou des postconditions. C'est
 donc aux développeurs de s'assurer que les postconditions ne sont pas affaiblies
 dans la sous-classe.
 
-Ainsi, si la classe *SuperHeros* hérite de la classe *Heros*, elle peut surcharger
+Ainsi, si la classe *SuperHeros* hérite de la classe *Heros*, elle peut redéfinir
 les méthodes en ne déclarant pas d'exception.
 
 ::
@@ -429,7 +429,7 @@ les méthodes en ne déclarant pas d'exception.
   }
 
 Cette nouvelle classe peut aussi changer les types d'exception déclarés par
-les méthodes surchargées à condition que ces types soient des classes filles
+les méthodes redéfinies à condition que ces types soient des classes filles
 des exceptions d'origine.
 
 ::

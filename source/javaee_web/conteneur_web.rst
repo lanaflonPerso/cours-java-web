@@ -31,7 +31,7 @@ Cycle de vie des servlets
 Le conteneur Web gère le cycle de vie des servlets : la création,
 l'initialisation et la destruction. À chacune de ces étapes, une
 instance de servlet est informée par un appel à une méthode déclarée
-dans l'interface Servlet_ et qui peut être surchargée pour chaque servlet.
+dans l'interface Servlet_ et qui peut être redéfinie pour chaque servlet.
 
 ::
 
@@ -79,7 +79,7 @@ le conteneur considère que la servlet n'a pas pu s'initialiser
 correctement et elle ne sera pas déployée dans le conteneur : elle ne
 sera donc pas accessible !
 
-Dans une servlet, il est préférable de surcharger la méthode :
+Dans une servlet, il est préférable de redéfinir la méthode :
 
 ::
 

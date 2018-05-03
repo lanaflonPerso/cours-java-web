@@ -607,7 +607,7 @@ d'une classe sauf si une raison évidente nous suggère de déclarer la portée
   Dans l'exemple précédent, la déclaration de l'attribut *vitesse* comme
   **protected** est peu satisfaisante car toutes les classes filles ont maintenant
   accès à cet attribut : cela n'est pas conforme au `principe du ouvert/fermé`_. 
-  Nous verrons au :ref:`chapitre suivant <surcharge_et_signature>` qu'il existe une 
+  Nous verrons au :ref:`chapitre suivant <redefinition_et_signature>` qu'il existe une 
   solution qui évite de modifier la portée de cet attribut.
 
 .. note::

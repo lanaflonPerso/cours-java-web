@@ -7,7 +7,7 @@ ne précise pas de classe parente dans la déclaration d'une classe, alors
 la classe hérite implicitement de Object_.
 
 La classe Object_ fournit des méthodes communes à toutes les classes. Certaines
-de ces méthodes doivent être surchargées dans les classes filles pour fonctionner
+de ces méthodes doivent être redéfinies dans les classes filles pour fonctionner
 correctement.
 
 .. note::
@@ -81,7 +81,7 @@ si nous ajoutons la notion de plaque d'immatriculation à notre classe
 
 Alors l'attribut immatriculation introduit l'idée d'identification du véhicule.
 Il est donc judicieux de considérer que deux véhicules sont égaux s'ils
-ont la même immatriculation. Dans ce cas, il faut surcharger la méthode equals_.
+ont la même immatriculation. Dans ce cas, il faut redéfinir la méthode equals_.
 
 ::
 
@@ -194,7 +194,7 @@ L'implémentation de cette méthode peut se révéler assez technique. En géné
 on se basera sur les attributs utilisés dans l'implémentation de la méthode
 equals_ pour en déduire le code de hachage.
 
-Cette méthode ne doit être surchargée que si cela est réellement utile.
+Cette méthode ne doit être redéfinie que si cela est réellement utile.
 Par exemple si une instance de cette classe doit servir de clé pour une
 instance de HashMap_.
 
@@ -243,7 +243,7 @@ compilateur lorsqu'on concatène une chaîne de caractères avec un objet.
 
 Par défaut l'implémentation de la méthode toString_ dans la classe Object_
 retourne le type de l'objet suivi de @ suivi du code de hachage de l'objet.
-Il suffit de surcharger cette méthode pour obtenir la représentation souhaitée.
+Il suffit de redéfinir cette méthode pour obtenir la représentation souhaitée.
 
 ::
 
@@ -280,7 +280,7 @@ La méthode finalize
 *******************
 
 La méthode finalize_ est appelée par le ramasse-miettes avant que l'objet ne soit
-supprimé et la mémoire récupérée. Surcharger cette méthode donne donc l'opportunité
+supprimé et la mémoire récupérée. Redéfinir cette méthode donne donc l'opportunité
 au développeur de déclencher un traitement avant que l'objet ne disparaisse.
 Cependant, nous avons déjà vu dans le chapitre sur le :ref:`cycle de vie <cycle_de_vie_finalize>`
 que le fonctionnement du ramasse-miettes ne donne aucune garantie sur le fait
@@ -312,7 +312,7 @@ la nouvelle instance.
 
 .. note ::
 
-  Par défaut, tous les tableaux implémentent l'interface Cloneable_ et surchargent
+  Par défaut, tous les tableaux implémentent l'interface Cloneable_ et redéfinissent
   la méthode clone_ afin de la rendre **public**. On peut donc directement cloner
   des tableaux en Java si on désire en obtenir une copie.
 

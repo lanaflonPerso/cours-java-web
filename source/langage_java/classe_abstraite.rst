@@ -96,7 +96,7 @@ Déclarer une méthode abstraite
 
 Un classe abstraite peut déclarer des méthodes abstraites. Une méthode abstraite
 possède une signature mais pas de corps. Cela signifie qu'une classe qui hérite
-de cette méthode doit la surcharger pour en fournir une implémentation 
+de cette méthode doit la redéfinir pour en fournir une implémentation 
 (sauf si cette classe est elle-même abstraite).
 
 Par exemple, un véhicule peut donner son nombre de roues. Plutôt que d'utiliser

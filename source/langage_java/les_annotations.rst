@@ -34,8 +34,8 @@ qu'elle vient enrichir :
 L'annotation Override_ est définie dans le package java.lang_ (c'est pour cela 
 qu'il n'est pas nécessaire de l'importer explicitement). Cette annotation est 
 utilisable uniquement sur les méthodes pour indiquer que la méthode est une 
-surcharge d'une méthode d'une classe parente (dans l'exemple précédent, la méthode
-surcharge Object.toString_). Cette annotation est exploitée par le compilateur
+redéfinition d'une méthode d'une classe parente (dans l'exemple précédent, la méthode
+redéfinit Object.toString_). Cette annotation est exploitée par le compilateur
 pour réaliser des vérifications supplémentaires. C'est également le cas pour les 
 autres annotations déclarées dans le même package :
 
@@ -49,7 +49,7 @@ FunctionalInterface_
   peut être implémentée par une lambda (Cf. :ref:`le chapitre sur les lambdas <functionalInterface>`).
 
 Override_
-  Signale qu'une méthode est une surcharge d'une méthode déclarée dans une classe
+  Signale qu'une méthode est une redéfinition d'une méthode déclarée dans une classe
   parente. Cela permet au compilateur de signaler une erreur si ce n'est
   pas le cas.
 

@@ -46,7 +46,7 @@ Nous disposons également des classes *Chat* et *Chien* qui héritent de la clas
 
 
 Ces deux classes sont une spécialisation de la classe
-*Animal*. À ce titre, elles peuvent **surcharger** (*override*) la méthode *crier*.
+*Animal*. À ce titre, elles peuvent **redéfinir** (*override*) la méthode *crier*.
 
 ::
 
@@ -108,33 +108,33 @@ qui la déclare. Donc si une classe mère et une classe fille définissent une m
 **private** avec la même signature, le compilateur les traitera comme 
 deux méthodes différentes.
 
-.. _surcharge_et_signature:
+.. _redefinition_et_signature:
 
-Surcharge et signature de méthode
-*********************************
+Redéfinition et signature de méthode
+************************************
 
-Le principe du polymorphisme repose en Java sur la surcharge de méthodes. Pour
-que la surcharge fonctionne, il faut que la méthode qui surcharge possède
-une signature *correspondante* à celle de la méthode surchargée.
+Le principe du polymorphisme repose en Java sur la redéfinition de méthodes. Pour
+que la redéfinition fonctionne, il faut que la méthode qui redéfinit possède
+une signature *correspondante* à celle de la méthode orginale.
 
 Le cas le plus simple est celui de l'exemple précédent. Les méthodes ont
 exactement la même signature : même portée, même type de retour, même nom
 et mêmes paramètres.
 
-Cependant, la méthode qui surcharge peut avoir une signature légèrement différente.
+Cependant, la méthode qui redéfinit peut avoir une signature légèrement différente.
 
-Une méthode qui surcharge peut avoir une portée différente si et seulement
-si, celle-ci est plus permissive que celle de la méthode surchargée. Il est donc
+Une méthode qui redéfinit, peut avoir une portée différente si et seulement
+si, celle-ci est plus permissive que celle de la méthode d'origine. Il est donc
 possible d'augmenter la portée de la méthode mais jamais de la réduire :
 
-* Une méthode de portée package peut être surchargée avec la portée package
+* Une méthode de portée package peut être redéfinie avec la portée package
   mais aussi **protected** ou **public**.
-* Une méthode de portée **protected** peut être surchargée avec la portée
+* Une méthode de portée **protected** peut être redéfinie avec la portée
   **protected** ou **public**.
-* Une méthode de portée **public** ne peut être surchargée qu'avec la portée
+* Une méthode de portée **public** ne peut être redéfinie qu'avec la portée
   **public**.
 
-Le changement de portée dans la surcharge sert la plupart du temps à placer
+Le changement de portée dans la redéfinition sert la plupart du temps à placer
 une implémentation dans la classe parente mais à laisser les classes filles
 qui le désirent offrir publiquement l'accès à cette méthode.
 
@@ -192,7 +192,7 @@ conforme au `principe du ouvert/fermé`_.
 
 Nous pouvons maintenant revoir notre implémentation. En fait, c'est la méthode
 *reculer* qui doit être déclarée dans la classe *Véhicule* avec une portée
-**protected**. La classe *Voiture* peut se limiter à surcharger cette méthode
+**protected**. La classe *Voiture* peut se limiter à redéfinir cette méthode
 en la rendant **public**.
 
 ::
@@ -248,8 +248,8 @@ de la méthode fournie par la classe *Vehicule*. Ainsi l'attribut *vitesse* peut
 rester de portée **private** et les classes filles de *Vehicule* peuvent ou non
 donner publiquement l'accès à la méthode *reculer*.
 
-Une méthode qui surcharge peut avoir un type de retour différent de la méthode
-surchargée à condition qu'il s'agisse d'une classe qui hérite du type de retour.
+Une méthode qui redéfinit peut avoir un type de retour différent de la méthode
+d'origine à condition qu'il s'agisse d'une classe qui hérite du type de retour.
 Si nous reprenons l'exemple d'héritage des classes *Animal*, *Chien* et *Chat*,
 nous pouvons définir une classe *EleveurAnimal* qui permet de créer une instance
 de *Animal* quand on appelle la méthode *elever* :
@@ -268,9 +268,9 @@ de *Animal* quand on appelle la méthode *elever* :
 
 
 Si maintenant nous créons la classe *EleveurChien* qui hérite de la classe
-*EleveurAnimale*, la surcharge de la méthode
+*EleveurAnimale*, la redéfinition de la méthode
 *elever* peut déclarer qu'elle retourne un type *Chien*. Comme *Chien* hérite
-de *Animal*, la méthode qui surcharge se présente comme une spécialisation.
+de *Animal*, la méthode qui redéfinit se présente comme une spécialisation.
 
 ::
 
@@ -288,7 +288,7 @@ de *Animal*, la méthode qui surcharge se présente comme une spécialisation.
 Le mot-clé super
 ****************
 
-La surcharge de méthode masque la méthode de la classe parente. Cependant, nous 
+La redéfinition de méthode masque la méthode de la classe parente. Cependant, nous 
 avons vu précédemment avec l'exemple de la méthode *reculer* que l'implémentation
 d'une classe fille a la possibilité d'appeler une méthode de la classe parente
 en utilisant le mot-clé **super**. L'appel à l'implémentation parente est très
@@ -318,9 +318,9 @@ avoir besoin de dupliquer le code d'origine.
   }
 
 
-Il existe tout de même une limitation : si une méthode a été surchargée plusieurs
+Il existe tout de même une limitation : si une méthode a été redéfinie plusieurs
 fois dans l'arborescence d'héritage, le mot-clé **super** ne permet d'appeler
-que l'implémentation de la classe parente. Si la classe *Voiture* a surchargé
+que l'implémentation de la classe parente. Si la classe *Voiture* a redéfini
 la méthode *accelerer* et que l'on crée la classe *VoitureDeCourse* héritant
 de la classe *Voiture*.
 
@@ -347,7 +347,7 @@ de la classe *Voiture*.
   }
 
 
-La surcharge de la méthode *accelerer* peut appeler l'implémentation de *Voiture*
+La redéfinition de la méthode *accelerer* peut appeler l'implémentation de *Voiture*
 mais il est impossible d'appeler directement l'implémentation d'origine de la classe
 *Vehicule* depuis la classe *VoitureDeCourse*.
 
@@ -361,7 +361,7 @@ au moment de la compilation, du chargement de la classe dans la JVM ou lors
 de l'exécution du code. Le langage Java proprement dit utilise relativement peu les annotations.
 On trouve cependant l'annotation `@Override`_ qui est très utile pour le polymorphisme.
 Cette annotation s'ajoute au début de la signature d'une méthode pour préciser
-que cette méthode est une surcharge d'une méthode héritée. Cela permet au
+que cette méthode est une redéfinition d'une méthode héritée. Cela permet au
 compilateur de vérifier que la signature de la méthode correspond bien à une
 méthode d'une classe parente. Dans le cas contraire, la compilation échoue.
 
@@ -388,7 +388,7 @@ Les méthodes de classe
 **********************
 
 Les méthodes de classe (déclarées avec le mot-clé **static**) ne supportent pas
-la surcharge. Si une classe fille déclare une méthode **static**
+la redéfinition. Si une classe fille déclare une méthode **static**
 avec la même signature que dans la classe parente, ces méthodes seront simplement
 vues par le compilateur comme deux méthodes distinctes.
 
@@ -437,7 +437,7 @@ Le résultat de l'exécution de ce code est :
   appel à la méthode de la classe Parent
   appel à la méthode de la classe Enfant
 
-Comme les méthodes sont **static**, la surcharge ne s'applique pas et la méthode
+Comme les méthodes sont **static**, la redéfinition ne s'applique pas et la méthode
 appelée dépend du type de la variable et non du type de l'objet référencé par
 la variable. Cet exemple illustre pourquoi il est très fortement conseillé
 d'appeler les méthodes **static** à partir du nom de la classe et non pas d'une
@@ -453,8 +453,8 @@ Méthode finale
 **************
 
 Une méthode peut avoir le mot-clé **final** dans sa signature. Cela signifie
-que cette méthode ne peut plus être surchargée par les classes qui en hériteront.
-Tenter de surcharger une méthode déclarée **final** conduit à une erreur de
+que cette méthode ne peut plus être redéfinie par les classes qui en hériteront.
+Tenter de redéfinir une méthode déclarée **final** conduit à une erreur de
 compilation. L'utilisation du mot-clé **final** pour une méthode est réservée
 à des cas très spécifiques (et très rares). Par exemple si on souhaite garantir
 qu'une méthode aura toujours le même comportement même dans les classes qui
@@ -462,7 +462,7 @@ en héritent.
 
 .. note::
 
-  Même si les méthodes **static** n'autorisent pas la surcharge, elles peuvent
+  Même si les méthodes **static** n'autorisent pas la redéfinition, elles peuvent
   être déclarées **final**. Dans ce cas, il n'est pas possible d'ajouter une 
   méthode de classe qui a la même signature dans les classes qui en héritent.
 
@@ -471,7 +471,7 @@ Constructeur et polymorphisme
 *****************************
 
 Les constructeurs sont des méthodes particulières qu'il n'est pas possible
-de surcharger. Les constructeurs créent une séquence d'appel qui garantit
+de redéfinir. Les constructeurs créent une séquence d'appel qui garantit
 qu'ils seront exécutés en commençant par la classe la plus haute dans la hiérarchie
 d'héritage. Puisque toutes les classes Java héritent de la classe Object_, cela
 signifie que le constructeur de Object_ est toujours appelé en premier.
@@ -479,11 +479,11 @@ signifie que le constructeur de Object_ est toujours appelé en premier.
 Cependant un constructeur peut appeler une méthode et dans ce cas le polymorphisme
 s'applique. Comme les constructeurs sont appelés dans l'ordre
 de la hiérarchie d'héritage, cela signifie qu'un constructeur invoque
-toujours une méthode surchargée avant que la classe fille qui l'implémente n'ait 
+toujours une méthode redéfinie avant que la classe fille qui l'implémente n'ait 
 pu être initialisée.
 
-Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui surcharge la 
-méthode   *accelerer* pour prendre en compte la consommation d'essence :
+Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui redéfinit la 
+méthode *accelerer* pour prendre en compte la consommation d'essence :
 
 ::
 
@@ -543,7 +543,7 @@ Que va-t-il se passer à l'exécution de ce code :
 Le constructeur de *VehiculeMotorise* commence par appeler le constructeur
 de *Vehicule*. Ce dernier appelle implicitement le constructeur de Object_ (qui
 ne fait rien) puis il initialise l'attribut *marque* et il appelle la méthode
-*accelerer*. Comme cette dernière est surchargée, c'est en fait l'implémentation
+*accelerer*. Comme cette dernière est redéfinie, c'est en fait l'implémentation
 fournie par *VehiculeMotorise* qui est appelée. Cette implémentation commence par appeler
 une méthode sur l'attribut *moteur* qui n'a pas encore été initialisé. Donc sa
 valeur est nulle et donc la création d'une instance de *VehiculeMotorise*
@@ -551,7 +551,7 @@ valeur est nulle et donc la création d'une instance de *VehiculeMotorise*
 
 On voit par cet exemple que l'appel de méthode dans un constructeur peut amener
 à des situations complexes. Il est fortement recommandé d'appeler dans un constructeur
-des méthodes dont le comportement ne peut pas être modifié par la surcharge : soit 
+des méthodes dont le comportement ne peut pas être modifié par la redéfinition : soit 
 des méthodes déclarées **private** soit des méthodes déclarées **final**.
 
 
@@ -560,7 +560,7 @@ Masquage des attributs par héritage
 
 Il est possible de déclarer dans une classe fille un attribut portant
 le même nom que dans la classe parente. Cependant ceci ne correspond ni à une
-surcharge ni au principe du polymorphisme. L'attribut de
+redéfinition ni au principe du polymorphisme. L'attribut de
 la classe fille se contente de masquer l'attribut de la classe parente.
 
 Si l'attribut est de portée **private**, créer une attribut avec le même nom dans
@@ -626,7 +626,7 @@ ouverte en extension mais fermée en modification.
 
 D'un côté, si une classe hérite
 d'une autre classe, elle doit pouvoir ajouter des nouveaux comportements avec
-de nouvelles méthodes. Par contre la surcharge de méthode ne doit pas être
+de nouvelles méthodes. Par contre la redéfinition de méthode ne doit pas être
 utilisée pour créer une implémentation qui a un comportement trop différent
 de celui de la classe parente.
 
