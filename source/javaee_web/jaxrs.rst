@@ -82,13 +82,13 @@ Dans le fichier :file:`web.xml` de son application, il suffit d'ajouter une bali
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
-Dans l'exemple ci-dessus, cela signifie que les requêtes à partir
+Dans l'exemple ci-dessus, cela signifie que les requêtes à partir de
 **http://[hôte]/[contexte racine]/api/** seront gérées par JAX-RS.
 
 .. note::
 
     Il est également possible d'activer JAX-RS dans une application Web en 
-    fournissant dans cette application une classe qui étant la classe abstraite
+    fournissant dans cette application une classe qui étend la classe abstraite
     Application_. On utilise alors l'annotation `@ApplicationPath`_ pour donner
     le motif d'URI géré par JAX-RS :
 
@@ -997,7 +997,8 @@ dans l'exemple précédent. Cette annotation est utilisée dans JAX-RS pour
 signaler des classes utilitaires qui permettent d'étendre le
 comportement par défaut de JAX-RS.
 
-La validation avec *Bean Validation*
+La validation avec Bean Validation
+**********************************
 
 Le serveur d'application fournit un service nommé `Bean Validation <http://beanvalidation.org/>`__ (JSR303). 
 Bean Validation permet d'exprimer les contraintes de validité d'un objet ou des

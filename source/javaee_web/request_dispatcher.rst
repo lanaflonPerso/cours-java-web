@@ -135,7 +135,7 @@ Exercice
         De plus, le formulaire doit se réafficher en renseignant les données
         saisies précédemment **sauf** le mot de passe.
 
-        Pour cet exercice, n'utiliserez **aucun** contrôle de champ côté
+        Pour cet exercice, vous n'utiliserez **aucun** contrôle de champ côté
         client.
 
         Lorsque tous les champs sont saisis correctement, une page de
