@@ -347,7 +347,7 @@ rencontrer quelques problèmes lors de l'utilisation de la méthode
   
 Le code ci-dessus ne compile pas. En effet, on tente de passer en paramètre à la méthode
 *Vehicule.getPlusRapide* une liste de type *Voiture* alors que la méthode est écrite
-pour une liste de type *Vehicule*. Nous pourrions utiliser la redéfinition en fournissant
+pour une liste de type *Vehicule*. Nous pourrions utiliser la surcharge en fournissant
 une implémentation pour chaque type de liste, mais la bonne solution est de déclarer
 *Vehicule.getPlusRapide* comme une méthode générique :
 
@@ -576,7 +576,7 @@ Il n'est pas possible d'utiliser un type paramétré dans une expression **catch
     }
   }
 
-Il n'est pas possible de redéfinir (*overload*) une méthode en ne changeant que
+Il n'est pas possible de surcharger (*overload*) une méthode en ne changeant que
 le type paramétré d'un paramètre :
 
 .. code-block:: java
@@ -618,7 +618,7 @@ le type paramétré d'un paramètre :
   
   Donc, le résultat de la compilation amènerait à déclarer une classe avec
   deux méthodes strictement identiques. Voilà pourquoi il n'est pas possible
-  de redéfinir une méthode juste en changeant le type paramétré d'un paramètre.
+  de surcharger une méthode juste en changeant le type paramétré d'un paramètre.
 
 .. _java.util.ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html 
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html

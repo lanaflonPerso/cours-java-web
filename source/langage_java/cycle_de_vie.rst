@@ -50,7 +50,7 @@ Paramètres de constructeur
 ==========================
 
 Comme les méthodes, les constructeurs peuvent accepter des paramètres et comme
-les méthodes, les constructeurs supportent la redéfinition (*overloading*).
+les méthodes, les constructeurs supportent la surcharge (*overloading*).
 Une classe peut ainsi déclarer plusieurs constructeurs à condition que la liste
 des paramètres diffère par le nombre et/ou le type.
 

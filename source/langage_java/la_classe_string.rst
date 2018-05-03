@@ -173,7 +173,7 @@ String.replace_
   
     String s = "Hello World".replace('l', 'x'); // "Hexxo Worxd" 
 
-  Cette méthode est redéfinie pour accepter des chaînes de caractères comme
+  Cette méthode est surchargée pour accepter des chaînes de caractères comme
   paramètres.
   
   ::

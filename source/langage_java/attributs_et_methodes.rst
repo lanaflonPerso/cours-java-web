@@ -596,16 +596,16 @@ au programme **java** après le nom de la classe :
 
   $ java MaClasse arg1 arg2 arg3
 
-Redéfinition de méthode : overloading
-*************************************
+Surcharge de méthode : overloading
+**********************************
 
 Il est possible de déclarer dans une classe plusieurs méthodes ayant le même nom.
 Ces méthodes doivent obligatoirement avoir des paramètres différents (le type et/ou le nombre).
 Il est également possible de déclarer des types de retour différents pour ces méthodes.
-On parle de redéfinition de méthode (**method overloading**). La redéfinition
+On parle de surcharge de méthode (**method overloading**). La surcharge
 de méthode n'a réellement de sens que si les méthodes portant le même nom ont un
 comportement que l'utilisateur de la classe jugera proche. Java permet
-également la redéfinition de méthode de classe.
+également la surcharge de méthode de classe.
 
 ::
 
@@ -628,7 +628,7 @@ comportement que l'utilisateur de la classe jugera proche. Java permet
     }
   }
 
-Dans l'exemple ci-dessus, la redéfinition de méthode permet supporter l'addition
+Dans l'exemple ci-dessus, la surcharge de méthode permet supporter l'addition
 pour le type entier et pour le type à virgule flottante. Selon le type de paramètre
 passé à l'appel, le compilateur déterminera laquelle des deux méthodes doit
 être appelée.
@@ -641,11 +641,11 @@ passé à l'appel, le compilateur déterminera laquelle des deux méthodes doit
 
 .. caution::
 
-  N'utilisez pas la redéfinition de méthode pour implémenter des méthodes qui
+  N'utilisez pas la surcharge de méthode pour implémenter des méthodes qui
   ont des comportements trop différents. Cela rendra vos objets difficiles à
   comprendre et donc à utiliser.
 
-Si on redéfinit une méthode avec un paramètre variable, cela peut créer une
+Si on surcharge une méthode avec un paramètre variable, cela peut créer une
 ambiguïté de choix. Par exemple :
 
 ::
