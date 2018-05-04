@@ -415,7 +415,7 @@ les méthodes en ne déclarant pas d'exception.
 
   package ROOT_PKG.heroes;
 
-  public class SuperHeros extends Hero {
+  public class SuperHeros extends Heros {
 
     @Override
     public void combattre(Vilain vilain) {
@@ -436,7 +436,7 @@ des exceptions d'origine.
 
   package ROOT_PKG.heroes;
 
-  public class SuperHeros extends Hero {
+  public class SuperHeros extends Heros {
 
     @Override
     public void desamorcer(Piege piege) throws PlanMachiaveliqueException {
