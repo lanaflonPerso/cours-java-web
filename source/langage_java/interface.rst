@@ -9,8 +9,8 @@ et de frameworks. Le mécanisme des interfaces permet d'introduire également un
 forme simplifiée d'héritage multiple.
 
 
-Déclaration d'un interface
-**************************
+Déclaration d'une interface
+***************************
 
 Une interface se déclare avec le mot-clé **interface**.
 
