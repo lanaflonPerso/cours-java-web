@@ -13,7 +13,7 @@ Parmi ces collections, on trouve les listes (*lists*), les ensembles (*sets*) et
 les tableaux associatifs (*maps*). Elles forment ce que l'on appelle le 
 `Java Collections Framework`_.
 
-Toutes ces classes et interfaces sont génériques. Il n'est donc possible que de créer
+Toutes ces classes et interfaces sont génériques. On ne peut donc créer que
 des collections d'objets. Si vous souhaitez créer une collection pour un type
 primitif, vous devez utiliser la classe enveloppe correspondante (par exemple
 Integer_ pour **int**).
@@ -22,9 +22,9 @@ Les listes
 **********
 
 Une liste est une collection ordonnée d'éléments. Il existe différentes façons
-d'implémenter des listes selon que l'on veut privilégier les performances pour 
-les accès aléatoires aux éléments ou les opérations d'insertion et de suppression
-d'éléments dans la liste.
+d'implémenter des listes dont les performances sont optimisées soit pour 
+les accès aléatoires aux éléments soit pour les opérations d'insertion et de suppression
+d'éléments.
 
 Java propose plusieurs classes d'implémentation pour les listes selon les besoins
 de performance. Comme toutes ces classes implémentent des interfaces communes,
@@ -341,7 +341,7 @@ RandomAccess_
 Les ensembles (set)
 *******************
 
-Les ensembles (*set*) sont des collections qui ne contiennent aucune doublon.
+Les ensembles (*set*) sont des collections qui ne contiennent aucun doublon.
 Deux élements e1 et e2 sont des doublons si :
 
 ::

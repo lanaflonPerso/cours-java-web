@@ -139,8 +139,8 @@ Il s'agit d'un raccourci d'écriture qui évite de se répéter. On appelle la n
 Substitution et type générique
 ******************************
 
-Avec l'héritage, nous avons vu que nous pouvons affecter à une variable, un
-paramètre ou un attribut une référence d'un objet du même type ou d'un type
+Avec l'héritage, nous avons vu que nous pouvons affecter à une variable (ou à un
+paramètre ou un à attribut) une référence d'un objet du même type ou d'un type
 qui en hérite. On appelle cela le principe de substitution.
 
 ::
