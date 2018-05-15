@@ -458,6 +458,28 @@ l'attribut ``fetch`` présent sur les annotations `@Basic`_, `@OneToOne`_,
 La définition des stratégies de fetch est une partie importante du
 tuning dans le développement d'une application utilisant JPA.
 
+.. only:: epsi_b3_orm
+
+    Exercice
+    ********
+
+    .. admonition:: Gestion des examens (suite)
+        :class: hint
+        
+        On souhaite faire évoluer le système de sauvegarde des notes aux examens des étudiants.
+        
+        Introduisez la classe ``Diplome`` qui contient contient une liste d'examens et créez
+        une méthode permettant de sauver un diplôme en base de données avec tous ses examens.
+        
+        Pour réaliser cette fonctionnalité, utilisez la déclaration de relation sur les entités
+        JPA.
+        
+        .. note::
+        
+            N'hésitez pas à expérimenter les possibilités de persistance en cascade et les relations
+            bidirectionnelles (La classe ``Examen`` peut avoir une relation inverse vers la classe
+            ``Diplome``).
+
 
 .. _@OneToOne: https://docs.oracle.com/javaee/7/api/javax/persistence/OneToOne.html
 .. _@ManyToOne: https://docs.oracle.com/javaee/7/api/javax/persistence/ManyToOne.html

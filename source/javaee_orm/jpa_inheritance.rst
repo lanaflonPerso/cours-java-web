@@ -434,36 +434,39 @@ Contrairement au cas précédent, l'utilisation de `@MappedSuperclass`_ implique
 n'existe pas de relation entre les classes filles pour JPA. Comme la super classe
 n'est pas un entité, il n'est pas possible d'effectuer des requêtes sur la super classe.
 
-Exercice
-********
+.. only:: epsi_b3_orm
 
-.. topic:: Gestion des examens
+    Exercice
+    ********
 
-    On souhaite mettre en place un système de sauvegarde des notes aux examens des étudiants.
+    .. admonition:: Gestion des examens
+        :class: hint
 
-    Un résultat d'examen contient le code de l'examen, la date de passage et le nom de l'étudiant.
-    Parmi les examens, on distingue :
+        On souhaite mettre en place un système de sauvegarde des notes aux examens des étudiants.
 
-    * un contrôle pour lequel l'étudiant a une note sur 20
-    * un projet pour lequel l'étudiant a une note d'oral et d'écrit sur 10. La note du projet
-      correspond à la somme de ces deux notes.
+        Un résultat d'examen contient le code de l'examen, la date de passage et le nom de l'étudiant.
+        Parmi les examens, on distingue :
 
-    Créez les entités et une classe Java permettant :
+        * un contrôle pour lequel l'étudiant a une note sur 20
+        * un projet pour lequel l'étudiant a une note d'oral et d'écrit sur 10. La note du projet
+          correspond à la somme de ces deux notes.
 
-    * d'ajouter un résultat d'un contrôle ou d'un projet dans une base de données.
-    * de récupérer la liste des objets contenant les notes d'un étudiant pour une période donnée
-    * de connaître la moyenne d'un étudiant
-    * de connaître la moyenne d'un contrôle ou d'un projet
+        Créez les entités et une classe Java permettant :
 
-    .. note::
+        * d'ajouter un résultat d'un contrôle ou d'un projet dans une base de données.
+        * de récupérer la liste des objets contenant les notes d'un étudiant pour une période donnée
+        * de connaître la moyenne d'un étudiant
+        * de connaître la moyenne d'un contrôle ou d'un projet
 
-        Une classe contenant des méthodes pour interagir avec la base de données
-        est souvent qualifiée de DAO (*Data Access Object*).
+        .. note::
 
-    .. admonition:: Template de projet JPA
+            Une classe contenant des méthodes pour interagir avec la base de données
+            est souvent qualifiée de DAO (*Data Access Object*).
 
-        Vous pouvez :download:`télécharger le projet d'exemple <assets/templates/template-orm.zip>`.
-        Il s'agit d'un projet Maven avec une dépendance vers Hibernate et le pilote JDBC MySQL.
+        .. admonition:: Template de projet JPA
+
+            Vous pouvez :download:`télécharger le projet d'exemple <assets/templates/template-orm.zip>`.
+            Il s'agit d'un projet Maven avec une dépendance vers Hibernate et le pilote JDBC MySQL.
 
 
 .. _@Inheritance: https://docs.oracle.com/javaee/7/api/javax/persistence/Inheritance.html
