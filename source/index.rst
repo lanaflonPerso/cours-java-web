@@ -32,6 +32,8 @@ Sommaire
 
 .. include:: uml/index.rst
 
+.. include:: git/index.rst
+
 .. include:: langage_java/index.rst
 
 .. include:: javaee_web/index.rst

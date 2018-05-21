@@ -9,5 +9,5 @@ highlight_root_package = 'com.cgi.poei'
 
 todo_include_todos = False
 
-chapters=['uml', 'langage_java', 'javaee_web', 'javaee_orm', 'http']
+chapters=['uml', 'git', 'langage_java', 'javaee_web', 'javaee_orm', 'http']
 
