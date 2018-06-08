@@ -98,7 +98,7 @@ session comme backing bean JPA.
       public void addItem(Item i) {
         items.add(i);
       }
-      
+
       // ...
     }
 
@@ -139,7 +139,7 @@ nécessaire de protéger le code contre les accès concurrents.
       public void add(Individu i) {
         // ...
       }
-      
+
       // ...
     }
 
@@ -239,7 +239,7 @@ attribut d'un autre composant Java EE (Servlet, bean CDI ou même EJB).
         @SessionScoped
         @Named
         public class UserBasket {
-          
+
           // ...
 
         }
@@ -247,11 +247,35 @@ attribut d'un autre composant Java EE (Servlet, bean CDI ou même EJB).
 La gestion des transactions
 ***************************
 
+
 Un service intéressant dans l'utilisation des EJB est la prise en charge
 du support transactionnel sur chacune de leur méthode. Il est ainsi
 possible de gérer automatiquement les transactions JTA (Java Transaction
-API) en utilisant un appel de méthode comme démarcation
-transactionnelle : lors de l'appel d'une méthode d'un EJB, le conteneur
+API).
+
+JTA (Java Transaction API)
+==========================
+
+Le recours aux transactions ne se limite pas aux systèmes de base de données.
+N'importe quel service logiciel peut fournir un support à la transaction. Quand
+plusieurs systèmes transactionnels sont inclus au sein d'une même transaction,
+il peut être nécessaire d'avoir recours à une transaction distribuée pour les
+synchroniser.
+
+Pour ces raisons, Java EE fournit une API dédiée uniquement à la gestion des
+transactions : **JTA**. Cette API est indépendante de JDBC et elle est aussi plus
+complète (et donc plus compliquée). TomEE nous laisse le choix de gérer les
+transactions avec **JTA** ou avec JDBC pour les *DataSources*. Le paramètre
+*JtaManaged* disponible dans la balise *Resource* permet d'indiquer si l'on
+souhaite ou non qu'une DataSource_ soit gérable avec **JTA**.
+Nous reviendrons sur **JTA** lorsque nous parlerons de JPA et des EJB.
+
+La démarcation transactionnelle
+===============================
+
+Le conteneur EJB prend en charge les transactions JTA en utilisant
+un appel de méthode comme démarcation transactionnelle :
+lors de l'appel d'une méthode d'un EJB, le conteneur
 commence une transaction JTA et, au retour de la méthode, le conteneur
 effectue un commit ou un rollback.
 
@@ -290,7 +314,7 @@ les EJB :
       public void add(Individu i) {
         // ...
       }
-      
+
       // ...
     }
 
@@ -327,7 +351,7 @@ transactions.
         // commiter la transaction
         tx.commit();
       }
-      
+
       // ...
     }
 
@@ -352,8 +376,10 @@ d'EJB.
 
     @ApplicationException(rollback = true)
     public class ArticleNotAvailableException extends Exception {
-      
+
       // ...
 
     }
+
+.. _DataSource: https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html
 

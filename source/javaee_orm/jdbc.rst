@@ -133,130 +133,6 @@ AutoCloseable_, ce qui l'autorise à être utilisée dans un try-with-resources_
 
   connection.close();
 
-.. only:: javaee
-
-  Création d'une connexion avec Java EE
-  *************************************
-
-  Dans un serveur d'application, l'utilisation du DriverManager_ est remplacée
-  par celle de la DataSource_. L'interface DataSource_ n'offre que deux méthodes :
-
-  ::
-
-
-    // Attempts to establish a connection with the data source
-    Connection getConnection()
-
-    // Attempts to establish a connection with the data source
-    Connection getConnection(String username, String password)
-
-  Il n'est pas possible de spécifier l'URL de connection à la base de données
-  avec une DataSource_. Par contre une DataSource_ peut être injectée dans
-  n'importe quel composant Java EE (Servlet, Bean CDI, EJB)
-  grâce à l'annotation Resource_ :
-
-  .. code-block:: java
-    :caption: Injection d'une DataSource dans une Servlet
-
-
-    import java.io.IOException;
-    import java.sql.Connection;
-
-    import javax.annotation.Resource;
-    import javax.servlet.ServletException;
-    import javax.servlet.annotation.WebServlet;
-    import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-    import javax.sql.DataSource;
-
-    @WebServlet("/MyServlet")
-    public class MyServlet extends HttpServlet {
-
-      @Resource(name = "nomDeLaDataSource")
-      private DataSource dataSource;
-
-      @Override
-      protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-                              throws ServletException, IOException {
-
-        try (Connection connection = dataSource.getConnection()) {
-          // ...
-        }
-
-      }
-
-    }
-
-  L'annotation Resource_ permet de spécifier le nom de la DataSource_ grâce à
-  l'attribut *name*. Mais comment le serveur d'application fait-il pour lier
-  une DataSource_ avec une connexion vers une base de données ? Malheureusement,
-  il n'existe pas de standard et chaque serveur d'application dispose de sa
-  procédure. Pour TomEE, une DataSource_ se configure dans le fichier *tomee.xml*.
-  Ce fichier se trouve dans le répertoire *conf* du répertoire d'installation du
-  serveur. On peut ainsi déclarer une source de données directement dans le
-  serveur. Il est également possible d'ajouter un fichier *resources.xml*
-  dans le répertoire WEB-INF de son application. Ce fichier a le même format
-  que le fichier *tomee.xml* mais il fournit une définition des sources de données
-  uniquement pour cette application.
-
-  .. code-block:: xml
-    :caption: Exemple de déclaration d'une DataSource MySQL dans le fichier resources.xml (ou tomee.xml)
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <tomee>
-    <Resource id="nomDeLaDataSource" type="javax.sql.DataSource">
-      JdbcDriver com.mysql.jdbc.Driver
-      JdbcUrl jdbc:mysql://localhost:3306/myDataBase
-      UserName root
-      Password root
-      JtaManaged false
-    </Resource>
-    </tomee>
-
-  Le nom de la source de données est indiqué par l'attribut id de la balise
-  *Resource*. La documentation officielle de TomEE contient des informations
-  intéressantes à consulter :
-
-  *  `DataSource Configuration`_ (documentation des paramètres de la balise *Resource*)
-  *  `Common DataSource Configurations`_ (exemples de configuration de *DataSources* pour divers SGBDR)
-
-  Ce système de configuration est certes plus compliqué que l'utilisation du
-  DriverManager_ mais il permet à l'application d'ignorer les détails de
-  configuration. L'utilisation des *DataSources* dans un serveur d'application
-  apporte généralement des fonctionnalités supplémentaires telles que la mise en
-  cache et la réutilisation de connexions (pour améliorer les performances),
-  les tests permettant de vérifier que les connexions sont correctement
-  établies, la supervision des connexions...
-
-  .. note::
-
-    L'annotation Resource_ se base sur **JNDI** (Java Naming and Directory
-    Interface) pour rechercher la DataSource_ demandée. JNDI est une API standard
-    de Java permettant de se connecter à des annuaires (notamment les annuaires
-    LDAP). Les serveurs d'application Java EE disposent de leur propre implémentation
-    interne d'annuaire permettant de stocker des instances d'objet.
-
-    Les ressources telles que les *DataSources* sont donc stockées dans un annuaire
-    interne et il est possible d'y accéder avec l'API JNDI. Les ressources sont
-    classées dans une arborescence (comme le sont les fichiers dans un système
-    de fichiers). Une ressource est stockée dans l'arborescence **java:/comp/env**.
-
-    .. code-block:: java
-      :caption: Exemple de récupération d'une DataSource en utilisant l'API JNDI
-
-      // javax.naming.InitialContext désigne le contexte racine de l'annuaire.
-      // Un annuaire JDNI est constitué d'instances de javax.naming.Context
-      // (qui sont l'équivalent des répertoires dans un système de fichiers).
-      Context envContext = InitialContext.doLookup("java:/comp/env");
-
-      // On récupère la source de données dans le contexte java:/comp/env
-      DataSource dataSource = DataSource.class.cast(envContext.lookup("nomDeLaDataSource"));
-
-    Le contexte JNDI **java:/comp/env** est un contexte particulier. Il désigne
-    l'ensemble des composants Java EE disponibles dans l'environnement (env) du
-    composant Java EE (comp) courant.
-
 
 L'URL de connexion et la classe des pilotes
 *******************************************
@@ -641,28 +517,6 @@ Connection_, il existe les méthodes setAutoCommit_ et getAutoCommit_ pour nous
 aider à gérer ce comportement. Attention, dans la plupart des implémentations
 des pilotes JDBC, l'auto commit est activé par défaut (mais ce n'est pas une règle).
 
-.. only:: javaee
-
-  Dans les serveurs d'application Java EE, l'activation ou non de l'auto commit
-  par défaut et souvent configurable au niveau de la DataSource_. C'est le cas
-  pour TomEE, puisque l'attribut *defaultAutoCommit* peut être positionné sur
-  une balise *Resource*. Cet attribut vaut *true* par défaut.
-
-  .. code-block:: xml
-    :caption: Configuration de l'auto commit dans le fichier resources.xml (ou tomee.xml)
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <tomee>
-    <Resource id="nomDeLaDataSource" type="javax.sql.DataSource">
-      JdbcDriver com.mysql.jdbc.Driver
-      JdbcUrl jdbc:mysql://localhost:3306/myDataBase
-      defaultAutoCommit false
-      UserName root
-      Password root
-      JtaManaged false
-    </Resource>
-    </tomee>
-
 À partir du moment où l'auto commit n'est plus actif sur une connexion, il est
 de la responsabilité du développeur d'appeler sur l'instance de Connection_ la
 méthode commit_ (ou rollback_) pour marquer la fin de la transaction.
@@ -727,25 +581,6 @@ Pour cela, on utilise la démarcation transactionnelle.
       connection.rollback();
     }
   }
-
-.. only:: javaee
-
-  JTA (Java Transaction API)
-  ==========================
-
-  Le recours aux transactions ne se limite pas aux systèmes de base de données.
-  N'importe quel service logiciel peut fournir un support à la transaction. Quand
-  plusieurs systèmes transactionnels sont inclus au sein d'une même transaction,
-  il peut être nécessaire d'avoir recours à une transaction distribuée pour les
-  synchroniser.
-
-  Pour ces raisons, Java EE fournit une API dédiée uniquement à la gestion des
-  transactions : **JTA**. Cette API est indépendante de JDBC et elle est aussi plus
-  complète (et donc plus compliquée). TomEE nous laisse le choix de gérer les
-  transactions avec **JTA** ou avec JDBC pour les *DataSources*. Le paramètre
-  *JtaManaged* disponible dans la balise *Resource* permet d'indiquer si l'on
-  souhaite ou non qu'une DataSource_ soit gérable avec **JTA**.
-  Nous reviendrons sur **JTA** lorsque nous parlerons de JPA et des EJB.
 
 
 .. _try-with-resources: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html

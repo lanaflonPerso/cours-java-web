@@ -2,10 +2,10 @@ JDBC dans une application Web
 #############################
 
 JDBC (Java DataBase Connectivity) est l'API standard pour interagir avec les
-bases données relationnelles en Java. Cette API peut être utilisée dans une 
+bases données relationnelles en Java. Cette API peut être utilisée dans une
 application Web.
 
-Déclaration d'une DataSource 
+Déclaration d'une DataSource
 ****************************
 
 Dans un serveur d'application, l'utilisation du DriverManager_ JDBC est remplacée
@@ -93,7 +93,7 @@ Déclaration de la DataSource dans le fichier web.xml
 
 Le fichier de déploiement :file:`web.xml` doit déclarer la DataSource_ comme
 une ressource de l'application. Cela va permettre au serveur d'application
-de permettre à l'application de se connecter à la base de données associée. 
+de permettre à l'application de se connecter à la base de données associée.
 Pour cela, on utilise l'élément ``<resource-ref>`` dans le fichier :file:`web.xml` :
 
 .. code-block:: xml
@@ -118,7 +118,7 @@ Une connexion JDBC est réalisée à travers un pilote. Pour déclarer une DataS
 vers une base de données MySQL par exemple, nous devons installer le pilote
 MySQL dans le serveur.
 
-Vous pouvez télécharger le driver MySQL pour JDBC 
+Vous pouvez télécharger le driver MySQL pour JDBC
 `ici selon la version <http://mvnrepository.com/artifact/mysql/mysql-connector-java>`__.
 
 Pour ajouter ce pilote dans Wildfly, il faut créer un nouveau module dans le serveur.
@@ -126,7 +126,7 @@ Pour cela, à partir du répertoire d'installation du serveur lui-même, placez
 le fichier *jar* du pilote dans le répertoire :file:`modules/system/layers/base/com/mysql/driver/main`.
 Créez les répertoires manquants si nécessaire.
 
-Créez ensuite le fichier :file:`module.xml` dans le répertoire 
+Créez ensuite le fichier :file:`module.xml` dans le répertoire
 :file:`modules/system/layers/base/com/mysql/driver/main`. Ce fichier doit pointer
 sur le fichier *jar* du pilote :
 
@@ -188,6 +188,41 @@ des pilotes de base de données et des sources de données :
     </subsystem>
 
 
+.. only:: tomee
+
+  Déclaration d'une DataSource dans TomEE
+  ***************************************
+
+  Pour TomEE, une DataSource_ se configure dans le fichier :file:`tomee.xml`.
+  Ce fichier se trouve dans le répertoire :file:`conf` du répertoire d'installation du
+  serveur. On peut ainsi déclarer une source de données directement dans le
+  serveur. Il est également possible d'ajouter un fichier :file:`resources.xml`
+  dans le répertoire :file:`WEB-INF` de son application. Ce fichier a le même format
+  que le fichier :file:`tomee.xml` mais il fournit une définition des sources de données
+  uniquement pour cette application.
+
+  .. code-block:: xml
+    :caption: Exemple de déclaration d'une DataSource MySQL dans le fichier resources.xml (ou tomee.xml)
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <tomee>
+    <Resource id="nomDeLaDataSource" type="javax.sql.DataSource">
+      JdbcDriver com.mysql.jdbc.Driver
+      JdbcUrl jdbc:mysql://localhost:3306/myDataBase
+      UserName root
+      Password root
+      JtaManaged false
+    </Resource>
+    </tomee>
+
+  Le nom de la source de données est indiqué par l'attribut id de la balise
+  *Resource*. La documentation officielle de TomEE contient des informations
+  intéressantes à consulter :
+
+  *  `DataSource Configuration`_ (documentation des paramètres de la balise *Resource*)
+  *  `Common DataSource Configurations`_ (exemples de configuration de *DataSources* pour divers SGBDR)
+
+
 Ce système de configuration est certes plus compliqué que l'utilisation du
 DriverManager_ mais il permet à l'application d'ignorer les détails de
 configuration. Généralement le développeur de l'application référence une DataSource_
@@ -200,6 +235,29 @@ cache et la réutilisation de connexions (pour améliorer les performances),
 les tests permettant de vérifier que les connexions sont correctement
 établies, la supervision des connexions...
 
+.. only:: tomee
+
+  .. note::
+
+    Dans les serveurs d'application Java EE, l'activation ou non de l'auto commit
+    par défaut et souvent configurable au niveau de la DataSource_. C'est le cas
+    pour TomEE, puisque l'attribut *defaultAutoCommit* peut être positionné sur
+    une balise *Resource*. Cet attribut vaut *true* par défaut.
+
+    .. code-block:: xml
+      :caption: Configuration de l'auto commit dans le fichier resources.xml (ou tomee.xml)
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <tomee>
+      <Resource id="nomDeLaDataSource" type="javax.sql.DataSource">
+        JdbcDriver com.mysql.jdbc.Driver
+        JdbcUrl jdbc:mysql://localhost:3306/myDataBase
+        defaultAutoCommit false
+        UserName root
+        Password root
+        JtaManaged false
+      </Resource>
+      </tomee>
 
 .. _try-with-resources: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 .. _AutoCloseable: https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
