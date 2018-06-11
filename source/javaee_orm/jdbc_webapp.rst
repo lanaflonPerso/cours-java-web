@@ -5,6 +5,8 @@ JDBC (Java DataBase Connectivity) est l'API standard pour interagir avec les
 bases données relationnelles en Java. Cette API peut être utilisée dans une
 application Web.
 
+.. _datasource_ref:
+
 Déclaration d'une DataSource
 ****************************
 
@@ -87,6 +89,7 @@ l'attribut *name*.
     l'ensemble des composants Java EE disponibles dans l'environnement (env) du
     composant Java EE (comp) courant.
 
+.. _configuration_datasource:
 
 Déclaration de la DataSource dans le fichier web.xml
 ****************************************************
@@ -156,7 +159,7 @@ Démarrez ensuite votre serveur et scrutez dans les logs de démarrage du serveu
 la trace qui indique le déploiement par le serveur. Pour MySQL, vous devriez avoir
 une ligne de log telle que :
 
-.. code-block:: file
+.. code-block:: text
 
   09:51:40,222 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = mysql-connector-java-5.1.46.jar_com.mysql.jdbc.Driver_5_1
 

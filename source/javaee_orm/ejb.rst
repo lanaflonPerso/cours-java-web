@@ -253,6 +253,8 @@ du support transactionnel sur chacune de leur méthode. Il est ainsi
 possible de gérer automatiquement les transactions JTA (Java Transaction
 API).
 
+.. _jta_ref:
+
 JTA (Java Transaction API)
 ==========================
 
@@ -269,6 +271,8 @@ transactions avec **JTA** ou avec JDBC pour les *DataSources*. Le paramètre
 *JtaManaged* disponible dans la balise *Resource* permet d'indiquer si l'on
 souhaite ou non qu'une DataSource_ soit gérable avec **JTA**.
 Nous reviendrons sur **JTA** lorsque nous parlerons de JPA et des EJB.
+
+.. _demarcation_transactionnelle:
 
 La démarcation transactionnelle
 ===============================

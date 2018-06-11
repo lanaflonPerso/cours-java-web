@@ -9,3 +9,4 @@
    /javaee_orm/jpa_relations
    /javaee_orm/jdbc_webapp
    /javaee_orm/ejb
+   /javaee_orm/jpa_webapp
