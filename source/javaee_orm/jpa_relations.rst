@@ -455,6 +455,25 @@ l'attribut ``fetch`` présent sur les annotations `@Basic`_, `@OneToOne`_,
     // Exécute une requête de la forme :  SELECT * FROM Societe WHERE id = ?
     Societe societe = persistedIndividu.getSociete();
 
+Il est possible d'utiliser une requête JPQL pour forcer la récupération d'informations
+en mode *lazy* si on sait qu'elle seront nécessaires plus tard dans le programme.
+Cela limite le nombre de requêtes à exécuter et peut se révéler nécessaire si
+la consultation des attributs *lazy* doit se faire à un moment où un *entity manager*
+n'est plus disponible. On utilise dans la requête l'option 
+`JOIN FETCH <https://en.wikibooks.org/wiki/Java_Persistence/JPQL#JOIN_FETCH>`__ :
+
+::
+
+    // Exécute une requête de type JOIN FETCH
+    String query = "select i from Individu i left join fetch i.societe where i.id = :id";
+    Individu persistedIndividu = entityManager.createQuery(query, Individu.class)
+                                              .setParameter("id", individuId)
+                                              .getSingleResult();
+
+    // N'exécute aucune requête car la société a déjà été récupérée par le left join fetch
+    Societe societe = persistedIndividu.getSociete();
+
+
 La définition des stratégies de fetch est une partie importante du
 tuning dans le développement d'une application utilisant JPA.
 
