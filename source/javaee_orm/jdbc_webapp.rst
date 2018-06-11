@@ -118,10 +118,110 @@ Une connexion JDBC est réalisée à travers un pilote. Pour déclarer une DataS
 vers une base de données MySQL par exemple, nous devons installer le pilote
 MySQL dans le serveur.
 
-Vous pouvez télécharger le driver MySQL pour JDBC
-`ici selon la version <http://mvnrepository.com/artifact/mysql/mysql-connector-java>`__.
+Ce système de configuration est certes plus compliqué que l'utilisation du
+DriverManager_ mais il permet à l'application d'ignorer les détails de
+configuration. Généralement le développeur de l'application référence une DataSource_
+et c'est l'administrateur du serveur qui configure la connexion de cette DataSource_
+vers une base de données spécifiques.
 
-Pour ajouter ce pilote dans Wildfly, il faut créer un nouveau module dans le serveur.
+L'utilisation des *DataSources* dans un serveur d'application
+apporte également des fonctionnalités supplémentaires telles que la mise en
+cache et la réutilisation de connexions (pour améliorer les performances),
+les tests permettant de vérifier que les connexions sont correctement
+établies, la supervision des connexions...
+
+Pour ajouter ce pilote dans Wildfly, nous pouvons :
+
+* soit laisser le serveur le faire grâce à une procédure de déploiement
+  automatisé.
+* soit ajouter un nouveau module dans le serveur 
+
+Les sections suivantes décrivent respectivement ces méthodes. La première méthode
+est assez simple à réaliser et elle est donc recommandée pour commencer. 
+La seconde, plus complexe, donne plus d'options de configuration à l'administrateur du serveur.
+
+Déploiement automatique du driver MySQL (méthode 1)
+===================================================
+
+.. note::
+
+  Vous pouvez télécharger le driver MySQL pour JDBC
+  `ici selon la version <http://mvnrepository.com/artifact/mysql/mysql-connector-java>`__.
+
+Pour déployer automatiquement le pilote MySQL dans Wildfly, il suffit de placer
+le fichier *jar* du pilote dans le répertoire :file:`standalone/deployments/`
+depuis le répertoire d'installation du serveur.
+
+Démarrez ensuite votre serveur et scrutez dans les logs de démarrage du serveur
+la trace qui indique le déploiement par le serveur. Pour MySQL, vous devriez avoir
+une ligne de log telle que :
+
+.. code-block:: file
+
+  09:51:40,222 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = mysql-connector-java-5.1.46.jar_com.mysql.jdbc.Driver_5_1
+
+Cette ligne (un peu longue) indique tout au bout le nom attribué automatiquement
+au driver par le serveur au démarrage. Pour l'exemple ci-dessus, le nom est
+**mysql-connector-java-5.1.46.jar_com.mysql.jdbc.Driver_5_1**. Mais attention
+ce nom peut être différent pour votre configuration.
+
+.. note ::
+
+  Remarquez que le répertoire :file:`standalone/deployments/` dans lequel vous
+  avez placé le driver de base de données contient également les fichiers *war*
+  des applications que vous avez déjà déployées. Ce répertoire est scruté en
+  permanence par le serveur et il déploie les modules qui sont copiés dedans.
+
+Une fois, le pilote déployé automatiquement par le serveur, il est possible
+de déclarer la DataSource_ dans le fichier :file:`standalone/configuration/standalone.xml`.
+Au alentour de la ligne 140 dans ce fichier, on trouve la section de déclaration
+des pilotes de base de données et des sources de données :
+
+.. code-block:: xml
+  :caption: Ajout d'une source de données dans le fichier standalone.xml
+  :linenos:
+  :lineno-start: 141
+  :emphasize-lines: 11-18
+
+    <subsystem xmlns="urn:jboss:domain:datasources:5.0">
+        <datasources>
+            <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+                <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                <driver>h2</driver>
+                <security>
+                    <user-name>sa</user-name>
+                    <password>sa</password>
+                </security>
+            </datasource>
+            <datasource jta="true" jndi-name="java:/nomDeLaDataSource" pool-name="nomDeLaDataSource" enabled="true">
+                <connection-url>jdbc:mysql://[HOST]:[PORT]/[NOM SCHEMA]</connection-url>
+                <driver>mysql-connector-java-5.1.46.jar_com.mysql.jdbc.Driver_5_1</driver>
+                <security>
+                    <user-name>[LOGIN]</user-name>
+                    <password>[PASSWORD]</password>
+                </security>
+            </datasource>
+            <drivers>
+                <driver name="h2" module="com.h2database.h2">
+                    <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                </driver>
+            </drivers>
+        </datasources>
+    </subsystem>
+
+À la ligne 153, on indique le driver de base de données à utiliser en donnant
+le nom du driver déployé automatiquement par le serveur.
+
+
+Ajout du driver MySQL comme nouveau module (méthode 2)
+======================================================
+
+.. note::
+
+  Vous pouvez télécharger le driver MySQL pour JDBC
+  `ici selon la version <http://mvnrepository.com/artifact/mysql/mysql-connector-java>`__.
+
+Pour ajouter le pilote MySQL dans Wildfly, nous pouvons créer un nouveau module dans le serveur.
 Pour cela, à partir du répertoire d'installation du serveur lui-même, placez
 le fichier *jar* du pilote dans le répertoire :file:`modules/system/layers/base/com/mysql/driver/main`.
 Créez les répertoires manquants si nécessaire.
@@ -153,7 +253,7 @@ Au alentour de la ligne 140 dans ce fichier, on trouve la section de déclaratio
 des pilotes de base de données et des sources de données :
 
 .. code-block:: xml
-  :caption: ajout d'une source de données dans le fichier standalone.xml
+  :caption: Ajout d'une source de données dans le fichier standalone.xml
   :linenos:
   :lineno-start: 141
   :emphasize-lines: 11-18, 23-25
@@ -186,7 +286,6 @@ des pilotes de base de données et des sources de données :
             </drivers>
         </datasources>
     </subsystem>
-
 
 .. only:: tomee
 
@@ -222,42 +321,25 @@ des pilotes de base de données et des sources de données :
   *  `DataSource Configuration`_ (documentation des paramètres de la balise *Resource*)
   *  `Common DataSource Configurations`_ (exemples de configuration de *DataSources* pour divers SGBDR)
 
+  Dans les serveurs d'application Java EE, l'activation ou non de l'auto commit
+  par défaut et souvent configurable au niveau de la DataSource_. C'est le cas
+  pour TomEE, puisque l'attribut *defaultAutoCommit* peut être positionné sur
+  une balise *Resource*. Cet attribut vaut *true* par défaut.
 
-Ce système de configuration est certes plus compliqué que l'utilisation du
-DriverManager_ mais il permet à l'application d'ignorer les détails de
-configuration. Généralement le développeur de l'application référence une DataSource_
-et c'est l'administrateur du serveur qui configure la connexion de cette DataSource_
-vers une base de données spécifiques.
+  .. code-block:: xml
+    :caption: Configuration de l'auto commit dans le fichier resources.xml (ou tomee.xml)
 
-L'utilisation des *DataSources* dans un serveur d'application
-apporte également des fonctionnalités supplémentaires telles que la mise en
-cache et la réutilisation de connexions (pour améliorer les performances),
-les tests permettant de vérifier que les connexions sont correctement
-établies, la supervision des connexions...
-
-.. only:: tomee
-
-  .. note::
-
-    Dans les serveurs d'application Java EE, l'activation ou non de l'auto commit
-    par défaut et souvent configurable au niveau de la DataSource_. C'est le cas
-    pour TomEE, puisque l'attribut *defaultAutoCommit* peut être positionné sur
-    une balise *Resource*. Cet attribut vaut *true* par défaut.
-
-    .. code-block:: xml
-      :caption: Configuration de l'auto commit dans le fichier resources.xml (ou tomee.xml)
-
-      <?xml version="1.0" encoding="UTF-8"?>
-      <tomee>
-      <Resource id="nomDeLaDataSource" type="javax.sql.DataSource">
-        JdbcDriver com.mysql.jdbc.Driver
-        JdbcUrl jdbc:mysql://localhost:3306/myDataBase
-        defaultAutoCommit false
-        UserName root
-        Password root
-        JtaManaged false
-      </Resource>
-      </tomee>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <tomee>
+    <Resource id="nomDeLaDataSource" type="javax.sql.DataSource">
+      JdbcDriver com.mysql.jdbc.Driver
+      JdbcUrl jdbc:mysql://localhost:3306/myDataBase
+      defaultAutoCommit false
+      UserName root
+      Password root
+      JtaManaged false
+    </Resource>
+    </tomee>
 
 .. _try-with-resources: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
 .. _AutoCloseable: https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
