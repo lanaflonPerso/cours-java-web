@@ -719,6 +719,12 @@ Les principales annotations JAXB sont :
     classe, indique que cette propriété ne doit pas apparaître dans le
     document XML.
 
+
+.. warning::
+
+    Les annotations JAXB doivent être positionnées sur les *getters* et non
+    pas sur les attributs.
+
 Si nous reprenons l'exemple de la classe ``Person``, nous pouvons
 ajouter les annotations JAXB :
 
@@ -1190,6 +1196,56 @@ pour créer une instance de la classe
       }
     }
 
+.. only:: epsi_b3_javaee
+
+    Exercice
+    *********
+
+    .. admonition:: API Web de gestion des inscriptions
+        :class: hint
+        
+        **Objectifs**
+            Réaliser une API Web avec JAX-RS qui permet de créer (méthode POST), 
+            de consulter (méthode GET) et de supprimer (méthode DELETE) une inscription.
+            
+        Pour cet exercice, utilisez le projet d'inscription qui a servi d'exemple
+        pour illustrer le modèle MVC. Le projet est :download:`téléchargeable ici <samples/mvc.zip>`.
+        
+        Ce projet ne réalise pas totalement une inscription puisqu'il ne réalise
+        pas de connexion à une base de données. Pour simplifier l'implémentation, 
+        vous pouvez stocker l'inscription créée dans la classe *InscriptionService*
+        fournie dans le projet.
+        
+        .. note::
+        
+            Comme une inscription contient un mot de passe, il serait intéressant
+            de ne pas transmettre le mot de passe lorsque l'on consulte l'inscription.
+        
+        Pour tester votre application, utilisez l'API cliente de JAX-RS en écrivant
+        une simple application Java avec une méthode **main**. Pour cela,
+        vous devez rajouter dans le fichier :file:`pom.xml` du projet une dépendance
+        vers **RESTeasy client** :
+        
+        .. code-block:: xml
+        
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-client</artifactId>
+                <version>3.0.24.Final</version>
+            </dependency>
+            <!-- Pour le support des représentations au format JSONs -->
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jackson-provider</artifactId>
+                <version>3.0.24.Final</version>
+            </dependency>
+            <!-- Pour le support des représentations au format XML -->
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxb-provider</artifactId>
+                <version>3.0.24.Final</version>
+            </dependency>
+    
 
 .. _Application: https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Application.html
 .. _@ApplicationPath: https://docs.oracle.com/javaee/7/api/javax/ws/rs/ApplicationPath.html
