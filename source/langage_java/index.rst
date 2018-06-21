@@ -33,3 +33,4 @@
    /langage_java/swing_interfaces_graphiques
    /langage_java/swing_interactions
    /langage_java/swing_notions_avancees
+   /langage_java/jdbc

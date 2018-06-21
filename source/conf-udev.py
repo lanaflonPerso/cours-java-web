@@ -9,5 +9,5 @@ highlight_root_package = 'com.cgi.udev'
 
 todo_include_todos = False
 
-chapters=['langage_java', 'javaee_web']
+chapters=['langage_java']
 
