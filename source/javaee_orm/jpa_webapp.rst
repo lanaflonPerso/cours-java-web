@@ -235,6 +235,29 @@ plusieurs exceptions et il n'est pas toujours facile de savoir comment les trait
 En général, il est plus simple d'opter pour une approche déclarative 
 (basée par exemple sur :ref:`les méthodes des EJB <demarcation_transactionnelle>`).
 
+.. only:: epsi_b3_orm
+
+    Exercice
+    ********
+
+    .. admonition:: Gestion d'une file d'attente
+        :class: hint
+        
+        Reprendre l'application de gestion de file d’attente dans un service administratif
+        réalisée pour le module Java EE.
+        
+        On souhaite faire évoluer l'application afin de rendre persistant les 
+        rendez-vous dans une base de données. Vous devez représenter la file 
+        d'attente comme un objet en base de données associé à plusieurs rendez-vous.
+        
+        Transformez la classe ``AttenteService`` en EJB afin de créer une application
+        suivant le modèle en 3 couches de Java EE. 
+        
+        .. note::
+        
+            Vous pouvez télécharger :download:`une implémentation de l'application
+            de file d'attente <samples/fileattente.zip>`
+
 
 .. _DataSource: https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html
 .. _EntityManager: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html
