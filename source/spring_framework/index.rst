@@ -24,31 +24,6 @@
 * notion module
 * utilisation de Maven
 
-/spring_framework/principe_ioc
-
-
-
-/spring_framework/application_context
-
-* Notion de container IoC
-* BeanFactory
-* ApplicationContext et XmlApplicationContext
-* Première appli Spring
-* Notion scope :  singleton et prototype (exemple avec Date)
-
-* création par constructeur
-* création par méthode statique
-* création par factory
-
-* types simples (conversion boolean, int, double, array, list, map)
-
-* injection par construction
-* injection par setter
-
-* cycle de vie : méthode d'initialisation et méthode de destruction
-
-* ApplicationContext en Java
-
 /spring_framework/beans_annotation_driven
 
 * déclaration dans le fichier d'application context <context:annotation-config/>

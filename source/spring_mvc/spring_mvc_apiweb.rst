@@ -673,7 +673,7 @@ Exercice
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.14.RELEASE</version>
+            <version>5.0.7.RELEASE</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -20,7 +20,7 @@ fichier pom.xml de notre projet Maven :
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
-        <version>4.3.14.RELEASE</version>
+        <version>5.0.7.RELEASE</version>
     </dependency>    
 
 La DispatcherServlet
