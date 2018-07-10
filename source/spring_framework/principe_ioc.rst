@@ -1,3 +1,5 @@
+.. _spring_ioc:
+
 L'inversion de contrôle
 #######################
 
@@ -91,7 +93,7 @@ On parle alors d'injection de dépendance par constructeur :
   
   }
 
-Nous avons déplacer la responsabilité de création de l'objet de type ``Moteur``
+Nous avons déplacé la responsabilité de création de l'objet de type ``Moteur``
 en dehors de la classe ``Voiture``. Nous pouvons maintenant créer facilement
 des voitures utilisant des moteurs de type différents :
 
@@ -119,7 +121,7 @@ par *setter* :
   
   }
 
-Comme précédemment, nous avons déplacer la responsabilité de création de l'objet
+Comme précédemment, nous avons déplacé la responsabilité de création de l'objet
 en dehors de la classe ``Voiture`` :
 
 ::

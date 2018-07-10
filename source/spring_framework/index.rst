@@ -34,13 +34,18 @@
 * ApplicationContext et XmlApplicationContext
 * Première appli Spring
 * Notion scope :  singleton et prototype (exemple avec Date)
+
 * création par constructeur
 * création par méthode statique
 * création par factory
+
+* types simples (conversion boolean, int, double, array, list, map)
+
 * injection par construction
 * injection par setter
-* types simples (conversion boolean, int, double, array, list, map)
-* méthode de destruction
+
+* cycle de vie : méthode d'initialisation et méthode de destruction
+
 * ApplicationContext en Java
 
 /spring_framework/beans_annotation_driven
