@@ -14,6 +14,21 @@ concrète GenericXmlApplicationContext_ qui permet de créer un contexte d'appli
 partir d'un fichier XML. Nous verrons en fin de chapitre qu'un contexte d'application
 peut être créé intégralement en Java.
 
+.. note::
+
+  Pour compiler et exécuter les exemples de ce chapitre, vous allez avoir besoin
+  d'un projet Java contenant certaines dépendances au Spring Framework. Le plus
+  simple est d'utiliser un projet Maven et d'ajouter la dépendance suivante 
+  dans le fichier :file:`pom.xml` :
+  
+  .. code-block:: xml
+  
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.0.7.RELEASE</version>
+    </dependency>  
+
 Définition d'un contexte d'application en XML
 *********************************************
 
@@ -37,13 +52,13 @@ charger le fichier XML de contexte grâce à la classe GenericXmlApplicationCont
 .. code-block:: java
   :caption: La classe principale de l'application
 
-  import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.GenericXmlApplicationContext;
 
   public class Application {
 
     public static void main(String[] args) {
-      ApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml");
+      GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml");
+      appCtx.close();
     }
 
   }
@@ -70,7 +85,27 @@ se trouve sur le système de fichiers dans le répertoire de travail et qu'il s'
   FileSystemXmlApplicationContext_ et ClassPathXmlApplicationContext_ qui permettent
   de charger un fichier XML de contexte respectivement depuis le système de fichiers
   et depuis le *classpath*. 
-  
+
+Un objet de type GenericXmlApplicationContext_ doit être fermé lorsqu'il n'est
+plus nécessaire en appelant sa méthode ``close``. Notez que cette classe
+implémente également l'interface AutoCloseable_, ce qui permet de déclarer 
+une instance de GenericXmlApplicationContext_ avec la syntaxe *try-with-resources*.
+
+.. code-block:: java
+  :caption: Utilisation de la syntaxe try-with-resources
+
+  import org.springframework.context.support.GenericXmlApplicationContext;
+
+  public class Application {
+
+    public static void main(String[] args) {
+      try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
+        // ...
+      }
+    }
+
+  }
+
 Définition de beans dans le contexte
 ************************************
 
@@ -106,19 +141,18 @@ par l'objet ApplicationContext_ :
 
   package ROOT_PKG;
 
-  import org.springframework.context.ApplicationContext;
+  import java.util.Date;
   import org.springframework.context.support.GenericXmlApplicationContext;
 
   public class Application {
 
     public static void main(String[] args) {
-      ApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml");
-
-      // récupération de l'objet défini dans le contexte d'application
-      Date now = (Date) appCtx.getBean("now");
-      
-      System.out.println(now);
-
+      try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
+        // récupération de l'objet défini dans le contexte d'application
+        Date now = (Date) appCtx.getBean("now");
+        
+        System.out.println(now);
+      }
     }
   }
 
@@ -181,19 +215,18 @@ un singleton et "now" qui est de portée prototype.
 
   package ROOT_PKG;
 
-  import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.GenericXmlApplicationContext;
 
   public class Application {
 
     public static void main(String[] args) throws Exception{
-      ApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml");
-
-      for (int i = 0; i < 10; ++i) {
-        // On attent 1s
-        Thread.sleep(1000);
-        System.out.println("Date unique " + appCtx.getBean("unique"));
-        System.out.println("Maintenant " + appCtx.getBean("now"));
+      try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
+        for (int i = 0; i < 10; ++i) {
+          // On attent 1s
+          Thread.sleep(1000);
+          System.out.println("Date unique " + appCtx.getBean("unique"));
+          System.out.println("Maintenant " + appCtx.getBean("now"));
+        }
       }
     }
   }
@@ -354,20 +387,18 @@ Et le code de test de l'application :
 
   package ROOT_PKG;
 
-  import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.GenericXmlApplicationContext;
 
   public class Application {
 
     public static void main(String[] args) throws Exception {
-      ApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml");
-
-      System.out.println(appCtx.getBean("anonyme"));
-      System.out.println(appCtx.getBean("moi"));
-      System.out.println(appCtx.getBean("autreAnonyme"));
-      System.out.println(appCtx.getBean("autrePersonne"));
+      try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
+        System.out.println(appCtx.getBean("anonyme"));
+        System.out.println(appCtx.getBean("moi"));
+        System.out.println(appCtx.getBean("autreAnonyme"));
+        System.out.println(appCtx.getBean("autrePersonne"));
+      }
     }
-
   }
 
 Injection de types simples
@@ -392,7 +423,7 @@ d'entier :
     
     private int[] nombres;
     
-    public Calculateur(int[] nombres) {
+    public Calculateur(int... nombres) {
       this.nombres = nombres;
     }
     
@@ -431,20 +462,19 @@ Et le code de l'application :
 
   package ROOT_PKG;
 
-  import org.springframework.context.ApplicationContext;
   import org.springframework.context.support.GenericXmlApplicationContext;
 
   public class Application {
 
     public static void main(String[] args) throws Exception {
-      ApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml");
-
-      Calculateur calculateur = (Calculateur) appCtx.getBean("calculateur");
-      System.out.println(calculateur.getTotal());
+      try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
+        Calculateur calculateur = (Calculateur) appCtx.getBean("calculateur");
+        System.out.println(calculateur.getTotal());
+      }
     }
   }
 
-L'exécution ce programme affiche le résultat 6 sur la sortie standard.
+L'exécution de ce programme affiche le résultat 6 sur la sortie standard.
 
 .. note::
 
@@ -464,9 +494,274 @@ L'exécution ce programme affiche le résultat 6 sur la sortie standard.
       </entry>
     </map>
   
-   
+Injection de beans
+******************
+
+Le rôle du conteneur IoC est, non seulement de créer des *beans* mais également
+de les lier entre eux par injection de dépendance. Le Spring Framework supporte
+l'injection par constructeur et l'injection par *setter*.
+
+Reprenons l'exemple de la classe ``Personne`` et ajoutons dans notre modèle de
+données la classe ``Societe`` :
+
+::
+
+  package ROOT_PKG;
+
+  import java.util.List;
+
+  public class Societe {
+
+    private String nom;
+    private List<Personne> salaries;
+    private Personne dirigeant;
+
+    public String getNom() {
+      return nom;
+    }
+
+    public void setNom(String nom) {
+      this.nom = nom;
+    }
+
+    public List<Personne> getSalaries() {
+      return salaries;
+    }
+
+    public void setSalaries(List<Personne> salaries) {
+      this.salaries = salaries;
+    }
+
+    public Personne getDirigeant() {
+      return dirigeant;
+    }
+
+    public void setDirigeant(Personne dirigeant) {
+      this.dirigeant = dirigeant;
+    }
+
+  }
+
+Il est possible de déclarer un *bean* de type ``Societe`` est d'injecter des *beans*
+de type ``Personne`` :
+
+.. code-block:: xml
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="dirigeant" class="ROOT_PKG.Personne">
+      <constructor-arg>
+        <value>Jean</value>
+      </constructor-arg>
+      <constructor-arg>
+        <value>Don</value>
+      </constructor-arg>
+    </bean>
+
+    <bean name="societe" class="ROOT_PKG.Societe">
+      <property name="nom">
+        <value>Societe SA</value>
+      </property>
+      <property name="dirigeant">
+        <ref bean="dirigeant"/>
+      </property>
+      <property name="salaries">
+        <list>
+          <ref bean="dirigeant"/>
+          <bean class="ROOT_PKG.Personne">
+            <constructor-arg>
+              <value>Michel</value>
+            </constructor-arg>
+            <constructor-arg>
+              <value>Don</value>
+            </constructor-arg>
+          </bean>
+        </list>
+      </property>
+    </bean>
+  </beans>
+
+La balise ``<property>`` permet de réaliser une injection en appelant la méthode
+*setter* correspondante au nom de la propriété. Notez que le Spring Framework est
+très permissif : il est possible d'utiliser la balise ``<ref>`` et de donner le nom
+du *bean* que l'on souhaite injecter ou bien d'utiliser directement une balise
+``<bean>`` pour déclarer un nouveau *bean* anonyme (sans attribut ``name``).
+
+.. note::
+
+  ``value`` et ``ref`` sont aussi supportés comme attributs des balise ``<constructor-arg>``
+  et ``<property>``. Cela permet une écriture plus compacte et moins verbeuse :
+  
+  .. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans
+                               http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+      <bean name="dirigeant" class="ROOT_PKG.Personne">
+        <constructor-arg value="Jean"/>
+        <constructor-arg value="Don"/>
+      </bean>
+
+      <bean name="societe" class="ROOT_PKG.Societe">
+        <property name="nom" value="Societe SA"/>
+        <property name="dirigeant" ref="dirigeant" />
+        <property name="salaries">
+          <list>
+            <ref bean="dirigeant"/>
+            <bean class="ROOT_PKG.Personne">
+              <constructor-arg value="Michel"/>
+              <constructor-arg value="Don"/>
+            </bean>
+          </list>
+        </property>
+      </bean>
+    </beans>
+
+Et le code de l'application :
+
+::
+
+  package ROOT_PKG;
+
+  import org.springframework.context.support.GenericXmlApplicationContext;
+
+  public class Application {
+
+    public static void main(String[] args) throws Exception {
+      try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
+        Societe societe = (Societe) appCtx.getBean("societe");
+        System.out.println(societe.getNom());
+        System.out.println("Le dirigeant est " + societe.getDirigeant());
+        System.out.println("Les salariés sont " + societe.getSalaries());
+      }
+    }
+  }
+
+.. note::
+
+  Même s'il est possible de créer des objets représentant des données comme
+  dans l'exemple ci-dessus, nous verrons que cela n'est pas l'usage courant
+  du conteneur IoC. On utilise plutôt le conteneur pour créer des objets qui
+  constituent l'architecture d'une application. On dit parfois que le Spring
+  Framework est utilisé pour construire des architectures légères 
+  (*lightweight architecture*).
+
+Gestion du cycle de vie des beans
+*********************************
+
+Parfois, certains objets nécessitent d'appeler une méthode pour finaliser leur
+initialisation et/ou d'appeler une méthode lorsque l'objet n'est plus utilisé
+(généralement pour libérer des ressources système). Il est possible d'indiquer
+lors de la déclaration du *bean* une méthode à appeler après que toutes les
+injections de dépendance ont été réalisées ainsi que la méthode à appeler au moment
+de la fermeture du contexte d'application. Pour cela, on utilise respectivement
+l'attribut ``init-method`` et l'attribut ``destroy-method``.
+
+.. note ::
+
+  Les méthodes d'initialisation et de suppression ne doivent pas avoir de
+  paramètre.
+  
+Si nous disposons de la classe ci-dessous :
+
+::
+
+  package ROOT_PKG;
+
+  public class ExempleBeanRessource {
+    
+    public void init() {
+      System.out.println("Quelque chose est fait à l'initialisation");
+    }
+
+    public void close() {
+      System.out.println("Quelque chose est fait à la fermeture");
+    }
+  }
+
+Alors nous pouvons créer une instance de cette classe dans le conteneur IoC
+en précisant que les méthodes ``init`` et ``close`` doivent respectivement
+être appelées à l'initialisation et à la destruction du *bean*.
+
+.. code-block:: xml
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <bean class="ROOT_PKG.ExempleBeanRessource" 
+          init-method="init" destroy-method="close"/>
+
+  </beans>
+
+.. note::
+
+  Notez qu'un *bean* n'a pas nécessairement besoin d'un nom pour être créé et géré par
+  le conteneur IoC.
+
+Contexte d'application en Java
+******************************
+
+Jusqu'à présent, nous avons systématiquement déclaré le contexte d'application
+dans un fichier XML mais le Spring Framework supporte de créer un contexte
+d'application intégralement en Java. Pour cela, on utilise les annotations
+`@Configuration`_ `@Bean`_ et la classe AnnotationConfigApplicationContext_ :
+
+.. code-block:: java
+  :caption: Exemple de contexte d'application en Java
+
+  package ROOT_PKG;
+
+  import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+  import org.springframework.context.annotation.Bean;
+  import org.springframework.context.annotation.Configuration;
+
+  @Configuration
+  public class AppConfig {
+    
+    @Bean
+    public Calculateur monCalculateur() {
+      return new Calculateur(1, 2, 3);
+    }
+    
+    public static void main(String[] args) {
+      try(AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppConfig.class)) {
+        Calculateur calculateur = appCtx.getBean("monCalculateur", Calculateur.class);
+        System.out.println(calculateur.getTotal());
+      }
+    }
+  }
+
+L'annotation `@Configuration`_ permet de préciser que cette classe sert à configurer
+un contexte d'application. Les méthodes annotées par `@Bean`_ retourne un *bean*
+dont le nom correspond au nom de la méthode elle-même.
+
+.. note::
+
+  Pour plus d'information, reportez-vous à la `documentation officielle <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-java>`_.
+
 
 .. _ApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html
 .. _GenericXmlApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/support/GenericXmlApplicationContext.html
 .. _FileSystemXmlApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/support/FileSystemXmlApplicationContext.html
 .. _ClassPathXmlApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/support/ClassPathXmlApplicationContext.html
+.. _AutoCloseable: https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
+.. _Date: https://docs.oracle.com/javase/8/docs/api/java/util/Date.html
+.. _Calendar: https://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html
+.. _Map: https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
+.. _NoUniqueBeanDefinitionException: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/NoUniqueBeanDefinitionException.html
+.. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
+.. _CertificateFactory: https://docs.oracle.com/javase/8/docs/api/java/security/cert/CertificateFactory.html
+.. _@Configuration: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/annotation/Configuration.html
+.. _@Bean: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/annotation/Bean.html
+.. _AnnotationConfigApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/annotation/AnnotationConfigApplicationContext.html
+

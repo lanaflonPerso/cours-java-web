@@ -6,13 +6,14 @@
    /spring_framework/introduction
    /spring_framework/principe_ioc
    /spring_framework/application_context
-   /spring_framework/beans
-   /spring_framework/configuration_application_context
-   /spring_framework/gestion_ressources
-   /spring_framework/spel
-   /spring_framework/spring_test
-   /spring_framework/aop
-   /spring_framework/architecture_ntier
+
+/spring_framework/beans
+/spring_framework/configuration_application_context
+/spring_framework/gestion_ressources
+/spring_framework/spel
+/spring_framework/spring_test
+/spring_framework/aop
+/spring_framework/architecture_ntier
 
 
 
