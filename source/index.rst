@@ -40,6 +40,8 @@ Sommaire
 
 .. include:: javaee_orm/index.rst
 
+.. include:: spring_framework/index.rst
+
 .. include:: spring_mvc/index.rst
 
 .. include:: angularjs/index.rst
