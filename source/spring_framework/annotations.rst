@@ -248,6 +248,33 @@ Spring Framework pour créer un *bean* dans le contexte d'application.
   et les deux dernières sont ajoutées pour le module Spring MVC pour le développement
   d'application Web.
 
+Un *bean* possédant une annotation de stéréotype peut lui-même concourir à créer
+de nouveaux *beans* et se comporter ainsi comme une *factory*. 
+Il suffit pour cela qu'il déclare des méthodes publiques
+annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la méthode :
+
+.. code-block:: java
+  :caption: Création d'un bean à partir d'un composant
+  
+  package ROOT_PKG;
+
+  import org.springframework.context.annotation.Bean;
+  import org.springframework.stereotype.Service;
+
+  @Service
+  public class ProduitService {
+    
+    @Bean
+    public FacturationService facturationService() {
+      return new FacturationService();
+    }
+
+  }
+  
+Après que le conteneur IoC ait créé une instance de ``ProduitService``, il appellera
+la méthode ``facturationService`` pour créer une *bean* appelé "facturationService".
+
+.. _@Bean: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/annotation/Bean.html
 .. _@Required: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Required.html
 .. _@Value: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Value.html
 .. _@Autowired: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Autowired.html
