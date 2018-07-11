@@ -1,0 +1,4 @@
+Déclaration par annotations
+###########################
+
+

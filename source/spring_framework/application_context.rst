@@ -128,7 +128,7 @@ Nous pouvons par exemple définir un objet de type Date_ de la façon suivante :
 
   </beans>
 
-On utilise la balise ``<bean>`` pour déclarer un objet en donnant son nom avec
+On utilise l'élément ``<bean />`` pour déclarer un objet en donnant son nom avec
 l'attribut ``name`` (optionnel) et le nom complet de la classe dans l'attribut
 ``class``. Le conteneur IoC utilise ces informations pour créer une instance de Date_
 en appelant son constructeur sans paramètre.
@@ -406,7 +406,7 @@ Injection de types simples
 
 Dans la section précédente, nous avons créé certains *beans* de type ``Personne``
 en spécifiant au conteneur IoC la valeur des paramètres du constructeur grâce à
-la balise ``<value>``. Le Spring Framework est capable de convertir automatiquement
+l'élément ``<value />``. Le Spring Framework est capable de convertir automatiquement
 une valeur en type primitif ou en chaîne de caractères. Il est également possible
 de définir des listes dans le contexte d'application.
 
@@ -478,7 +478,7 @@ L'exécution de ce programme affiche le résultat 6 sur la sortie standard.
 
 .. note::
 
-  Il existe également la balise ``<map>`` pour définir des tableaux associatifs
+  Il existe également l'élément ``<map />`` pour définir des tableaux associatifs
   (Map_) dans le contexte d'application.
   
   .. code-block:: xml
@@ -585,16 +585,16 @@ de type ``Personne`` :
     </bean>
   </beans>
 
-La balise ``<property>`` permet de réaliser une injection en appelant la méthode
+L'élément ``<property />`` permet de réaliser une injection en appelant la méthode
 *setter* correspondante au nom de la propriété. Notez que le Spring Framework est
-très permissif : il est possible d'utiliser la balise ``<ref>`` et de donner le nom
+très permissif : il est possible d'utiliser l'élément ``<ref />`` et de donner le nom
 du *bean* que l'on souhaite injecter ou bien d'utiliser directement une balise
 ``<bean>`` pour déclarer un nouveau *bean* anonyme (sans attribut ``name``).
 
 .. note::
 
-  ``value`` et ``ref`` sont aussi supportés comme attributs des balise ``<constructor-arg>``
-  et ``<property>``. Cela permet une écriture plus compacte et moins verbeuse :
+  ``value`` et ``ref`` sont aussi supportés comme attributs des éléments ``<constructor-arg />``
+  et ``<property />``. Cela permet une écriture plus compacte et moins verbeuse :
   
   .. code-block:: xml
 
@@ -707,6 +707,147 @@ en précisant que les méthodes ``init`` et ``close`` doivent respectivement
 
   Notez qu'un *bean* n'a pas nécessairement besoin d'un nom pour être créé et géré par
   le conteneur IoC.
+  
+Autowiring
+**********
+
+Le Spring Framework est capable d'injecter des dépendances automatiquement
+dans un *bean* en utilisant différentes stratégies. Cette fonctionnalité est
+appelée **autowiring**. Elle permet d'alléger le contenu du fichier XML du contexte
+d'application en fournissant une configuration automatique.
+
+L'autowiring est activable grâce à l'attribut ``autowire`` de l'élément ``<bean />``.
+Cet attribut peut prendre les valeurs suivantes :
+
+*no*
+  La valeur par défaut. Indique que le mode autowiring est désactivé
+
+*byName*
+  L'autowiring est activé sur les propriétés. Le Spring Framework recherche
+  les methodes *setter* et utilise le nom de la propriété pour en déduire
+  le *bean* à injecter. Par exemple, si un *bean* possède la méthode :
+  
+  ::
+  
+    public void setAmi(Individu i) {
+      // ...
+    }
+  
+  Le Spring Framework recherche et injecte un *bean* du nom de "ami" qui doit être
+  du type ``Individu``.
+
+*byType*
+  L'autowiring est activé sur les propriétés. Le Spring Framework recherche
+  les methodes *setter* et utilise le type de la propriété pour en déduire
+  le *bean* à injecter. Par exemple, si un *bean* possède la méthode :
+  
+  ::
+  
+    public void setAmi(Individu i) {
+      // ...
+    }
+  
+  Le Spring Framework recherche et injecte un *bean* dont le type est ``Individu``.
+  Attention, s'il existe dans le contexte d'application plusieurs *beans* de type
+  ``Individu``, alors l'initialisation du contexte d'application échoue.
+
+*constructor*
+  L'autowiring est activé sur les paramètres du constructeur. Le Spring Framework
+  recherche pour chaque paramètre un *bean* du même type. Attention s'il existe
+  dans le contexte d'application plusieurs *beans* du même type, alors l'initialisation
+  du contexte d'application échoue.
+
+Si nous reprenons l'exemple de la classe ``Societe`` :
+
+::
+
+  package ROOT_PKG;
+
+  import java.util.List;
+
+  public class Societe {
+
+    private String nom;
+    private List<Personne> salaries;
+    private Personne dirigeant;
+
+    public String getNom() {
+      return nom;
+    }
+
+    public void setNom(String nom) {
+      this.nom = nom;
+    }
+
+    public List<Personne> getSalaries() {
+      return salaries;
+    }
+
+    public void setSalaries(List<Personne> salaries) {
+      this.salaries = salaries;
+    }
+
+    public Personne getDirigeant() {
+      return dirigeant;
+    }
+
+    public void setDirigeant(Personne dirigeant) {
+      this.dirigeant = dirigeant;
+    }
+
+  }
+
+En déclarant le contexte d'application de la façon suivante :
+
+.. code-block:: xml
+  :linenos:
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <bean name="dirigeant" class="ROOT_PKG.Personne">
+      <constructor-arg value="Jean"/>
+      <constructor-arg value="Don"/>
+    </bean>
+
+    <bean name="societe" class="ROOT_PKG.Societe" autowire="byName">
+      <property name="nom" value="Ma société"/>
+    </bean>
+  </beans>
+
+À la ligne 12, on déclare le *société* avec un mode autowire à la valeur ``byName``.
+Ainsi, le Spring Framework injectera le *bean* nommé "dirigeant" dans la propriété
+``dirigeant``.
+
+En déclarant maintenant le contexte d'application comme suit :
+
+.. code-block:: xml
+  :linenos:
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <bean name="dirigeant" class="ROOT_PKG.Personne">
+      <constructor-arg value="Jean"/>
+      <constructor-arg value="Don"/>
+    </bean>
+
+    <bean name="societe" class="ROOT_PKG.Societe" autowire="byType">
+      <property name="nom" value="Ma société"/>
+    </bean>
+  </beans>
+
+À la ligne 12, on déclare le *société* avec un mode autowire à la valeur ``byType``.
+Ainsi, le Spring Framework injectera le *bean* nommé "dirigeant" dans la propriété
+``dirigeant`` car il est le seul *bean* de type ``Personne`` dans le contexte. Mais il injectera
+également le même *bean* dans la liste des salariés car ``salaries`` est une propriété
+de type ``List<Personne>``.
 
 Contexte d'application en Java
 ******************************

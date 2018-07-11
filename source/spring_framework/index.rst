@@ -6,8 +6,8 @@
    /spring_framework/introduction
    /spring_framework/principe_ioc
    /spring_framework/application_context
+   /spring_framework/annotations
 
-/spring_framework/beans
 /spring_framework/configuration_application_context
 /spring_framework/gestion_ressources
 /spring_framework/spel
@@ -28,7 +28,7 @@
 
 * déclaration dans le fichier d'application context <context:annotation-config/>
 * @Autowired
-* @Primary
+* (@Primary)
 * @Qualify
 * JSR 330 utilisation des annotations standards @Inject, @Named
 * Lifecycle callback : @PostConstruct @PreDestroy
