@@ -278,8 +278,8 @@ objets, vous remarquerez qu'il existe trois façons différentes de construire u
    Dans l'exemple ci-dessus, l'appel à la méthode ``generateCertificate`` permet
    de créer un objet de type ``Certificate``.    
 
-Le Spring framework permet de créer des *beans* en utilisant n'importe quelle
-méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
+Le Spring framework permet de créer des *beans* en utilisant n'importe laquelle
+des méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
 
 ::
 
@@ -707,7 +707,9 @@ en précisant que les méthodes ``init`` et ``close`` doivent respectivement
 
   Notez qu'un *bean* n'a pas nécessairement besoin d'un nom pour être créé et géré par
   le conteneur IoC.
-  
+
+.. _spring_autowiring:
+
 Autowiring
 **********
 
@@ -735,6 +737,8 @@ Cet attribut peut prendre les valeurs suivantes :
   
   Le Spring Framework recherche et injecte un *bean* du nom de "ami" qui doit être
   du type ``Individu``.
+
+.. _spring_autowiring_bytype:
 
 *byType*
   L'autowiring est activé sur les propriétés. Le Spring Framework recherche
@@ -889,7 +893,6 @@ dont le nom correspond au nom de la méthode elle-même.
 .. note::
 
   Pour plus d'information, reportez-vous à la `documentation officielle <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-java>`_.
-
 
 .. _ApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html
 .. _GenericXmlApplicationContext: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/support/GenericXmlApplicationContext.html
