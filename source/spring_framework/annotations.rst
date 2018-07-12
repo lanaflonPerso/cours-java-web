@@ -274,6 +274,45 @@ annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la m
 Après que le conteneur IoC ait créé une instance de ``ProduitService``, il appellera
 la méthode ``facturationService`` pour créer une *bean* appelé "facturationService".
 
+Support de annotations standard JSR-330
+***************************************
+
+À la suite du succès du Spring Framework, la communauté Java a proposé des annotations
+pour la dépendance d'injection dans le standard JSR-330. Le Spring Framework
+supporte également ces annotations.
+
+.. note::
+
+  La JSR-330 ne fait pas partie de l'API de Java, pour pouvoir l'utiliser vous
+  devez rajouter une dépendance dans votre projet Maven :
+  
+  .. code-block:: xml 
+
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+
+`@Inject`_
+  Vous pouvez utiliser l'annotation `@Inject`_ au lieu de `@Autowired`_.
+
+  .. todo:: Exemple ici
+
+`@Named`_
+  Vous pouvez utiliser l'annotation `@Named`_ au lieu de `@Component`_. L'annotation
+  `@Named`_ peut également être utilisé conjointement avec `@Inject`_ pour
+  préciser le nom du *bean* à injecter ou son qualificateur (*qualifier*).
+
+  .. todo:: Exemple ici
+  
+.. note::
+
+  Pour une comparaison plus poussée entre JSR-330 et le Spring Framework,
+  reportez-vous à la 
+  `documentation de ce dernier <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-standard-annotations-limitations>`_.
+
+
 .. _@Bean: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/annotation/Bean.html
 .. _@Required: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Required.html
 .. _@Value: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Value.html
@@ -289,4 +328,5 @@ la méthode ``facturationService`` pour créer une *bean* appelé "facturationSe
 .. _@Repository: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/stereotype/Repository.html
 .. _@Controller: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/stereotype/Controller.html
 .. _@RestController: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html
-
+.. _@Inject: https://docs.oracle.com/javaee/7/api/javax/inject/Inject.html
+.. _@Named: https://docs.oracle.com/javaee/7/api/javax/inject/Named.html
