@@ -8,12 +8,10 @@
    /spring_framework/application_context
    /spring_framework/annotations
    /spring_framework/application_context_conf
+   /spring_framework/spel
+   /spring_framework/aop
 
-/spring_framework/configuration_application_context
-/spring_framework/spel
 /spring_framework/spring_test
-/spring_framework/aop
-
 /spring_framework/gestion_ressources
 /spring_framework/architecture_ntier
 
