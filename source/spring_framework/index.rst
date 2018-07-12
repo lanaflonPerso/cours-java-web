@@ -11,26 +11,10 @@
    /spring_framework/spel
    /spring_framework/aop
 
-/spring_framework/spring_test
-/spring_framework/gestion_ressources
-/spring_framework/architecture_ntier
 
+.. todo:: 
 
-
-/spring_framework/introduction
-
-* historique
-* Spring vs Java EE
-* notion module
-* utilisation de Maven
-
-/spring_framework/gestion_ressources
-
-* @Value
-
-
-/spring_framework/spel
-/spring_framework/spring_test
-/spring_framework/aop
-/spring_framework/architecture_ntier
+  /spring_framework/spring_test
+  /spring_framework/gestion_ressources
+  /spring_framework/architecture_ntier
 
