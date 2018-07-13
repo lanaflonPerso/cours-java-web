@@ -13,21 +13,30 @@ Sommaire
 
     .. only:: javaee_web or javaee_orm
 
-        L'API Java EE 
+        L'API Java EE
             https://docs.oracle.com/javaee/7/api/
 
-        Tutoriels Oracle Java EE 7 
+        Tutoriels Oracle Java EE 7
             https://docs.oracle.com/javaee/7/index.html
 
-    .. only:: spring or spring_mvc
+    .. only:: spring_framework
+
+        Documentation du Spring Framework
+            https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/index.html
+
+    .. only:: spring_mvc
+
+        Documentation Spring Web
+            https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+
+    .. only:: spring_framework or spring_mvc
 
         L'API Spring
             https://docs.spring.io/spring/docs/current/javadoc-api/
 
-        Documentation Spring Web 
-            https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+    .. only:: spring_framework
 
-        Guide Spring 
+        Guide Spring
             https://spring.io/guides
 
 .. include:: uml/index.rst
