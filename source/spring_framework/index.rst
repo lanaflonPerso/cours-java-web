@@ -11,10 +11,8 @@
    /spring_framework/spel
    /spring_framework/aop
 
-
-.. todo:: 
+.. todo::
 
   /spring_framework/spring_test
   /spring_framework/gestion_ressources
-  /spring_framework/architecture_ntier
 

@@ -19,11 +19,11 @@ d'application. Pour l'activer, il faut utiliser l'élément ``<annotation-config
 
 .. code-block:: xml
   :caption: Activation de la configuration par annotation
-  
+
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
          xmlns:context="http://www.springframework.org/schema/context"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd
                              http://www.springframework.org/schema/context
@@ -77,7 +77,7 @@ d'application. Si ce n'est pas le cas, l'initialisation du contexte d'applicatio
     public void setNom(String nom) {
       this.nom = nom;
     }
-    
+
     // ...
 
   }
@@ -98,7 +98,7 @@ pour un type primitif ou un chaîne de caractères. Il donne la valeur par défa
   import org.springframework.beans.factory.annotation.Value;
 
   public class Societe {
-    
+
     @Value("Ma societe")
     private String nom;
 
@@ -110,7 +110,7 @@ pour un type primitif ou un chaîne de caractères. Il donne la valeur par défa
 
 .. note::
 
-  Dans le chapitre sur le :ref:`langage d'expression (SpEL) <spring_spel>`, nous
+  Dans le chapitre sur le :ref:`langage d'expression (SpEL) <spring_spel_annotation>`, nous
   verrons que nous pouvons donner une expression à évaluer pour cette annotation.
 
 L'annotation @Autowired
@@ -134,7 +134,7 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
   le contexte d'application plusieurs *beans* du type correspondant, alors
   le Spring Framework va sélectionner le *bean* qui porte le même nom
   que l'attribut ou la propriété.
-  
+
   Il cependant préférable d'utiliser l'annotation `@Qualifier` pour qualifier
   le type de dépendance.
 
@@ -166,7 +166,7 @@ par le Spring Framework :
   basée sur le type attendu. Si l'annotation spécifie un nom grâce à son
   attribut ``name`` alors l'injection de dépendance se fait en cherchant un
   *bean* du même nom.
-  
+
   .. todo:: Exemple ici
 
 `@PostConstruct`_
@@ -198,7 +198,7 @@ dans le fichier XML de contexte d'application.
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
          xmlns:context="http://www.springframework.org/schema/context"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context
@@ -210,8 +210,8 @@ dans le fichier XML de contexte d'application.
 
 L'attribut ``base-package`` indique le package Java à partir duquel le Spring
 Framework doit rechercher les classes à instancier (sous-packages inclus). Il est
-possible de mettre en place des 
-:ref:`filtres <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-scanning-filters>` 
+possible de mettre en place des
+`filtres <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-scanning-filters>`_
 pour paramétrer la recherche de manière fine.
 
 .. note::
@@ -222,7 +222,7 @@ pour paramétrer la recherche de manière fine.
 
 Le Spring Framework fournit deux annotations de stéréotype : `@Component`_ et
 `@Service`_. Un stéréotype désigne le rôle que joue une classe dans l'application.
-Les classes ayant des stéréotypes sont instanciées automatiquement par le 
+Les classes ayant des stéréotypes sont instanciées automatiquement par le
 Spring Framework pour créer un *bean* dans le contexte d'application.
 
 `@Component`_
@@ -244,18 +244,18 @@ Spring Framework pour créer un *bean* dans le contexte d'application.
 
   Il existe trois autres annotations de stéréotypes fournies par le Spring Framework :
   `@Repository`_, `@Controller`_ et `@RestController`_. La première s'utilise
-  dans le cadre de l'intégration des bases de données avec le module Spring Data 
+  dans le cadre de l'intégration des bases de données avec le module Spring Data
   et les deux dernières sont ajoutées pour le module Spring MVC pour le développement
   d'application Web.
 
 Un *bean* possédant une annotation de stéréotype peut lui-même concourir à créer
-de nouveaux *beans* et se comporter ainsi comme une *factory*. 
+de nouveaux *beans* et se comporter ainsi comme une *factory*.
 Il suffit pour cela qu'il déclare des méthodes publiques
 annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la méthode :
 
 .. code-block:: java
   :caption: Création d'un bean à partir d'un composant
-  
+
   package ROOT_PKG;
 
   import org.springframework.context.annotation.Bean;
@@ -263,14 +263,14 @@ annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la m
 
   @Service
   public class ProduitService {
-    
+
     @Bean
     public FacturationService facturationService() {
       return new FacturationService();
     }
 
   }
-  
+
 Après que le conteneur IoC ait créé une instance de ``ProduitService``, il appellera
 la méthode ``facturationService`` pour créer une *bean* appelé "facturationService".
 
@@ -285,8 +285,8 @@ supporte également ces annotations.
 
   La JSR-330 ne fait pas partie de l'API de Java, pour pouvoir l'utiliser vous
   devez rajouter une dépendance dans votre projet Maven :
-  
-  .. code-block:: xml 
+
+  .. code-block:: xml
 
     <dependency>
       <groupId>javax.inject</groupId>
@@ -305,11 +305,11 @@ supporte également ces annotations.
   préciser le nom du *bean* à injecter ou son qualificateur (*qualifier*).
 
   .. todo:: Exemple ici
-  
+
 .. note::
 
   Pour une comparaison plus poussée entre JSR-330 et le Spring Framework,
-  reportez-vous à la 
+  reportez-vous à la
   `documentation de ce dernier <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-standard-annotations-limitations>`_.
 
 

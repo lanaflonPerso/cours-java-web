@@ -4,7 +4,7 @@ Le contexte d'application
 Nous avons vu au :ref:`chapitre précédent <spring_ioc>` que le Spring framework
 fournit un conteneur IoC. Ce conteneur permet de définir ce que l'on appelle
 un contexte d'application (ApplicationContext_). Un contexte d'application contient
-la définition des objets que le conteneur doit créer ainsi que leurs 
+la définition des objets que le conteneur doit créer ainsi que leurs
 interdépendances.
 
 ApplicationContext_ est une interface dans le Spring Framework car il existe
@@ -18,16 +18,16 @@ peut être créé intégralement en Java.
 
   Pour compiler et exécuter les exemples de ce chapitre, vous allez avoir besoin
   d'un projet Java contenant certaines dépendances au Spring Framework. Le plus
-  simple est d'utiliser un projet Maven et d'ajouter la dépendance suivante 
+  simple est d'utiliser un projet Maven et d'ajouter la dépendance suivante
   dans le fichier :file:`pom.xml` :
-  
+
   .. code-block:: xml
-  
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.0.7.RELEASE</version>
-    </dependency>  
+    </dependency>
 
 Définition d'un contexte d'application en XML
 *********************************************
@@ -79,16 +79,16 @@ se trouve sur le système de fichiers dans le répertoire de travail et qu'il s'
   Pour un projet Maven, vous devez placer votre fichier dans le dossier
   :file:`src/main/resources` de votre projet. Le fichier peut même se trouver
   sur le réseau en utilisant le préfixe ``http:``.
-  
-  Avant sa version 3, le Spring Framework ne fournissait pas la classe 
+
+  Avant sa version 3, le Spring Framework ne fournissait pas la classe
   GenericXmlApplicationContext_. Il était néanmoins possible d'utiliser les classes
   FileSystemXmlApplicationContext_ et ClassPathXmlApplicationContext_ qui permettent
   de charger un fichier XML de contexte respectivement depuis le système de fichiers
-  et depuis le *classpath*. 
+  et depuis le *classpath*.
 
 Un objet de type GenericXmlApplicationContext_ doit être fermé lorsqu'il n'est
 plus nécessaire en appelant sa méthode ``close``. Notez que cette classe
-implémente également l'interface AutoCloseable_, ce qui permet de déclarer 
+implémente également l'interface AutoCloseable_, ce qui permet de déclarer
 une instance de GenericXmlApplicationContext_ avec la syntaxe *try-with-resources*.
 
 .. code-block:: java
@@ -150,7 +150,7 @@ par l'objet ApplicationContext_ :
       try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
         // récupération de l'objet défini dans le contexte d'application
         Date now = (Date) appCtx.getBean("now");
-        
+
         System.out.println(now);
       }
     }
@@ -160,7 +160,7 @@ par l'objet ApplicationContext_ :
 
   Il est possible d'utiliser la méthode ``getBean`` qui prend comme paramètre le type
   de l'objet. Par exemple :
-  
+
   ::
 
     Date now = (Date) appCtx.getBean(Date.class);
@@ -168,7 +168,7 @@ par l'objet ApplicationContext_ :
   Attention cependant, il ne doit pas exister dans le contexte d'application
   plusieurs *beans* ayant le même type ou sinon l'appel à cette méthode échoue
   avec un exception du type NoUniqueBeanDefinitionException_.
-  
+
 Notion de portée (scope)
 ************************
 
@@ -180,7 +180,7 @@ Par défaut, Spring définit deux portées :
   instance de ce *bean* existe dans le conteneur IoC. Autrement dit, si un programme
   appelle une méthode ``getBean`` pour récupérer ce *bean*, chaque appel retourne
   le **même** objet.
-  
+
 *prototype*
   Cette portée est l'inverse de la portée singleton. À chaque fois qu'un programme
   appelle une méthode ``getBean`` pour récupérer ce *bean*, chaque appel retourne
@@ -240,7 +240,7 @@ crée un nouvel objet. En conséquence, la valeur de la date évolue dans le tem
 
   Il existe d'autres portées définies par le Spring Framework : *request*,
   *session*, *application* mais qui n'ont de sens que lorsque l'application s'exécute
-  dans un contexte particulier (quand il s'agit d'une application Web notamment). 
+  dans un contexte particulier (quand il s'agit d'une application Web notamment).
 
 Les différentes façons de créer des objets
 ******************************************
@@ -254,29 +254,29 @@ objets, vous remarquerez qu'il existe trois façons différentes de construire u
 1) En utilisant le mot-clé ``new`` pour appeler le constructeur (avec ou sans paramètre) :
 
    ::
-    
+
     Date date = new Date();
 
 2) En utilisant une méthode statique de la classe. C'est notamment le cas pour
    créer une instance de la classe Calendar_ :
-  
+
    ::
-  
+
     Calendar calendar = Calendar.getInstance();
 
 3) En utilisant un autre objet qui sert à fabriquer l'objet final. En Java, on suffixe
    souvent le nom de ces objets par ``Factory`` pour indiquer qu'ils agissent
    comme une fabrique. L'API standard de Java fournit par exemple la classe CertificateFactory_
    qui permet de créer des objets représentant des certificats pour la cryptographie :
-   
+
    ::
-   
+
     FileInputStream fis = new FileInputStream(filename);
     CertificateFactory cf = CertificateFactory.getInstance("X.509");
     Certificate c = cf.generateCertificate(fis);
 
    Dans l'exemple ci-dessus, l'appel à la méthode ``generateCertificate`` permet
-   de créer un objet de type ``Certificate``.    
+   de créer un objet de type ``Certificate``.
 
 Le Spring framework permet de créer des *beans* en utilisant n'importe laquelle
 des méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
@@ -289,7 +289,7 @@ des méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
 
     private String nom;
     private String prenom;
-    
+
     public Personne() {
     }
 
@@ -313,7 +313,7 @@ des méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
     public void setPrenom(String prenom) {
       this.prenom = prenom;
     }
-    
+
     @Override
     public String toString() {
       return prenom + " " + nom;
@@ -327,7 +327,7 @@ Pour l'exemple, nous créons également la classe ``PersonneFactory`` :
   package ROOT_PKG;
 
   public class PersonneFactory {
-    
+
     public static Personne getAnonyme() {
       return new Personne();
     }
@@ -362,7 +362,7 @@ Ci-dessous, un contexte d'application en XML qui crée quatre *beans* de type ``
     </bean>
 
     <!-- Création à partir d'une méthode statique d'une fabrique -->
-    <bean name="autreAnonyme" class="ROOT_PKG.PersonneFactory" 
+    <bean name="autreAnonyme" class="ROOT_PKG.PersonneFactory"
           factory-method="getAnonyme">
     </bean>
 
@@ -420,13 +420,13 @@ d'entier :
   import java.util.stream.IntStream;
 
   public class Calculateur {
-    
+
     private int[] nombres;
-    
+
     public Calculateur(int... nombres) {
       this.nombres = nombres;
     }
-    
+
     public int getTotal() {
       return IntStream.of(nombres).sum();
     }
@@ -443,7 +443,7 @@ voulues sous la forme d'une liste :
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
-    
+
     <bean name="calculateur" class="ROOT_PKG.Calculateur">
       <constructor-arg>
         <list>
@@ -453,7 +453,7 @@ voulues sous la forme d'une liste :
         </list>
       </constructor-arg>
     </bean>
-    
+
   </beans>
 
 Et le code de l'application :
@@ -480,7 +480,7 @@ L'exécution de ce programme affiche le résultat 6 sur la sortie standard.
 
   Il existe également l'élément ``<map />`` pour définir des tableaux associatifs
   (Map_) dans le contexte d'application.
-  
+
   .. code-block:: xml
 
     <map>
@@ -493,7 +493,7 @@ L'exécution de ce programme affiche le résultat 6 sur la sortie standard.
         <value></value>
       </entry>
     </map>
-  
+
 Injection de beans
 ******************
 
@@ -595,7 +595,7 @@ du *bean* que l'on souhaite injecter ou bien d'utiliser directement une balise
 
   ``value`` et ``ref`` sont aussi supportés comme attributs des éléments ``<constructor-arg />``
   et ``<property />``. Cela permet une écriture plus compacte et moins verbeuse :
-  
+
   .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -650,7 +650,7 @@ Et le code de l'application :
   dans l'exemple ci-dessus, nous verrons que cela n'est pas l'usage courant
   du conteneur IoC. On utilise plutôt le conteneur pour créer des objets qui
   constituent l'architecture d'une application. On dit parfois que le Spring
-  Framework est utilisé pour construire des architectures légères 
+  Framework est utilisé pour construire des architectures légères
   (*lightweight architecture*).
 
 Gestion du cycle de vie des beans
@@ -668,7 +668,7 @@ l'attribut ``init-method`` et l'attribut ``destroy-method``.
 
   Les méthodes d'initialisation et de suppression ne doivent pas avoir de
   paramètre.
-  
+
 Si nous disposons de la classe ci-dessous :
 
 ::
@@ -676,7 +676,7 @@ Si nous disposons de la classe ci-dessous :
   package ROOT_PKG;
 
   public class ExempleBeanRessource {
-    
+
     public void init() {
       System.out.println("Quelque chose est fait à l'initialisation");
     }
@@ -697,8 +697,8 @@ en précisant que les méthodes ``init`` et ``close`` doivent respectivement
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
-    
-    <bean class="ROOT_PKG.ExempleBeanRessource" 
+
+    <bean class="ROOT_PKG.ExempleBeanRessource"
           init-method="init" destroy-method="close"/>
 
   </beans>
@@ -728,13 +728,13 @@ Cet attribut peut prendre les valeurs suivantes :
   L'autowiring est activé sur les propriétés. Le Spring Framework recherche
   les methodes *setter* et utilise le nom de la propriété pour en déduire
   le *bean* à injecter. Par exemple, si un *bean* possède la méthode :
-  
+
   ::
-  
+
     public void setAmi(Individu i) {
       // ...
     }
-  
+
   Le Spring Framework recherche et injecte un *bean* du nom de "ami" qui doit être
   du type ``Individu``.
 
@@ -744,13 +744,13 @@ Cet attribut peut prendre les valeurs suivantes :
   L'autowiring est activé sur les propriétés. Le Spring Framework recherche
   les methodes *setter* et utilise le type de la propriété pour en déduire
   le *bean* à injecter. Par exemple, si un *bean* possède la méthode :
-  
+
   ::
-  
+
     public void setAmi(Individu i) {
       // ...
     }
-  
+
   Le Spring Framework recherche et injecte un *bean* dont le type est ``Individu``.
   Attention, s'il existe dans le contexte d'application plusieurs *beans* de type
   ``Individu``, alors l'initialisation du contexte d'application échoue.
@@ -872,12 +872,12 @@ d'application intégralement en Java. Pour cela, on utilise les annotations
 
   @Configuration
   public class AppConfig {
-    
+
     @Bean
     public Calculateur monCalculateur() {
       return new Calculateur(1, 2, 3);
     }
-    
+
     public static void main(String[] args) {
       try(AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppConfig.class)) {
         Calculateur calculateur = appCtx.getBean("monCalculateur", Calculateur.class);

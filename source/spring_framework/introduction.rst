@@ -38,11 +38,11 @@ Les modules Spring
 ******************
 
 Le Spring Framework est découpé en modules pour faciliter son intégration
-dans les projets. 
+dans les projets.
 
 .. image:: assets/spring_modules.png
   :alt: vue générale des modules Spring
-  
+
 Parmi ces modules, il y a les modules fondamentaux qui font partie du noyau
 du Spring Framework (*core*) :
 
@@ -63,7 +63,7 @@ du Spring Framework (*core*) :
 
 Les autres modules du Spring Framework permettent majoritairement d'intégrer
 dans une application des technologies tierces. Ainsi le Spring Framework agit
-comme une glu qui permet de construire des applications par adjonctions de 
+comme une glu qui permet de construire des applications par adjonctions de
 fonctionnalités. Par exemple, Spring MVC est le module qui permet de créer
 des applications Web basés sur le modèle MVC et de les déployer notamment dans une conteneur
 de Servlet Java EE, Spring Data permet de gérer les interactions avec
@@ -76,9 +76,9 @@ des bases de données en utilisant diverses technologies : JDBC, JPA, Hibernate,
 
   Pour intégrer le noyau du Spring Framework, il suffit d'ajouter la dépendance
   avec Spring Core :
-  
+
   .. code-block:: xml
-  
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
@@ -87,20 +87,35 @@ des bases de données en utilisant diverses technologies : JDBC, JPA, Hibernate,
 
   Généralement, une application qui utilise le Spring Framework a au minimum
   besoin de Spring Context pour pouvoir créer une contexte d'application :
-  
+
   .. code-block:: xml
-  
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.0.7.RELEASE</version>
     </dependency>
- 
+
   Avec le mécanisme de dépendance transitive de Maven, la déclaration d'une dépendance
   avec ``spring-context`` permet de récupérer les autres dépendances minimales
   et suffit généralement pour commencer à implémenter une application basée sur
   le Spring Framework.
-  
+
+Les projets Spring
+******************
+
+En plus des modules, le Spring Framework s'est enrichi de projets bâtis sur le
+Spring Framework et qui apportent des fonctionnalités de haut niveau. Contrairement
+au Spring Framework, ces projets n'ont pas pour objectif d'être non intrusifs.
+
+Parmi les projets Spring, on trouve :
+
+* `Spring Boot <https://spring.io/projects/spring-boot>`_
+* `Spring Cloud <https://projects.spring.io/spring-cloud>`_
+* `Spring Data <https://spring.io/projects/spring-data>`_
+* `Spring Security <https://spring.io/projects/spring-security>`_
+* `Spring HATEOAS <https://spring.io/projects/spring-hateoas>`_
+
 Documentation
 *************
 

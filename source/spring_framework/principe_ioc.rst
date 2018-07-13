@@ -9,9 +9,9 @@ de conception objet unique : **l'inversion de contrôle**.
 Principe et implémentation
 **************************
 
-L'inversion de contrôle (IoC - *Inversion of control*), également appelée 
-inversion de dépendance, se base sur la technique de l'injection de dépendance. 
-Ce principe n'est pas propre au Spring Framework mais est utilisé fréquemment 
+L'inversion de contrôle (IoC - *Inversion of control*), également appelée
+inversion de dépendance, se base sur la technique de l'injection de dépendance.
+Ce principe n'est pas propre au Spring Framework mais est utilisé fréquemment
 en programmation objet.
 
 Un objet est très souvent dépendant d'autres objets pour assurer l'ensemble de ses services.
@@ -24,11 +24,11 @@ Par exemple, une classe de type ``Voiture`` peut posséder un attribut de type
 ::
 
   public class Voiture {
-  
+
     private Moteur moteur;
-    
+
     // ...
-  
+
   }
 
 Un objet de type ``Voiture`` a un dépendance avec un objet de type ``Moteur``.
@@ -43,15 +43,15 @@ de type ``Moteur`` alors il peut le créer au moment de sa propre création.
 ::
 
   public class Voiture {
-  
+
     private Moteur moteur;
 
     public Voiture() {
       this.moteur = new Moteur();
     }
-    
+
     // ...
-  
+
   }
 
 Cette implémentation n'est cependant pas sans conséquence car elle introduit
@@ -82,15 +82,15 @@ On parle alors d'injection de dépendance par constructeur :
 ::
 
   public class Voiture {
-  
+
     private Moteur moteur;
 
     public Voiture(Moteur moteur) {
       this.moteur = moteur;
     }
-    
+
     // ...
-  
+
   }
 
 Nous avons déplacé la responsabilité de création de l'objet de type ``Moteur``
@@ -110,15 +110,15 @@ par *setter* :
 ::
 
   public class Voiture {
-  
+
     private Moteur moteur;
 
     public void setMoteur(Moteur moteur) {
       this.moteur = moteur;
     }
-    
+
     // ...
-  
+
   }
 
 Comme précédemment, nous avons déplacé la responsabilité de création de l'objet

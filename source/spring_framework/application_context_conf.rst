@@ -2,9 +2,9 @@ Configuration d'un contexte d'application
 #########################################
 
 Le Spring Framework ne fournit pas uniquement un conteneur IoC, il fournit
-également un nombre impressionnant de classes qui permettent d'enrichir le 
-comportement par défaut du framework. Parmi elles, il y a les 
-classes implémentant les interfaces BeanPostProcessor_ et BeanFactoryPostProcessor_. 
+également un nombre impressionnant de classes qui permettent d'enrichir le
+comportement par défaut du framework. Parmi elles, il y a les
+classes implémentant les interfaces BeanPostProcessor_ et BeanFactoryPostProcessor_.
 Ces classes utilitaires permettent d'effectuer des traitements sur le contenu
 du contexte d'application et donc apporter des modifications sur les *beans* qui
 sont créés.
@@ -12,7 +12,7 @@ sont créés.
 Le PropertyPlaceholderConfigurer
 ********************************
 
-L'une de ces classes de post-traitement mérite particulièrement l'attention, il s'agit du 
+L'une de ces classes de post-traitement mérite particulièrement l'attention, il s'agit du
 PropertyPlaceholderConfigurer_. Cette classe permet de substituer n'importe quelle
 valeur d'un attribut du fichier XML de configuration par une valeur déclarée dans
 une fichier de configuration externe. Ainsi le Spring Framework nous offre un
@@ -39,7 +39,7 @@ ainsi déclarer un PropertyPlaceholderConfigurer_ de la façon suivante :
 
   </beans>
 
-En utilisant l'espace de nom XML ``context``, il existe un élément 
+En utilisant l'espace de nom XML ``context``, il existe un élément
 ``property-placeholder`` qui simplifie l'écriture de la configuration :
 
 .. code-block:: xml
@@ -47,7 +47,7 @@ En utilisant l'espace de nom XML ``context``, il existe un élément
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
          xmlns:context="http://www.springframework.org/schema/context"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd
                              http://www.springframework.org/schema/context
@@ -86,15 +86,15 @@ les identifiants d'accès à une base de données :
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
          xmlns:context="http://www.springframework.org/schema/context"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd
                              http://www.springframework.org/schema/context
                              http://www.springframework.org/schema/context/spring-context.xsd">
 
       <context:property-placeholder location="classpath:jdbc.properties"/>
-      
-      <bean name="dbConnection" class="java.sql.DriverManager" 
+
+      <bean name="dbConnection" class="java.sql.DriverManager"
             factory-method="getConnection" destroy-method="close">
         <constructor-arg value="${db.url}"/>
         <constructor-arg value="${db.username}"/>
@@ -121,15 +121,15 @@ en fonction de la configuration.
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
          xmlns:context="http://www.springframework.org/schema/context"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd
                              http://www.springframework.org/schema/context
                              http://www.springframework.org/schema/context/spring-context.xsd">
 
       <context:property-placeholder location="classpath:configuration.properties"/>
-      
-      <bean class="ROOT_PKG.${bean.classe}"> 
+
+      <bean class="ROOT_PKG.${bean.classe}">
       </bean>
 
   </beans>
@@ -137,9 +137,9 @@ en fonction de la configuration.
 .. hint::
 
   On peut fournir une valeur par défaut à une propriété en utilisant ``:``.
-  
+
   .. code-block:: text
-  
+
     ${mapropriete:valeur}
 
 .. note::
@@ -147,12 +147,12 @@ en fonction de la configuration.
   Il existe également le PropertyOverrideConfigurer_ qui permet de surcharger
   la valeur d'une propriété d'un *bean* en utilisant une convention de nom
   pour la propriété de la forme :
-  
+
   .. code-block:: properties
-  
+
     nombean.nompropriete=valeur
 
-  Pour plus d'information, reportez-vous à la 
+  Pour plus d'information, reportez-vous à la
   `documentation officielle <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-overrideconfigurer>`_.
 
 .. _BeanFactoryPostProcessor: https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-extension-factory-postprocessors
