@@ -15,12 +15,12 @@ de fichiers de log ou encore à la sécurité (contrôler si une partie du code
 de l'application peut être appelée dans un certain contexte d'exécution).
 
 La programmation orientée objet ne fournit pas de solution élégante à ce type
-de situation. C'est pour résoudre spécifiquement ces cas de figure que la 
+de situation. C'est pour résoudre spécifiquement ces cas de figure que la
 **programmation orientée aspect** a été introduite.
 
 La programmation orientée aspect n'est pas une notion propre au Spring Framework.
-Le module qui est chargé de l'intégrer dans le framework est appelé 
-Spring AOP (AOP pour *Aspect Oriented Programming).
+Le module qui est chargé de l'intégrer dans le framework est appelé
+Spring AOP (AOP pour *Aspect Oriented Programming*).
 
 Principe de la programmation orientée aspect
 ********************************************
@@ -43,7 +43,7 @@ particulière. Elle peut néanmoins nécessiter une instrumentation du code au m
 du chargement des classes dans la JVM mais ce processus est transparent pour
 le développeur. L'approche dynamique introduit un coût à l'exécution puisqu'une
 bibliothèque tierce doit prendre en charge l'exécution des aspects. En pratique,
-ce surcoût est négligeable. 
+ce surcoût est négligeable.
 
 .. note::
 
@@ -66,26 +66,26 @@ Point de jonction (*JoinPoint*)
   Un point dans le flot d'exécution d'un programme à partir duquel on souhaite
   ajouter la logique d'exécution de l'aspect. Par exemple au moment de l'appel
   d'une méthode ou à l'instanciation d'une classe.
-  
+
 Greffon (*Advice*)
   L'action particulière de l'aspect, c'est-à-dire le code à exécuter à un point
   de jonction. Si le point de jonction correspond à l'appel d'une méthode,
   le greffon peut spécifier que le code doit s'exécuter avant ou après l'appel
   à la méthode par exemple.
-  
+
 Coupe (*Pointcut*)
   Une expression qui définit l'ensemble des points de jonctions éligibles pour
   le greffon. Par exemple :
-  
+
   .. code-block:: text
-  
+
     execution(* |ROOT_PKG|.Service.*(...))
-    
+
   pour indiquer l'appel à n'importe quelle méthode de la classe ``Service``.
 
 Objet cible (*Target object*)
   L'objet sur lequel est appliqué l'aspect.
-  
+
 Tissage (*Weaving*)
   Le processus qui permet de réaliser l'insertion de l'aspect soit au moment
   de la compilation (POA statique) soit au moment de l'exécution (POA dynamique).
@@ -105,7 +105,7 @@ réalise un traitement important pour notre application :
   package ROOT_PKG;
 
   public class BusinessService {
-    
+
     public void doSomething() {
        System.out.println("réalise un traitement important pour l'application");
        // ...
@@ -125,7 +125,7 @@ nous pouvons plutôt créer une classe qui va jouer le rôle de greffon (*advice
   package ROOT_PKG;
 
   public class SimpleLogger {
-    
+
     public void logAvant() {
       System.out.println("Log avant");
     }
@@ -138,7 +138,7 @@ nous pouvons plutôt créer une classe qui va jouer le rôle de greffon (*advice
 Puis nous pouvons configurer le contexte d'application Spring en utilisation
 l'espace de nom ``aop`` pour configurer un tissage d'aspect de manière à ce que
 la méthode ``SimpleLogger.logAvant`` soit invoquée avant tous les appels à la méthode
-``BusinessService.doSomething`` et la méthode ``SimpleLogger.logAvant`` soit 
+``BusinessService.doSomething`` et la méthode ``SimpleLogger.logAvant`` soit
 invoquée après tous les appels à la méthode ``BusinessService.doSomething``.
 
 .. code-block:: xml
@@ -156,16 +156,16 @@ invoquée après tous les appels à la méthode ``BusinessService.doSomething``.
       <bean name="businessService" class="ROOT_PKG.BusinessService"/>
 
       <bean name="logger" class="ROOT_PKG.SimpleLogger"/>
-      
+
       <aop:config>
         <aop:aspect ref="logger">
           <aop:before method="logAvant" pointcut-ref="logPointcut"/>
           <aop:after method="logApres"  pointcut-ref="logPointcut"/>
-          <aop:pointcut id="logPointcut" 
+          <aop:pointcut id="logPointcut"
                         expression="execution(* ROOT_PKG.*Service.*())"/>
         </aop:aspect>
       </aop:config>
-      
+
   </beans>
 
 Enfin le code de l'application :
@@ -191,15 +191,15 @@ Enfin le code de l'application :
 
   Pour fonctionner ce programme a besoin de Spring AOP et de AspectJ. Vous
   pouvez les ajouter comme dépendances à votre projet Maven :
-  
+
   .. code-block:: xml
-  
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aop</artifactId>
       <version>5.0.7.RELEASE</version>
     </dependency>
-    
+
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
@@ -219,7 +219,7 @@ Enfin le code de l'application :
   Log avant
   réalise un traitement important pour l'application
   Log après
-  
+
 La classe ``SimpleLogger`` a bien été traitée comme un greffon et ses méthodes
 sont invoquées automatiquement avant et après un appel à ``BusinessService.doSomething``.
 La POA permet donc d'enrichir l'exécution d'un programme sans avoir besoin d'impacter
