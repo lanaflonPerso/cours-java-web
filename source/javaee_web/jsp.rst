@@ -8,47 +8,6 @@ HTML). Les Java Server Pages (JSP) ont été la première solution
 introduite pour offrir une alternative plus simple pour l'écriture de
 patron (template) de réponse.
 
-Développer des JSP avec Wildfly
-*******************************
-
-Wildfly est un serveur livré avec une configuration par défaut conçue pour
-un environnement de production.
-
-Pour le développement de JSP, nous allons voir qu'il est plus
-intéressant de configurer le serveur de test afin qu'il prenne en compte
-nos modifications dans les JSP à la volée sans qu'il soit nécessaire de
-redéployer l'application. Pour des raisons de performance, la prise en
-compte à chaud des modifications n'est pas le comportement par défaut de
-Wildfly.
-
-Pour activer ce comportement, il va falloir modifier la configuration du
-serveur. Pour cela, allez dans le répertoire d'installation de Wildfly et
-ouvrez le fichier :file:`standalone/configuration/standalone.xml`. 
-Aux alentours de la ligne 468 du fichier, vous
-allez trouver la déclaration suivante :
-
-.. code-block:: xml
-
-    <servlet-container name="default">
-        <jsp-config/>
-        <websockets/>
-    </servlet-container>
-
-Faites une sauvegarde de ce fichier et remplacez cette configuration par
-celle-ci :
-
-.. code-block:: xml
-
-    <servlet-container name="default">
-        <jsp-config development="true" check-interval="1" modification-test-interval="1" recompile-on-fail="true"/>
-        <websockets/>
-    </servlet-container>
-
-
-Attention, si vous faites une mauvaise manipulation, votre serveur peut
-ne plus démarrer correctement.
-
-
 Exercice
 ********
 
@@ -101,9 +60,9 @@ servlet équivalente à :
     * est plus complexe que le code ci-dessous.
     */
     public class index extends HttpServlet {
-        
+
       @Override
-      protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+      protected void doGet(HttpServletRequest req, HttpServletResponse resp)
                      throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -284,12 +243,12 @@ requête dans une JSP :
       </head>
       <body>
         <p>Bienvenue sur <strong>${header["Host"]}</strong> !</p>
-        
+
         <p>Vous accédez actuellement à la page <strong>${pageContext.request.requestURI}</strong></p>
         <p>Votre navigateur Web est : <strong>${header["user-agent"]}</strong>.</p>
-        <p>${empty param ? "Vous n'avez pas envoyé de paramètre au serveur" 
+        <p>${empty param ? "Vous n'avez pas envoyé de paramètre au serveur"
                             : "Vous avez envoyé des paramètres au serveur"}</p>
-        <p>${empty cookie ? "Vous n'avez pas envoyé de cookie au serveur" 
+        <p>${empty cookie ? "Vous n'avez pas envoyé de cookie au serveur"
                             : "Vous avez envoyé des cookies au serveur"}</p>
       </body>
     </html>
@@ -452,7 +411,7 @@ actions simples. Ces balises commencent toutes par ``jsp:``
         </html>
 
     .. warning::
-    
+
         L'attribut DOIT exister pour pouvoir être récupéré
         avec ``<jsp:useBean>``. Sinon l'exécution de la JSP provoque une
         exception.
@@ -555,7 +514,7 @@ actions simples. Ces balises commencent toutes par ``jsp:``
     signifie que l'adresse de la page à inclure peut être calculée
     dynamiquement grâce à une EL. Cette balise est similaire à un appel
     à RequestDispatcher.include_.
-    
+
 
     .. code-block:: jsp
         :caption: Inclusion d'une page en fonction d'un paramètre

@@ -90,7 +90,7 @@ vous pouvez utiliser la commande :
 .. code-block:: shell
 
     sudo apt install maven
-                    
+
 Un premier projet avec Maven
 ****************************
 
@@ -150,13 +150,13 @@ Le contenu du fichier :file:`pom.xml` du projet hello-webapp est le suivant :
 
 .. code-block:: xml
 
-    <project 
+    <project
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-      <!-- 
-        La version du format du fichier pom. 
+      <!--
+        La version du format du fichier pom.
         Actuellement la dernière version est la 4.0.0.
-      --> 
+      -->
       <modelVersion>4.0.0</modelVersion>
 
       <!--
@@ -166,53 +166,53 @@ Le contenu du fichier :file:`pom.xml` du projet hello-webapp est le suivant :
         puiqu'ils peuvent avoir des group ID différents.
         Ainsi si deux projets s'appelle hello et qu'ils ont des group ID
         différents, ils sont considérés comme étant des projets différents.
-      --> 
+      -->
       <groupId>ROOT_PKG</groupId>
-      
+
       <!--
-        Le nom du projet 
-      --> 
+        Le nom du projet
+      -->
       <artifactId>hello</artifactId>
 
       <!--
         La version de notre projet. Maven gère le versionnage
         afin de permettre le suivi des évolutions d'un projet.
         Ici, le suffixe "-SNAPSHOT" indique à Maven que le projet
-        est en cours de développement pour cette version. 
-      --> 
+        est en cours de développement pour cette version.
+      -->
       <version>0.0.1-SNAPSHOT</version>
-      
+
       <!--
         Le type de packaging, c'est-à-dire le type de projet.
         Ici, on indique à Maven que le projet doit être packagé
         sous la forme d'un WAR. Donc pour Maven, il s'agit d'une
         application Web.
-      --> 
+      -->
       <packaging>war</packaging>
 
       <!--
         Les propriétés de notre projet. On peut définir des propriétés
         spécifiques au projet ou des propriétés standard à Maven pour
         paramétrer la construction du projet.
-      --> 
+      -->
       <properties>
         <!--
           Propriété standard définissant la version minimale de Java supportée
           par les fichiers sources (ici 1.8 pour Java 8).
-        --> 
+        -->
         <maven.compiler.source>1.8</maven.compiler.source>
 
         <!--
           Propriété standard définissant la version Java des fichiers compilés
           du projet (ici 1.8 pour Java 8).
-        --> 
+        -->
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <!--
           Le format d'encodage des fichiers source du projet. Attention, l'encodage
           par défaut n'est pas le même sous Windows et sous les systèmes *NIX.
           Il est donc plus sage de toujours positionner cette propriété dans le fichier pom.xml.
-        --> 
+        -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       </properties>
     </project>
@@ -250,8 +250,8 @@ de votre projet. Ensuite, cliquez sur :guilabel:`Finish`.
 
 Le projet Maven est maintenant intégré dans Eclipse.
 
-Test de l'application dans Wildfly
-**********************************
+Test de l'application dans Tomcat
+*********************************
 
 Comme pour le chapitre précédent, ajouter le fichier **hello.html** dans
 votre projet dans le répertoire **src/main/webapp** :
@@ -269,7 +269,7 @@ votre projet dans le répertoire **src/main/webapp** :
       </body>
     </html>
 
-Ajoutez l'application hello dans votre serveur Wildfly et démarrez le
+Ajoutez l'application hello dans votre serveur Tomcat et démarrez le
 serveur.
 
 Vérifiez que l'application est déployée en tentant d'accéder depuis
@@ -280,7 +280,7 @@ Avec un projet Maven, le contexte racine de déploiement (le chemin d'URL
 à partir duquel l'application est accessible) est déterminé différemment
 que pour un projet Web Eclipse. Le contexte racine correspondra au nom
 du projet spécifié par la balise <artifactId> dans le fichier pom.xml suivi
-de **-** et du contenu de la balise <version>. Le nom du contexte de déploiement 
+de **-** et du contenu de la balise <version>. Le nom du contexte de déploiement
 provient du nom de l'archive War créée par Maven.
 
 Il est possible de spécifier le nom de l'archive War et donc le contexte de déploiement
@@ -342,7 +342,7 @@ Exécution de Maven dans Eclipse
 
 Même si vous n'avez pas installé Maven, vous exécutez la version
 embarquée dans Eclipse. Faites un clic droit sur le nom du projet et
-sélectionnez :guilabel:`Run As... > Maven build...`. Dans la fenêtre 
+sélectionnez :guilabel:`Run As... > Maven build...`. Dans la fenêtre
 :guilabel:`Edit Configuration`, saisissez la cible Maven (goal) que vous voulez exécuter
 (Cf. ci-dessous) et cliquez sur :guilabel:`Run`.
 
@@ -351,67 +351,10 @@ sélectionnez :guilabel:`Run As... > Maven build...`. Dans la fenêtre
 Après l'exécution de la cible "package", Maven aura créé le fichier WAR
 de l'application dans le répertoire de travail :file:`target`.
 
-Exercice
-********
-
-.. topic:: ajout du plugin Wildfly dans le fichier pom.xml
-
-    **Objectif**
-        Exécuter un serveur Wildfly directement à partir de Maven
-
-    Il est possible de déclarer des plugins dans un fichier :file:`pom.xml` de
-    son projet. Il existe de très nombreux plugins disponibles depuis des
-    dépôts Maven. Cela signifie que la déclaration d'un plugin permet de
-    déclencher automatiquement son téléchargement, son installation et son
-    exécution.
-
-    Lorsqu'on crée un projet pour une application Web, il peut être
-    intéressant de pouvoir l'exécuter depuis Maven, c'est-à-dire de lancer
-    un serveur d'application Java EE et de déployer l'application dans ce
-    serveur.
-
-    Pour Wildfly, on peut utiliser le wildfly-maven-plugin_.
-    Reprenez le :download:`projet Maven d'exemple <samples/hello-webapp.zip>` que vous venez
-    d'importer dans Eclipse et éditez le fichier :file:`pom.xml`. À la suite de
-    la section <properties>, ajoutez la déclaration suivante :
-
-    .. code-block:: xml
-
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.wildfly.plugins</groupId>
-                    <artifactId>wildfly-maven-plugin</artifactId>
-                    <version>1.2.1.Final</version>
-                    <configuration>
-                        <version>11.0.0.Final</version>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
-                
-
-    Ouvrez ensuite un terminal et allez dans le répertoire de votre projet.
-    Tapez la commande :
-
-    .. code-block:: shell
-
-        mvn package wildfly:run
-                
-
-    *package* indique à Maven qu'il doit construire le projet, exécuter
-    les tests unitaires et créer la package (dans notre cas un fichier war).
-    Puis *wildfly:run* appelle directement le wildfly-maven-plugin_ et lui
-    demande de lancer le serveur en déployant le fichier war créé.
-
-    Le plugin wildfly-maven-plugin_ déploie l'application dans le contexte
-    racine [artifact-id]-[version]. Pour le projet de test, le contexte de
-    déploiement sera donc **hello-0.0.1-SNAPSHOT**
 
 .. _maven: http://maven.apache.org
 .. _ant: http://ant.apache.org/
 .. _gradle: https://gradle.org/
-.. _wildfly-maven-plugin: https://docs.jboss.org/wildfly/plugins/maven/latest/ 
 .. |Arborescence d'un projet Maven| image:: assets/maven/maven_project_content.png
 .. |Import dans projet Maven dans Eclipse 1| image:: assets/maven/eclipse_import_maven_project.png
 .. |Import dans projet Maven dans Eclipse 2| image:: assets/maven/eclipse_import_maven_project2.png

@@ -35,7 +35,7 @@ Dans Eclipse, sélectionnez :guilabel:`File > New > Dynamic Web Project`.
 Saisissez le nom du projet et **vérifiez que le champ Target Runtime
 est bien positionné sur le serveur que vous avez créé**. Cela indique à
 Eclipse que votre application Web dépend des bibliothèques Java fournies
-par Wildfly.
+par Tomcat.
 
 Cliquez sur :guilabel:`Next`.
 
@@ -76,13 +76,13 @@ suivant :
       </body>
     </html>
 
-Il ne vous reste plus qu'à déployer votre application dans Wildfly. Pour
+Il ne vous reste plus qu'à déployer votre application dans Tomcat. Pour
 cela, faites un clic droit sur le nom de votre serveur dans la vue
 *Servers* et choisissez le menu :guilabel:`Add and Remove...`. Vous allez
 pouvoir choisir les applications que vous souhaitez ajouter ou supprimer
 de votre serveur.
 
-|Ajout d'une application Web dans Wildfly|
+|Ajout d'une application Web dans le Serveur|
 
 Si cela, n'est pas déjà fait, il vous reste encore à démarrer votre
 serveur.
@@ -135,7 +135,7 @@ WAR :
 META-INF
     Ce répertoire contient les meta-informations décrivant le livrable.
     Il contient en général au moins le fichier MANIFEST.MF qui donne des
-    informations générales : nom du package, auteur, date de création... 
+    informations générales : nom du package, auteur, date de création...
     Ce répertoire est optionnel.
 WEB-INF
     Ce répertoire correspond à la section privée de l'application. Il
@@ -175,6 +175,6 @@ WEB-INF/lib
 .. |Création d'une application Web dynamique dans Eclipse 1| image:: assets/premiere_appli/eclipse_new_dynamic_web_project1.png
 .. |Création d'une application Web dynamique dans Eclipse 2| image:: assets/premiere_appli/eclipse_new_dynamic_web_project2.png
 .. |Création d'une application Web dynamique dans Eclipse 3| image:: assets/premiere_appli/eclipse_new_dynamic_web_project3.png
-.. |Ajout d'une application Web dans Wildfly| image:: assets/premiere_appli/eclipse_add_into_server.png
+.. |Ajout d'une application Web dans le Serveur| image:: assets/premiere_appli/eclipse_add_into_server.png
 .. |Contenu du fichier WAR de l'application Web| image:: assets/premiere_appli/war_content.png
 

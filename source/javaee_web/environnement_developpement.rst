@@ -3,13 +3,13 @@ L'environnement de développement
 
 L'objectif de ce chapitre est **la mise en place de
 l'environnement de développement** pour réaliser les développements
-d'applications Java EE.
+d'applications Java EE pour le Web.
 
 Pour cela, vous aurez au moins besoin :
 
 -  du kit Java de développement
 -  d'un environnement de développement : par exemple Eclipse
--  d'un serveur d'application Java EE
+-  d'un conteneur de Servlet Java EE
 
 Téléchargement des outils
 *************************
@@ -31,7 +31,7 @@ La liste des outils requis est :
 
 **Eclipse IDE for Java EE Web Developpers**
     | L'environnement de développement
-    | http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen2
+    | http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen3a
 
     Il existe plusieurs distributions d'Eclipse. Il est impératif
     d'installer **la version pour le développement Java EE**. Si vous
@@ -39,15 +39,19 @@ La liste des outils requis est :
     Eclipse" que votre version est bien "Eclipse Java EE IDE for Web
     Developers".
 
-**Wildfly**
-    | Le serveur d'application Java EE Wildfly (anciennement JBoss Application Server)
-    | Windows : http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.zip
-    | MacOS et Linux : http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.tar.gz
+**Tomcat**
+    | Le conteneur de servlet Tomcat
+    | Windows : http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.zip
+    | MacOS et Linux : http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz
 
-    Nous verrons bientôt que les applications Java EE ne sont pas des
+    Nous verrons bientôt que les applications Java pour le Web ne sont pas des
     programmes indépendants (standalone). Les applications Java EE sont
     déployées et exécutées dans ce que l'on appelle un serveur
-    d'application qui fournit l'environnement d'exécution nécessaire.
+    d'application qui fournit l'environnement d'exécution nécessaire. Tomcat
+    n'est pas à proprement parlé un serveur d'application car il n'offre qu'un
+    nombre de services limités par rapport à un serveur d'application normal.
+    Néanmoins, il est très souvent utilisé en production par les entreprise
+    pour réaliser des application Web en Java.
 
 Installation des outils
 ***********************
@@ -56,7 +60,7 @@ L'installation du JDK dépend de votre plate-forme : il est distribué
 sous la forme d'un installeur pour Windows et MacOS, et sous la forme
 d'un package ou d'une archive sous Linux.
 
-Eclipse et Wildfly sont distribués sous la forme d'une archive (tar.gz
+Eclipse et Tomcat sont distribués sous la forme d'une archive (tar.gz
 pour Linux et MacOS et zip pour Windows) que vous pouvez décompresser où
 vous le souhaitez.
 
@@ -90,13 +94,13 @@ bouton :guilabel:`Add...` pour l'ajouter manuellement :
 
 |Définition d'une JRE dans Eclipse|
 
-N'oubliez pas de cocher la ligne de votre JDK dans l'écran 
+N'oubliez pas de cocher la ligne de votre JDK dans l'écran
 :guilabel:`Installed JREs` pour qu'il devienne l'environnement d'exécution par défaut.
 
-Intégration de Wildfly dans Eclipse
-***********************************
+Intégration de Tomcat dans Eclipse
+**********************************
 
-Wildfly est un serveur complet qui peut être exécuté de manière autonome
+Tomcat est un serveur Web qui peut être exécuté de manière autonome
 (comme un serveur de production par exemple). Cependant, pour simplifier
 les tâches de développement, nous allons l'intégrer dans Eclipse afin de
 pouvoir le démarrer et l'arrêter directement depuis l'IDE.
@@ -109,30 +113,16 @@ Vous avez maintenant la vue "Servers" ajoutée à votre perspective de
 développement. Faites un click droit dans cette vue pour sélectionner
 :guilabel:`New > Server`.
 
-Lors de la première utilisation, il va falloir installer les outils JBoss.
-Pour cela, dans la boîte de dialogue :guilabel:`Define a New Server`, 
-sélectionnez **Red Hat JBoss Middleware > JBoss AS, Wildfly & EAP Server Tools**.
-comme type de serveur. 
-
-|Liste des types de serveur dans Eclipse|
-
-Cliquez ensuite sur :guilabel:`Next` et patientez le temps pour Eclipse de
-télécharger les dépendances nécessaires. Il vous faudra également valider la 
-license Red Hat. Attention il faut attendre un peu avant que l'installation soit
-effective et il vous faudra redémarrer Eclipse.
-
-Vous pouvez maintenant créer un serveur Wildfly en sélectionnant
-:guilabel:`JBoss Community > Wildfly 11`. 
+Vous pouvez maintenant ajouter un serveur Tomcat 9 en sélectionnant
+:guilabel:`Apache > Tomcat v9.0 Server`.
 
 |Ajout d'un serveur dans Eclipse|
 
-Cliquez ensuite sur :guilabel:`Next`. 
-Dans la boîte de dialogue :guilabel:`Create a new Server Adapter`, laissez les
-valeurs par défaut et cliquez sur :guilabel:`Next`.
-Dans la boîte de dialogue :guilabel:`JBoss Runtime`, il vous faut indiquer 
-l'emplacement du serveur sur votre disque. Pour cela, cliquez sur 
+Cliquez ensuite sur :guilabel:`Next`.
+Dans la boîte de dialogue :guilabel:`Tomcat Server`, il vous faut indiquer
+l'emplacement du serveur sur votre disque. Pour cela, cliquez sur
 :guilabel:`Browse...` pour sélectionner le répertoire d'installation
-de Wildfly sur votre disque.
+de Tomcat sur votre disque.
 
 |Configuration d'un serveur dans Eclipse|
 
@@ -142,65 +132,21 @@ Vous disposez maintenant d'un serveur dans votre vue *Servers*. Il ne
 vous reste plus qu'à le démarrer en faisant un click droit sur son nom
 et en sélectionnant :guilabel:`Start`.
 
-|Lancement du serveur Wildfly dans Eclipse|
+|Lancement du serveur dans Eclipse|
 
 Si tout se passe bien, à la fin du lancement, vous pourrez accéder à
 votre serveur à l'adresse http://localhost:8080. Vous devez voir
-s'afficher la page d'accueil du serveur.
+s'afficher une page d'erreur avec le libellé :
 
-Accès à la console d'administration du serveur
-**********************************************
+  État HTTP 404 – Not Found
 
-Le serveur Wildfly fournit une interface Web de configuration qui peut être utile.
-Par défaut, elle est accessible à l'adresse http://localhost:9990. Pour pouvoir
-y accéder, il va falloir activer un compte administrateur depuis votre machine.
-Pour cela, il faut utiliser les outils en ligne de commande de Wildfly qui
-sont disponible dans :file:`$WILDFLY_HOME/bin`. Sous Windows, lancez le script
-:file:`add-user.bat` et pour les autres systèmes d'exploitation :file:`add-user.sh`.
-Puis répondez aux questions pour créer une utilisation admin :
+En effet, le serveur ne contient encore aucune application Java Web à exécuter.
+Mais le serveur est néanmoins démarré.
 
-.. code-block:: text
-
-    What type of user do you wish to add? 
-     a) Management User (mgmt-users.properties) 
-     b) Application User (application-users.properties)
-    (a): a
-
-    Enter the details of the new user to add.
-    Using realm 'ManagementRealm' as discovered from the existing property files.
-    Username : admin
-    User 'admin' already exists and is enabled, would you like to... 
-     a) Update the existing user password and roles 
-     b) Disable the existing user 
-     c) Type a new username
-    (a): a
-    Password recommendations are listed below. To modify these restrictions edit the add-user.properties configuration file.
-     - The password should be different from the username
-     - The password should not be one of the following restricted values {root, admin, administrator}
-     - The password should contain at least 8 characters, 1 alphabetic character(s), 1 digit(s), 1 non-alphanumeric symbol(s)
-    Password : 
-    WFLYDM0098: The password should be different from the username
-    Are you sure you want to use the password entered yes/no? yes
-    Re-enter Password : 
-    What groups do you want this user to belong to? (Please enter a comma separated list, or leave blank for none)[  ]: 
-    Updated user 'admin' to file '/home/david/bin/wildfly-11.0.0.Final/standalone/configuration/mgmt-users.properties'
-    Updated user 'admin' to file '/home/david/bin/wildfly-11.0.0.Final/domain/configuration/mgmt-users.properties'
-    Updated user 'admin' with groups  to file '/home/david/bin/wildfly-11.0.0.Final/standalone/configuration/mgmt-groups.properties'
-    Updated user 'admin' with groups  to file '/home/david/bin/wildfly-11.0.0.Final/domain/configuration/mgmt-groups.properties'
-    Is this new user going to be used for one AS process to connect to another AS process? 
-    e.g. for a slave host controller connecting to the master or for a Remoting connection for server to server EJB calls.
-    yes/no? yes
-
-Une fois le compte administrateur activé, rendez-vous à l'adresse http://localhost:9990
-et saisissez le login / mot de passe pour accéder à la console d'administration.
-
-|Console d'administration de Wildly|
 
 .. |JRE installés dans Eclipse| image:: assets/environnement_developpement/eclipse_installed_jre.png
 .. |Définition d'une JRE dans Eclipse| image:: assets/environnement_developpement/eclipse_jre_definition.png
-.. |Liste des types de serveur dans Eclipse| image:: assets/environnement_developpement/eclipse_server_types_list.png
 .. |Ajout d'un serveur dans Eclipse| image:: assets/environnement_developpement/eclipse_new_server.png
 .. |Configuration d'un serveur dans Eclipse| image:: assets/environnement_developpement/eclipse_new_server2.png
-.. |Lancement du serveur Wildfly dans Eclipse| image:: assets/environnement_developpement/eclipse_start_server.png
-.. |Console d'administration de Wildly| image:: assets/environnement_developpement/wildfly_admin_console.png
+.. |Lancement du serveur dans Eclipse| image:: assets/environnement_developpement/eclipse_start_server.png
 
