@@ -721,22 +721,22 @@ Exercice
         
     Écrivez des tests pour vos contrôleurs.
 
-.. _@Controller: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/stereotype/Controller.html
-.. _@RequestMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RequestMapping.html
-.. _@GetMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/GetMapping.html
-.. _@ModelAttribute: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ModelAttribute.html
-.. _@InitBinder: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/InitBinder.html
-.. _@ResponseBody: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
-.. _@ExceptionHandler: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
-.. _@ResponseStatus: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ResponseStatus.html
-.. _@ControllerAdvice: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html
-.. _@RestController: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RestController.html
-.. _@RequestBody: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RequestBody.html
-.. _HttpStatus: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/http/HttpStatus.html
-.. _ResponseEntity<T>: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/http/ResponseEntity.html
-.. _ResponseEntity<T>.created: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/http/ResponseEntity.html#created-java.net.URI-
-.. _UriComponentsBuilder: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/util/UriComponentsBuilder.html
-.. _@RestControllerAdvice: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RestControllerAdvice.html
+.. _@Controller: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Controller.html
+.. _@RequestMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestMapping.html
+.. _@GetMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/GetMapping.html
+.. _@ModelAttribute: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ModelAttribute.html
+.. _@InitBinder: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/InitBinder.html
+.. _@ResponseBody: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
+.. _@ExceptionHandler: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
+.. _@ResponseStatus: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ResponseStatus.html
+.. _@ControllerAdvice: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html
+.. _@RestController: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html
+.. _@RequestBody: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestBody.html
+.. _HttpStatus: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/HttpStatus.html
+.. _ResponseEntity<T>: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html
+.. _ResponseEntity<T>.created: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html#created-java.net.URI-
+.. _UriComponentsBuilder: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/util/UriComponentsBuilder.html
+.. _@RestControllerAdvice: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestControllerAdvice.html
 .. _ObjectMapper: https://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html
 .. _XmlMapper: https://fasterxml.github.io/jackson-dataformat-xml/javadoc/2.9/com/fasterxml/jackson/dataformat/xml/XmlMapper.html
 .. _@JsonProperty: https://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonProperty.html
@@ -744,7 +744,7 @@ Exercice
 .. _@JsonRootName: https://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonRootName.html
 .. _@JsonPropertyOrder: https://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonPropertyOrder.html
 .. _@JsonView: https://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonView.html
-.. _RestTemplate: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/client/RestTemplate.html
-.. _MockMvc: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/test/web/servlet/MockMvc.html
+.. _RestTemplate: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html
+.. _MockMvc: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html
 .. _curl: https://curl.haxx.se/
 .. _WebClient: https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-client

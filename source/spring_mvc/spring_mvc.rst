@@ -657,7 +657,7 @@ Spring's JSP taglib
 La première *taglib* appelée simplement *Spring's JSP taglib* apporte des
 fonctionnalités similaires aux JSTL tout en y ajoutant des évolutions ou des
 spécificités propres à Spring MVC. Vous pouvez vous reporter à la
-`documentation officielle <https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/tags/package-summary.html>`__
+`documentation officielle <https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/tags/package-summary.html>`__
 pour voir la liste des *tags* supportés.
 Cette *taglib* est utilisable *via* la directive ``taglib`` :
 
@@ -726,7 +726,7 @@ Cette *taglib* est utilisable *via* la directive ``taglib`` :
 Cette *taglib* fournit le *tag* ``form`` ainsi que des *tags* pour tous les
 éléments d'un formulaire : ``input``, ``chekbox``, ``button``... 
 Vous pouvez vous reporter à la 
-`documentation officielle <https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/tags/form/package-summary.html>`__
+`documentation officielle <https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/tags/form/package-summary.html>`__
 pour voir la liste complète des *tags* supportés.
 
 Le *tag* ``form`` est associé à un *bean* de commande. Par defaut, il doit exister
@@ -1234,40 +1234,40 @@ Dans l'exemple ci-dessus, tous les contrôleurs déclarés dans le package spéc
 par l'annotation `@ControllerAdvice`_ seront enrichis par les méthodes
 de ce *ControllerAdvice*.
 
-.. _ViewResolver: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/reactive/result/view/ViewResolver.html
-.. _HandlerExceptionResolver: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html
-.. _DefaultHandlerExceptionResolver: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/mvc/support/DefaultHandlerExceptionResolver.html
-.. _UrlBasedViewResolver: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/view/UrlBasedViewResolver.html
-.. _DispatcherServlet: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
-.. _ContextLoaderListener: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/context/ContextLoaderListener.html
-.. _WebApplicationContext: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/context/WebApplicationContext.html
-.. _@Controller: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/stereotype/Controller.html
-.. _@RequestMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RequestMapping.html
-.. _@GetMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/GetMapping.html
-.. _@PutMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/PutMapping.html
-.. _@PostMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/PostMapping.html
-.. _@DeleteMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/DeleteMapping.html
-.. _@PatchMapping: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/PatchMapping.html
-.. _@RequestParam: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RequestParam.html
-.. _@SessionAttribute: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/SessionAttribute.html
-.. _@RequestAttribute: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RequestAttribute.html
-.. _@RequestHeader: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/RequestHeader.html
-.. _@PathVariable: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/PathVariable.html
+.. _ViewResolver: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/reactive/result/view/ViewResolver.html
+.. _HandlerExceptionResolver: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html
+.. _DefaultHandlerExceptionResolver: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/support/DefaultHandlerExceptionResolver.html
+.. _UrlBasedViewResolver: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/view/UrlBasedViewResolver.html
+.. _DispatcherServlet: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
+.. _ContextLoaderListener: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/ContextLoaderListener.html
+.. _WebApplicationContext: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/WebApplicationContext.html
+.. _@Controller: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Controller.html
+.. _@RequestMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestMapping.html
+.. _@GetMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/GetMapping.html
+.. _@PutMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PutMapping.html
+.. _@PostMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PostMapping.html
+.. _@DeleteMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/DeleteMapping.html
+.. _@PatchMapping: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PatchMapping.html
+.. _@RequestParam: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestParam.html
+.. _@SessionAttribute: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/SessionAttribute.html
+.. _@RequestAttribute: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestAttribute.html
+.. _@RequestHeader: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestHeader.html
+.. _@PathVariable: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PathVariable.html
 .. _Optional: https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html
-.. _@ModelAttribute: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ModelAttribute.html
-.. _@InitBinder: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/InitBinder.html
-.. _Model: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/ui/Model.html
-.. _ModelAndView: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/ModelAndView.html
-.. _@ResponseBody: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
-.. _HttpRequestMethodNotSupportedException: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/HttpRequestMethodNotSupportedException.html
-.. _@ExceptionHandler: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
-.. _@ResponseStatus: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ResponseStatus.html
+.. _@ModelAttribute: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ModelAttribute.html
+.. _@InitBinder: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/InitBinder.html
+.. _Model: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/ui/Model.html
+.. _ModelAndView: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/ModelAndView.html
+.. _@ResponseBody: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
+.. _HttpRequestMethodNotSupportedException: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/HttpRequestMethodNotSupportedException.html
+.. _@ExceptionHandler: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
+.. _@ResponseStatus: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ResponseStatus.html
 .. _@Valid: https://docs.oracle.com/javaee/7/api/javax/validation/Valid.html
-.. _BindingResult: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/validation/BindingResult.html
-.. _BindingResult.hasErrors(): https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/validation/Errors.html#hasErrors--
-.. _WebDataBinder: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/WebDataBinder.html
+.. _BindingResult: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/validation/BindingResult.html
+.. _BindingResult.hasErrors(): https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/validation/Errors.html#hasErrors--
+.. _WebDataBinder: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/WebDataBinder.html
 .. _SimpleDateFormat: https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 .. _Date: https://docs.oracle.com/javase/8/docs/api/java/util/Date.html
-.. _@ControllerAdvice: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html
-.. _url: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/tags/UrlTag.html
-.. _RedirectAttributes: https://docs.spring.io/spring-framework/docs/5.0.4.RELEASE/javadoc-api/org/springframework/web/servlet/mvc/support/RedirectAttributes.html
+.. _@ControllerAdvice: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html
+.. _url: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/tags/UrlTag.html
+.. _RedirectAttributes: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/support/RedirectAttributes.html
