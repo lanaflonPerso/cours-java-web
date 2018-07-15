@@ -193,6 +193,11 @@ de toutes les villes nous pouvons utiliser une projection :
 
   #{ annuaire.personnes.![adresse.ville] }
 
+.. note::
+
+  Pour une présentation complète du langage SpEL, reportez-vous à la
+  `documentation officielle <https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#expressions-language-ref>`_.
+
 .. _spring_spel_annotation:
 
 Utilisation de SpEL dans les annotations
