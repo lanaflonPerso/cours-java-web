@@ -225,8 +225,114 @@ crée cette requête à travers un CriteriaBuilder_ que l'on peut récupérer gr
 Pour des exemples supplémentaires d'utilisation du CriteriaBuilder_,
 reportez-vous au `Wikibook <https://en.wikibooks.org/wiki/Java_Persistence/Criteria>`__.
 
+Utilisation de requêtes nommées
+*******************************
+
+L'utilisation de requêtes peut rendre l'application difficile à comprendre et à faire
+évoluer. En effet, les requêtes sont mêlées au code source Java sous la forme de chaîne
+de caractères. Si vous préférez regrouper toutes vos requêtes dans des parties
+clairement identifiées du code, alors vous pouvez utiliser les requêtes nommées
+(*named queries*).
+
+Une requête nommée permet d'associer un identifiant de requête à une requête JPQL. On utilise
+pour cela l'annotation `@NamedQuery`_ que l'on peut placer sur la classe de l'entité
+pour centraliser toutes les requêtes relatives à cette entité.
+
+.. code-block:: java
+  :caption: Déclaration d'une requête nommée
+
+  package ROOT_PKG;
+
+  import javax.persistence.Entity;
+  import javax.persistence.GeneratedValue;
+  import javax.persistence.GenerationType;
+  import javax.persistence.Id;
+  import javax.persistence.NamedQuery;
+
+  @Entity
+  @NamedQuery(name="findIndividuByNom", query="select i from Individu i where i.nom = :nom")
+  public class Individu {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String nom;
+
+    // getters et setters omis
+    
+  }
+
+Dans l'exemple ci-dessus, on déclare une requête que l'on nomme "findIndividuByNom".
+
+Si vous voulez nommer plusieurs requêtes, vous devez utiliser l'annotation
+`@NamedQueries`_ pour les regrouper toutes sous la forme d'un tableau.
+
+.. code-block:: java
+  :caption: Déclaration de plusieurs requêtes nommées
+
+  package ROOT_PKG;
+
+  import javax.persistence.Entity;
+  import javax.persistence.GeneratedValue;
+  import javax.persistence.GenerationType;
+  import javax.persistence.Id;
+  import javax.persistence.NamedQueries;
+  import javax.persistence.NamedQuery;
+
+  @Entity
+  @NamedQueries({
+    @NamedQuery(name="findIndividuByNom", query="select i from Individu i where i.nom = :nom"),
+    @NamedQuery(name="deleteIndividuByNom", query="delete from Individu i where i.nom = :nom"),
+    @NamedQuery(name="deleteAllIndividus", query="delete from Individu i")
+  })
+  public class Individu {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String nom;
+
+    // getters et setters omis
+    
+  }
+
+On peut ensuite créer et exécuter des requêtes nommées à partir d'un EntityManager_.
+
+::
+
+  Individu individu = entityManager.createNamedQuery("findIndividuByNom", Individu.class)
+                                   .setParameter("nom", "David Gayerie")
+                                   .getSingleResult();
+
+::
+
+  entityManager.getTransaction().begin();
+  entityManager.createNamedQuery("deleteIndividuByNom")
+               .setParameter("nom", "David Gayerie")
+               .executeUpdate();
+  entityManager.getTransaction().commit();
+
+.. note::
+
+  Il est également possible de créer des requêtes nommées en SQL en utilisant
+  les annotations `@NamedNativeQuery`_ et `@NamedNativeQueries`_ sur le même
+  principe qu'avec des requêtes nommées en JPQL.
+  
+.. warning::
+
+  Même si une requête nommée est déclarée dans une classe, son nom est globale
+  à l'ensemble de l'unité de persistance. Il faut donc absolument éviter
+  tout doublon dans le nom des requêtes.
+
 .. _CriteriaBuilder: https://docs.oracle.com/javaee/7/api/javax/persistence/criteria/CriteriaBuilder.html
 .. _EntityManager: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html
 .. _Query: https://docs.oracle.com/javaee/7/api/javax/persistence/Query.html
 .. _TypedQuery: https://docs.oracle.com/javaee/7/api/javax/persistence/TypedQuery.html
+.. _@NamedQuery: https://docs.oracle.com/javaee/7/api/javax/persistence/NamedQuery.html
+.. _@NamedQueries: https://docs.oracle.com/javaee/7/api/javax/persistence/NamedQueries.html
+.. _@NamedNativeQuery: https://docs.oracle.com/javaee/7/api/javax/persistence/NamedNativeQuery.html
+.. _@NamedNativeQueries: https://docs.oracle.com/javaee/7/api/javax/persistence/NamedNativeQueries.html
+
 
