@@ -578,6 +578,20 @@ Le développement de telles bibliothèques dépasse le cadre de ce cours.
 Par contre nous allons voir comment utiliser la bibliothèque standard
 fournie par le conteneur Web : **Java Standard Tag Library (JSTL)**.
 
+.. warning::
+
+  Tomcat ne fournit pas la JSTL. Il faut donc que chaque application Web
+  embarque sa propre implémentation. Pour un projet géré avec Maven, il suffit
+  d'ajouter la dépendance suivante dans le fichier :file:`pom.xml` :
+  
+  .. code-block:: xml
+  
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+
 Pour inclure une bibliothèque de balises dans une JSP, on utilise la
 directive ``taglib`` :
 
