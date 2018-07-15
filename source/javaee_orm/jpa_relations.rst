@@ -382,6 +382,38 @@ sera elle-même enregistrée. De plus, lors d'un appel à merge pour une
 instance d'Individu, un merge sera automatiquement realisé sur
 l'instance de l'attribut société.
 
+Requêtes JPQL et jointure
+*************************
+
+Dès que l'on introduit des relations entre entités, on complexifie également
+le langage de requêtage. Comment par exemple demander la liste des individus
+travaillant pour une société dont on passe le nom en paramètre ? On peut
+utiliser une jointure avec une condition :
+
+.. code-block:: text
+
+  select i from Individu i join i.societe s where s.nom = :nom
+
+Il est également possible d'utiliser le mot-clé ``on`` pour filtrer les entités
+à sélectionner dans la jointure :
+
+.. code-block:: text
+
+  select i from Individu i join i.societe s on s.nom = :nom
+
+Comme en SQL, JPQL fait la différence entre une jointure et une jointure
+externe (*left outer join*). Avec une jointure simple, on élimine toutes les
+entités pour lesquelles la jointure n'existe pas. Alors qu'avec une jointure
+externe, nous préservons les entités pour lesquelles il n'existe pas de jointure.
+
+.. code-block:: text
+
+  select i from Individu i left join i.societe s on s.nom = :nom
+
+Attention avec l'exemple de requête ci-dessus : elle retourne l'union des individus qui
+n'ont aucune relation avec l'entité société et ceux qui ont une relation avec
+une société dont le nom est donné par le paramètre ``:nom``.
+
 Fetch lazy ou fetch eager
 *************************
 

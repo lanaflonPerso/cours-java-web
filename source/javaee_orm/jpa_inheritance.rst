@@ -341,8 +341,29 @@ qui peuvent être créées par les instructions suivantes :
     l'annotation `@GeneratedValue`_ avec la valeur ``IDENTITY``. On peut,
     par exemple, utiliser une table servant à générer une séquence de clés.
 
-Fusion de la super classe
-*************************
+L'héritage et les requêtes JPQL polymorphiques
+**********************************************
+
+Lorsqu'il existe une relation d'héritage entre les entités, il est possible
+de créer des requêtes polymorphiques. Si on exécute la requête JPQL suivante :
+
+.. code-block:: text
+
+  select v from Vehicule v
+  
+Alors quelle que soit la stratégie d'héritage utilisée, la requête JPQL doit
+remonter l'ensemble des objets qui héritent de la classe ``Vehicule``. Pour notre
+exemple, cette requête retourne la liste de tous les objets ``Voiture`` et ``Moto``.
+
+Néanmoins il est possible d'avoir un type plus précis si nécessaire. Pour retourner
+uniquement la liste des objets ``Voiture`` :
+
+.. code-block:: text
+
+  select v from Voiture v
+
+Un cas à part : fusion de la super classe
+*****************************************
 
 Il arrive parfois que la relation d'héritage n'ait pas de sens dans le modèle
 relationnel. Dans ce cas, la classe parente n'est pas vraiment une entité au
@@ -430,9 +451,10 @@ qui peuvent être créées par les instructions suivantes :
     ) engine = InnoDB;
 
 
-Contrairement au cas précédent, l'utilisation de `@MappedSuperclass`_ implique qu'il
+L'utilisation de `@MappedSuperclass`_ implique qu'il
 n'existe pas de relation entre les classes filles pour JPA. Comme la super classe
-n'est pas un entité, il n'est pas possible d'effectuer des requêtes sur la super classe.
+n'est pas un entité, il n'est pas possible d'effectuer des requêtes sur la super classe
+ni d'utiliser des requêtes polymorphiques.
 
 .. only:: epsi_b3_orm
 
