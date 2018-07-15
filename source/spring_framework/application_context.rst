@@ -8,7 +8,7 @@ la définition des objets que le conteneur doit créer ainsi que leurs
 interdépendances.
 
 ApplicationContext_ est une interface dans le Spring Framework car il existe
-plusieurs implémentations et donc plusieurs façons définir un contexte d'application.
+plusieurs implémentations et donc plusieurs façons de définir un contexte d'application.
 Pour la plus grande partie de ce chapitre, nous nous limiterons à utiliser la classe
 concrète GenericXmlApplicationContext_ qui permet de créer un contexte d'application à
 partir d'un fichier XML. Nous verrons en fin de chapitre qu'un contexte d'application
@@ -32,11 +32,11 @@ peut être créé intégralement en Java.
 Définition d'un contexte d'application en XML
 *********************************************
 
-Le Spring Framework définit un format XML qui permet de définir un ensemble
+Le Spring Framework définit un format XML qui permet de déclarer un ensemble
 de *beans*, c'est-à-dire un ensemble d'objets à créer pour l'application :
 
 .. code-block:: xml
-  :caption: Contenu minimal d'un fichier XML de application-context.xml
+  :caption: Contenu minimal d'un fichier XML de contexte d'application
 
   <?xml version="1.0" encoding="UTF-8"?>
   <beans xmlns="http://www.springframework.org/schema/beans"
@@ -76,9 +76,13 @@ se trouve sur le système de fichiers dans le répertoire de travail et qu'il s'
   de ressource supporté par le Spring Framework. Dans l'emplacement, le préfixe
   ``file:`` indique que le fichier se trouve sur le système de fichier. On peut également
   utiliser le préfixe ``classpath:`` pour indiquer que le fichier se trouve dans le *classpath*.
-  Pour un projet Maven, vous devez placer votre fichier dans le dossier
-  :file:`src/main/resources` de votre projet. Le fichier peut même se trouver
-  sur le réseau en utilisant le préfixe ``http:``.
+  Le fichier peut même se trouver sur le réseau en utilisant le préfixe ``http:``.
+  
+  .. hint::
+  
+    Pour un fichier dans le *classpath*, pour un projet Maven, vous 
+    devez placer ce fichier dans le dossier :file:`src/main/resources` de votre projet. 
+  
 
   Avant sa version 3, le Spring Framework ne fournissait pas la classe
   GenericXmlApplicationContext_. Il était néanmoins possible d'utiliser les classes
@@ -112,7 +116,7 @@ Définition de beans dans le contexte
 Un contexte d'application décrit l'ensemble des objets (les *beans*) à créer
 pour l'application.
 
-Nous pouvons par exemple définir un objet de type Date_ de la façon suivante :
+Nous pouvons, par exemple, définir un objet de type Date_ de la façon suivante :
 
 .. code-block:: xml
   :caption: Définition d'un bean de type Date
@@ -149,7 +153,7 @@ par l'objet ApplicationContext_ :
     public static void main(String[] args) {
       try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
         // récupération de l'objet défini dans le contexte d'application
-        Date now = (Date) appCtx.getBean("now");
+        Date now = appCtx.getBean("now", Date.class);
 
         System.out.println(now);
       }
@@ -158,12 +162,12 @@ par l'objet ApplicationContext_ :
 
 .. note::
 
-  Il est possible d'utiliser la méthode ``getBean`` qui prend comme paramètre le type
+  Il est possible d'utiliser la méthode ``getBean`` qui prend uniquement comme paramètre le type
   de l'objet. Par exemple :
 
   ::
 
-    Date now = (Date) appCtx.getBean(Date.class);
+    Date now = appCtx.getBean(Date.class);
 
   Attention cependant, il ne doit pas exister dans le contexte d'application
   plusieurs *beans* ayant le même type ou sinon l'appel à cette méthode échoue
@@ -184,7 +188,7 @@ Par défaut, Spring définit deux portées :
 *prototype*
   Cette portée est l'inverse de la portée singleton. À chaque fois qu'un programme
   appelle une méthode ``getBean`` pour récupérer ce *bean*, chaque appel retourne
-  une instance **différente** du *bean*.
+  une **nouvelle instance** du *bean*.
 
 Le type de la portée peut être indiquée grâce à l'attribut ``scope`` dans le fichier
 XML de contexte. La portée par défaut dans le Spring Framework est **singleton**.
@@ -249,7 +253,8 @@ Un des points forts du Spring Framework est qu'il est non intrusif. C'est-à-dir
 que son fonctionnement interne n'a pas d'impact sur la façon dont vous allez
 concevoir vos classes. Ainsi, le Spring Framework est capable de construire
 tout type d'objet. Si vous n'utilisez pas de conteneur IoC pour construire vos
-objets, vous remarquerez qu'il existe trois façons différentes de construire un objet :
+objets, vous remarquerez qu'il existe trois façons différentes de construire un objet 
+en Java :
 
 1) En utilisant le mot-clé ``new`` pour appeler le constructeur (avec ou sans paramètre) :
 
@@ -257,7 +262,7 @@ objets, vous remarquerez qu'il existe trois façons différentes de construire u
 
     Date date = new Date();
 
-2) En utilisant une méthode statique de la classe. C'est notamment le cas pour
+2) En utilisant une méthode statique. C'est notamment le cas pour
    créer une instance de la classe Calendar_ :
 
    ::
@@ -411,7 +416,7 @@ une valeur en type primitif ou en chaîne de caractères. Il est également poss
 de définir des listes dans le contexte d'application.
 
 Prenons l'exemple de la classe ``Calculateur`` qui accepte en paramètre un tableau
-d'entier :
+d'entiers :
 
 ::
 
@@ -468,7 +473,7 @@ Et le code de l'application :
 
     public static void main(String[] args) throws Exception {
       try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
-        Calculateur calculateur = (Calculateur) appCtx.getBean("calculateur");
+        Calculateur calculateur = appCtx.getBean("calculateur", Calculateur.class);
         System.out.println(calculateur.getTotal());
       }
     }
@@ -636,7 +641,7 @@ Et le code de l'application :
 
     public static void main(String[] args) throws Exception {
       try(GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext("file:application-context.xml")) {
-        Societe societe = (Societe) appCtx.getBean("societe");
+        Societe societe = appCtx.getBean("societe", Societe.class);
         System.out.println(societe.getNom());
         System.out.println("Le dirigeant est " + societe.getDirigeant());
         System.out.println("Les salariés sont " + societe.getSalaries());
@@ -651,7 +656,7 @@ Et le code de l'application :
   du conteneur IoC. On utilise plutôt le conteneur pour créer des objets qui
   constituent l'architecture d'une application. On dit parfois que le Spring
   Framework est utilisé pour construire des architectures légères
-  (*lightweight architecture*).
+  (*lightweight architectures*).
 
 Gestion du cycle de vie des beans
 *********************************
@@ -659,7 +664,7 @@ Gestion du cycle de vie des beans
 Parfois, certains objets nécessitent d'appeler une méthode pour finaliser leur
 initialisation et/ou d'appeler une méthode lorsque l'objet n'est plus utilisé
 (généralement pour libérer des ressources système). Il est possible d'indiquer
-lors de la déclaration du *bean* une méthode à appeler après que toutes les
+lors de la déclaration du *bean* une méthode à appeler juste après que toutes les
 injections de dépendance ont été réalisées ainsi que la méthode à appeler au moment
 de la fermeture du contexte d'application. Pour cela, on utilise respectivement
 l'attribut ``init-method`` et l'attribut ``destroy-method``.
@@ -722,7 +727,7 @@ L'autowiring est activable grâce à l'attribut ``autowire`` de l'élément ``<b
 Cet attribut peut prendre les valeurs suivantes :
 
 *no*
-  La valeur par défaut. Indique que le mode autowiring est désactivé
+  La valeur par défaut. Indique que le mode autowiring est désactivé.
 
 *byName*
   L'autowiring est activé sur les propriétés. Le Spring Framework recherche
@@ -851,15 +856,17 @@ En déclarant maintenant le contexte d'application comme suit :
 Ainsi, le Spring Framework injectera le *bean* nommé "dirigeant" dans la propriété
 ``dirigeant`` car il est le seul *bean* de type ``Personne`` dans le contexte. Mais il injectera
 également le même *bean* dans la liste des salariés car ``salaries`` est une propriété
-de type ``List<Personne>``.
+de type ``List<Personne>``. Le Spring Framework va fabriquer cette liste à partir
+de l'ensemble des beans de type ``Personne`` (dans notre exemple, il n'y en a
+qu'un déclaré dans le contexte).
 
 Contexte d'application en Java
 ******************************
 
 Jusqu'à présent, nous avons systématiquement déclaré le contexte d'application
-dans un fichier XML mais le Spring Framework supporte de créer un contexte
+dans un fichier XML mais le Spring Framework supporte la création d'un contexte
 d'application intégralement en Java. Pour cela, on utilise les annotations
-`@Configuration`_ `@Bean`_ et la classe AnnotationConfigApplicationContext_ :
+`@Configuration`_ et `@Bean`_ ainsi que la classe AnnotationConfigApplicationContext_ :
 
 .. code-block:: java
   :caption: Exemple de contexte d'application en Java

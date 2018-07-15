@@ -15,12 +15,12 @@ Le PropertyPlaceholderConfigurer
 L'une de ces classes de post-traitement mérite particulièrement l'attention, il s'agit du
 PropertyPlaceholderConfigurer_. Cette classe permet de substituer n'importe quelle
 valeur d'un attribut du fichier XML de configuration par une valeur déclarée dans
-une fichier de configuration externe. Ainsi le Spring Framework nous offre un
+un fichier de configuration externe. Ainsi le Spring Framework nous offre un
 mécanisme simple et puissant pour créer facilement des fichiers de configuration
 pour nos applications.
 
 Un PropertyPlaceholderConfigurer_ a au moins besoin de connaître le chemin du
-fichier properties qui contient les valeurs à substituer. Comme pour toutes les
+fichier Properties_ qui contient les valeurs à substituer. Comme pour toutes les
 ressources accédées par le Spring Framework, ce fichier peut se trouver sur
 le système de fichier, dans le *classpath* voire même sur le Web. On peut
 ainsi déclarer un PropertyPlaceholderConfigurer_ de la façon suivante :
@@ -159,4 +159,4 @@ en fonction de la configuration.
 .. _BeanPostProcessor: https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-extension-bpp
 .. _PropertyPlaceholderConfigurer: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/config/PropertyPlaceholderConfigurer.html
 .. _PropertyOverrideConfigurer: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/config/PropertyOverrideConfigurer.html
-
+.. _Properties: https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html

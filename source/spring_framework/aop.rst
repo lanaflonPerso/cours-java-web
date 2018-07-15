@@ -1,15 +1,15 @@
 Spring AOP : programmation orientée aspect
 ##########################################
 
-En programmation objet, il arrive souvent que l'on trouve des répétitions
-dans l'implémentation. Par exemple, pour une application qui accède à une base
+En programmation objet, il arrive souvent que l'on trouve des portions de code qui
+se répètent à travers différentes méthodes. Par exemple, pour une application qui accède à une base
 de données, chaque interaction avec la base de données doit s'inscrire dans
 une transaction. Même si nous concevons une architecture objet avec une classe
 spécialisée pour gérer une transaction, nous allons devoir faire appel à cette
 classe dans chaque méthode qui interagit avec la base de données.
 
-Ce type de besoin relève souvent d'une problématique technique sans rapport directe
-avec ce que fait l'application. Dans des application pour les entreprises, ce
+Ce type d'implémentation relève souvent d'une problématique technique sans rapport directe
+avec ce que fait l'application. Dans des applications pour les entreprises, ce
 type de problématique est souvent lié à la gestion des transactions, à l'écriture
 de fichiers de log ou encore à la sécurité (contrôler si une partie du code
 de l'application peut être appelée dans un certain contexte d'exécution).
@@ -25,7 +25,7 @@ Spring AOP (AOP pour *Aspect Oriented Programming*).
 Principe de la programmation orientée aspect
 ********************************************
 
-La programmation orientée aspect (POA) est utilisé pour implémenter des
+La programmation orientée aspect (POA) est utilisée pour implémenter des
 fonctionnalités transverses (*cross-cutting concerns*). Elle permet de rendre
 l'architecture plus modulaire. Un **aspect** représente la réalisation d'une fonction
 particulière (par exemple écrire dans un fichier de log). Plutôt que de répéter
@@ -60,7 +60,7 @@ traitement de problématiques transverses (*cross-cutting concerns*) :
 
 Aspect
   La problématique spécifique que l'on veut ajouter transversalement à notre
-  architecture : par exemple la gestion des transactions avec la base de données
+  architecture : par exemple la gestion des transactions avec la base de données.
 
 Point de jonction (*JoinPoint*)
   Un point dans le flot d'exécution d'un programme à partir duquel on souhaite
@@ -77,9 +77,9 @@ Coupe (*Pointcut*)
   Une expression qui définit l'ensemble des points de jonctions éligibles pour
   le greffon. Par exemple :
 
-  .. code-block:: text
+  .. code-block:: java
 
-    execution(* |ROOT_PKG|.Service.*(...))
+    execution(* ROOT_PKG.Service.*(...))
 
   pour indiquer l'appel à n'importe quelle méthode de la classe ``Service``.
 
@@ -135,10 +135,12 @@ nous pouvons plutôt créer une classe qui va jouer le rôle de greffon (*advice
     }
   }
 
-Puis nous pouvons configurer le contexte d'application Spring en utilisation
-l'espace de nom ``aop`` pour configurer un tissage d'aspect de manière à ce que
+Puis nous pouvons configurer le contexte d'application Spring.
+L'espace de nom XML ``http://www.springframework.org/schema/aop`` fournit
+des éléments XML pour configurer un tissage d'aspect. Nous pouvons ainsi
+configurer un aspect de manière à ce que
 la méthode ``SimpleLogger.logAvant`` soit invoquée avant tous les appels à la méthode
-``BusinessService.doSomething`` et la méthode ``SimpleLogger.logAvant`` soit
+``BusinessService.doSomething`` et la méthode ``SimpleLogger.logApres`` soit
 invoquée après tous les appels à la méthode ``BusinessService.doSomething``.
 
 .. code-block:: xml

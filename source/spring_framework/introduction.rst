@@ -2,7 +2,7 @@ Introduction
 ############
 
 Le Spring Framework est très largement utilisé dans la communauté Java pour le
-développement d'application pour les entreprises (notamment pour les applications
+développement d'application pour les entreprises (notamment le développement d'applications
 Web). Mais on trouve même des applications Java basées sur le Spring Framework...
 dans des photocopieurs.
 
@@ -11,15 +11,16 @@ son principal auteur, Rod Johnson, ne voulait pas suivre la même direction que
 celle prise par la plate-forme J2EE au début des années 2000.
 
 J2EE proposait un environnement de déploiement d'application basé sur des serveurs
-d'application qui devaient héberger les composants fournis par les développeurs
+d'application hébergeant les composants fournis par les développeurs
 dans des conteneurs logiciels. Les composants à fournir (notamment pour les EJB 1.x)
 devaient suivre une spécification technique assez complexe et lourde à mettre en
 œuvre.
 
 À l'opposé, le Spring Framework proposait de bâtir des applications avec
-beaucoup moins de contraintes techniques et qui pouvait facilement être intégré
-dans les applications. C'est pour cette raison, que l'on qualifie parfois
-le Spring Framework de conteneur léger.
+beaucoup moins de contraintes techniques. Au lieu que l'architecture des applications
+s'adapte à l'environnement technique, c'est le Spring Framework qui s'intègre
+au sein des applications. C'est pour cette raison, que l'on qualifie parfois
+le Spring Framework de *conteneur léger*.
 
 L'idée centrale du Spring Framework est de n'imposer aucune norme de développement
 ni aucune contrainte technique sur la façon dont les développeurs doivent coder
@@ -27,7 +28,7 @@ leurs applications (pas d'héritage spécifique ou d'interface à implémenter o
 Le Spring Framework se veut non intrusif et basé sur le principe de l'inversion
 de contrôle (ou *Inversion of Control* IoC) et la programmation orientée Aspect
 (*Aspect Oriented Programming* AOP). Il met en œuvre des modèles de conception
-(comme les *factories*) pour fournir un environnement le plus souple possible.
+(*Design Patterns*) tels que les *factories* pour fournir un environnement le plus souple possible.
 
 Une des forces du Spring Framework est sa très grande modularité. En fonction
 des besoins techniques de son application, il est possible d'incorporer tel ou
@@ -53,19 +54,23 @@ du Spring Framework (*core*) :
   Le module qui permet de manipuler les objets Java et de créer des *beans*
 
 *Context*
-  Introduit la notion de contexte d'application et fournit plusieurs implementétations
-  de ces contextes. Avec ce module, il est possible de construire des conteneur
+  Ce module introduit la notion de contexte d'application et fournit plusieurs implementations
+  de ces contextes. Avec ce module, il est possible de construire un conteneur
   léger IoC.
 
 *SpEL*
   Ce module fournit un interpréteur pour le langage d'expression intégré au
   Spring Framework (*Spring Expression Language* ou *SpEL*).
+  
+Un autre ensemble de modules permettent d'intégrer la programmation orientée
+aspect (*Aspect Oriented Programming* ou AOP) dans une application. Le module
+*Spring AOP* est le module de base pour le support de l'AOP. 
 
 Les autres modules du Spring Framework permettent majoritairement d'intégrer
 dans une application des technologies tierces. Ainsi le Spring Framework agit
-comme une glu qui permet de construire des applications par adjonctions de
-fonctionnalités. Par exemple, Spring MVC est le module qui permet de créer
-des applications Web basés sur le modèle MVC et de les déployer notamment dans une conteneur
+comme une glu qui permet de construire des applications par adjonction de
+technologies. Par exemple, Spring Web est le module qui permet de créer
+des applications Web et de les déployer notamment dans un conteneur
 de Servlet Java EE, Spring Data permet de gérer les interactions avec
 des bases de données en utilisant diverses technologies : JDBC, JPA, Hibernate, MongoDB...
 

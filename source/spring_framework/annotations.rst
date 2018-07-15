@@ -7,7 +7,7 @@ ou des annotations standards Java.
 
 L'utilisation des annotations est plus intrusive que le recours à un fichier XML
 puisqu'il faut les ajouter dans le code source (et donc avoir accès au code source).
-Heureusement, le Spring Framework autorise à méler les deux techniques. Cela
+Heureusement, le Spring Framework autorise à mêler les deux techniques. Cela
 laisse donc une liberté complète aux développeurs pour définir leur contexte
 d'application.
 
@@ -128,14 +128,14 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
 
 .. note::
 
-  L'annotation `@Autowired`_ entraîne un comportement légèrement différent de
+  L'annotation `@Autowired`_ définit un comportement légèrement différent de
   la stratégie :ref:`byType <spring_autowiring_bytype>`. Si cette annotation
   est employée sur un attribut ou une méthode *setter* et qu'il existe dans
   le contexte d'application plusieurs *beans* du type correspondant, alors
   le Spring Framework va sélectionner le *bean* qui porte le même nom
   que l'attribut ou la propriété.
 
-  Il cependant préférable d'utiliser l'annotation `@Qualifier` pour qualifier
+  Il est cependant préférable d'utiliser l'annotation `@Qualifier`_ pour qualifier
   le type de dépendance.
 
 
@@ -242,7 +242,7 @@ Spring Framework pour créer un *bean* dans le contexte d'application.
 
 .. note::
 
-  Il existe trois autres annotations de stéréotypes fournies par le Spring Framework :
+  Il existe trois autres annotations de stéréotypes traitées par des modules Spring :
   `@Repository`_, `@Controller`_ et `@RestController`_. La première s'utilise
   dans le cadre de l'intégration des bases de données avec le module Spring Data
   et les deux dernières sont ajoutées pour le module Spring MVC pour le développement
@@ -284,7 +284,7 @@ supporte également ces annotations.
 .. note::
 
   La JSR-330 ne fait pas partie de l'API de Java, pour pouvoir l'utiliser vous
-  devez rajouter une dépendance dans votre projet Maven :
+  devez ajouter une dépendance dans votre projet Maven :
 
   .. code-block:: xml
 
@@ -301,7 +301,7 @@ supporte également ces annotations.
 
 `@Named`_
   Vous pouvez utiliser l'annotation `@Named`_ au lieu de `@Component`_. L'annotation
-  `@Named`_ peut également être utilisé conjointement avec `@Inject`_ pour
+  `@Named`_ peut également être utilisée conjointement avec `@Inject`_ pour
   préciser le nom du *bean* à injecter ou son qualificateur (*qualifier*).
 
   .. todo:: Exemple ici

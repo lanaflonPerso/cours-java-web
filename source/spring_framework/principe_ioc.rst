@@ -3,19 +3,19 @@
 L'inversion de contrôle
 #######################
 
-Le module principale du Spring Framework (*Spring Core*) repose sur un principe
-de conception objet unique : **l'inversion de contrôle**.
+Le module au cœur du Spring Framework (*Spring Core*) repose fondamentalement
+sur un seul principe de conception objet : **l'inversion de contrôle**.
 
 Principe et implémentation
 **************************
 
 L'inversion de contrôle (IoC - *Inversion of control*), également appelée
 inversion de dépendance, se base sur la technique de l'injection de dépendance.
-Ce principe n'est pas propre au Spring Framework mais est utilisé fréquemment
+Ce principe n'est pas propre au Spring Framework car il est utilisé fréquemment
 en programmation objet.
 
 Un objet est très souvent dépendant d'autres objets pour assurer l'ensemble de ses services.
-En Java, une dépendance entre deux objets est simplement indiqué par la présence
+En Java, une dépendance entre deux objets est simplement indiquée par la présence
 d'un attribut.
 
 Par exemple, une classe de type ``Voiture`` peut posséder un attribut de type
@@ -31,14 +31,14 @@ Par exemple, une classe de type ``Voiture`` peut posséder un attribut de type
 
   }
 
-Un objet de type ``Voiture`` a un dépendance avec un objet de type ``Moteur``.
-Au final, une application orientée objet peut être conçue comme une myriades
+Un objet de type ``Voiture`` a une dépendance avec un objet de type ``Moteur``.
+Au final, une application orientée objet peut être perçue comme une myriade
 d'objets ayant des interdépendances les uns avec les autres.
 
 Le principe d'inversion de contrôle consiste à inverser le rapport entre un objet
 et l'objet dont il dépend. Si nous reprenons l'exemple ci-dessus, nous pouvons
 considérer que puisqu'un objet de type ``Voiture`` est dépendant d'un objet
-de type ``Moteur`` alors il peut le créer au moment de sa propre création.
+de type ``Moteur`` alors il peut créer ce dernier au moment de sa propre création.
 
 ::
 
@@ -55,23 +55,23 @@ de type ``Moteur`` alors il peut le créer au moment de sa propre création.
   }
 
 Cette implémentation n'est cependant pas sans conséquence car elle introduit
-un couplage très fort entre les classes ``Voiture`` et ``Moteur``. En effet,
+un *couplage* très fort entre les classes ``Voiture`` et ``Moteur``. En effet,
 non seulement la classe ``Voiture`` est dépendante de la classe ``Moteur`` mais
 surtout, elle crée elle-même l'objet de type ``Moteur``. En architecture logicielle,
-on constate souvent qu'un classe dépendante d'une autre n'est pas nécessairement
+on constate souvent qu'une classe dépendante d'une autre n'est pas nécessairement
 la mieux placée pour créer l'objet dont elle dépend. Il peut y avoir des raisons
 très diverses pour cela. Par exemple :
 
 * La classe ``Moteur`` pourrait avoir besoin de paramètres de constructeur que
-  la classe ``Voiture`` n'a pas nécessairement à connaître
+  la classe ``Voiture`` n'a pas nécessairement à connaître.
 * Il peut exister une hiérarchie d'héritage de la classe ``Moteur``. Par exemple,
   les classes ``MoteurEssence``, ``MoteurElectrique``, ``MoteurHybride`` pourraient
-  toutes héritées de la classe ``Moteur``. Si la classe ``Voiture`` crée l'objet
-  de type ``Moteur`` alors il faudra choisir un fois pour toute dans la classe
-  ``Voiture`` le type réel du moteur
+  toutes hériter de la classe ``Moteur``. Si la classe ``Voiture`` crée l'objet
+  de type ``Moteur`` alors il faudra choisir une fois pour toute dans la classe
+  ``Voiture`` le type réel du moteur.
 * La classe ``Moteur`` pourrait être une interface. Donc il pourrait s'agir d'une
   pure abstraction. Si la classe ``Voiture`` crée l'objet implémentant cette interface,
-  alors on perd tout intérêt à travailler à partir d'abstractions telle que les interfaces.
+  alors on perd tout intérêt à travailler à partir d'une abstraction telle que les interfaces.
 
 Pour améliorer notre implémentation, nous pouvons avoir recours à l'inversion
 de contrôle en partant du principe que la classe ``Voiture`` ne devrait pas
@@ -95,7 +95,7 @@ On parle alors d'injection de dépendance par constructeur :
 
 Nous avons déplacé la responsabilité de création de l'objet de type ``Moteur``
 en dehors de la classe ``Voiture``. Nous pouvons maintenant créer facilement
-des voitures utilisant des moteurs de type différents :
+des voitures utilisant des moteurs de type différent :
 
 ::
 
@@ -153,5 +153,6 @@ Spring Framework fournit avant tout un conteneur IoC. On pourrait dire que
 le Spring Framework sert principalement à créer des objets à notre place et à s'assurer
 que les dépendances entre eux sont correctement créées. De manière plus triviale,
 lorsqu'on utilise un conteneur IoC, nous limitons dans notre code l'usage du
-mot-clé :code:`new` car nous laissons le conteneur créer les objets.
+mot-clé :code:`new` car nous laissons le conteneur créer les objets qui 
+définissent l'architecture de l'application.
 

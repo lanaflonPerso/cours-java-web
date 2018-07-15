@@ -2,7 +2,7 @@ Le langage d'expression SpEL
 ############################
 
 Un langage d'expression est un langage de programmation simplifié qui permet
-(comme son nom l'indique) d'évaluer une expression simple. Elle permet par exemple
+(comme son nom l'indique) d'évaluer une expression simple. Il permet, par exemple,
 de manipuler un graphe d'objets en accédant à des propriétés. En Java EE, il existe
 un langage d'expression (nommé simplement *EL* pour *Expression Language*) qui
 permet notamment d'accéder à des données dans une page JSP.
@@ -27,14 +27,14 @@ l'URI d'un service.
   public class Configuration {
 
     public String getUrl() {
-      return "url du service";
+      return "uri du service";
     }
 
   }
 
 
 
-D'un autre côté une classe ``Service`` doit être construite
+D'un autre côté, une classe ``Service`` doit être construite
 en lui fournissant l'URI du service connue de la classe ``Configuration``
 
 Un première implémentation pourrait être :
@@ -73,8 +73,8 @@ Et enfin, on peut définit le contexte d'application :
     </bean>
   </beans>
 
-Même si cette implémentation fonctionne parfaitement, elle a un inconvénient.
-La classe ``Service`` est obligée de connaître la classe ``Configuration``. Ce
+Même si cette implémentation fonctionne parfaitement, elle a un inconvénient :
+la classe ``Service`` est obligée de connaître la classe ``Configuration``. Ce
 que nous souhaiterions plutôt, c'est que le Spring Framework injecte le contenu
 de la propriété ``url`` du *bean* nommé "configuration". La classe ``Service``
 pourrait alors être implémentée comme ceci :
@@ -198,7 +198,7 @@ de toutes les villes nous pouvons utiliser une projection :
 Utilisation de SpEL dans les annotations
 ****************************************
 
-Si nous utilisons de annotations pour déclarer notre contexte d'application, alors
+Si nous utilisons des annotations pour déclarer notre contexte d'application, alors
 il est tout à fait possible d'utiliser SpEL, notamment avec l'annotation `@Value`_.
 Si nous reprenons notre exemple de la classe ``Configuration`` et ``Service`` :
 
