@@ -90,14 +90,19 @@ selon la technologie sous-jacente utilisée.
   
   * - Technologie tierce pour la gestion des transactions
     - Implémentation du PlatformTransactionManager_
+    - Dépendance Maven
   * - DataSource_ JDBC
     - DataSourceTransactionManager_
+    - spring-jdbc_
   * - JTA
     - JtaTransactionManager_
+    - spring-tx_
   * - JPA
     - JpaTransactionManager_
+    - spring-orm
   * - Hibernate
     - HibernateTransactionManager_
+    - spring-orm_
     
 Gestionnaire de transactions JTA
 ================================
@@ -390,4 +395,19 @@ contexte d'application.
   * notion d'isolation
 
 .. _ACID: https://fr.wikipedia.org/wiki/Propri%C3%A9t%C3%A9s_ACID
+.. _PlatformTransactionManager: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/transaction/PlatformTransactionManager.html
+.. _DataSource: https://docs.oracle.com/javase/8/docs/api/index.html?javax/sql/DataSource.html
+.. _DataSourceTransactionManager: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/datasource/DataSourceTransactionManager.html
+.. _JtaTransactionManager: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/transaction/jta/JtaTransactionManager.html
+.. _HibernateTransactionManager: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/orm/hibernate5/HibernateTransactionManager.html
+.. _JpaTransactionManager: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/orm/jpa/JpaTransactionManager.html
+.. _LocalContainerEntityManagerFactoryBean: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/orm/jpa/LocalContainerEntityManagerFactoryBean.html
+.. _@Transactional: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html
+.. _spring-jdbc: http://mvnrepository.com/artifact/org.springframework/spring-jdbc
+.. _spring-tx: http://mvnrepository.com/artifact/org.springframework/spring-tx
+.. _spring-orm: http://mvnrepository.com/artifact/org.springframework/spring-orm
+.. _EntityManagerFactory: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManagerFactory.html
+.. _RuntimeException: https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html
+.. _Error: https://docs.oracle.com/javase/8/docs/api/java/lang/Error.html
+.. _Throwable: https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html
 
