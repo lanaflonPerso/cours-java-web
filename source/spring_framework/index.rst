@@ -10,6 +10,7 @@
    /spring_framework/application_context_conf
    /spring_framework/spel
    /spring_framework/aop
+   /spring_framework/spring_tx
 
 .. todo::
 

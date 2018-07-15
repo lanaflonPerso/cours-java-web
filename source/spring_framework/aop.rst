@@ -94,6 +94,8 @@ Introduction
   Le processus qui permet à un aspect d'ajouter une méthode ou un attribut à un
   objet lors du tissage.
 
+.. _spring_aop_exemple:
+
 Exemple de programmation orientée aspect avec Spring AOP
 ********************************************************
 
