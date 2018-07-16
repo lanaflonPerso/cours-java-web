@@ -227,5 +227,5 @@ def register_pygments_filter(highlight_language, root_package_name):
 register_pygments_filter(highlight_language, highlight_root_package)
 
 rst_epilog = """
-.. |ROOT_PKG| replace:: *%s*
+.. |ROOT_PKG| replace:: %s
 """ % highlight_root_package
