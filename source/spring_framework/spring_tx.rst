@@ -29,7 +29,7 @@ effectuées (*rollback*). On parle de **démarcation transactionnelle** pour dé
 la portion de code qui doit s'exécuter dans le cadre d'une transaction.
 
 La plupart des applications utilisent une gestion de transaction dans l'interaction
-avec un SGBDR (puisque ce dernier fourni le moteur de transaction). Néanmoins il
+avec un SGBDR (puisque ce dernier fournit le moteur de transaction). Néanmoins il
 existe d'autres types de systèmes d'information qui supportent les transactions.
 C'est pour cette raison que la gestion des transactions est un domaine indépendant
 des bases de données. Parmi les standards Java, JTA (*Java Transaction API*) est
@@ -99,7 +99,7 @@ selon la technologie sous-jacente utilisée.
     - spring-tx_
   * - JPA
     - JpaTransactionManager_
-    - spring-orm
+    - spring-orm_
   * - Hibernate
     - HibernateTransactionManager_
     - spring-orm_
@@ -157,12 +157,12 @@ la stratégie des transactions au sein d'une application :
   Le plus couramment, le code qui s'exécute entre le début et la fin de la transaction
   fait partie de la transaction. Cependant, il est possible de modifier ce comportement
   par défaut en indiquant comment la transaction se *propage*, notamment quand
-  du code faisant partie d'une transaction invoque une méthode.
+  du code faisant partie d'une transaction invoque une méthode (Cf :ref:`ci-dessous <spring_tx_propagation>`).
   
 **Isolation**
   L'isolation fait partie des propriétés ACID_ d'une transaction. Cependant la
   plupart de systèmes transactionnels proposent différents niveaux d'isolation.
-  L'application a la possibilité de définir le niveau qu'elle souhaite.
+  L'application a la possibilité de définir le niveau qu'elle souhaite (Cf :ref:`ci-dessous <spring_tx_isolation>`).
 
 **Timeout**
   Cette propriété permet de préciser une durée au delà de laquelle la transaction
@@ -389,10 +389,177 @@ contexte d'application.
     
   </beans>
 
-.. todo::
+Configuration avancée pour les transactions
+*******************************************
 
-  * notion de propagation
-  * notion d'isolation
+.. _spring_tx_propagation:
+
+La propagation
+==============
+
+Si une méthode marquée comme transactionnelle (soit par un greffon soit par l'annotation
+`@Transactional`_) est exécutée, comment doit-elle se comporter si aucune transaction
+n'a encore été créée ? Et au contraire, comment doit-elle se comporter si le code appelant
+a déjà initié une transaction ? La réponse a ces questions est donnée par la stratégie
+de propagation de la transaction. Il est possible de spécifier un niveau de propagation
+soit sur le greffon :
+
+.. code-block:: xml
+
+  <tx:advice id="txAdvice" transaction-manager="txManager">
+    <tx:attributes>
+      <tx:method name="*" propagation="REQUIRED"/>
+    </tx:attributes>
+  </tx:advice>
+
+soit avec l'annotation `@Transactional`_ :
+
+::
+
+  package ROOT_PKG;
+
+  import org.springframework.transaction.annotation.Propagation;
+  import org.springframework.transaction.annotation.Transactional;
+
+  public class BusinessService {
+    
+    @Transactional(propagation=Propagation.REQUIRED)
+    public void doSomething() {
+       // ...
+    }
+
+  }
+
+La stratégie de propagation peut avoir les valeurs suivantes :
+
+**REQUIRED** (propagation par défaut)
+  Une transaction doit exister pour l'exécution de la méthode. Si une transaction
+  existe déjà alors l'exécution de la méthode s'inscrit dans cette transaction.
+  Si aucune transaction ne préexiste, une nouvelle est créée automatiquement.
+
+**REQUIRES_NEW**
+  Quel que soit le contexte d'exécution, une nouvelle transaction est créée
+  pour l'exécution de la méthode. Si une transaction préexiste, elle est suspendue
+  le temps de l'appel à la méthode. Cela signifie que si la nouvelle transaction
+  est annulée (*rollback*), cela n'aura aucun impact sur la transaction suspendue
+  qui sera réactivée après l'appel de la méthode.
+
+**SUPPORTS**
+  Si une transaction préexiste alors l'appel à la méthode est inclus dans la
+  transaction. Si aucune transaction ne préexiste, alors aucune transaction n'est
+  créée. Ce type de propagation est utile pour une méthode qui n'a pas besoin
+  de transaction pour s'exécuter mais qui peut invalider (*rollback*) une transaction
+  existante dans certains cas.
+
+**NESTED**
+  Si une transaction préexiste, alors une transaction encapsulée (nested) est
+  créée. Cela signifie que si la transaction encapsulée échoue (*rollback*), 
+  toutes les modifications réalisées par la transaction encapsulée seront abandonnées
+  mais la transaction englobante pourra être validée. Si aucune transaction
+  ne préexiste alors une nouvelle transaction est créée. Ce type avancé de propagation
+  est utilisé notamment avec les SGBDR grâce à la notion de point
+  de sauvegarde (*savepoint*) en JDBC.
+
+**MANDATORY**
+  L'appel à la méthode a besoin de s'exécuter dans une transaction. Si aucune
+  transaction ne préexiste, l'appel à cette méthode échoue.
+
+**NEVER**
+  L'appel à la méthode ne peut pas se faire dans le cadre d'une transaction. Si une
+  transaction préexiste, l'appel à cette méthode échoue.
+
+**NOT_SUPPORTED**
+  L'appel à la méthode ne peut pas se faire dans le cadre d'une transaction. Si
+  une transaction préexiste, cette dernière est suspendue le temps d'exécution de la méthode.
+
+.. _spring_tx_isolation:
+
+L'isolation
+===========
+
+L'isolation est une des propriétés fondamentales d'une transaction (le I de ACID_).
+Cela signifie que plusieurs transactions s'exécutant simultanément ne devraient
+pas s'impacter mutuellement (elles doivent être isolées les unes des autres). En pratique,
+il existe plusieurs niveaux d'isolation. Une stratégie de transaction
+peut spécifier un niveau adéquate. Il est possible de spécifier un niveau d'isolation
+soit sur le greffon :
+
+.. code-block:: xml
+
+  <tx:advice id="txAdvice" transaction-manager="txManager">
+    <tx:attributes>
+      <tx:method name="*" isolation="READ_COMMITTED"/>
+    </tx:attributes>
+  </tx:advice>
+
+soit avec l'annotation `@Transactional`_ :
+
+::
+
+  package ROOT_PKG;
+
+  import org.springframework.transaction.annotation.Isolation;
+  import org.springframework.transaction.annotation.Transactional;
+
+  public class BusinessService {
+    
+    @Transactional(isolation=Isolation.READ_COMMITTED)
+    public void doSomething() {
+       // ...
+    }
+
+  }
+
+Pour comprendre les problèmes que cherchent à adresser chaque niveau d'isolation,
+il faut comprendre les anomalies qui peuvent survenir lorsque plusieurs transactions
+s'exécutent simultanément.
+
+Lecture sale (*dirty read*)
+  Ce cas survient lorsqu'une transaction peut consulter les données modifiées par
+  une autre transaction qui n'a pas encore été validée (*commit*). Cette situation
+  s'apparente au fait qu'il n'existe pas d'isolation.
+  
+Lectures non répétables (*non repeatable reads*)
+  Une transaction lit des données. Une autre transaction modifie ces données et est
+  validée (*commit*). Si la première transaction relit les données alors ces
+  dernières ont changé. Dans cette situation, il n'est pas possible de relire
+  les données en obtenant le même résultat que la première fois.
+
+Lectures fantomatiques (*phantom reads*)
+  Une transaction lit une série d'enregistrements. Une autre transaction ajoute des enregistrements
+  à cette série et est validée (*commit*). Si la première transaction relit les
+  enregistrements alors elle voit les nouveaux enregistrements (les fantômes).  
+
+Les niveaux d'isolation possibles sont les suivants :
+
+**DEFAULT** (isolation par défaut)
+  Il ne s'agit pas vraiment d'un niveau d'isolation. Cette valeur indique simplement
+  qu'il faut utiliser le niveau d'isolation du système transactionnel. Dans le cas
+  d'une base de données, il faut utiliser le niveau d'isolation configuré dans
+  la base de données.
+
+**READ_UNCOMMITED**
+  Ce niveau autorise la lecture sale, les lectures non répétables et les lectures
+  fantomatiques. Ce niveau est en fait une désactivation de l'isolation.
+
+**READ_COMMITED**
+  Ce niveau protège des lectures sales mais il autorise les lectures non
+  répétables et les lectures fantomatiques.
+
+**REPEATABLE_READ**
+  Ce niveau protège des lectures sales et des lectures non répétables mais il
+  autorise les lectures fantomatiques.
+  
+**SERIALIZABLE**
+  Ce niveau protège des lectures sales, des lectures non répétables et des lectures
+  fantomatiques.
+  
+Le choix d'un niveau d'isolation est conditionné parfois par des fonctionnalités
+mais le plus souvent il s'agit d'un compromis entre un niveau acceptable et les
+performances. En effet, plus le niveau d'isolation est élevé et plus un système
+transactionnel doit utiliser de ressources pour le garantir. Par exemple, le niveau
+**SERIALIZABLE** peut être très consommateur de ressources.
+
 
 .. _ACID: https://fr.wikipedia.org/wiki/Propri%C3%A9t%C3%A9s_ACID
 .. _PlatformTransactionManager: https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/transaction/PlatformTransactionManager.html
