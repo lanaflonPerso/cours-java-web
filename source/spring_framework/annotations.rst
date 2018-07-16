@@ -272,7 +272,7 @@ annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la m
   }
 
 Après que le conteneur IoC ait créé une instance de ``ProduitService``, il appellera
-la méthode ``facturationService`` pour créer une *bean* appelé "facturationService".
+la méthode ``facturationService`` pour créer un *bean* appelé "facturationService".
 
 Support de annotations standard JSR-330
 ***************************************
