@@ -125,9 +125,15 @@ d'un annuaire JNDI et de déclarer un *bean* de type JtaTransactionManager_.
 
     <jee:jndi-lookup id="dataSource" jndi-name="nomdeladatasource"/>
 
-    <bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+    <bean name="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
 
   </beans>
+  
+.. tip::
+
+  Il est conseillé de nommer "transactionManager" le *bean* chargé de la gestion des transactions.
+  En effet, cette convention de nom permet à d'autres *beans* de référencer le
+  gestionnaire des transactions sans avoir à écrire de configuration.
 
 Gestionnaire de transactions JPA
 ================================
@@ -139,13 +145,78 @@ dans un *bean* de type JpaTransactionManager_.
 .. code-block:: xml
   :caption: Configuration d'un gestionnaire de transactions JPA
   
-  <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+  <bean name="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory" />
   </bean>
 
 Pour créer le *bean* "entityManagerFactory", nous pouvons utiliser la classe
 LocalContainerEntityManagerFactoryBean_ qui, comme l'indique son nom, permet
 de créer un EntityManagerFactory_ pour des transactions locales.
+
+.. code-block:: xml
+  :caption: Exemple de configuration complète avec JPA et DBCP2
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:context="http://www.springframework.org/schema/context"
+         xmlns:tx="http://www.springframework.org/schema/tx" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder location="classpath:jdbc.properties" />
+    <tx:annotation-driven />
+
+    <bean name="dataSource" 
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close">
+      <property name="driverClassName" value="${jdbc.driverClassName}" />
+      <property name="url" value="${jdbc.url}" />
+      <property name="username" value="${jdbc.username}" />
+      <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <bean name="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean name="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="persistenceUnitName" value="persistenceUnit" />
+      <property name="dataSource" ref="dataSource" />
+    </bean>
+
+  </beans>
+
+.. code-block:: properties
+  :caption: Contenu du fichier jdbc.properties
+  
+  jdbc.driverClassName=com.mysql.jdbc.Driver
+  jdbc.url=jdbc:mysql://localhot:3306/base
+  jdbc.username=root
+  jdbc.password=root
+
+.. code-block:: xml
+  :caption: Contenu du fichier persistence.xml pour une utilisation avec Hibernate
+  
+  <?xml version="1.0" encoding="UTF-8"?>
+  <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+    version="2.1">
+    <persistence-unit name="persistenceUnit">
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+      <properties>
+        <property name="hibernate.show_sql" value="true" />
+        <property name="hibernate.format_sql" value="true" />
+      </properties>
+    </persistence-unit>
+  </persistence>
 
 Stratégie des transactions
 **************************
@@ -181,6 +252,11 @@ la stratégie des transactions au sein d'une application :
   et doit être obligatoirement annulée (*rollback*). L'échec d'une transaction
   est conditionnée à l'émission d'une exception dans le code Java.
 
+.. caution::
+
+  Tous les moteurs transactionnels ne supportent pas nécessairement toutes
+  les propriétés d'une stratégie de transaction proposées par Spring Transaction.
+
 Configuration déclarative des transactions
 ******************************************
 
@@ -214,10 +290,10 @@ déterminent quand une transaction doit se déclarer et on configure un greffon
       <!-- Mise en place du gestionnaire de transactions -->
       <jee:jndi-lookup id="dataSource" jndi-name="nomdeladatasource"/>
 
-      <bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+      <bean name="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
 
       <!-- Configuration des transactions -->
-      <tx:advice id="txAdvice" transaction-manager="txManager">
+      <tx:advice id="txAdvice" transaction-manager="transactionManager">
           <tx:attributes>
               <tx:method name="get*" read-only="true"/>
               <tx:method name="*"/>
@@ -237,7 +313,7 @@ déterminent quand une transaction doit se déclarer et on configure un greffon
 
 Pour l'exemple ci-dessus, nous pouvons laisser de côté les lignes 16 à 19 puisqu'elles
 concernent la configuration du gestionnaire de transactions. Ce qu'il faut noter,
-c'est que le *bean* du gestionnaire de transactions est appelé "txManager" et
+c'est que le *bean* du gestionnaire de transactions est appelé "transactionManager" et
 qu'il est passé comme attribut à l'élément ``<tx:advice />``. Ce dernier
 correspond au greffon (*advice*) spécialisé. Il est fourni par l'espace de nom XML
 ``http://www.springframework.org/schema/tx``. Dans notre exemple, on configure
@@ -296,7 +372,7 @@ attributs ``rollback-for`` et ``no-rollback-for`` dans le greffon.
   :caption: Configuration de la stratégie de *rollback*
 
   <!-- Configuration des transactions -->
-  <tx:advice id="txAdvice" transaction-manager="txManager">
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
       <tx:attributes>
           <tx:method name="*" rollback-for="MonServiceException,DonneesInvalidesException"/>
       </tx:attributes>
@@ -313,7 +389,7 @@ il suffit de configurer le greffon de la façon suivante :
   :caption: Configuration de la stratégie de *rollback*
 
   <!-- Configuration des transactions -->
-  <tx:advice id="txAdvice" transaction-manager="txManager">
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
       <tx:attributes>
           <tx:method name="*" rollback-for="Throwable"/>
       </tx:attributes>
@@ -383,11 +459,39 @@ contexte d'application.
 
     <jee:jndi-lookup id="dataSource" jndi-name="nomdeladatasource"/>
 
-    <bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+    <bean name="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
 
-    <tx:annotation-driven transaction-manager="txManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
     
   </beans>
+
+.. tip::
+
+  Le nom "transactionManager" est le nom attendu par défaut par l'élément
+  ``<tx:annotation-driven />``. Il est donc possible de l'omettre.
+
+  .. code-block:: xml
+    :caption: Activation de la gestion des transactions par annotation
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:jee="http://www.springframework.org/schema/jee"
+           xmlns:tx="http://www.springframework.org/schema/tx"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans
+                               http://www.springframework.org/schema/beans/spring-beans.xsd
+                               http://www.springframework.org/schema/jee
+                               http://www.springframework.org/schema/jee/spring-jee.xsd
+                               http://www.springframework.org/schema/tx
+                               http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+      <jee:jndi-lookup id="dataSource" jndi-name="nomdeladatasource"/>
+
+      <bean name="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+
+      <tx:annotation-driven />
+      
+    </beans>
 
 Configuration avancée pour les transactions
 *******************************************
@@ -406,7 +510,7 @@ soit sur le greffon :
 
 .. code-block:: xml
 
-  <tx:advice id="txAdvice" transaction-manager="txManager">
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
     <tx:attributes>
       <tx:method name="*" propagation="REQUIRED"/>
     </tx:attributes>
@@ -486,7 +590,7 @@ soit sur le greffon :
 
 .. code-block:: xml
 
-  <tx:advice id="txAdvice" transaction-manager="txManager">
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
     <tx:attributes>
       <tx:method name="*" isolation="READ_COMMITTED"/>
     </tx:attributes>
