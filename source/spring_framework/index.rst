@@ -11,6 +11,7 @@
    /spring_framework/spel
    /spring_framework/aop
    /spring_framework/spring_tx
+   /spring_framework/spring_dao
 
 .. todo::
 

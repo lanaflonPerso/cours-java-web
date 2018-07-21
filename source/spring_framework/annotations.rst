@@ -11,6 +11,8 @@ Heureusement, le Spring Framework autorise à mêler les deux techniques. Cela
 laisse donc une liberté complète aux développeurs pour définir leur contexte
 d'application.
 
+.. _spring_configuration_annotations:
+
 Configuration du support des annotations
 ****************************************
 

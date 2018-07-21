@@ -135,6 +135,8 @@ d'un annuaire JNDI et de déclarer un *bean* de type JtaTransactionManager_.
   En effet, cette convention de nom permet à d'autres *beans* de référencer le
   gestionnaire des transactions sans avoir à écrire de configuration.
 
+.. _spring_tx_transaction_jpa:
+
 Gestionnaire de transactions JPA
 ================================
 
@@ -217,6 +219,35 @@ de créer un EntityManagerFactory_ pour des transactions locales.
       </properties>
     </persistence-unit>
   </persistence>
+
+.. note::
+
+  Pour activer JPA, il faut ajouter comme dépendance Maven :
+  
+  .. code-block:: xml
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>5.0.7.RELEASE</version>
+    </dependency>
+
+  et une implémentation de JPA comme, par exemple, Hibernate et une implémentation
+  d'un gestionnaire de connexions comme DBCP2 :
+
+  .. code-block:: xml
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-dbcp2</artifactId>
+      <version>2.5.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.2.17.Final</version>
+    </dependency>
 
 Stratégie des transactions
 **************************
