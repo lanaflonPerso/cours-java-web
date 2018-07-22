@@ -1,7 +1,7 @@
 Les API Web avec JAX-RS
 #######################
 
-`JAX-RS <https://jax-rs-spec.java.net/>`__ est l'API conçue pour
+`JAX-RS <https://github.com/jax-rs>`__ est l'API conçue pour
 implémenter des API Web (aussi appelées Web Services RESTful). Les API
 Web exploitent les possibilités du protocole HTTP pour permettre à des
 systèmes d'information de communiquer et de s'échanger des services.
@@ -14,9 +14,9 @@ Web plus traditionnelles.
 JAX-RS 2.x est défini par la `JSR
 339 <https://jcp.org/en/jsr/detail?id=339>`__. Comme pour tous les
 services et toutes API Java EE, il existe plusieurs implémentations de
-cette spécification : `Jersey <https://jersey.java.net/>`__
+cette spécification : `Jersey <https://jersey.github.io/>`__
 (l'implémentation de référence),
-`RestEasy <http://resteasy.jboss.org/>`__ (intégré dans le serveur Wildfly), `Apache
+`RestEasy <https://resteasy.github.io/>`__ (intégré dans le serveur Wildfly), `Apache
 CXF <https://cxf.apache.org/docs/jax-rs.html>`__.
 
 La notion de ressource
@@ -29,17 +29,17 @@ DELETE, OPTIONS... Un client HTTP positionne dans sa requête une méthode
 pour indiquer le type d'opération que le serveur doit effectuer sur la
 ressource.
 
-`GET <http://tools.ietf.org/html/rfc7231#section-4.3.1>`__
+`GET <https://tools.ietf.org/html/rfc7231#section-4.3.1>`__
     Demande au serveur une représentation de la ressource cible.
-`HEAD <http://tools.ietf.org/html/rfc7231#section-4.3.2>`__
+`HEAD <https://tools.ietf.org/html/rfc7231#section-4.3.2>`__
     Comme un GET sauf que la réponse ne contient jamais de corps. Cette
     méthode est utile pour obtenir les informations des en-têtes HTTP et
     valider une requête sans envoyer ni recevoir de corps de message.
-`PUT <http://tools.ietf.org/html/rfc7231#section-4.3.4>`__
+`PUT <https://tools.ietf.org/html/rfc7231#section-4.3.4>`__
     Crée ou met à jour l'état d'une ressource identifiée par l'URI.
-`DELETE <http://tools.ietf.org/html/rfc7231#section-4.3.5>`__
+`DELETE <https://tools.ietf.org/html/rfc7231#section-4.3.5>`__
     Détruit l'association de l'URI avec l'état de la ressource.
-`POST <http://tools.ietf.org/html/rfc7231#section-4.3.3>`__
+`POST <https://tools.ietf.org/html/rfc7231#section-4.3.3>`__
     La sémantique de la méthode POST est probablement la plus compliquée
     à saisir car cette méthode est utilisable dans différentes
     situations.
@@ -51,19 +51,19 @@ ressource.
     -  Le client souhaite que le serveur effectue un traitement.
     -  Le client souhaite modifier partiellement une ressource.
 
-`OPTIONS <http://tools.ietf.org/html/rfc7231#section-4.3.7>`__
+`OPTIONS <https://tools.ietf.org/html/rfc7231#section-4.3.7>`__
     Permet d'obtenir les options de communication (par exemple : les
     méthodes autorisées pour l'URI). Le serveur doit retourner ces
     informations dans les en-têtes de réponse. Ainsi l'en-tête de
     réponse
-    `Allow <http://tools.ietf.org/html/rfc7231#section-7.4.1>`__
+    `Allow <https://tools.ietf.org/html/rfc7231#section-7.4.1>`__
     liste les méthodes HTTP autorisées pour cette URI.
-`TRACE <http://tools.ietf.org/html/rfc7231#section-4.3.8>`__
+`TRACE <https://tools.ietf.org/html/rfc7231#section-4.3.8>`__
     Permet de simuler un écho de la requête. Cette méthode n'est pas
     utilisée pour la réalisation d'API Web car elle est surtout utile
     pour tester la configuration du réseau et obtenir des informations
     des proxies.
-`CONNECT <http://tools.ietf.org/html/rfc7231#section-4.3.6>`__
+`CONNECT <https://tools.ietf.org/html/rfc7231#section-4.3.6>`__
     Établit un tunnel à travers un proxy. Cette méthode n'est pas
     utilisée pour la réalisation d'API Web.
 
@@ -117,9 +117,9 @@ Implémenter des ressources avec JAX-RS
 
 JAX-RS permet d'implémenter des ressources sous la forme de composants
 Java EE. Une classe représentant une ressource est identifiée grâce à
-l'annotation `@Path <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`__.
+l'annotation `@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`__.
 
-`@Path <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`__
+`@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`__
     L'annotation ``@javax.ws.rs.Path`` indique le chemin d'URI qui
     identifie la ressource. Cette annotation est utilisable sur une
     classe et sur les méthodes. Utilisée sur une classe, cette
@@ -383,13 +383,13 @@ le spécifier avec une expression régulière :
 Par défaut, JAX-RS utilise comme expression régulière pour un
 paramètre de chemin ``[^/]+?``
 
-`@Consumes <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Consumes.html>`__ / `@Produces <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Produces.html>`__
+`@Consumes <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Consumes.html>`__ / `@Produces <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Produces.html>`__
     Lorsqu'un client soumet une requête pour transmettre des
     informations au serveur (comme des données de formulaire) et quand
     un serveur retourne du contenu à un client, il est nécessaire de
     préciser le type de contenu. On utilise pour cela l'en-tête HTTP
     ``Content-type`` avec comme valeur le type
-    `MIME <http://fr.wikipedia.org/wiki/Type_MIME>`__.
+    `MIME <https://fr.wikipedia.org/wiki/Type_MIME>`__.
 
     Une liste (non exhaustive) des types MIME les plus courants est :
 
@@ -413,9 +413,9 @@ paramètre de chemin ``[^/]+?``
 
     La classe et/ou les méthodes d'une Ressource JAX-RS peuvent utiliser
     les annotations
-    `@Consumes <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Consumes.html>`__
+    `@Consumes <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Consumes.html>`__
     et
-    `@Produces <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Produces.html>`__
+    `@Produces <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Produces.html>`__
     pour indiquer respectivement le type de contenu attendu dans la
     requête et le type de contenu de la réponse.
 
@@ -487,7 +487,7 @@ paramètre de chemin ``[^/]+?``
 
         @Produces(MediaType.APPLICATION_JSON)
 
-`@QueryParam <http://docs.oracle.com/javaee/7/api/javax/ws/rs/QueryParam.html>`__
+`@QueryParam <https://docs.oracle.com/javaee/7/api/javax/ws/rs/QueryParam.html>`__
     Comme pour les paramètres de chemin, il est possible de récupérer la
     valeur des paramètres de la requête comme arguments des méthodes de
     la ressource JAX-RS grâce à l'annotation
@@ -501,7 +501,7 @@ paramètre de chemin ``[^/]+?``
             // ...
           }
 
-`@FormParam <http://docs.oracle.com/javaee/7/api/javax/ws/rs/FormParam.html>`__
+`@FormParam <https://docs.oracle.com/javaee/7/api/javax/ws/rs/FormParam.html>`__
     Les données transmises *via* un formulaire HTML peuvent être
     récupérées comme arguments des méthodes de la ressource JAX-RS grâce
     à l'annotation ``@javax.ws.rs.FormParam``. Pour le cas d'une requête
@@ -524,7 +524,7 @@ paramètre de chemin ``[^/]+?``
     -  Pour récupérer la valeur d'un Cookie HTTP, il faut utiliser
        l'annotation ``@javax.ws.rs.CookieParam``
 
-`@Context <http://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Context.html>`__
+`@Context <https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Context.html>`__
     Si vous avez besoin d'obtenir des informations sur le contexte
     d'exécution de la requête, vous pouvez utilisez l'annotation
     ``@javax.ws.rs.core.Context`` pour obtenir une instance d'une
@@ -568,7 +568,7 @@ Data binding
 Lorsqu'une méthode d'une ressource retourne une instance d'un objet
 Java, JAX-RS va tenter de créer une réponse au format souhaité en
 fonction de l'annotation
-`@Produces <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Produces.html>`__.
+`@Produces <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Produces.html>`__.
 Il existe un ensemble de règles par défaut permettant de passer d'un
 objet Java à un document XML ou JSON. On appelle l'ensemble de ces règle
 le **data binding**.
@@ -693,7 +693,7 @@ en paramètre un document JSON transformé en une instance Java.
 
 Il est également possible de passer d'une instance Java à un document
 XML ou d'un document XML à une instance Java. Pour cela, JAX-RS utilise
-`JAXB <https://jaxb.java.net/tutorial/>`__ (Java Architecture for XML
+`JAXB <https://github.com/javaee/jaxb-v2>`__ (Java Architecture for XML
 Binding) qui intégré au langage Java. JAXB utilise des annotations pour
 fournir des indications sur la façon dont une classe Java peut être
 associée à un document XML.
@@ -884,7 +884,7 @@ Java en laissant à JAX-RS le soin de créer la réponse HTTP. C'est
 notamment le cas si l'on souhaite retourner un code statut HTTP
 différent de 200 ou ajouter des en-têtes HTTP dans la réponse. Pour
 cela, il faut retourner une instance de la classe
-`javax.rs.core.Response <http://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.html>`__.
+`javax.rs.core.Response <https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.html>`__.
 Cette classe suit le *design pattern builder* et offre un ensemble de
 méthodes utilitaires pour construire la réponse. Au final, il suffit
 d'appeler la méthode ``build()`` et retourner le résultat.
@@ -945,24 +945,24 @@ Par défaut, si une méthode d'une ressource génère une exception, alors
 JAX-RS la transforme en erreur HTTP 500. Si l'on souhaite retourner un
 statut d'erreur différent, il est bien évidemment possible d'utiliser la
 classe
-`javax.rs.core.Response <http://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.html>`__,
+`javax.rs.core.Response <https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.html>`__,
 mais il est plus intéressant de fournir les indications nécessaires à
 JAX-RS pour modifier son comportement selon le type d'exception lancé
 par la méthode de la ressource.
 
 Il est possible de lancer une exception de type
-`WebApplicationException <http://docs.oracle.com/javaee/7/api/javax/ws/rs/WebApplicationException.html>`__
+`WebApplicationException <https://docs.oracle.com/javaee/7/api/javax/ws/rs/WebApplicationException.html>`__
 ou une exception en héritant. JAX-RS fournit déjà des exceptions
 spécialisées pour les codes de statut les plus courants :
-`NotFoundException <http://docs.oracle.com/javaee/7/api/javax/ws/rs/NotFoundException.html>`__,
-`BadRequestException <http://docs.oracle.com/javaee/7/api/javax/ws/rs/BadRequestException.html>`__,
-`ServerErrorException <http://docs.oracle.com/javaee/7/api/javax/ws/rs/ServerErrorException.html>`__...
+`NotFoundException <https://docs.oracle.com/javaee/7/api/javax/ws/rs/NotFoundException.html>`__,
+`BadRequestException <https://docs.oracle.com/javaee/7/api/javax/ws/rs/BadRequestException.html>`__,
+`ServerErrorException <https://docs.oracle.com/javaee/7/api/javax/ws/rs/ServerErrorException.html>`__...
 et même la possibilité de traiter les redirections avec l'exception
-`RedirectionException <http://docs.oracle.com/javaee/7/api/javax/ws/rs/RedirectionException.html>`__.
+`RedirectionException <https://docs.oracle.com/javaee/7/api/javax/ws/rs/RedirectionException.html>`__.
 
 Il est également possible de déclarer une classe implémentant
 l'interface
-`ExceptionMapper <http://docs.oracle.com/javaee/7/api/javax/ws/rs/ext/ExceptionMapper.html>`__.
+`ExceptionMapper <https://docs.oracle.com/javaee/7/api/javax/ws/rs/ext/ExceptionMapper.html>`__.
 Un ``ExceptionMapper`` est déclaré pour un type d'exception et ses
 exceptions filles.
 
@@ -998,7 +998,7 @@ générera une réponse de type 400 (Bad Request) avec un message en texte
 brut correspondant au message de l'exception.
 
 Notez l'utilisation de l'annotation
-`@Provider <http://docs.oracle.com/javaee/7/api/javax/ws/rs/ext/Provider.html>`__
+`@Provider <https://docs.oracle.com/javaee/7/api/javax/ws/rs/ext/Provider.html>`__
 dans l'exemple précédent. Cette annotation est utilisée dans JAX-RS pour
 signaler des classes utilitaires qui permettent d'étendre le
 comportement par défaut de JAX-RS.
@@ -1006,7 +1006,7 @@ comportement par défaut de JAX-RS.
 La validation avec Bean Validation
 **********************************
 
-Le serveur d'application fournit un service nommé `Bean Validation <http://beanvalidation.org/>`__ (JSR303). 
+Le serveur d'application fournit un service nommé `Bean Validation <https://beanvalidation.org/>`__ (JSR303). 
 Bean Validation permet d'exprimer les contraintes de validité d'un objet ou des
 paramètres d'une méthode de ressource avec des annotations. JAX-RS
 utilise les informations de ces annotations pour valider les requêtes
@@ -1109,7 +1109,7 @@ HTTP.
 
 La documentation des annotations de Bean Validation est disponible dans
 la documentation de l'API Java EE :
-http://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html
+https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html
 
 
 .. only:: javaee
@@ -1119,10 +1119,10 @@ http://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary
 
     Comme les Servlets, les ressources racines (celles identifiées par
     l'annotation
-    `@Path <http://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`__
+    `@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>`__
     sur la classe) sont des composants Java EE. À ce titre, elles supportent
     l'injection de dépendance avec, par exemple, l'annotation
-    `@Resource <http://docs.oracle.com/javaee/7/api/javax/annotation/Resource.html>`__.
+    `@Resource <https://docs.oracle.com/javaee/7/api/javax/annotation/Resource.html>`__.
 
 
     .. code-block:: java

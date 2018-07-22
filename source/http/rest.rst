@@ -6,7 +6,7 @@ distribués.
 
 En 2000, Roy Fielding a formalisé l'architecture REST dans le chapitre 5
 de sa `thèse de
-doctorat <http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm>`__.
+doctorat <https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm>`__.
 En 2007, Leonard Richardson et Sam Ruby présentent ROA (Resource
 Oriented Architecture) dans leur ouvrage *RESTful Web Services*. ROA est
 devenu depuis le modèle d'application de REST pour les API Web.
@@ -39,7 +39,7 @@ qu'une ressource ?
 
     Any information that can be named can be a resource
 
-    -- Roy Fielding - `Thèse de doctorat <http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`__
+    -- Roy Fielding - `Thèse de doctorat <https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`__
 
 Dans le domaine du Web, la notion d'adressabilité (*addressability*)
 vient renforcer celle de nommage. Une ressource Web est donc quelque
@@ -473,7 +473,7 @@ concerne la sémantique applicative, le plus efficace consiste à
 réutiliser ce qui a déjà été défini par d'autres. À ce titre, le recours
 à des formats proches des
 `microformats <http://microformats.org/wiki/Main_Page>`__ ou des `schémas
-Web <http://schema.org/>`__ permettent de créer un standard de fait pour
+Web <https://schema.org/>`__ permettent de créer un standard de fait pour
 la représentation de certaines ressources. Enfin, pour une API Web qui
 souhaiterait utiliser HTML comme format hypermédia de représentation, il
 existe trois techniques très simples pour introduire une sémantique
@@ -507,7 +507,7 @@ Le modèle de maturité de Richardson pour une approche REST
 Livres
 ======
 
-`Architectural Styles and the Design of Network-based Software Architectures <http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm>`__
+`Architectural Styles and the Design of Network-based Software Architectures <https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm>`__
     Roy Fielding - University of California, Irvine 2000 (La thèse de doctorat incluant la présentation de REST)
 `RESTful Web APIs <http://shop.oreilly.com/product/0636920028468.do>`__
     Leonard Richardson, Mike Amundsen, Sam Ruby - O'Reilly 2013

@@ -262,9 +262,9 @@ En général, il est plus simple d'opter pour une approche déclarative
 .. _DataSource: https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html
 .. _EntityManager: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html
 .. _EntityManagerFactory: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManagerFactory.html
-.. _@PersistenceUnit: http://docs.oracle.com/javaee/7/api/javax/persistence/PersistenceUnit.html
-.. _@PersistenceContext: http://docs.oracle.com/javaee/7/api/javax/persistence/PersistenceContext.html
-.. _UserTransaction: http://docs.oracle.com/javaee/7/api/javax/transaction/UserTransaction.html
+.. _@PersistenceUnit: https://docs.oracle.com/javaee/7/api/javax/persistence/PersistenceUnit.html
+.. _@PersistenceContext: https://docs.oracle.com/javaee/7/api/javax/persistence/PersistenceContext.html
+.. _UserTransaction: https://docs.oracle.com/javaee/7/api/javax/transaction/UserTransaction.html
 .. _@Resource: https://docs.oracle.com/javaee/7/api/javax/annotation/Resource.html
 .. _EntityTransaction: https://docs.oracle.com/javaee/7/api/javax/persistence/EntityTransaction.html
 .. _@RequestScoped: https://docs.oracle.com/javaee/7/api/javax/enterprise/context/RequestScoped.html

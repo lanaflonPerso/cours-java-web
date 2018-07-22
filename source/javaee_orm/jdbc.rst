@@ -600,7 +600,7 @@ Pour cela, on utilise la démarcation transactionnelle.
 .. _PostgreSQL: https://www.postgresql.org/
 .. _Apache Derby: http://db.apache.org/derby/
 .. _SQLServer: https://docs.microsoft.com/fr-fr/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017
-.. _SQLite: http://www.sqlite.org/
+.. _SQLite: https://www.sqlite.org/
 .. _HSQLDB: http://hsqldb.org/
 .. _Maven Repository: http://mvnrepository.com/
 .. _site d'Oracle: https://www.oracle.com/technetwork/database/features/jdbc/index-091264.html

@@ -25,10 +25,10 @@ suffit de taper en ligne de commande :
     sudo apt install git
 
 Pour Mac, vous pouvez télécharger l'installeur à l'adresse :
-http://git-scm.com/download/mac
+https://git-scm.com/download/mac
 
 Pour Windows, vous pouvez télécharger l'installeur à l'adresse :
-http://git-scm.com/download/win
+https://git-scm.com/download/win
 
 Configuration
 *************

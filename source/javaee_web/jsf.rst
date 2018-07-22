@@ -772,7 +772,7 @@ La validation avec Bean Validation
 **********************************
 
 Le serveur d'application fournit un autre service nommé 
-`Bean Validation <http://beanvalidation.org/>`__ (JSR303). Bean Validation
+`Bean Validation <https://beanvalidation.org/>`__ (JSR303). Bean Validation
 permet d'exprimer les contraintes de validité d'un objet avec des
 annotations. JSF est capable d'interagir avec Bean Validation pour la
 validation de formulaire. Ainsi, plutôt que de déclarer la validation

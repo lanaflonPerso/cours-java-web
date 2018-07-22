@@ -301,5 +301,5 @@ Exercice
 .. _Ant: http://ant.apache.org
 .. _Maven: http://maven.apache.org
 .. _Gradle: https://gradle.org
-.. _Eclipse: https://eclipse.org
+.. _Eclipse: https://www.eclipse.org/
 .. _iText: https://itextpdf.com/
