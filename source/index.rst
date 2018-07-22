@@ -51,6 +51,8 @@ Sommaire
 
 .. include:: spring_framework/index.rst
 
+.. include:: spring_data/index.rst
+
 .. include:: spring_mvc/index.rst
 
 .. include:: angularjs/index.rst
