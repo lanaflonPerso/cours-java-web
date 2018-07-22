@@ -126,7 +126,64 @@ Spring Framework va chercher le *bean* du contexte d'application dont
 le type est applicable à chaque paramètre du constructeur, aux paramètres de la méthode
 ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowiring_bytype>`.
 
-.. todo:: Exemple ici
+.. code-block:: java
+  :caption: Exemple d'utilisation de @Autowired sur un attribut
+
+  package ROOT_PKG;
+
+  import javax.sql.DataSource;
+
+  import org.springframework.beans.factory.annotation.Autowired;
+
+  public class UserDao {
+    
+    @Autowired
+    private DataSource dataSource;
+    
+    // ..
+  }
+
+.. code-block:: java
+  :caption: Exemple d'utilisation de @Autowired sur une méthode
+
+  package ROOT_PKG;
+
+  import javax.sql.DataSource;
+
+  import org.springframework.beans.factory.annotation.Autowired;
+
+  public class UserDao {
+    
+    private DataSource dataSource;
+    
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+      this.dataSource = dataSource;
+    }
+    
+    // ..
+  }
+
+.. code-block:: java
+  :caption: Exemple d'utilisation de @Autowired sur un constructeur
+
+  package ROOT_PKG;
+
+  import javax.sql.DataSource;
+
+  import org.springframework.beans.factory.annotation.Autowired;
+
+  public class UserDao {
+    
+    private DataSource dataSource;
+    
+    @Autowired
+    public UserDao(DataSource dataSource) {
+      this.dataSource = dataSource;
+    }
+    
+    // ..
+  }
 
 .. note::
 
@@ -145,15 +202,62 @@ L'annotation @Qualifier
 ***********************
 
 L'annotation `@Qualifier`_ permet de qualifier, c'est-à-dire de préciser
-le bean qu'y doit être injecté. Dans la classe Java, on ajoute l'annotation sur un attribut
-ou sur un paramètre d'une méthode à injecter et dans le fichier de contexte, on
+le *bean* à injecter. Dans la classe Java, on ajoute l'annotation sur un attribut
+ou sur un paramètre d'une méthode à injecter. Dans le fichier de contexte, on
 déclare un *bean* compatible avec l'élément ``<qualifier />`` avec la même valeur.
 
 L'annotation `@Qualifier`_ permet de guider le Spring Framework dans le choix
 du *bean* à injecter si plusieurs *beans* d'un type compatible sont déclarés
 dans le contexte d'application.
 
-.. todo:: Exemple ici
+.. code-block:: java
+  :caption: Utilisation de l'annotation `@Qualifier`_
+
+  package ROOT_PKG;
+
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.beans.factory.annotation.Qualifier;
+
+  public class UserService {
+
+    private UserFilter blacklistFilter;
+    private UserFilter whitelistFilter;
+
+    @Autowired
+    public UserService(@Qualifier("blacklist") UserFilter blacklistFilter, 
+                       @Qualifier("whitelist") UserFilter whitelistFilter) {
+      this.blacklistFilter = blacklistFilter;
+      this.whitelistFilter = whitelistFilter;
+    }
+
+    // ..
+  }
+
+.. code-block:: xml
+  :caption: Déclaration des beans avec l'élément <qualifier/>
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:context="http://www.springframework.org/schema/context"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+                             http://www.springframework.org/schema/beans/spring-beans.xsd
+                             http://www.springframework.org/schema/context
+                             http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    
+    <bean name="userService" class="ROOT_PKG.UserService"/>
+      
+    <bean class="ROOT_PKG.UserFilter">
+      <qualifier value="whitelist"/>
+    </bean>
+
+    <bean class="ROOT_PKG.UserFilter">
+      <qualifier value="blacklist"/>
+    </bean>
+
+  </beans>
 
 Les annotations JSR-250
 ***********************
@@ -169,19 +273,61 @@ par le Spring Framework :
   attribut ``name`` alors l'injection de dépendance se fait en cherchant un
   *bean* du même nom.
 
-  .. todo:: Exemple ici
+  ::
+
+    package ROOT_PKG;
+
+    import javax.annotation.Resource;
+    import javax.sql.DataSource;
+
+    public class UserDao {
+
+      @Resource(name="dataSource")
+      private DataSource dataSource;
+
+      // ..
+    }
+
 
 `@PostConstruct`_
   Cette annotation s'utilise sur une méthode publique afin de signaler que cette
   méthode doit être appelée par le conteneur IoC après l'initialisation du *bean*.
 
-  .. todo:: Exemple ici
-
 `@PreDestroy`_
   Cette annotation s'utilise sur une méthode publique afin de signaler que cette
   méthode doit être appelée juste avant la fermeture du contexte d'application.
 
-  .. todo:: Exemple ici
+::
+
+  package ROOT_PKG;
+
+  import java.sql.Connection;
+  import java.sql.SQLException;
+
+  import javax.annotation.PostConstruct;
+  import javax.annotation.PreDestroy;
+  import javax.annotation.Resource;
+  import javax.sql.DataSource;
+
+  public class UserDao {
+
+    @Resource(name="dataSource")
+    private DataSource dataSource;
+
+    private Connection connection;
+    
+    @PostConstruct
+    public void openConnection() throws SQLException {
+      connection = dataSource.getConnection();
+    }
+    
+    @PreDestroy
+    public void closeConnection() throws SQLException {
+      connection.close();
+    }
+
+    // ...
+  }
 
 Détection automatique des beans (*autoscan*)
 ********************************************
@@ -240,7 +386,19 @@ Spring Framework pour créer un *bean* dans le contexte d'application.
   les classes annotées par l'une ou l'autre de la même manière. Il s'agit plus
   d'un repère pour les développeurs.
 
-.. todo:: Exemple ici
+.. code-block:: java
+  :caption: Utilisation de l'annotation `@Service`_
+
+  package ROOT_PKG;
+
+  import org.springframework.stereotype.Service;
+
+  @Service
+  public class UserService {
+
+    // ...
+
+  }
 
 .. note::
 
@@ -279,8 +437,8 @@ la méthode ``facturationService`` pour créer un *bean* appelé "facturationSer
 Support de annotations standard JSR-330
 ***************************************
 
-À la suite du succès du Spring Framework, la communauté Java a proposé des annotations
-pour la dépendance d'injection dans le standard JSR-330. Le Spring Framework
+La communauté Java a proposé des annotations
+pour déclarer une dépendance d'injection dans le standard JSR-330. Le Spring Framework
 supporte également ces annotations.
 
 .. note::
