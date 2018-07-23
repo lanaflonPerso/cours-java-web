@@ -3,7 +3,7 @@ Sommaire
 
 .. admonition:: Liens utiles
 
-    .. only:: langage_java
+    .. only:: langage_java or spring_framework
 
         L'API Java
             https://docs.oracle.com/javase/8/docs/api/index.html
@@ -24,6 +24,11 @@ Sommaire
         Documentation du Spring Framework
             https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/index.html
 
+    .. only:: spring_data
+    
+        Documentation Spring Data JPA
+            https://docs.spring.io/spring-data/jpa/docs/2.0.8.RELEASE/reference/html/
+
     .. only:: spring_mvc
 
         Documentation Spring Web
@@ -33,6 +38,14 @@ Sommaire
 
         L'API Spring
             https://docs.spring.io/spring/docs/current/javadoc-api/
+
+    .. only:: spring_data
+    
+        L'API Spring Data Common
+            https://docs.spring.io/spring-data/commons/docs/current/api/index.html
+
+        L'API Spring Data JPA
+            https://docs.spring.io/spring-data/jpa/docs/2.0.8.RELEASE/api/
 
     .. only:: spring_framework
 

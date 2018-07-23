@@ -225,6 +225,8 @@ crée cette requête à travers un CriteriaBuilder_ que l'on peut récupérer gr
 Pour des exemples supplémentaires d'utilisation du CriteriaBuilder_,
 reportez-vous au `Wikibook <https://en.wikibooks.org/wiki/Java_Persistence/Criteria>`__.
 
+.. _jpa_requetes_nommees:
+
 Utilisation de requêtes nommées
 *******************************
 
