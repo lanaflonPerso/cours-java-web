@@ -198,7 +198,7 @@ de créer un EntityManagerFactory_ pour des transactions locales.
   :caption: Contenu du fichier jdbc.properties
   
   jdbc.driverClassName=com.mysql.jdbc.Driver
-  jdbc.url=jdbc:mysql://localhot:3306/base
+  jdbc.url=jdbc:mysql://localhost:3306/base
   jdbc.username=root
   jdbc.password=root
 
