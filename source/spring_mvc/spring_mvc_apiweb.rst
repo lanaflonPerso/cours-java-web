@@ -249,7 +249,7 @@ le document JSON en une instance de la classe *Item*.
 
 .. note::
 
-    La désérialisation du documnt JSON vers l'objet Java sera réalisée par la bibliothèque Jackson.
+    La désérialisation du document JSON vers l'objet Java sera réalisée par la bibliothèque Jackson.
 
 Si nous déployons sur notre serveur local notre application dans le contexte ``myapp``, nous
 pouvons utiliser le programme cURL_ pour envoyer des données à notre API :
@@ -321,7 +321,7 @@ de retourner un objet de type `ResponseEntity<T>`_.
 Un objet `ResponseEntity<T>`_ peut être créé à partir de méthodes statiques
 correspondant aux cas d'utilisation les plus courants en HTTP. Dans l'exemple
 ci-dessus, la méthode `ResponseEntity<T>.created`_ permet de créer une réponse
-avec code statut 201 (*Created*) et un en-tête ``Location`` contenant le lien vers
+avec un code statut 201 (*Created*) et un en-tête ``Location`` contenant le lien vers
 la ressource créée sur le serveur. Ainsi la méthode `ResponseEntity<T>.created`_
 attend en paramètre l'URI de la ressource. Dans l'exemple ci-dessus, on accède
 à une instance de UriComponentsBuilder_ qui est fournie par Spring MVC afin
@@ -427,7 +427,7 @@ Parmi les annotations utiles, on peut citer :
 `@JsonPropertyOrder`_
     Cette annotation ajoutée à une classe permet de fixer l'ordre des éléments dans le document.
 `@JsonView`_
-    Cette annotation ajoutée à un attribut permet de définir un ou des vues JSON pour lesquelles
+    Cette annotation ajoutée à un attribut permet de définir une ou des vues JSON pour lesquelles
     cet attribut doit apparaître (Cf exemple ci-dessous).
 
 .. note::
@@ -496,8 +496,8 @@ nous allons créer les interfaces *ItemViewWithoutQuantity* et *ItemViewWithQuan
 
     }
 
-Notez que *ItemViewWitQuantity* hérite de *ItemViewWithoutQuantity* car dans notre
-exemple nous voulons simplement exclure dans certains cas l'attribut quantity
+Notez que *ItemViewWithQuantity* hérite de *ItemViewWithoutQuantity* car dans notre
+exemple nous voulons simplement exclure dans certains cas l'attribut ``quantity``
 de la sérialisation. Nous pouvons revoir la définition de la classe *Item* en
 ajoutant des annotations `@JsonView`_ pour attribuer une vue à chaque attribut :
 
