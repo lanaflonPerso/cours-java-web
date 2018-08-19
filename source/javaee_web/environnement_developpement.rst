@@ -31,7 +31,7 @@ La liste des outils requis est :
 
 **Eclipse IDE for Java EE Web Developpers**
     | L'environnement de développement
-    | http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen2
+    | http://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers
 
     Il existe plusieurs distributions d'Eclipse. Il est impératif
     d'installer **la version pour le développement Java EE**. Si vous
@@ -41,8 +41,8 @@ La liste des outils requis est :
 
 **Wildfly**
     | Le serveur d'application Java EE Wildfly (anciennement JBoss Application Server)
-    | Windows : http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.zip
-    | MacOS et Linux : http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.tar.gz
+    | Windows : http://download.jboss.org/wildfly/13.0.0.Final/wildfly-13.0.0.Final.zip
+    | MacOS et Linux : http://download.jboss.org/wildfly/13.0.0.Final/wildfly-13.0.0.Final.tar.gz
 
     Nous verrons bientôt que les applications Java EE ne sont pas des
     programmes indépendants (standalone). Les applications Java EE sont
@@ -122,7 +122,7 @@ license Red Hat. Attention il faut attendre un peu avant que l'installation soit
 effective et il vous faudra redémarrer Eclipse.
 
 Vous pouvez maintenant créer un serveur Wildfly en sélectionnant
-:guilabel:`JBoss Community > Wildfly 11`. 
+:guilabel:`JBoss Community > Wildfly 13`.
 
 |Ajout d'un serveur dans Eclipse|
 
@@ -169,9 +169,9 @@ Puis répondez aux questions pour créer une utilisation admin :
     Enter the details of the new user to add.
     Using realm 'ManagementRealm' as discovered from the existing property files.
     Username : admin
-    User 'admin' already exists and is enabled, would you like to... 
+    User 'admin' already exists and is disabled, would you like to... 
      a) Update the existing user password and roles 
-     b) Disable the existing user 
+     b) Enable the existing user 
      c) Type a new username
     (a): a
     Password recommendations are listed below. To modify these restrictions edit the add-user.properties configuration file.
@@ -183,10 +183,10 @@ Puis répondez aux questions pour créer une utilisation admin :
     Are you sure you want to use the password entered yes/no? yes
     Re-enter Password : 
     What groups do you want this user to belong to? (Please enter a comma separated list, or leave blank for none)[  ]: 
-    Updated user 'admin' to file '/home/david/bin/wildfly-11.0.0.Final/standalone/configuration/mgmt-users.properties'
-    Updated user 'admin' to file '/home/david/bin/wildfly-11.0.0.Final/domain/configuration/mgmt-users.properties'
-    Updated user 'admin' with groups  to file '/home/david/bin/wildfly-11.0.0.Final/standalone/configuration/mgmt-groups.properties'
-    Updated user 'admin' with groups  to file '/home/david/bin/wildfly-11.0.0.Final/domain/configuration/mgmt-groups.properties'
+    Updated user 'admin' to file '/home/david/bin/wildfly-13.0.0.Final/standalone/configuration/mgmt-users.properties'
+    Updated user 'admin' to file '/home/david/bin/wildfly-13.0.0.Final/domain/configuration/mgmt-users.properties'
+    Updated user 'admin' with groups  to file '/home/david/bin/wildfly-13.0.0.Final/standalone/configuration/mgmt-groups.properties'
+    Updated user 'admin' with groups  to file '/home/david/bin/wildfly-13.0.0.Final/domain/configuration/mgmt-groups.properties'
     Is this new user going to be used for one AS process to connect to another AS process? 
     e.g. for a slave host controller connecting to the master or for a Remoting connection for server to server EJB calls.
     yes/no? yes

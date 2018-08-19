@@ -382,9 +382,9 @@ Exercice
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
-                    <version>1.2.1.Final</version>
+                    <version>1.2.2.Final</version>
                     <configuration>
-                        <version>11.0.0.Final</version>
+                        <version>13.0.0.Final</version>
                     </configuration>
                 </plugin>
             </plugins>

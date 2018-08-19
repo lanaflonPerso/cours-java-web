@@ -6,8 +6,8 @@ une requête entrante sur un serveur et de générer une réponse dynamique.
 La plupart du temps, les servlets sont utilisées pour traiter des
 requêtes HTTP et générer dynamiquement une réponse.
 
-L'API **servlet** est définie par la spécification JSR-340_ et la version 
-actuelle est la 3.1.
+L'API **servlet** est définie par la spécification JSR-000369_ et la version 
+actuelle est la 4.0.
 
 Structure d'une servlet HTTP
 ****************************
@@ -275,11 +275,10 @@ précise un ou des motifs d'URL pour cette servlet de la façon suivante :
 .. code-block :: xml
 
     <web-app 
-      xmlns="https://java.sun.com/xml/ns/javaee" 
-      xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="https://java.sun.com/xml/ns/javaee 
-                          https://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-      version="3.0">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+        version="4.0">
       
       <!-- la déclaration de la servlet -->
       <servlet>
@@ -381,7 +380,7 @@ Exercice
         L'intégration du projet dans Eclipse suit la même procédure que
         celle vue dans :ref:`maven_eclipse_import`
 
-.. _JSR-340: https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html
+.. _JSR-000369: https://jcp.org/aboutJava/communityprocess/final/jsr369/index.html
 .. _javax.servlet.http.HttpServlet: https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServlet.html
 .. _HttpServlet: https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServlet.html
 .. _javax.servlet.http.HttpServletRequest: https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html
