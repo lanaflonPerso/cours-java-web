@@ -13,4 +13,6 @@
    /javaee_web/web_listeners_filters
    /javaee_web/jsf
    /javaee_web/jaxrs
+   /javaee_web/java_ws
+   /javaee_web/annexe_xml
 
