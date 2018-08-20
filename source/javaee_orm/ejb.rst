@@ -40,15 +40,15 @@ Les types d'EJB
 On distingue plusieurs types d'EJB :
 
 Les EJB de session
-    Stateful EJB, Stateless EJB et Singleton EJB qui sont adaptés pour
+    *Stateful* EJB, *Stateless* EJB et *Singleton* EJB qui sont adaptés pour
     le traitement synchrone. Il s'agit des EJB les plus courants dans
     une application Web.
 Les EJB orientés message
-    Message Driven Bean qui est adapté pour le traitement asynchrone. On
+    *Message Driven Bean* qui est adapté pour le traitement asynchrone. On
     utilise généralement cet EJB dans des applications de type bus
     d'entreprise ou MOM (Middleware Orienté Messages).
-Les Entity Bean
-    Les EJB pour gérer la persistance. Il s'agit des composants Java qui représente
+Les Entity Beans
+    Les EJB pour gérer la persistance. Il s'agit des composants Java EE qui représentent
     les données d'un modèle relationnel de base de données. Depuis EJB 3, l'API JPA définit
     les entity beans.
 
