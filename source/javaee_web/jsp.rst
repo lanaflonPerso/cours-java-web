@@ -24,7 +24,7 @@ Wildfly.
 Pour activer ce comportement, il va falloir modifier la configuration du
 serveur. Pour cela, allez dans le répertoire d'installation de Wildfly et
 ouvrez le fichier :file:`standalone/configuration/standalone.xml`. 
-Aux alentours de la ligne 468 du fichier, vous
+Aux alentours de la ligne 474 du fichier, vous
 allez trouver la déclaration suivante :
 
 .. code-block:: xml
