@@ -419,7 +419,7 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
 
     import javax.jws.WebService;
 
-    @WebService(endpointInterface="ROOT_PKG",
+    @WebService(endpointInterface="ROOT_PKG.HelloService",
         targetNamespace="http://spoonless.github.io/ws/hello", serviceName="HelloService")
     public class HelloServiceImpl implements HelloService {
 
