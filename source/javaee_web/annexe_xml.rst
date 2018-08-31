@@ -143,7 +143,7 @@ par une URI. Un espace de nom est déclaré grâce à l'attribut ``xmlns``.
 .. code-block:: xml
     :caption: Déclaration d'un espace de nom XML
 
-    <programme xmlns="http://epsi.fr/syllabus">
+    <programme xmlns="http://formation.fr/syllabus">
       <cours code="I4GL">
         <intitulé>Génie logiciel</intitulé>
       </cours>
@@ -227,8 +227,8 @@ format XML.
 
     <?xml version="1.0" encoding="UTF-8"?>
     <schema xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://epsi.fr/syllabus" 
-            targetNamespace="http://epsi.fr/syllabus"
+            xmlns:tns="http://formation.fr/syllabus" 
+            targetNamespace="http://formation.fr/syllabus"
             elementFormDefault="qualified">
       <element name="programme">
         <complexType>
