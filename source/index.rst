@@ -58,6 +58,8 @@ Sommaire
 
 .. include:: langage_java/index.rst
 
+.. include:: java_swing/index.rst
+
 .. include:: javaee_web/index.rst
 
 .. include:: javaee_orm/index.rst

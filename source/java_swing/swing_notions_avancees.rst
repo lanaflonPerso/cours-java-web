@@ -246,6 +246,9 @@ le composant JTable_ :
   
   package ROOT_PKG.gui;
 
+  import java.awt.event.ActionEvent;
+  import java.awt.event.ActionListener;
+
   import javax.swing.JFrame;
   import javax.swing.JMenu;
   import javax.swing.JMenuBar;
@@ -277,11 +280,31 @@ le composant JTable_ :
     
     private JMenu createMenu() {
       JMenu menu = new JMenu("Individus");
-      menu.add(new JMenuItem("Ajouter")).addActionListener(e -> this.individuModel.addIndividu());
-      menu.add(new JMenuItem("Corriger Maj.")).addActionListener(e -> this.individuModel.fixMajuscule());
-      menu.add(new JMenuItem("Imprimer")).addActionListener(e -> this.imprimer());
+      menu.add(new JMenuItem("Ajouter")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          individuModel.addIndividu();
+        }
+      });
+      menu.add(new JMenuItem("Corriger Maj.")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          individuModel.fixMajuscule();
+        }
+      });
+      menu.add(new JMenuItem("Imprimer")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          imprimer();
+        }
+      });
       menu.addSeparator();
-      menu.add(new JMenuItem("Fermer")).addActionListener(e -> this.dispose());;
+      menu.add(new JMenuItem("Fermer")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          dispose();          
+        }
+      });
       return menu;
     }
 
@@ -306,8 +329,8 @@ le composant JTable_ :
     
   }
 
-À la ligne 26, nous créons l'instance de *IndividuTableModel* et nous l'associons
-à une instance de JTable_. Aux lignes 34, 35 et 36, nous créons des entrées de menu
+À la ligne 29, nous créons l'instance de *IndividuTableModel* et nous l'associons
+à une instance de JTable_. Des lignes 37 à 61, nous créons des entrées de menu
 pour permettre à l'utilisateur d'interagir. Certaines des actions appellent des
 méthodes du modèle qui le modifie et qui déclencherons un événement en direction
 de la vue qui n'aura plus qu'à se rafraîchir.
@@ -317,7 +340,6 @@ du MVC_ pour permettre de gérer des représentations complexes de données comm
 JList_ pour afficher une liste d'éléments ou le JTree_ pour gérer des représentations
 arborescentes de données.
 
- 
 
 .. todo::
 

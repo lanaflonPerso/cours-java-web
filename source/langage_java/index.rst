@@ -30,6 +30,4 @@
    /langage_java/streams
    /langage_java/classe_interne
    /langage_java/les_annotations
-   /langage_java/swing_interfaces_graphiques
-   /langage_java/swing_interactions
-   /langage_java/swing_notions_avancees
+

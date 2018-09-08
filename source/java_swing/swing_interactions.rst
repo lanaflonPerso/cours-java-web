@@ -282,6 +282,9 @@ Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de men
 
   package ROOT_PKG.gui;
 
+  import java.awt.event.ActionEvent;
+  import java.awt.event.ActionListener;
+
   import javax.swing.ButtonGroup;
   import javax.swing.JCheckBoxMenuItem;
   import javax.swing.JFrame;
@@ -316,7 +319,12 @@ Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de men
       menu.add(new JMenuItem("Imprimer..."));
       menu.add(new JMenuItem("Aperçu impression..."));
       menu.addSeparator();
-      menu.add(new JMenuItem("Fermer")).addActionListener(e -> this.dispose());;
+      menu.add(new JMenuItem("Fermer")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          ExempleMenu.this.dispose();
+        }
+      });
       return menu;
     }
     
@@ -354,13 +362,6 @@ Dans une application complète, il faudrait ajouter un ActionListener_
 pour chaque entrée des menus. Dans cet exemple, seul le menu *Fermer* a un
 ActionListener_ pour terminer l'application.
 
-.. note::
-
-  À la ligne 37, on enregistre un ActionListener_ en utilisant une lambda. En
-  effet, même si cette interface ne possède pas l'annotation FunctionalInterface_,
-  elle possède les caractéristiques nécessaires pour qu'on puisse lui substituer
-  une lambda.
-
 L'interface Action
 ******************
 
@@ -388,6 +389,7 @@ associés apparaîtront grisés.
 
   import java.awt.Desktop;
   import java.awt.event.ActionEvent;
+  import java.awt.event.ActionListener;
   import java.awt.event.KeyEvent;
   import java.net.URI;
 
@@ -421,8 +423,8 @@ associés apparaîtront grisés.
         try {
           // on ouvre la page Web dans le navigateur par défaut
           Desktop.getDesktop().browse(new URI("https://fr.wikipedia.org/wiki/Java_(langage)"));
-        } catch (Exception e) {
-          e.printStackTrace();
+        } catch (Exception ex) {
+          ex.printStackTrace();
         }
       }
       
@@ -450,10 +452,20 @@ associés apparaîtront grisés.
       JMenu menu = new JMenu("Menu");
       menu.add(new JMenuItem(exempleAction));
       JCheckBoxMenuItem checkBox = new JCheckBoxMenuItem("Activer", true);
-      checkBox.addActionListener(l -> exempleAction.setEnabled(checkBox.getState()));
+      checkBox.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          exempleAction.setEnabled(checkBox.getState());
+        }
+      });
       menu.add(checkBox);
       menu.addSeparator();
-      menu.add(new JMenuItem("Fermer")).addActionListener(e -> this.dispose());;
+      menu.add(new JMenuItem("Fermer")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          ExempleMenu.this.dispose();
+        }
+      });
       return menu;
     }
     
@@ -567,6 +579,8 @@ fichiers et/ou de répertoires.
   
   package ROOT_PKG.gui;
 
+  import java.awt.event.ActionEvent;
+  import java.awt.event.ActionListener;
   import java.io.IOException;
 
   import javax.swing.JEditorPane;
@@ -581,7 +595,7 @@ fichiers et/ou de répertoires.
   import javax.swing.filechooser.FileNameExtensionFilter;
 
   public class EditeurTexte extends JFrame {
-    
+
     private JEditorPane editor;
 
     @Override
@@ -589,29 +603,39 @@ fichiers et/ou de répertoires.
       super.frameInit();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setTitle("Simple éditeur de texte");
-      
+
       this.setJMenuBar(new JMenuBar());
       this.getJMenuBar().add(createMenu());
-      
+
       editor = new JEditorPane();
       editor.setEditable(false);
       this.add(new JScrollPane(editor));
       this.setSize(800, 600);;
     }
-    
+
     private JMenu createMenu() {
       JMenu menu = new JMenu("Fichier");
-      menu.add(new JMenuItem("Ouvrir...")).addActionListener(e -> this.open());;
+      menu.add(new JMenuItem("Ouvrir...")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          open();
+        }
+      });
       menu.addSeparator();
-      menu.add(new JMenuItem("Fermer")).addActionListener(e -> this.dispose());;
+      menu.add(new JMenuItem("Fermer")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          dispose();
+        }
+      });
       return menu;
     }
-    
+
     private void open() {
       JFileChooser fileChooser = new JFileChooser();
       fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
       fileChooser.setMultiSelectionEnabled(false);
-      fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Fichiers texte (txt, html, rtf)", 
+      fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Fichiers texte (txt, html, rtf)",
                                                                      "txt", "html", "xhtml", "rtf"));
       int choix = fileChooser.showOpenDialog(this);
       if (choix == JFileChooser.APPROVE_OPTION) {
@@ -619,7 +643,7 @@ fichiers et/ou de répertoires.
           editor.setPage(fileChooser.getSelectedFile().toURI().toString());
         } catch (IOException e) {
           e.printStackTrace();
-          JOptionPane.showMessageDialog(this, "Une erreur est survenue :\n" + e.getMessage(), 
+          JOptionPane.showMessageDialog(this, "Une erreur est survenue :\n" + e.getMessage(),
                                         "Erreur", JOptionPane.ERROR_MESSAGE);
         }
       }
@@ -630,11 +654,11 @@ fichiers et/ou de répertoires.
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 La classe ci-dessus crée un éditeur de texte simple qui permet de choisir le fichier
-que l'on veut consulter. La méthode *open* déclarée à partir de la ligne 43
+que l'on veut consulter. La méthode *open* déclarée à partir de la ligne 55
 utilise une instance de JFileChooser_ pour récupérer le fichier sélectionné
 et donner son URL au composant JEditorPane_ qui l'affiche.
 
@@ -650,6 +674,8 @@ couleur.
   package ROOT_PKG.gui;
 
   import java.awt.Color;
+  import java.awt.event.ActionEvent;
+  import java.awt.event.ActionListener;
 
   import javax.swing.JColorChooser;
   import javax.swing.JFrame;
@@ -679,9 +705,19 @@ couleur.
     
     private JMenu createMenu() {
       JMenu menu = new JMenu("Couleur");
-      menu.add(new JMenuItem("Couleur de fond...")).addActionListener(e -> this.chooseColor());;
+      menu.add(new JMenuItem("Couleur de fond...")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          chooseColor();
+        }
+      });
       menu.addSeparator();
-      menu.add(new JMenuItem("Fermer")).addActionListener(e -> this.dispose());;
+      menu.add(new JMenuItem("Fermer")).addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          dispose();
+        }
+      });
       return menu;
     }
 
