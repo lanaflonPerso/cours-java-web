@@ -10,8 +10,8 @@ Les listeners
 Pour interagir avec l'utilisateur, chaque composant graphique peut intercepter
 des événements (frappe d'une touche sur le clavier, clic souris...) et réagir
 en conséquence. Pour associer un comportement à un événement, on ajoute un
-écouteur d'événement (*listener*) au composant, c'est-à-dire un objet 
-qui implémente l'interface EventListener_. Cette interface est simplement une 
+écouteur d'événement (*listener*) au composant, c'est-à-dire un objet
+qui implémente l'interface EventListener_. Cette interface est simplement une
 :ref:`interface marqueur <interface_marqueur>` dont héritent toutes les interfaces
 qui représentent des *listeners* pour des événements particuliers.
 
@@ -33,7 +33,7 @@ qui représentent des *listeners* pour des événements particuliers.
   import javax.swing.WindowConstants;
 
   public class ExempleListener extends JFrame {
-    
+
     private class ExempleMouseListener implements MouseListener {
 
       @Override
@@ -60,9 +60,9 @@ qui représentent des *listeners* pour des événements particuliers.
       public void mouseReleased(MouseEvent e) {
         printEvent(e);
       }
-      
+
     }
-    
+
     private class ExempleKeyListener implements KeyListener {
 
       @Override
@@ -79,9 +79,9 @@ qui représentent des *listeners* pour des événements particuliers.
       public void keyTyped(KeyEvent e) {
         printEvent(e);
       }
-      
+
     }
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
@@ -94,21 +94,21 @@ qui représentent des *listeners* pour des événements particuliers.
       this.add(component);
       this.pack();
     }
-    
+
     private void printEvent(EventObject e) {
       System.out.println(e);
     }
-    
+
     public static void main(String[] args) {
       JFrame window = new ExempleListener();
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 Dans l'exemple ci-dessus, l'application affiche un éditeur de texte sous la forme
-d'un carré de 300 pixels sur 300 pixels. Aux lignes 72 et 73, on ajoute à ce composant 
+d'un carré de 300 pixels sur 300 pixels. Aux lignes 72 et 73, on ajoute à ce composant
 une instance de MouseListener_ et une instance de KeyListener_ (les classes
 implémentant ces interfaces sont déclarées sous la forme de classes internes). Ces
 *listeners* se contentent d'afficher sur la sortie standard la représentation
@@ -122,7 +122,7 @@ dans l'exemple précédent, enregistre en interne un KeyListener_ pour savoir
 si une touche a été pressée et en déduit le caractère qui doit être ajouté dans
 l'éditeur.
 
-Un *listener* couramment utilisé est le type ActionListener_. Ce *listener* 
+Un *listener* couramment utilisé est le type ActionListener_. Ce *listener*
 écoute les événements de type ActionEvent_. Un ActionEvent_ représente
 une interaction utilisateur simple. Il est associé à une commande qui est
 un simple identifiant sous la forme d'une chaîne de caractères. Les boutons
@@ -150,7 +150,7 @@ acceptent des *listeners* de ce type.
   import javax.swing.WindowConstants;
 
   public class ExempleActionListener extends JFrame {
-    
+
     private JComboBox<String> civilite;
     private JTextField nom;
     private JTextField prenom;
@@ -162,7 +162,7 @@ acceptent des *listeners* de ce type.
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setTitle("Exemple Listeners");
       this.getContentPane().setLayout(new GridBagLayout());
-      
+
       int rowIndex = 0;
       civilite = new JComboBox<String>(new String[] {"Madame", "Monsieur"});
       nom = new JTextField();
@@ -193,13 +193,13 @@ acceptent des *listeners* de ce type.
       this.pack();
       this.setResizable(false);
     }
-    
+
     private void onOk() {
       // On affiche le contenu du formulaire sur la sortie standard
-      System.out.println(String.format("%1$s %2$s %3$s résidant au %4$s", 
+      System.out.println(String.format("%1$s %2$s %3$s résidant au %4$s",
                          civilite.getSelectedItem(), prenom.getText(), nom.getText(), adresse.getText()));
     }
-    
+
     private void onCancel() {
       // on cache la fenêtre
       this.setVisible(false);
@@ -244,7 +244,7 @@ acceptent des *listeners* de ce type.
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 Le code ci-dessus reprend l'application de saisie de formulaire qui utilisait
@@ -274,7 +274,7 @@ JMenuItem_
 De plus, il existe des sous classes de JMenuItem_ pour représenter des entrées
 de menu plus complexes.
 
-La classe JFrame_ est déjà capable de gérer en interne une instance de JMenuBar_. 
+La classe JFrame_ est déjà capable de gérer en interne une instance de JMenuBar_.
 Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de menu.
 
 .. code-block:: java
@@ -295,13 +295,13 @@ Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de men
   import javax.swing.WindowConstants;
 
   public class ExempleMenu extends JFrame {
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setTitle("Exemple Menus");
-      
+
       this.setJMenuBar(new JMenuBar());
       this.getJMenuBar().add(createMenuFichier());
       this.getJMenuBar().add(createMenuSpecial());
@@ -327,15 +327,15 @@ Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de men
       });
       return menu;
     }
-    
+
     private JMenu createMenuSpecial() {
       JMenu menu = new JMenu("Spécial");
       menu.add(new JCheckBoxMenuItem("Activer", false));
-      
+
       menu.addSeparator();
-      
-      JRadioButtonMenuItem[] radioButtons = {new JRadioButtonMenuItem("Bleu", true), 
-                                             new JRadioButtonMenuItem("Vert"), 
+
+      JRadioButtonMenuItem[] radioButtons = {new JRadioButtonMenuItem("Bleu", true),
+                                             new JRadioButtonMenuItem("Vert"),
                                              new JRadioButtonMenuItem("Rouge")};
       ButtonGroup buttonGroup = new ButtonGroup();
       for (JRadioButtonMenuItem radioButton: radioButtons) {
@@ -350,11 +350,11 @@ Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de men
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 L'application ci-dessus crée une barre de menu avec un exemple pour chaque type
-d'entrée. 
+d'entrée.
 
 .. image:: images/swing/exemple_menus.png
 
@@ -384,7 +384,7 @@ associés apparaîtront grisés.
 
 .. code-block:: java
   :linenos:
-  
+
   package ROOT_PKG.gui;
 
   import java.awt.Desktop;
@@ -407,7 +407,7 @@ associés apparaîtront grisés.
   import javax.swing.WindowConstants;
 
   public class ExempleMenu extends JFrame {
-    
+
     private Action exempleAction;
 
     private class ExempleAction extends AbstractAction {
@@ -417,7 +417,7 @@ associés apparaîtront grisés.
         putValue(SHORT_DESCRIPTION, "Cliquez pour en savoir plus sur Java");
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
       }
-      
+
       @Override
       public void actionPerformed(ActionEvent e) {
         try {
@@ -427,17 +427,17 @@ associés apparaîtront grisés.
           ex.printStackTrace();
         }
       }
-      
+
     }
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setTitle("Exemple Menus");
-      
+
       this.exempleAction = new ExempleAction();
-      
+
       this.setJMenuBar(new JMenuBar());
       this.getJMenuBar().add(createMenu());
 
@@ -468,13 +468,13 @@ associés apparaîtront grisés.
       });
       return menu;
     }
-    
+
     public static void main(String[] args) {
       JFrame window = new ExempleMenu();
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 Dans l'exemple ci-dessus, on déclare une action comme classe interne. Plutôt
@@ -484,8 +484,8 @@ que d'implémenter l'interface Action_, la classe interne *ExempleAction*
 partie du code hormis l'implémentation de la méthode actionPerformed_ qui
 correspond au traitement proprement dit.
 
-L'action déclarée par notre application possède un nom, une description 
-(pour afficher une bulle d'aide), une icône et un raccourci clavier 
+L'action déclarée par notre application possède un nom, une description
+(pour afficher une bulle d'aide), une icône et un raccourci clavier
 (:kbd:`Ctrl+A`). La même instance de *ExempleAction* est associée à
 une entrée dans le menu et au bouton dans la fenêtre. De plus, une autre entrée dans
 le menu permet de désactiver l'action (ce qui aura pour conséquence de désactiver
@@ -507,7 +507,7 @@ ce que l'utilisateur ait choisi parmi les options de la boite de dialogue.
 
 .. code-block:: java
   :linenos:
-  
+
   package ROOT_PKG.gui;
 
   import java.util.Random;
@@ -516,7 +516,7 @@ ce que l'utilisateur ait choisi parmi les options de la boite de dialogue.
   import javax.swing.JOptionPane;
 
   public class ExempleOptionPane extends JFrame {
-    
+
     private static final String APP_TITLE = "Exemple OptionPane";
 
     public static void main(String[] args) {
@@ -525,58 +525,58 @@ ce que l'utilisateur ait choisi parmi les options de la boite de dialogue.
       JOptionPane.showMessageDialog(null, "Ceci est un avertissement", APP_TITLE, JOptionPane.WARNING_MESSAGE);
       JOptionPane.showMessageDialog(null, "Ceci est une erreur", APP_TITLE, JOptionPane.ERROR_MESSAGE);
       JOptionPane.showMessageDialog(null, "On passe à la suite ?", APP_TITLE, JOptionPane.QUESTION_MESSAGE);
-      
+
       int jouer = JOptionPane.showConfirmDialog(null, "Voulez-vous jouer ?", APP_TITLE, JOptionPane.YES_NO_OPTION);
       if (jouer == JOptionPane.YES_OPTION) {
         Random random = new Random();
         do {
           int bonneResponse = random.nextInt(20) + 1;
 
-          String reponse = JOptionPane.showInputDialog(null, "Donnez un nombre entre 1 et 20 :", 
+          String reponse = JOptionPane.showInputDialog(null, "Donnez un nombre entre 1 et 20 :",
                                                        APP_TITLE, JOptionPane.QUESTION_MESSAGE);
 
           if (reponse == null) {
             break;
           }
-          
+
           try {
             int valeur = Integer.valueOf(reponse);
             if (valeur == bonneResponse) {
-              JOptionPane.showMessageDialog(null, "Bravo vous avez gagné !", 
+              JOptionPane.showMessageDialog(null, "Bravo vous avez gagné !",
                                             APP_TITLE, JOptionPane.INFORMATION_MESSAGE);
             } else {
-              JOptionPane.showMessageDialog(null, "Perdu ! La bonne réponse était " + bonneResponse + ".", 
+              JOptionPane.showMessageDialog(null, "Perdu ! La bonne réponse était " + bonneResponse + ".",
                                             APP_TITLE, JOptionPane.WARNING_MESSAGE);
             }
           } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "'" + reponse + "' n'est pas un nombre !", 
+            JOptionPane.showMessageDialog(null, "'" + reponse + "' n'est pas un nombre !",
                                           APP_TITLE, JOptionPane.ERROR_MESSAGE);
           }
-          
-        } while (JOptionPane.showConfirmDialog(null, "Voulez-vous rejouer ?", 
+
+        } while (JOptionPane.showConfirmDialog(null, "Voulez-vous rejouer ?",
                                                APP_TITLE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
-        
-        
+
+
         JOptionPane.showMessageDialog(null, "Au revoir...", APP_TITLE, JOptionPane.PLAIN_MESSAGE);
       }
     }
-    
+
   }
 
 Les boites de dialogues avancées
 ********************************
 
-Swing fournit des classes pour des boites de dialogue évoluées. 
+Swing fournit des classes pour des boites de dialogue évoluées.
 
 Boite de dialogue des fichiers
 ==============================
 
-La classe JFileChooser_ permet de créer une boite de dialogue de sélection de 
+La classe JFileChooser_ permet de créer une boite de dialogue de sélection de
 fichiers et/ou de répertoires.
 
 .. code-block:: java
   :linenos:
-  
+
   package ROOT_PKG.gui;
 
   import java.awt.event.ActionEvent;
@@ -665,7 +665,7 @@ et donner son URL au composant JEditorPane_ qui l'affiche.
 Boite de sélection de couleur
 =============================
 
-La classe JColorChooser_ affiche une boite de dialogue permettant de choisir une 
+La classe JColorChooser_ affiche une boite de dialogue permettant de choisir une
 couleur.
 
 .. code-block:: java
@@ -686,7 +686,7 @@ couleur.
   import javax.swing.WindowConstants;
 
   public class VisualiseurCouleur extends JFrame {
-    
+
     private JPanel colorPanel;
 
     @Override
@@ -694,15 +694,15 @@ couleur.
       super.frameInit();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setTitle("Selecteur de couleur");
-      
+
       this.setJMenuBar(new JMenuBar());
       this.getJMenuBar().add(createMenu());
-      
+
       this.colorPanel = new JPanel();
       this.add(this.colorPanel);
       this.setSize(800, 600);;
     }
-    
+
     private JMenu createMenu() {
       JMenu menu = new JMenu("Couleur");
       menu.add(new JMenuItem("Couleur de fond...")).addActionListener(new ActionListener() {
@@ -722,7 +722,7 @@ couleur.
     }
 
     private void chooseColor() {
-      Color newColor = JColorChooser.showDialog(this, "Choisissez la couleur de fond", 
+      Color newColor = JColorChooser.showDialog(this, "Choisissez la couleur de fond",
                                                 colorPanel.getBackground());
       this.colorPanel.setBackground(newColor);
     }
@@ -732,11 +732,59 @@ couleur.
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 L'application ci-dessus offre un menu pour changer la couleur de fond de la fenêtre.
 
+Exercice
+********
+
+.. admonition:: Application pour sauvegarder les données personnelles (suite)
+  :class: hint
+
+  **Objectif**
+    Reprenez l'application de saisie des données personnelles. Cette application
+    doit avoir un bouton ``Sauver`` qui ouvre une boite de dialogue de sauvegarde
+    de fichier. Le fichier doit ensuite être sauvé sur le disque au format VCard_.
+
+    L'application doit vérifier au préalable qu'au moins les champs prénom et nom
+    ont été saisis. Si ce n'est pas le cas, une boite de dialogue doit informer
+    l'utilisateur des champs manquants. Utilisez pour cela JOptionPane_.
+
+.. admonition:: Application pour charger/sauvegarder les données personnelles (suite)
+  :class: hint
+
+  **Objectif**
+    Reprenez l'application de saisie des données personnelles. Ajoutez un menu
+    ``Données``. Ce menu contient quatre entrées :
+
+    .. list-table::
+      :widths: 1 2 1
+      :header-rows: 1
+
+      * - Entrée
+        - Raccourci
+        - Description
+      * - **Ouvrir...**
+        - :kbd:`Ctrl+O`
+        - Cette entrée de menu permet de sélectionner sur le disque un fichier avec
+          l'extension ``vcf`` (l'extension des fichiers VCard_) et de charger
+          les données dans les champs de l'application.
+      * - **Sauver...**
+        - :kbd:`Ctrl+S`
+        - Cette entrée réalise la même action que le bouton ``Sauver`` introduit
+          à l'exercice précédent
+      * - **Réinitialiser**
+        -
+        - Cette entrée remet tous les champs à vide après avoir demandé confirmation
+          à l'utilisateur.
+      * - **Quitter**
+        - :kbd:`Ctrl+Q`
+        - Cette entrée permet de fermer l'application
+
+    Créez des classes héritant de AbstractAction_ pour gérer ces entrées et
+    associez-les aux raccourcis clavier.
 
 .. _JFrame: https://docs.oracle.com/javase/8/docs/api/javax/swing/JFrame.html
 .. _JButton: https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html
@@ -763,4 +811,4 @@ L'application ci-dessus offre un menu pour changer la couleur de fond de la fen�
 .. _setEnabled: https://docs.oracle.com/javase/8/docs/api/java/awt/Component.html#setEnabled-boolean-
 .. _actionPerformed: https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionListener.html#actionPerformed-java.awt.event.ActionEvent-
 .. _ActionEvent: https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionEvent.html
-
+.. _VCard: https://fr.wikipedia.org/wiki/VCard

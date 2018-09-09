@@ -16,14 +16,14 @@ javax.swing_ ainsi que dans ses sous-packages.
   Depuis Java 8, Swing n'est plus la bibliothèque de référence pour créer des
   applications graphiques : elle a été remplacée par JavaFX_. Néanmoins, Swing
   reste encore largement connu et donc utilisé par les développeurs.
-  
+
   Swing a lui-même remplacé une bibliothèque Java plus ancienne nommé AWT
   (*Abstract Window Toolkit*). Cette dernière offrait un accès en Java à l'API
   graphique du système alors que Swing offre des composants graphiques totalement
-  implémentés en Java (et donc avec un comportement et un rendu identiques 
+  implémentés en Java (et donc avec un comportement et un rendu identiques
   quel que soit le système sous-jacent). AWT est toujours présent dans la bibliothèque
-  standard de Java et ses classes se trouvent dans le package java.awt_. 
-  Swing utilise une partie des classes fournies par AWT. 
+  standard de Java et ses classes se trouvent dans le package java.awt_.
+  Swing utilise une partie des classes fournies par AWT.
 
 Une première application
 ************************
@@ -65,7 +65,7 @@ Le code ci-dessus crée une fenêtre dans laquelle est écrit "Hello world!".
 * ligne 13 : on indique la position à l'écran de la fenêtre. La position est donnée
   en pixels depuis le bord supérieur gauche de l'écran.
 * ligne 14 : on spécifie une opération par défaut lorsque la fenêtre est fermée
-  par l'utilisateur (par exemple lorsqu'il clique sur le bouton *fermer* de 
+  par l'utilisateur (par exemple lorsqu'il clique sur le bouton *fermer* de
   la barre de titre). Pour cet exemple, on indique la constante *EXIT_ON_CLOSE*
   qui indique que le programme doit s'arrêter lorsque cette fenêtre est fermée.
 * ligne 15 : on rend la fenêtre visible, ce qui déclenche son affichage.
@@ -80,7 +80,7 @@ La boucle des événements est une boucle qui s'exécute dans un processus
 léger (*thread*). Elle traite continuellement les événements que reçoit l'application graphique. Par
 exemple, si l'utilisateur appuie sur une touche du clavier ou bouge la souris,
 la boucle des événements en est alertée et crée des objets pour représenter
-ces événements. Pour les exemples données, il s'agira d'instances de 
+ces événements. Pour les exemples données, il s'agira d'instances de
 KeyEvent_ et de MouseEvent_. Tant que la boucle des événements s'exécute, l'application
 ne peut pas s'arrêter (même si toutes les fenêtres de l'application ont été fermées).
 C'est pour cela qu'à la ligne 14, on précise que si la fenêtre est fermée, alors
@@ -90,7 +90,7 @@ boucle des événements et arrêtera l'application.
 Les principaux composants
 *************************
 
-Les composants graphiques Swing sont conçus comme des conteneurs. D'ailleurs, 
+Les composants graphiques Swing sont conçus comme des conteneurs. D'ailleurs,
 ils héritent indirectement de la classe AWT Container_. Cela signifie qu'une
 instance de JFrame_ (une fenêtre) contient des composants graphiques qui eux-mêmes
 peuvent contenir des composants graphiques, etc, etc. Donc on peut imaginer
@@ -103,8 +103,9 @@ ou Container.removeAll_.
 Parmi les composants graphiques les plus couramment utilisés en Swing, on trouve :
 
 JPanel_
-  Ce composant n'a pas de représentation graphique proprement dite. Il sert à grouper
-  des composants dans une arborescence de composants graphiques.
+  Ce composant a une représentation graphique vide (à l'exception d'une couleur de fond).
+  Il sert soit à grouper des composants dans une arborescence de composants graphiques
+  soit comme classe parente pour créer un composant graphique plus élaboré.
 
 JLabel_
   Ce composant représente une zone de texte ou une image à afficher. Généralement, il est utilisé
@@ -130,7 +131,7 @@ JCheckBox_
 
 JRadioButton_
   Ce composant représente un bouton radio.
-  
+
 JComboBox_
   Ce composant fait apparaître une liste de choix que l'utilisateur peut sélectionner.
   La JComboBox_ supporte la sélection unique ou la multi sélection.
@@ -175,9 +176,9 @@ JTabbedPane_
   import javax.swing.WindowConstants;
 
   public class ExempleComposant extends JFrame {
-    
+
     private JTabbedPane tabbedPane;
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
@@ -185,11 +186,11 @@ JTabbedPane_
       this.setName("Exemple composants");
       tabbedPane = new JTabbedPane();
       this.add(tabbedPane);
-      
-      addComponent("Label", 
+
+      addComponent("Label",
                    new JLabel(UIManager.getIcon("FileView.computerIcon")),
                    new JLabel("Libellé avec du texte"));
-      
+
       addComponent("Text field", new JTextArea("champ de texte"));
       addComponent("Text area", new JTextArea("zone de texte"));
       addComponent("Combo box", new JComboBox<String>(new String[] {"Bleu", "Rouge", "Vert"}));
@@ -201,7 +202,7 @@ JTabbedPane_
       addComponent("Progress bar", progressBar);
       addComponent("Button", new JButton("Un bouton"));
     }
-    
+
     private void addComponent(String titre, JComponent... components) {
         JPanel panel = new JPanel();
         for (JComponent component : components) {
@@ -216,7 +217,7 @@ JTabbedPane_
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 Le programme ci-dessus présente un exemple d'affichage des principaux composants
@@ -237,7 +238,9 @@ qui est ajoutée au *tabbedPane*.
   de positionner une fenêtre à la même position qu'un autre composant graphique.
   En passant **null** comme paramètre, cela positionne la fenêtre au centre
   de l'écran.
- 
+
+
+.. _swing_layout:
 
 Les layouts
 ***********
@@ -246,24 +249,24 @@ Lorsqu'on ajoute plusieurs composants graphiques dans un conteneur, on souhaite
 organiser visuellement ces composants d'une certaine manière. Par exemple, pour
 un formulaire de saisie, on souhaite afficher ligne par ligne un champ libellé
 avec son champ de texte de saisie. Si le conteneur graphique change de taille
-(parce que la fenêtre change de dimension ou parce que les autres composants 
+(parce que la fenêtre change de dimension ou parce que les autres composants
 autour du conteneur changent), on souhaite que le contenu conserve une cohérence
 dans son organisation. Un type d'agencement est appelé un *layout* et il existe
 en Swing des objets qui représentent des types de *layout* particulier.
 
-Chaque composant Swing a une taille préférée (une hauteur et une largeur en 
+Chaque composant Swing a une taille préférée (une hauteur et une largeur en
 pixels) qui est donnée par la méthode Container.getPreferredSize_. Par exemple, une
 instance de JButton_ va donner une taille qui lui permet d'afficher correctement
 son libellé ainsi que le dessin qui représente le cadre du bouton lui-même. Un
 *layout* doit tenir compte de la taille préférée de tous les composants dont
 il a la charge. Swing fournit huit *layouts* différents : BorderLayout_,
-BoxLayout_, CardLayout_, FlowLayout_, GridBagLayout_, GroupLayout_, GridLayout_, 
+BoxLayout_, CardLayout_, FlowLayout_, GridBagLayout_, GroupLayout_, GridLayout_,
 SpringLayout_.
 
 .. note::
 
   Les sections ci-dessous ne couvrent pas tous les *layouts*. Vous pouvez
-  vous reporter au guide officiel : 
+  vous reporter au guide officiel :
   https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html
 
 Le BoxLayout
@@ -294,14 +297,14 @@ horizontalement.
   import javax.swing.WindowConstants;
 
   public class ExempleBoxLayout extends JFrame {
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setName("Exemple box layout");
       this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
-      
+
       addRow("Civilité", new JComboBox<String>(new String[] {"Madame", "Monsieur"}));
       addRow("Nom", new JTextField());
       addRow("Prénom", new JTextField());
@@ -310,12 +313,12 @@ horizontalement.
       this.pack();
       this.setResizable(false);
     }
-    
+
     private void addRow(String titre, JComponent... components) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 20));
-        
+
         JLabel label = new JLabel(titre);
         label.setLabelFor(components[0]);
         panel.add(label);
@@ -341,18 +344,18 @@ horizontalement.
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 Le programme ci-dessus produit une fenêtre de formulaire :
 
 .. image:: images/swing/exemple_boxlayout.png
 
-À la ligne 25, on ajoute une instance de BoxLayout_ comme *layout* dans le 
+À la ligne 25, on ajoute une instance de BoxLayout_ comme *layout* dans le
 *content pane*.
 
 .. note::
-  
+
   Un objet de type JFrame_ possède une hiérarchie de composants particulière.
   Comme il représente une fenêtre, il peut posséder une barre de menu, une barre
   de statut et une zone de contenu appelée le *content pane*. Lorsqu'on ajoute
@@ -368,7 +371,7 @@ un écart minimal en pixels entre deux composants.
 
 La méthode *addButtons* déclarée à la ligne 52 permet de créer une ligne contenant
 les boutons en bas du formulaire. Là encore, la ligne est représentée par un
-JPanel_. Mais son *layout* est ici géré par une instance de FlowLayout_. Un 
+JPanel_. Mais son *layout* est ici géré par une instance de FlowLayout_. Un
 FlowLayout_ organise les composants les uns à la suite des autres en permettant
 de spécifier un alignement. Pour notre application on demande que les boutons
 soient alignés à droite (FlowLayout.Right_).
@@ -393,15 +396,15 @@ gridx, gridy
   Ces attributs indiquent la position dans la grille (colonne et ligne).
 
 gridwidth, gridheight
-  Ces attributs indiquent si le composant s'étend sur plusieurs 
+  Ces attributs indiquent si le composant s'étend sur plusieurs
   cases (horizontalement et verticalement) de la grille.
 
 weightx, weighty
- Ces attributs donnent le poids du composant : c'est-à-dire le pourcentage de 
- l'espace qu'il occupe par comparaison aux autres à l'horizontal et à la verticale. 
+ Ces attributs donnent le poids du composant : c'est-à-dire le pourcentage de
+ l'espace qu'il occupe par comparaison aux autres à l'horizontal et à la verticale.
 
 fill
-  Cet attribut indique comment le composant remplit la case dans laquelle il se 
+  Cet attribut indique comment le composant remplit la case dans laquelle il se
   trouve.
 
 .. code-block:: java
@@ -424,14 +427,14 @@ fill
   import javax.swing.WindowConstants;
 
   public class ExempleGridBagLayout extends JFrame {
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setTitle("Exemple grid bag layout");
       this.getContentPane().setLayout(new GridBagLayout());
-      
+
       int rowIndex = 0;
       addRow(rowIndex++, "Civilité", new JComboBox<String>(new String[] {"Madame", "Monsieur"}));
       addRow(rowIndex++, "Nom", new JTextField());
@@ -441,7 +444,7 @@ fill
       this.pack();
       this.setResizable(false);
     }
-    
+
     private void addRow(int rowIndex, String titre, JComponent component) {
       // création des contraintes de positionnement
       GridBagConstraints cst = new GridBagConstraints();
@@ -449,7 +452,7 @@ fill
       cst.fill = GridBagConstraints.HORIZONTAL;
       // le composant doit être aligné sur le haut de la case
       cst.anchor = GridBagConstraints.NORTH;
-      // on définit la marge en pixels pour le haut, la gauche, le bas et la droite 
+      // on définit la marge en pixels pour le haut, la gauche, le bas et la droite
       cst.insets = new Insets(5, 20, 5, 20);
       // on définit la position verticale
       cst.gridy = rowIndex;
@@ -476,7 +479,7 @@ fill
       }
       // création des contraintes de positionnement
       GridBagConstraints cst = new GridBagConstraints();
-      // on définit la marge en pixels pour le haut, la gauche, le bas et la droite 
+      // on définit la marge en pixels pour le haut, la gauche, le bas et la droite
       cst.insets = new Insets(5, 10, 0, 0);
       // le composant doit occuper tout l'espace horizontal de sa case
       cst.fill = GridBagConstraints.HORIZONTAL;
@@ -494,7 +497,7 @@ fill
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 
@@ -510,7 +513,7 @@ sont ensuite passées en paramètres au moment de l'ajout des composants aux lig
 
 Le GridBagLayout_ est particulièrement utile pour des fenêtres de type formulaire
 qui sont le plus souvent organisées par rapport à une grille. Il évite d'avoir à créer
-des objets de type JPanel_ pour grouper les composants entre eux. 
+des objets de type JPanel_ pour grouper les composants entre eux.
 
 Le SpringLayout
 ===============
@@ -522,7 +525,7 @@ et le conteneur.
 
 .. code-block:: java
   :linenos:
-  
+
   package ROOT_PKG.gui;
 
   import java.awt.Container;
@@ -539,7 +542,7 @@ et le conteneur.
   import javax.swing.WindowConstants;
 
   public class ExempleSpringLayout extends JFrame {
-    
+
     private SpringLayout springLayout;
 
     @Override
@@ -549,7 +552,7 @@ et le conteneur.
       this.setTitle("Exemple spring layout");
       springLayout = new SpringLayout();
       this.getContentPane().setLayout(springLayout);
-      
+
       Container container = addRow(null, "Civilité", new JComboBox<String>(new String[] {"Madame", "Monsieur"}));
       container = addRow(container, "Nom", new JTextField());
       container = addRow(container, "Prénom", new JTextField());
@@ -557,7 +560,7 @@ et le conteneur.
       addButtons(new JButton("Ok"), new JButton("Annuler"));
       this.setSize(300,350);
     }
-    
+
     private Container addRow(Container topContainer, String titre, JComponent component) {
         JLabel label = new JLabel(titre);
         label.setLabelFor(component);
@@ -604,7 +607,7 @@ et le conteneur.
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 
@@ -645,9 +648,9 @@ and feel* personnalisé.
   import javax.swing.WindowConstants;
 
   public class ExempleComposant extends JFrame {
-    
+
     private JTabbedPane tabbedPane;
-    
+
     @Override
     protected void frameInit() {
       super.frameInit();
@@ -655,11 +658,11 @@ and feel* personnalisé.
       this.setName("Exemple composants");
       tabbedPane = new JTabbedPane();
       this.add(tabbedPane);
-      
-      addComponent("Label", 
+
+      addComponent("Label",
                    new JLabel(UIManager.getIcon("FileView.computerIcon")),
                    new JLabel("Libellé avec du texte"));
-      
+
       addComponent("Text field", new JTextArea("champ de texte"));
       addComponent("Text area", new JTextArea("zone de texte"));
       addComponent("Combo box", new JComboBox<String>(new String[] {"Bleu", "Rouge", "Vert"}));
@@ -671,7 +674,7 @@ and feel* personnalisé.
       addComponent("Progress bar", progressBar);
       addComponent("Button", new JButton("Un bouton"));
     }
-    
+
     private void addComponent(String titre, JComponent... components) {
         JPanel panel = new JPanel();
         for (JComponent component : components) {
@@ -691,7 +694,7 @@ and feel* personnalisé.
       window.setLocationRelativeTo(null);
       window.setVisible(true);
     }
-    
+
   }
 
 L'exemple ci-dessus reprend l'application qui affiche différents composants
@@ -699,6 +702,56 @@ graphiques. La seule différence se situe des lignes 55 à 59. Avant de créer
 la fenêtre principale, on utilise la classe UIManager_ pour sélectionner le
 *look and feel* correspondant au système sur lequel l'application s'exécute.
 
+Exercice
+********
+
+.. admonition:: Application pour éditer les données personnelles
+  :class: hint
+
+  **Objectif**
+    Créez une application Swing qui permet de saisir les informations personnelles
+    d'un utilisateur. Cette application ne permet pas (encore) de sauvegarder ni de charger
+    des données. Les champs à saisir sont :
+
+    * Le titre : Monsieur, Madame, Docteur, Professeur ou rien (utilisez une liste déroulante)
+    * Le prénom
+    * Le nom
+    * L'émail
+    * Le numéro de téléphone
+    * L'adresse : rue, code postal, ville
+    * La date de naissance
+
+    Pour la saisie de la date de naissance, utilisez le composant graphique
+    JDatePicker_ disponible avec la dépendance Maven :
+
+    .. code-block:: xml
+
+      <dependency>
+        <groupId>io.github.lzh0379</groupId>
+        <artifactId>jdatepicker</artifactId>
+        <version>2.0.3</version>
+      </dependency>
+
+    On peut ensuite créer un ``JDatePicker`` et utiliser la méthode ``getModel()``
+    pour positionner ou récupérer la date :
+
+    ::
+
+      JDatePicker jDatePicker = new JDatePicker(Calendar.getInstance());
+      System.out.println(jDatePicker.getModel().getDay());
+      System.out.println(jDatePicker.getModel().getMonth());
+      System.out.println(jDatePicker.getModel().getYear());
+      System.out.println(jDatePicker.getModel().getValue());
+
+    Un ``JDatePicker`` est un composant Swing qui peut être ajouté dans un JFrame_,
+    un JPanel_ ou n'importe quel composant graphique Swing.
+
+  **Modèle Maven du projet à télécharger**
+    :download:`swing-template.zip <assets/templates/swing-template.zip>`
+
+  **Mise en place du projet**
+    Éditer le fichier :file:`pom.xml` du template et modifier la balise
+    artifactId pour spécifier le nom de votre projet.
 
 .. _JavaFX: https://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 .. _javax.swing: https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html
@@ -741,4 +794,4 @@ la fenêtre principale, on utilise la classe UIManager_ pour sélectionner le
 .. _FlowLayout.RIGHT: https://docs.oracle.com/javase/8/docs/api/java/awt/FlowLayout.html#RIGHT
 .. _UIManager: https://docs.oracle.com/javase/8/docs/api/javax/swing/UIManager.html
 .. _pack: https://docs.oracle.com/javase/8/docs/api/java/awt/Window.html#pack--
-
+.. _JDatePicker: https://jdatepicker.org/
