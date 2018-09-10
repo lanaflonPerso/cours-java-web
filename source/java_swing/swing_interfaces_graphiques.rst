@@ -172,6 +172,7 @@ JTabbedPane_
   import javax.swing.JSpinner;
   import javax.swing.JTabbedPane;
   import javax.swing.JTextArea;
+  import javax.swing.JTextField;
   import javax.swing.UIManager;
   import javax.swing.WindowConstants;
 
@@ -191,7 +192,7 @@ JTabbedPane_
                    new JLabel(UIManager.getIcon("FileView.computerIcon")),
                    new JLabel("Libellé avec du texte"));
 
-      addComponent("Text field", new JTextArea("champ de texte"));
+      addComponent("Text field", new JTextField("champ de texte"));
       addComponent("Text area", new JTextArea("zone de texte"));
       addComponent("Combo box", new JComboBox<String>(new String[] {"Bleu", "Rouge", "Vert"}));
       addComponent("Check box", new JCheckBox("une boite à cocher"));
