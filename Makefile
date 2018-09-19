@@ -8,7 +8,8 @@ SPHINXPROJ    = Java
 SOURCEDIR     = source
 BUILDDIR      = build
 
-xml_files:= $(wildcard $(BUILDDIR)/xml/*/*.xml)
+
+xml_files= $(wildcard $(BUILDDIR)/xml/*/*.xml) $(wildcard $(BUILDDIR)/xml/*.xml)
 
 build_xml:
 	@$(SPHINXBUILD) -M xml "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
