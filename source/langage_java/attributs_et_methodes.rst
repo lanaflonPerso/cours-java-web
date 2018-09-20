@@ -19,15 +19,20 @@ suivante dans le corps de la classe :
 
 .. code-block :: java
 
-  {% if not skip_package %}
-  package toto;
-  {% endif %}
+
   public class Voiture {
 
     public String marque;
     public float vitesse;
 
   }
+
+
+  {% if jupyter %}
+  Voiture v = new Voiture();
+  v.marque="VW";
+  v.vitesse=90.23f;
+  {% endif %}
 
 La classe ci-dessus ne contient que des attributs, elle s'apparente à une simple
 structure de données. Il est possible de créer une instance de cette classe

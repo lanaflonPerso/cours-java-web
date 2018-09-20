@@ -1,4 +1,6 @@
 SHELL := /bin/bash
+ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
 # Minimal makefile for Sphinx documentation
 #
 
@@ -23,7 +25,8 @@ endif
 
 BUILDDIR      = build
 
-JINJA_EXEC    = jinja2 -D skip_package=False
+JINJA_EXEC    = jinja2
+JINJA_OPTS 		= $(ROOT_DIR)/preprocessing.conf.yaml --format=yaml
 
 
 
@@ -71,7 +74,7 @@ $(SOURCEDIR)/%:
  			mkdir -p $$(dirname "$$target_file"); \
  				if [ $$extension == rst ] && [[ $$target_file != *"angular"* ]]; \
  						then\
-   					$(JINJA_EXEC) $$original_file > $$target_file; \
+   					$(JINJA_EXEC) $$original_file $(JINJA_OPTS) > $$target_file; \
  		  			else cp  $$original_file $$target_file; \
  		  	fi; \
  		fi
