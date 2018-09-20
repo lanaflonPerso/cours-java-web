@@ -23,30 +23,28 @@ Il existe ainsi deux environnements Java qui peuvent être téléchargés et ins
 d'Oracle`_ :
 
 JRE - Java Runtime Environment
-  Cet environnement fournit uniquement les outils nécessaires à l'exécution de programmes Java. Il
-  fournit entre-autres la machine virtuelle Java.
+  Cet environnement fournit uniquement les outils nécessaires à l'exécution de programmes Java. Il fournit entre-autres la machine virtuelle Java.
 
 JDK - Java Development Kit
-  Cet environnement fournit tous les outils nécessaires à l'exécution mais aussi au développement de
-  programmes Java. Il fournit entre-autres la machine virtuelle Java et la compilateur.
+  Cet environnement fournit tous les outils nécessaires à l'exécution mais aussi au développement de programmes Java. Il fournit entre-autres la machine virtuelle Java et la compilateur.
 
-Oracle JDK et Open JDK
+JAVA JDK
 **********************
 
-Depuis 2006, le code source Java (et notamment le code source de la JVM) est progressivement passé
-sous licence libre GNU GPL_. Il existe une version de l'environnement Java incluant uniquement
-le code libre : `Open JDK`_. De son côté, Oracle distribue son propre JDK basé sur l'Open JDK et
-incluant également des outils et du code source toujours sous licence fermée.
+Depuis 2006, le code source Java (et notamment le code source de la JVM) est progressivement passé sous licence libre GNU GPL_ avec quelques exceptions concernant des modules propriétaires (Java Plugin, Java WebStart, Swing Rasterizer, polices de caractères).
+Celui-ci est maintenu exclusivement par Oracle dans le cadre du projet `Open JDK`_.
+D'autres JVM, la plus part dérivées d'Open JDK, existent.
+Tout en restant compatibles avec le standard, elles comportent certaines différences (meilleures performances pour certains scenarii , support d'architecture exotiques...)
 
 
 Un bref historique des versions
 *******************************
 
 
-.. list-table:: 
+.. list-table::
   :widths: 10 20 50
   :header-rows: 1
-  
+
   * - version
     - date
     - faits notables
@@ -73,7 +71,7 @@ Un bref historique des versions
       | Nombreux ajout dans l'API standard
   * - 6
     - décembre 2006
-    - 
+    -
   * - 7
     - juillet 2011
     - Quelques évolutions du langage et l'introduction de java.nio
@@ -86,7 +84,7 @@ Un bref historique des versions
   * - 10
     - mars 2018
     - inférence des types pour les variables locales (mot-clé ``var``)
-    
+
 .. _site d'Oracle: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 .. _bytecode: https://fr.wikipedia.org/wiki/Bytecode_Java
 .. _GPL: https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU

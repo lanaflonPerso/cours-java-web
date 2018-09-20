@@ -1,17 +1,16 @@
 La structure fondamentale du langage
 ####################################
 
-La syntaxe du langage Java est à l'origine très inspirée du C et du C++. Ces
-deux langages de programmation ont également servi de base au C#. Donc si vous
-connaissez C, C++ ou C# vous retrouverez en Java des structures de langage qui vous
-sont familières.
+La syntaxe du langage Java est à l'origine très inspirée du C et du C++.
+Ces deux langages de programmation ont également servi de base au C#.
+Donc si vous connaissez C, C++ ou C# vous retrouverez en Java des structures de langage qui vous sont familières.
 
 Les instructions
 ****************
 
-Java est un `langage de programmation impératif`_. Cela signifie qu'un programme
-Java se compose d'instructions (**statements**) décrivant les opérations que la machine
-doit exécuter. En Java une instruction est délimitée par un **point-virgule**.
+Java est un `langage de programmation impératif`_.
+Cela signifie qu'un programme Java se compose d'instructions (**statements**) décrivant les opérations que la machine doit exécuter.
+En Java une instruction est délimitée par un **point-virgule**.
 
 ::
 
@@ -21,9 +20,9 @@ doit exécuter. En Java une instruction est délimitée par un **point-virgule**
 Les blocs de code
 *****************
 
-Java permet de structurer le code en bloc. Un bloc est délimité par des **accolades**.
-Un bloc permet d'isoler par exemple le code conditionnel à la suite d'un **if** mais
-il est également possible de créer des blocs anonymes.
+Java permet de structurer le code en bloc.
+Un bloc est délimité par des **accolades**.
+Un bloc permet d'isoler par exemple le code conditionnel à la suite d'un **if** mais il est également possible de créer des blocs anonymes.
 
 ::
 
@@ -38,8 +37,8 @@ il est également possible de créer des blocs anonymes.
     double j = i * 2;
   }
 
-Un bloc de code n'a pas besoin de se terminer par un point-virgule. Certains outils
-émettent un avertissement si vous le faites.
+Un bloc de code n'a pas besoin de se terminer par un point-virgule.
+Certains outils émettent un avertissement si vous le faites.
 
 Les commentaires
 ****************
@@ -59,9 +58,9 @@ Un commentaire sur plusieurs lignes commence par **/*** et se termine par ***/**
      sur plusieurs lignes */
   double i = 0.0;
 
-Il existe un type spécial de commentaires utilisé par l'utilitaire javadoc_. Ces commentaires
-servent à générer la documentation au format HTML de son code. Ces commentaires,
-appelés **commentaires javadoc**, commencent par **/**** :
+Il existe un type spécial de commentaires utilisé par l'utilitaire javadoc_.
+Ces commentaires servent à générer la documentation au format HTML de son code.
+Ces commentaires, appelés **commentaires javadoc**, commencent par **/**** :
 
 ::
 
@@ -81,10 +80,9 @@ appelés **commentaires javadoc**, commencent par **/**** :
 Le formatage du code
 ********************
 
-Le compilateur Java n'impose pas de formatage particulier du code. Dans la mesure
-où une instruction se termine par un point-virgule et que les blocs sont délimités
-par des accolades, il est possible de présenter du code de façon différente. Ainsi,
-le code suivant :
+Le compilateur Java n'impose pas de formatage particulier du code.
+Dans la mesure où une instruction se termine par un point-virgule et que les blocs sont délimités par des accolades, il est possible de présenter du code de façon différente.
+Ainsi, le code suivant :
 
 ::
 
@@ -101,11 +99,9 @@ est strictement identique pour le compilateur à celui-ci :
 
   double i=0.0;i=Math.sqrt(16);if(i>1){i=-i;}
 
-Cependant, le code source est très souvent relu par les développeurs, il faut
-donc en assurer la meilleure lisibilité. Les développeurs Java utilisent une
-convention de formatage qu'il **faut** respecter. Des outils comme Eclipse
-permettent d'ailleurs de reformater le code
-(sous Eclipse avec le raccourci clavier *MAJ + CTRL + F*).
+Cependant, le code source est très souvent relu par les développeurs, il faut donc en assurer la meilleure lisibilité.
+Les développeurs Java utilisent une convention de formatage qu'il **faut** respecter.
+Des outils comme Eclipse permettent d'ailleurs de reformater le code (sous Eclipse avec le raccourci clavier *MAJ + CTRL + F*).
 Rappelez-vous des conventions suivantes :
 
 ::
@@ -140,12 +136,9 @@ Rappelez-vous des conventions suivantes :
 Les conventions de nommage
 **************************
 
-Chaque langage de programmation et chaque communauté de développeurs définissent
-des conventions sur la façon de nommer les identifiants dans un programme. Comme
-pour le formatage de code, cela n'a pas d'impact sur le compilateur mais permet
-de garantir une bonne lisibilité et donc une bonne compréhension de son code
-par ses pairs. Les développeurs Java sont particulièrement attachés au respect
-des conventions de nommage.
+Chaque langage de programmation et chaque communauté de développeurs définissent des conventions sur la façon de nommer les identifiants dans un programme.
+Comme pour le formatage de code, cela n'a pas d'impact sur le compilateur mais permet de garantir une bonne lisibilité et donc une bonne compréhension de son code par ses pairs.
+Les développeurs Java sont particulièrement attachés au respect des conventions de nommage.
 
 .. list-table:: Convention de nommage
    :widths: 1 3 1
@@ -156,10 +149,10 @@ des conventions de nommage.
      - Exemple
 
    * - Packages
-     - Un nom de package s'écrit toujours en minuscule. L'utilisation d'un _ est tolérée
-       pour représenter une séparation.
+     - Un nom de package s'écrit toujours en minuscule. Il représente en général le nom de domaine de l'entité administrative produisant le code, à l'envers, les caractères spéciaux étant remplacés par _
      - java.utils
        com.company.extra_utils
+       fr.enseirb-matmeca.telecom
 
    * - Classes et interfaces
      - Le nom des classes et des interfaces ne doivent pas être des verbes. La première
