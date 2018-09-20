@@ -2,38 +2,60 @@ SHELL := /bin/bash
 # Minimal makefile for Sphinx documentation
 #
 
+ENABLE_PREPROCESSING=NO
+
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = Java
-RAWSOURCEDIR  = source
-SOURCEDIR     = build/processed-sources
+OVERIDDEN_TARGETS	= ipynb md preprocess_sources
+
+ifeq ($(ENABLE_PREPROCESSING),YES)
+ RAWSOURCEDIR  			= source
+ SOURCEDIR     			= build/processed-sources
+ PREPROCESS_COMMAND	= preprocess_sources
+else
+ RAWSOURCEDIR  = source
+ SOURCEDIR     = source
+ PREPROCESS_COMMAND	=
+endif
+
+
 BUILDDIR      = build
 
-JINJA_EXEC    = jinja2 -D skip_package=True
+JINJA_EXEC    = jinja2 -D skip_package=False
 
 
 
 
-xml_files= $(wildcard $(BUILDDIR)/xml/*/*.xml) $(wildcard $(BUILDDIR)/xml/*.xml)
-RAW_SOURCES_FILES=$(shell find $(RAWSOURCEDIR) )
+
+
 
 build_xml:
 	@$(SPHINXBUILD) -M xml "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 
-%.ipynb:
+$(BUILDDIR)/%.ipynb:
 				@if [ ! -d "$(dir $@)" ];then mkdir -p $(dir $@); fi
 				rst-converter $(subst ipynb,xml, $@) $@
 
-%.md:
+$(BUILDDIR)/%.md:
 				@if [ ! -d "$(dir $@)" ];then mkdir -p $(dir $@); fi
 				rst-converter $(subst md,xml, $@) $@
 
 
-ipynb:	process_sources build_xml $(subst xml,ipynb,$(xml_files))
 
-md:	build_xml $(subst xml,md, $(xml_files))
+build_ipynb: $(subst xml,ipynb,$(wildcard $(BUILDDIR)/xml/*/*.xml) $(wildcard $(BUILDDIR)/xml/*.xml))
+
+build_md: $(subst xml,md,$(wildcard $(BUILDDIR)/xml/*/*.xml) $(wildcard $(BUILDDIR)/xml/*.xml))
+
+
+ipynb: $(PREPROCESS_COMMAND) build_xml
+	make build_ipynb
+
+md:	$(PREPROCESS_COMMAND) build_md
+	make build_md
+
 
 $(SOURCEDIR) $(SOURCEDIR)/ipynb:
 		mkdir -p $@
@@ -55,15 +77,17 @@ $(SOURCEDIR)/%:
  		fi
 
 
-process_sources: $(subst $(RAWSOURCEDIR),$(SOURCEDIR),$(RAW_SOURCES_FILES))
+preprocess_sources: $(subst $(RAWSOURCEDIR),$(SOURCEDIR),$(shell find $(RAWSOURCEDIR)))
 
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+.PHONY: help Makefile build_ipynb build_md ipynb md preprocess_sources
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	@if [ $@ != ipynb ] && [ $@ != md ] && [ $@ != process_sources ]; then 	$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O);	fi
+%:
+	@if [ $@ != build_md ] && [ $@ != build_ipynb ] && [ $@ != ipynb ] && [ $@ != md ] && [ $@ != preprocess_sources ]; then \
+	$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O); \
+	fi

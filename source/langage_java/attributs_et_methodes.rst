@@ -1,9 +1,6 @@
 Attributs & méthodes
 ####################
 
-{% if toto %}
-salut
-{% endif %}
 
 Dans ce chapitre, nous allons revenir sur la déclaration d'une classe en Java
 et détailler les notions d'attributs et de méthodes.
