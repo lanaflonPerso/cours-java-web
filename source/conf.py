@@ -42,7 +42,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.imgmath',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.githubpages',
+    'sphinx.ext.ifconfig',]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -58,7 +59,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = getattr(profile, 'project', 'Java / Web')
-author = 'David Gayerie'
+author = getattr(profile, 'author', 'David Gayerie')
 email = getattr(profile, 'email', 'dagaydevel@free.fr')
 copyright = "%s - %s - CC-BY-SA" % (author, email)
 
@@ -150,7 +151,7 @@ latex_elements = {
     # The font size ('10pt', '11pt' or '12pt').
     #
     'pointsize': '11pt',
-    
+
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
@@ -158,8 +159,8 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    
-    'sphinxsetup': 'TitleColor={rgb}{.1,.1,.1}, verbatimwithframe=false, VerbatimBorderColor={rgb}{.5,.5,.5}, verbatimsep=10pt, VerbatimColor={rgb}{.95,.95,.97}', 
+
+    'sphinxsetup': 'TitleColor={rgb}{.1,.1,.1}, verbatimwithframe=false, VerbatimBorderColor={rgb}{.5,.5,.5}, verbatimsep=10pt, VerbatimColor={rgb}{.95,.95,.97}',
 }
 
 
@@ -193,7 +194,7 @@ texinfo_documents = [
      'Langage de programmation'),
 ]
 
-# A list of regular expressions that match URIs that should not be checked 
+# A list of regular expressions that match URIs that should not be checked
 # when doing a linkcheck build.
 linkcheck_ignore = [r'.+\.zip$', r'.+\.tar.gz$', r'http://localhost:\d+.*', r'http://www\.meteo-villes\.com.*', r'http://exemple\.fr.*', r'http://formation\.fr.*', r'http://xmlns\.jcp\.org/.*']
 
@@ -229,3 +230,9 @@ register_pygments_filter(highlight_language, highlight_root_package)
 rst_epilog = """
 .. |ROOT_PKG| replace:: %s
 """ % highlight_root_package
+
+
+
+for tag in getattr(profile, 'tags', '[]'):
+    print("###################### adding tag: %s" % tag)
+    tags.add(tag)

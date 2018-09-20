@@ -179,9 +179,9 @@ Il est possible d'initialiser un tableau à plusieurs dimensions.
 
 ::
 
-  int[][] tableauDeuxDimensions = {{1, 2}, {3, 4}};
+  int[][] tableauDeuxDimensions = { {1, 2}, {3, 4} };
 
-  int[][][] tableauTroisDimensions = {{{1, 2}, {3, 4}}, {{5, 6}, {7, 8}}};
+  int[][][] tableauTroisDimensions = { { {1, 2}, {3, 4} }, { {5, 6}, {7, 8} } };
 
   System.out.println(tableauDeuxDimensions[0][1]);
   System.out.println(tableauTroisDimensions[0][1][0]);

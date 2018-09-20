@@ -1,22 +1,30 @@
 Attributs & méthodes
 ####################
 
+{% if toto %}
+salut
+{% endif %}
+
 Dans ce chapitre, nous allons revenir sur la déclaration d'une classe en Java
 et détailler les notions d'attributs et de méthodes.
 
 Les attributs
 *************
 
+
 Les attributs représentent l'état interne d'un objet. Nous avons vu précédemment
-qu'un attribut a une portée, un type et un identifiant. Il est déclaré de la façon 
+qu'un attribut a une portée, un type et un identifiant. Il est déclaré de la façon
 suivante dans le corps de la classe :
 
 .. code-block :: text
 
   [portée] [type] [identifiant];
 
-::
+.. code-block :: java
 
+  {% if not skip_package %}
+  package toto;
+  {% endif %}
   public class Voiture {
 
     public String marque;
@@ -292,7 +300,7 @@ Les méthodes
 Les méthodes permettent de définir le comportement des objets. nous avons vu précédemment
 qu'une méthode est définie pas sa **signature** qui spécifie sa portée, son type
 de retour, son nom et ses paramètres entre parenthèses. La signature est suivie d'un bloc de code
-que l'on appelle le **corps** de méthode. 
+que l'on appelle le **corps** de méthode.
 
 .. code-block :: text
 
@@ -844,7 +852,7 @@ par les clients.
 
 En programmation objet, le `principe d'encapsulation`_ nous incite à contrôler
 et limiter l'accès au contenu de nos classes au strict nécessaire afin de permettre
-le couplage le plus faible possible. L'encapsulation en Java est permise grâce à la 
+le couplage le plus faible possible. L'encapsulation en Java est permise grâce à la
 portée **private**.
 
 On considère que tous les attributs d'une classe **doivent** être déclarés **private**
@@ -971,9 +979,9 @@ Exercice
   Implémenter la classe *Phrase*. Cette classe permet de créer une chaîne de
   caractères en ajoutant des mots qui seront séparés par un séparateur.
   Par défaut, le séparateur est le caractère espace, mais il peut être changé.
-  
+
   La classe *Phrase* doit permettre de :
-  
+
     * ajouter un mot
     * ajouter une serie de mots
     * ajouter un mot en le répétant n fois
@@ -982,11 +990,11 @@ Exercice
     * générer la phrase terminée par un point lorsqu'on demande la représentation
       sous la forme d'une chaîne de caractères de l'objet
     * connaître le nombre de lettres dans la phrase
-    
+
   Le code suivant :
-  
+
   ::
-  
+
     Phrase phrase = new Phrase();
     phrase.ajouter("Une");
     phrase.ajouter("classe");
@@ -997,19 +1005,19 @@ Exercice
     phrase.ajouter("des mots", 3);
     phrase.setSeparateur(' ');
     phrase.ajouter("toujours", "et", "encore");
-    
-    System.out.println(phrase); 
+
+    System.out.println(phrase);
     System.out.println(phrase.getNbLettres());
-    
+
   doit produire sur la sortie standard
-  
+
   .. code-block:: text
-  
+
     Une classe pour ajouter des mots et encore des mots et encore des mots et encore des mots toujours et encore.
     88
-  
+
   .. hint::
-  
+
     On ne peut pas parcourir directement une chaîne de caractères, par contre
     on peut obtenir un tableau de caractères à partir d'une chaîne avec la méthode
     toCharArray_. Pour savoir si un caractère est une lettre, on utilise la méthode
@@ -1020,9 +1028,9 @@ Exercice
 
     Ajoutez une méthode de classe à la classe *Phrase* qui retourne le nombre de mots
     de la plus grande phrase créée.
-    
-  
-  
+
+
+
 .. _SOLID: https://fr.wikipedia.org/wiki/SOLID_(informatique)
 .. _singleton: https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)
 .. _System: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html
