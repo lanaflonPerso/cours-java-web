@@ -4,7 +4,7 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 # Minimal makefile for Sphinx documentation
 #
 
-ENABLE_PREPROCESSING=NO
+PREPROCESSING=NO
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
@@ -12,7 +12,7 @@ SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = Java
 OVERIDDEN_TARGETS	= ipynb md preprocess_sources
 
-ifeq ($(ENABLE_PREPROCESSING),YES)
+ifeq ($(PREPROCESSING),YES)
  RAWSOURCEDIR  			= source
  SOURCEDIR     			= build/processed-sources
  PREPROCESS_COMMAND	= preprocess_sources
