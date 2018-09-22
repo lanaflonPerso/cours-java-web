@@ -331,7 +331,9 @@ qui nécessite des références vers d'autres objets... Par exemple, une classe
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Moteur {
     
@@ -353,7 +355,9 @@ suivante de la classe *Voiture* :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Voiture {
     
@@ -391,7 +395,9 @@ nous pouvons proposer simplement l'implémentation :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Voiture {
     

@@ -394,7 +394,9 @@ vues par le compilateur comme deux méthodes distinctes.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Parent {
     
@@ -406,7 +408,9 @@ vues par le compilateur comme deux méthodes distinctes.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Enfant extends Parent {
     
@@ -574,7 +578,9 @@ le mot-clé **super**.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Personne {
     
@@ -591,7 +597,9 @@ le mot-clé **super**.
 .. code-block:: java
   :emphasize-lines: 15
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class HerosMasque extends Personne {
 

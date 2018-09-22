@@ -293,7 +293,9 @@ Nous verrons dans l'exemple ci-dessous une déclaration par annotations :
 .. code-block:: java
     :caption: Une déclaration de portée requête
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.enterprise.context.RequestScoped;
     import javax.inject.Named;
@@ -363,7 +365,9 @@ l'annotation ``@Named`` :
     .. code-block:: java
         :caption: Une déclaration de portée session
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import javax.enterprise.context.SessionScoped;
         import javax.inject.Named;
@@ -508,7 +512,9 @@ Ainsi un contrôleur valide pourrait être :
 .. code-block:: java
     :caption: Un exemple de contrôleur
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.enterprise.context.RequestScoped;
     import javax.inject.Named;
@@ -557,7 +563,9 @@ une chaîne de caractères.
 .. code-block:: java
     :caption: Spécification de la vue par un contrôleur
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.enterprise.context.RequestScoped;
     import javax.inject.Named;
@@ -738,7 +746,9 @@ L'implémentation de booleanValidator qui vérifie que la valeur vaut true
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.faces.application.FacesMessage;
     import javax.faces.component.UIComponent;
@@ -782,7 +792,9 @@ d'ajouter des annotations directement sur le bean ``Personne`` :
 .. code-block:: java
     :caption: Utilisation de Bean Validation
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.validation.constraints.Max;
     import javax.validation.constraints.Min;
@@ -905,7 +917,9 @@ Un exemple simple mais complet serait :
 .. code-block:: java
     :caption: Le contrôleur associé
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.enterprise.context.RequestScoped;
     import javax.inject.Named;

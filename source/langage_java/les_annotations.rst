@@ -20,7 +20,9 @@ qu'elle vient enrichir :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Voiture {
     
@@ -82,7 +84,9 @@ l'espace de nom XML auquel l'élément appartient.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.xml.bind.annotation.XmlRootElement;
 
@@ -136,7 +140,9 @@ On déclare une annotation avec le mot-clé **@interface**.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public @interface MyAnnotation {
 
@@ -150,7 +156,9 @@ La déclaration des attributs d'une annotation a une syntaxe très particulière
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public @interface MyAnnotation {
     String  name();
@@ -192,7 +200,9 @@ Repeatable_
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.lang.annotation.Documented;
   import java.lang.annotation.ElementType;
@@ -334,7 +344,9 @@ Finalement, nous pouvons écrire une pseudo-classe de tests :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import ROOT_PKG.framework.test.Test;
   import ROOT_PKG.framework.test.TestFramework;

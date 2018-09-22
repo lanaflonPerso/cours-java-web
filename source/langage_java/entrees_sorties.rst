@@ -823,7 +823,9 @@ Prenons comme exemple une classe *Personne* qui contient la liste de ses enfants
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.io.Serializable;
   import java.util.ArrayList;
@@ -951,7 +953,9 @@ sérialisation/désérialisation, on peut modifier les attributs comme suit :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.io.Serializable;
   import java.util.ArrayList;
@@ -1016,7 +1020,9 @@ qui doit s'appeler *serialVersionUID*.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.io.Serializable;
   import java.util.ArrayList;
@@ -1046,7 +1052,9 @@ qui doit s'appeler *serialVersionUID*.
   
   ::
   
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.io.IOException;
     import java.io.ObjectInputStream;

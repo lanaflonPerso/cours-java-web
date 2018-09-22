@@ -128,7 +128,9 @@ Si nous déclarons l'interface ci-dessous :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public interface OperationSimple {
     
@@ -156,7 +158,9 @@ dans le cas contraire.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   @FunctionalInterface
   public interface OperationSimple {
@@ -178,7 +182,9 @@ dans une classe *Voiture*.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.function.IntUnaryOperator;
 
@@ -264,7 +270,9 @@ constructeur sans paramètre. Ainsi, si nous définissons une classe
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Voiture {
 

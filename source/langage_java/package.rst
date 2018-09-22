@@ -100,7 +100,9 @@ de créer ma propre classe String par exemple dans le package |ROOT_PKG| :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class String {
 
@@ -112,7 +114,9 @@ exemple, pour accèder à la classe java.util.Arrays_ :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class MaClasse {
 
@@ -132,7 +136,9 @@ package |ROOT_PKG| :
 
 ::
  
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Conducteur {
   
@@ -142,7 +148,9 @@ package |ROOT_PKG| :
 
 ::
  
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Voiture {
   
@@ -218,7 +226,9 @@ plus vraiment utile.
 
 ::
   
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import static java.lang.Math.random;
   import static java.lang.System.out;
@@ -325,7 +335,9 @@ lui-même. Il peut également contenir des annotations pour le package.
 .. code-block:: java
   :caption: contenu du fichier package-info.java pour |ROOT_PKG|
   
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   
   /**
    * Ceci est le commentaire pour le package.

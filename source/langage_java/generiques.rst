@@ -21,7 +21,9 @@ et le parcours complet des éléments.
 .. code-block:: java
   :emphasize-lines: 16,17
    
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.ArrayList;
   import java.util.List;
@@ -176,7 +178,9 @@ de classes qui héritent les unes des autres : *Vehicule*, *Voiture*, *VoitureDe
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   
   public class Vehicule {
     // ...
@@ -184,7 +188,9 @@ de classes qui héritent les unes des autres : *Vehicule*, *Voiture*, *VoitureDe
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   
   public class Voiture extends Vehicule {
     // ...
@@ -192,7 +198,9 @@ de classes qui héritent les unes des autres : *Vehicule*, *Voiture*, *VoitureDe
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   
   public class VoitureDeCourse extends Voiture {
     // ...
@@ -290,7 +298,9 @@ qui supporte les types paramétrés. Reprenons notre exemple ci-dessus des class
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Vehicule {
     
@@ -307,7 +317,9 @@ le plus rapide parmi une liste de véhicules :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.List;
 
@@ -353,7 +365,9 @@ une implémentation pour chaque type de liste, mais la bonne solution est de dé
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.ArrayList;
   import java.util.List;
@@ -426,7 +440,9 @@ classe, il suffit d'utiliser des types paramétrés en les déclarant entre **<*
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Paire<U, V> {
     

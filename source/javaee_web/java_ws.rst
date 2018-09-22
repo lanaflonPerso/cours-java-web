@@ -393,7 +393,9 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
 .. code-block:: java
     :caption: Une SEI avec JAX-WS SOAP
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.jws.WebMethod;
     import javax.jws.WebParam;
@@ -415,7 +417,9 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
 .. code-block:: java
     :caption: La classe d'implémentation de la SEI
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.jws.WebService;
 
@@ -437,7 +441,9 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
 
     ::
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import javax.jws.WebMethod;
         import javax.jws.WebParam;

@@ -71,7 +71,9 @@ représenter des données de notre modèle :
 .. code-block:: java
     :caption: La classe Item
     
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     public class Item {
 	
@@ -91,7 +93,9 @@ JSON d'une instance de la classe *Item* :
 .. code-block:: java
     :caption: Un contrôleur pour une API Web
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.RequestMapping;
@@ -172,7 +176,9 @@ peut produire du JSON ou du XML en déclarant un tableau de types MIME dans l'at
 .. code-block:: java
     :caption: Un contrôleur pour une API Web
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.RequestMapping;
@@ -220,7 +226,9 @@ de type `@RequestMapping`_ conjointement avec l'annotation `@RequestBody`_.
 .. code-block:: java
     :caption: Un contrôleur acceptant des requêtes au format JSON
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import org.springframework.http.HttpStatus;
     import org.springframework.web.bind.annotation.PostMapping;
@@ -291,7 +299,9 @@ de retourner un objet de type `ResponseEntity<T>`_.
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.net.URI;
 
@@ -376,7 +386,9 @@ le comportement par défaut de la sérialisation/désérialisation.
     .. code-block:: java
         :caption: Un programme qui produit un document JSON sur la sortie standard
         
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -397,7 +409,9 @@ le comportement par défaut de la sérialisation/désérialisation.
     .. code-block:: java
         :caption: Un programme qui produit un document XML sur la sortie standard
         
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -439,7 +453,9 @@ Reprenons notre classe *Item* en ajoutant des annotations Jackson :
     
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import com.fasterxml.jackson.annotation.JsonProperty;
     import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -484,13 +500,17 @@ nous allons créer les interfaces *ItemViewWithoutQuantity* et *ItemViewWithQuan
 .. code-block:: java
     :caption: les interfaces représentant les vues JSON
     
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     public interface ItemViewWithoutQuantity {
 
     }
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     public interface ItemViewWithQuantity extends ItemViewWithoutQuantity {
 
@@ -504,7 +524,9 @@ ajoutant des annotations `@JsonView`_ pour attribuer une vue à chaque attribut 
 .. code-block:: java
     :caption: déclaration des vues JSON
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import com.fasterxml.jackson.annotation.JsonProperty;
     import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -536,7 +558,9 @@ Il faut maintenant faire évoluer le programme de sérialisation pour indiquer
 .. code-block:: java
     :caption: programme de sérialisation JSON en précisant une vue
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -573,7 +597,9 @@ limite la sérialisation à la vue *ItemViewWithoutQuantity*.
     
     ::
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import java.net.URI;
 
@@ -616,7 +642,9 @@ l'application client suivante :
 .. code-block:: java
     :caption: un exemple d'application cliente avec RestTemplate
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.net.URI;
 
@@ -689,7 +717,9 @@ Exercice
     .. code-block:: java
         :caption: Exemple d'une classe de test d'un contrôleur        
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
         import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

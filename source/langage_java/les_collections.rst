@@ -739,7 +739,9 @@ un tableau associatif vides et immutables.
 .. code-block:: java
   :emphasize-lines: 41
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.ArrayList;
   import java.util.Collections;

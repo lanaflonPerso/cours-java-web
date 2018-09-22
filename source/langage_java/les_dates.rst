@@ -27,7 +27,9 @@ tierces utilisent directement ou indirectement la classe Date_.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.Instant;
   import java.util.Date;
@@ -87,7 +89,9 @@ de la classe Date_ :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.Calendar;
   import java.util.Locale;
@@ -146,7 +150,9 @@ une date, une heure, une date et une heure.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.LocalDate;
   import java.time.LocalDateTime;
@@ -200,7 +206,9 @@ des informations intéressantes à partir de l'année ou du mois et de l'année.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.LocalDate;
   import java.time.Month;
@@ -233,7 +241,9 @@ Instant_ est adaptée pour réaliser des traitements de données temporelles.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.Instant;
 
@@ -268,7 +278,9 @@ une période.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.LocalDate;
   import java.time.Month;
@@ -296,7 +308,9 @@ obtenue à partir de deux instances de Instant_.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.Duration;
   import java.time.Instant;
@@ -327,7 +341,9 @@ DateTimeFormatter_.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.time.LocalDateTime;
   import java.time.Month;

@@ -58,7 +58,9 @@ Une classe peut ensuite implémenter une ou plusieurs interfaces.
   
   ::
   
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     public interface Mobile {
       
@@ -70,7 +72,9 @@ Une classe peut ensuite implémenter une ou plusieurs interfaces.
   
   ::
   
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     public interface Mobile {
       

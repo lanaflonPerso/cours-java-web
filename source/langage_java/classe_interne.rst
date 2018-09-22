@@ -14,7 +14,9 @@ usages particuliers des classes internes.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class ClasseEnglobante {
   
@@ -35,7 +37,9 @@ l'espace de noms est celui de la classe englobante.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   
   public class ClasseEnglobante {
   
@@ -69,7 +73,9 @@ comme une classe interne.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   import java.util.Comparator;
 
   public class Individu {
@@ -150,7 +156,9 @@ en Java avec l'API Swing_.
 .. code-block:: java
   :linenos:
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.awt.FlowLayout;
   import java.awt.event.ActionEvent;
@@ -657,7 +665,9 @@ implicitement comme **static**. On peut ou non préciser le mot-clé.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class ClasseEnglobante {
     

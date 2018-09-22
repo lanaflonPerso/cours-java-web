@@ -62,7 +62,9 @@ d'application. Si ce n'est pas le cas, l'initialisation du contexte d'applicatio
 .. code-block:: java
   :caption: Exemple de déclaration avec l'annotation @Required
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.List;
   import org.springframework.beans.factory.annotation.Required;
@@ -93,7 +95,9 @@ pour un type primitif ou un chaîne de caractères. Il donne la valeur par défa
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.List;
 
@@ -129,7 +133,9 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
 .. code-block:: java
   :caption: Exemple d'utilisation de @Autowired sur un attribut
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.sql.DataSource;
 
@@ -146,7 +152,9 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
 .. code-block:: java
   :caption: Exemple d'utilisation de @Autowired sur une méthode
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.sql.DataSource;
 
@@ -167,7 +175,9 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
 .. code-block:: java
   :caption: Exemple d'utilisation de @Autowired sur un constructeur
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.sql.DataSource;
 
@@ -213,7 +223,9 @@ dans le contexte d'application.
 .. code-block:: java
   :caption: Utilisation de l'annotation `@Qualifier`_
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.beans.factory.annotation.Autowired;
   import org.springframework.beans.factory.annotation.Qualifier;
@@ -275,7 +287,9 @@ par le Spring Framework :
 
   ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.annotation.Resource;
     import javax.sql.DataSource;
@@ -299,7 +313,9 @@ par le Spring Framework :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.sql.Connection;
   import java.sql.SQLException;
@@ -389,7 +405,9 @@ Spring Framework pour créer un *bean* dans le contexte d'application.
 .. code-block:: java
   :caption: Utilisation de l'annotation `@Service`_
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.stereotype.Service;
 
@@ -416,7 +434,9 @@ annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la m
 .. code-block:: java
   :caption: Création d'un bean à partir d'un composant
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.annotation.Bean;
   import org.springframework.stereotype.Service;

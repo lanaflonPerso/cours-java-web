@@ -625,7 +625,9 @@ par l'application comme une *OperationNonDisponibleException*.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class OperationNonDisponibleException extends Exception {
   

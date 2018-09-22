@@ -26,7 +26,9 @@ Evans (*Domain Driven Development*).
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.stereotype.Repository;
 
@@ -55,7 +57,9 @@ standard de Java EE).
 .. code-block:: java
   :caption: Injection d'un EntityManager dans une classe repository
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.persistence.EntityManager;
   import javax.persistence.PersistenceContext;
@@ -143,7 +147,9 @@ de connexions comme DBCP_).
 .. code-block:: java
   :caption: Un DAO utilisant une instance de JdbcTemplate
   
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.sql.DataSource;
 
@@ -177,7 +183,9 @@ La classe JdbcTemplate_ permet d'exécuter des requêtes SQL de manière simplif
 .. code-block:: java
   :caption: Un exemple complet d'utilisation d'une instance de JdbcTemplate
   
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.sql.ResultSet;
   import java.sql.SQLException;
@@ -236,7 +244,9 @@ pour faciliter la génération de requête d'insertion :
   :caption: Exemple d'utilisation de la classe SimpleJdbcInsert
   :linenos:
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.HashMap;
   import java.util.Map;
@@ -284,7 +294,9 @@ par exemple) :
   :caption: Exemple d'utilisation de la classe SimpleJdbcInsert
   :linenos:
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.HashMap;
   import java.util.Map;

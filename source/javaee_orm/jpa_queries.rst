@@ -243,7 +243,9 @@ pour centraliser toutes les requêtes relatives à cette entité.
 .. code-block:: java
   :caption: Déclaration d'une requête nommée
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.persistence.Entity;
   import javax.persistence.GeneratedValue;
@@ -273,7 +275,9 @@ Si vous voulez nommer plusieurs requêtes, vous devez utiliser l'annotation
 .. code-block:: java
   :caption: Déclaration de plusieurs requêtes nommées
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import javax.persistence.Entity;
   import javax.persistence.GeneratedValue;

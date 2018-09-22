@@ -100,7 +100,9 @@ Pour cela, il suffit d'ajouter l'annotation `@WebListener`_ à la classe :
 .. code-block:: java
     :caption: Exemple de ServletRequestListener
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.servlet.ServletRequestEvent;
     import javax.servlet.ServletRequestListener;
@@ -151,7 +153,9 @@ le lancement et l'arrêt de l'application Web :
 Exemple de ``ServletRequestListener``
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.servlet.ServletContextEvent;
     import javax.servlet.ServletContextListener;
@@ -186,7 +190,9 @@ L'opération de filtrage est réalisée grâce à la méthode Filter.doFilter_.
 .. code-block:: java
     :caption: Exemple d'implémentation d'un filtre Web
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.io.IOException;
 
@@ -231,7 +237,9 @@ filtre doit être appelé.
 .. code-block:: java
     :caption: Déclaration d'un filtre Web par annotation
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.io.IOException;
 
@@ -358,7 +366,9 @@ très facilement être implémenté au moyen d'un filtre Web.
 .. code-block:: java
     :caption: Filtre UTF-8
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.io.IOException;
 
@@ -400,7 +410,9 @@ les logs du serveur le nom et la valeur de tous les paramètres reçus :
 .. code-block:: java
     :caption: Filtre de log de paramètres
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.io.IOException;
     import java.util.ArrayList;

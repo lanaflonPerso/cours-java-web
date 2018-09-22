@@ -22,7 +22,9 @@ l'URI d'un service.
 .. code-block:: java
   :caption: Exemple de classe Configuration
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Configuration {
 
@@ -42,7 +44,9 @@ Un première implémentation pourrait être :
 .. code-block:: java
   :caption: Exemple de classe Service
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Service {
     private String url;
@@ -82,7 +86,9 @@ pourrait alors être implémentée comme ceci :
 .. code-block:: java
   :caption: Exemple de classe Service sans dépendance à la classe Configuration
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Service {
     private String url;
@@ -210,7 +216,9 @@ Si nous reprenons notre exemple de la classe ``Configuration`` et ``Service`` :
 .. code-block:: java
   :caption: La classe Configuration
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.stereotype.Component;
 
@@ -226,7 +234,9 @@ Si nous reprenons notre exemple de la classe ``Configuration`` et ``Service`` :
 .. code-block:: java
   :caption: La classe Service
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.beans.factory.annotation.Value;
   import org.springframework.stereotype.Component;

@@ -128,7 +128,9 @@ l'annotation `@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>
 
     ::
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import javax.ws.rs.Path;
 
@@ -146,7 +148,9 @@ l'annotation `@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>
 
     ::
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import javax.ws.rs.Path;
 
@@ -187,7 +191,9 @@ pour traiter la méthode de la requête HTTP entrante.
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.DELETE;
     import javax.ws.rs.GET;
@@ -248,7 +254,9 @@ leur valeur dans les paramètres des méthodes :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.DELETE;
     import javax.ws.rs.GET;
@@ -299,7 +307,9 @@ un modèle objet :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.DELETE;
     import javax.ws.rs.GET;
@@ -358,7 +368,9 @@ le spécifier avec une expression régulière :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.GET;
     import javax.ws.rs.Path;
@@ -421,7 +433,9 @@ paramètre de chemin ``[^/]+?``
 
     ::
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import javax.ws.rs.DELETE;
         import javax.ws.rs.GET;
@@ -580,7 +594,9 @@ Si on souhaite retourner une instance de la classe suivante :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.util.ArrayList;
     import java.util.List;
@@ -629,7 +645,9 @@ Si on définit une ressource de la façon suivante :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.GET;
     import javax.ws.rs.Path;
@@ -674,7 +692,9 @@ en paramètre un document JSON transformé en une instance Java.
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.POST;
     import javax.ws.rs.Path;
@@ -730,7 +750,9 @@ ajouter les annotations JAXB :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.util.ArrayList;
     import java.util.List;
@@ -788,7 +810,9 @@ Si nous autorisons une ressource à produire du XML :
 
 ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.GET;
     import javax.ws.rs.Path;
@@ -845,7 +869,9 @@ pour déterminer quel est le format à utiliser pour la réponse.
 .. code-block:: java
     :caption: Exemple de ressource supportant plusieurs formats de représentation
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.Consumes;
     import javax.ws.rs.GET;
@@ -892,7 +918,9 @@ d'appeler la méthode ``build()`` et retourner le résultat.
 .. code-block:: java
     :caption: Exemple d'utilisation de la classe ``javax.rs.core.Response``
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.net.URI;
 
@@ -969,7 +997,9 @@ exceptions filles.
 .. code-block:: java
     :caption: Exemple d'un ``ExceptionMapper`` pour les exceptions de type ``ValiditionException``
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.validation.ValidationException;
     import javax.ws.rs.core.MediaType;
@@ -1015,7 +1045,9 @@ HTTP.
 .. code-block:: java
     :caption: Utilisation de Bean Validation sur les attributs d'une classe
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.util.ArrayList;
     import java.util.List;
@@ -1080,7 +1112,9 @@ HTTP.
 .. code-block:: java
     :caption: Utilisation de Bean Validation sur un paramètre de méthode d'une ressource
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.validation.constraints.Size;
     import javax.ws.rs.GET;
@@ -1128,7 +1162,9 @@ https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summar
     .. code-block:: java
         :caption: Exemple d'injection d'une ``DataSource``
 
-        package ROOT_PKG;
+      {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
         import java.sql.Connection;
         import java.sql.ResultSet;
@@ -1178,7 +1214,9 @@ pour créer une instance de la classe
 .. code-block:: java
     :caption: Exemple d'utilisation d'un client HTTP
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import javax.ws.rs.client.Client;
     import javax.ws.rs.client.ClientBuilder;

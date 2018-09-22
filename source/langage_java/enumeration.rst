@@ -8,7 +8,9 @@ utilitaire quelconque.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class ClasseUtilitaireQuelconque {
   
@@ -27,7 +29,9 @@ mot-clé **enum**.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public enum Criticite {
     FAIBLE,
@@ -50,7 +54,9 @@ même dans une énumération.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Zone {
 
@@ -68,7 +74,9 @@ un paramètre et une variable.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
   
   public class RapportDeBug {
   
@@ -194,7 +202,9 @@ sont des classes comme les autres. Ainsi, l'énumération :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public enum Criticite {
 
@@ -209,7 +219,9 @@ est transcrite comme ceci par le compilateur :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public final class Criticite extends Enum<Criticite> {
 
@@ -255,7 +267,9 @@ il devient évident qu'il est possible d'ajouter des attributs et des méthodes
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public enum Couleur {
 
@@ -306,7 +320,9 @@ moment de la déclaration des éléments de l'énumération.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public enum Polygone {
 

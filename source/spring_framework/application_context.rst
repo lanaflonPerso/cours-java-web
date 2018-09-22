@@ -143,7 +143,9 @@ par l'objet ApplicationContext_ :
 .. code-block:: java
   :caption: La classe principale de l'application
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.Date;
   import org.springframework.context.support.GenericXmlApplicationContext;
@@ -217,7 +219,9 @@ un singleton et "now" qui est de portée prototype.
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -288,7 +292,9 @@ des méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Personne {
 
@@ -329,7 +335,9 @@ Pour l'exemple, nous créons également la classe ``PersonneFactory`` :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class PersonneFactory {
 
@@ -390,7 +398,9 @@ Et le code de test de l'application :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -420,7 +430,9 @@ d'entiers :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.stream.IntStream;
 
@@ -465,7 +477,9 @@ Et le code de l'application :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -511,7 +525,9 @@ données la classe ``Societe`` :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.List;
 
@@ -633,7 +649,9 @@ Et le code de l'application :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -678,7 +696,9 @@ Si nous disposons de la classe ci-dessous :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class ExempleBeanRessource {
 
@@ -770,7 +790,9 @@ Si nous reprenons l'exemple de la classe ``Societe`` :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.util.List;
 
@@ -871,7 +893,9 @@ d'application intégralement en Java. Pour cela, on utilise les annotations
 .. code-block:: java
   :caption: Exemple de contexte d'application en Java
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.annotation.AnnotationConfigApplicationContext;
   import org.springframework.context.annotation.Bean;

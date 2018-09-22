@@ -104,7 +104,9 @@ réalise un traitement important pour notre application :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class BusinessService {
 
@@ -124,7 +126,9 @@ nous pouvons plutôt créer une classe qui va jouer le rôle de greffon (*advice
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class SimpleLogger {
 
@@ -176,7 +180,9 @@ Enfin le code de l'application :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
 

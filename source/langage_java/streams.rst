@@ -156,7 +156,9 @@ des Map_. Si on dispose de la classe *Voiture* :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Voiture {
 

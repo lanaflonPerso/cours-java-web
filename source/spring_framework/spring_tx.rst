@@ -551,7 +551,9 @@ soit avec l'annotation `@Transactional`_ :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.transaction.annotation.Propagation;
   import org.springframework.transaction.annotation.Transactional;
@@ -631,7 +633,9 @@ soit avec l'annotation `@Transactional`_ :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import org.springframework.transaction.annotation.Isolation;
   import org.springframework.transaction.annotation.Transactional;

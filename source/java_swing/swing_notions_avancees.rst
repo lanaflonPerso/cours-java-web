@@ -35,7 +35,9 @@ Habituellement, le nouveau composant graphique redéfinit (*override*) les méth
 .. code-block:: java
   :caption: Exemple d'un composant Swing
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   import java.awt.Color;
   import java.awt.Dimension;
@@ -77,7 +79,9 @@ Habituellement, le nouveau composant graphique redéfinit (*override*) les méth
 
   ::
 
-    package ROOT_PKG;
+  {% if not jupyter %}
+  package ROOT_PKG;
+{% endif %}
 
     import java.awt.Color;
     import java.awt.Dimension;
@@ -207,7 +211,9 @@ Si nous disposons de la classe *Individu* :
 
 ::
 
+{% if not jupyter %}
   package ROOT_PKG;
+{% endif %}
 
   public class Individu {
 
