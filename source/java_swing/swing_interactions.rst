@@ -18,7 +18,7 @@ qui représentent des *listeners* pour des événements particuliers.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.Dimension;
   import java.awt.event.KeyEvent;
@@ -131,7 +131,7 @@ acceptent des *listeners* de ce type.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.GridBagConstraints;
   import java.awt.GridBagLayout;
@@ -280,7 +280,7 @@ Il suffit d'appeler la méthode JFrame.setJMenuBar_ pour ajouter la barre de men
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.event.ActionEvent;
   import java.awt.event.ActionListener;
@@ -385,7 +385,7 @@ associés apparaîtront grisés.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.Desktop;
   import java.awt.event.ActionEvent;
@@ -508,7 +508,7 @@ ce que l'utilisateur ait choisi parmi les options de la boite de dialogue.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.util.Random;
 
@@ -577,7 +577,7 @@ fichiers et/ou de répertoires.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.event.ActionEvent;
   import java.awt.event.ActionListener;
@@ -671,7 +671,7 @@ couleur.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.Color;
   import java.awt.event.ActionEvent;

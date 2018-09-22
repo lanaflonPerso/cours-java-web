@@ -197,7 +197,7 @@ du serveur. Pour ce chapitre, nous utiliserons la technologie JSP.
                                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-        <context:component-scan base-package="ROOT_PKG" />
+        <context:component-scan base-package="{{ROOT_PKG}}" />
         <mvc:default-servlet-handler/>
         <mvc:annotation-driven />
     	<mvc:resources mapping="/resources/**" location="/resources/" />
@@ -255,7 +255,7 @@ de déploiement de l'application) pris en charge par la méthode.
     :caption: Un contrôleur
     
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.stereotype.Controller;
@@ -294,7 +294,7 @@ et la seconde que les requêtes de type POST.
     ::
         
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import org.springframework.stereotype.Controller;
@@ -358,7 +358,7 @@ Pour la liste complète des types de paramètre supportés, reportez-vous à la
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import org.springframework.stereotype.Controller;
@@ -395,7 +395,7 @@ Pour la liste complète des types de paramètre supportés, reportez-vous à la
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import org.springframework.stereotype.Controller;
@@ -434,7 +434,7 @@ Pour la liste complète des types de paramètre supportés, reportez-vous à la
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import org.springframework.stereotype.Controller;
@@ -472,7 +472,7 @@ Pour la liste complète des types de paramètre supportés, reportez-vous à la
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import org.springframework.stereotype.Controller;
@@ -535,7 +535,7 @@ Par exemple, si on déclare la classe `Item` :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     public class Item {
@@ -554,7 +554,7 @@ de type `Item`.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.stereotype.Controller;
@@ -591,7 +591,7 @@ accessible par son nom dans une EL.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.stereotype.Controller;
@@ -758,7 +758,7 @@ du type *Item* :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     public class Item {
@@ -849,7 +849,7 @@ Exercices
         ::
         
           {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
             import org.springframework.stereotype.Controller;
@@ -908,7 +908,7 @@ l'exception à traiter.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.http.HttpStatus;
@@ -985,7 +985,7 @@ sur les valeurs possibles.
     :caption: Exemple d'utilisation des annotations de validation
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.validation.constraints.Max;
@@ -1023,7 +1023,7 @@ une erreur HTTP 400 (requête invalide) au client.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.validation.Valid;
@@ -1057,7 +1057,7 @@ erreur s'est produite.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.validation.Valid;
@@ -1096,7 +1096,7 @@ avec `@ModelAttribute`_.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.stereotype.Controller;
@@ -1149,7 +1149,7 @@ ayant au moins un paramètre de type WebDataBinder_.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.text.SimpleDateFormat;
@@ -1197,7 +1197,7 @@ Il est donc facile d'utiliser l'IoC.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.beans.factory.annotation.Autowired;
@@ -1236,7 +1236,7 @@ pour lesquels elle s'applique.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.text.SimpleDateFormat;
@@ -1251,7 +1251,7 @@ pour lesquels elle s'applique.
     import org.springframework.web.bind.annotation.InitBinder;
     import org.springframework.web.bind.annotation.ResponseStatus;
 
-    @ControllerAdvice("ROOT_PKG")
+    @ControllerAdvice("{{ROOT_PKG}}")
     public class ItemControllerAdvice {
 
         @InitBinder

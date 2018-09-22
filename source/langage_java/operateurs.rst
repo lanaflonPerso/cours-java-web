@@ -2,7 +2,7 @@ Les opérateurs
 ##############
 
 Un opérateur prend un ou plusieurs opérandes et produit une nouvelle valeur.
-Les opérateurs en Java sont très proches de ceux des langages C et C++ qui 
+Les opérateurs en Java sont très proches de ceux des langages C et C++ qui
 les ont inspirés.
 
 L'opérateur d'affectation
@@ -13,7 +13,7 @@ la valeur du paramètre de droite (appelé *rvalue*) dans le paramètre de gauch
 (appelé *lvalue*). Java opère donc par copie. Cela signifie que si l'on change
 plus tard la valeur d'un des opérandes, la valeur de l'autre ne sera pas affectée.
 
-::
+.. code-block:: java
 
   int i = 1;
   int j = i; // j reçoit la copie de la valeur de i
@@ -25,7 +25,7 @@ car la variable ne contient pas à proprement parler un objet mais
 la *référence d'un objet*. On peut dire aussi qu'elle pointe vers la zone mémoire
 de cet objet. Cela a plusieurs conséquences importantes.
 
-::
+.. code-block:: java
 
   Voiture v1 = new Voiture();
   Voiture v2 = v1;
@@ -35,14 +35,14 @@ contenue dans **v1**. Donc ces deux variables référencent bien le même objet
 et nous pouvons le manipuler à travers l'une ou l'autre de ces variables.
 Si plus loin dans le programme, on écrit :
 
-::
+.. code-block:: java
 
   v1 = new Voiture();
 
 **v1** reçoit maintenant la référence d'un nouvel objet et les variables **v1** et
 **v2** référencent des instances différentes de **Voiture**. Si enfin, j'écris :
 
-::
+.. code-block:: java
 
   v2 = null;
 
@@ -58,7 +58,7 @@ Elle existe toujours quelque part en mémoire. On dit que cette instance n'est p
 .. note::
 
   **=** est plus précisément l'opérateur d'initialisation et d'affectation.
-  Pour une variable, l'initialisation se fait au moment de sa déclaration 
+  Pour une variable, l'initialisation se fait au moment de sa déclaration
   et pour un attribut, au moment de la création de l'objet.
 
   ::
@@ -102,7 +102,7 @@ Les opérateurs arithmétiques à deux opérandes sont :
 La liste ci-dessus est donnée par ordre de précédence. Cela signifie qu'une multiplication
 est effectuée avant une division.
 
-::
+.. code-block:: java
 
   int i = 2 * 3 + 4 * 5 / 2;
   int j = (2 * 3) + ((4 * 5) / 2);
@@ -138,7 +138,7 @@ Les opérateurs arithmétiques unaires ne prennent qu'un seul argument
    * - **-**
      - Négatif
 
-::
+.. code-block:: java
 
   int i = 0;
   i++; // i vaut 1
@@ -172,7 +172,7 @@ possible de concaténer un objet de type String_ avec un autre type.
 Pour cela, le compilateur insérera un appel à la méthode *toString* de l'objet ou de
 la classe enveloppe pour un type primitif.
 
-::
+.. code-block:: java
 
   String s1 = "Hello ";
   String s2 = s1 + " world";
@@ -251,7 +251,7 @@ Les opérateurs **==** et **!=** servent à comparer les valeurs contenues dans 
 variables. Pour des variables de type objet, ces opérateurs **ne comparent pas** les
 objets entre-eux mais simplement les références contenues dans ces variables.
 
-::
+.. code-block:: java
 
   Voiture v1 = new Voiture();
   Voiture v2 = v1;
@@ -302,7 +302,7 @@ Les opérateurs logiques prennent des booléens comme opérandes et produisent u
    * - **||**
      - Ou logique
 
-::
+.. code-block:: java
 
   boolean b = true;
   boolean c = !b // c vaut false
@@ -312,7 +312,7 @@ Les opérateurs logiques prennent des booléens comme opérandes et produisent u
 
 Les opérateurs **&&** et **||** sont des opérateurs qui n'évaluent l'expression à droite que si cela est nécessaire.
 
-::
+.. code-block:: java
 
   ltest() && rtest()
 
@@ -320,7 +320,7 @@ Dans l'exemple ci-dessus, la méthode **ltest** est appelée et si elle retourne
 alors la méthode rtest() sera appelée pour évaluer l'expression. Si la méthode **ltest**
 retourne **false** alors le résultat de l'expression sera **false** et la méthode **rtest** ne sera pas appelée.
 
-::
+.. code-block:: java
 
   ltest() || rtest()
 
@@ -354,7 +354,7 @@ L'opérateur ternaire permet d'affecter une valeur suivant le résultat d'une co
 
 Par exemple :
 
-::
+.. code-block:: java
 
   String s = age >= 18 ? "majeur" : "mineur";
   int code = s.equals("majeur") ? 10 : 20;
@@ -380,7 +380,7 @@ Les opérateurs *bitwise* permettent de manipuler la valeur des bits d'un entier
    * - **|**
      - Ou binaire
 
-::
+.. code-block:: java
 
   int i = 0b1;
 
@@ -416,7 +416,7 @@ Il est possible de conserver ou non la valeur du bit de poids fort qui représen
 Puisque la machine stocke les nombres en base 2, un décalage vers la gauche équivaut
 à multiplier par 2 et un décalage vers la droite équivaut à diviser par 2 :
 
-::
+.. code-block:: java
 
   int i = 1;
   i = i << 1 // i vaut 2
@@ -435,7 +435,7 @@ uniquement les opérations de transtypage qui sont sûres. Par exemple : passer 
 Si on le désire, il est possible de forcer un transtypage en indiquant explicitement
 le type attendu entre parenthèses :
 
-::
+.. code-block:: java
 
   int i = 1;
   long l = i; // Ok
@@ -523,7 +523,7 @@ L'opérateur .
 L'opérateur **.** permet d'accéder aux attributs et aux méthodes d'une classe
 ou d'un objet à partir d'une référence.
 
-::
+.. code-block:: java
 
   String s = "Hello the world";
   int length = s.length();
@@ -553,7 +553,7 @@ L'opérateur virgule est utilisé comme séparateur des paramètres dans la déf
 et l'appel des méthodes. Il peut également être utilisé en tant qu'opérateur pour
 évaluer séquentiellement une instruction.
 
-::
+.. code-block:: java
 
   int x = 0, y = 1, z= 2;
 

@@ -92,7 +92,7 @@ session comme backing bean JPA.
     :caption: EJB stateful : le panier de l'utilisateur
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Stateful;
@@ -122,7 +122,7 @@ telle méthode doit être annotée avec `@Remove`_ :
     :caption: EJB stateful : ajout d'une méthode de suppression
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Stateful;
@@ -167,7 +167,7 @@ nécessaire de protéger le code contre les accès concurrents.
     :caption: EJB stateless : l'implémentation d'un repository
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Stateless;
@@ -193,7 +193,7 @@ qu'\ **UNE** instance d'un EJB singleton pour une application.
     :caption: EJB singleton : la gestion d'une ressource unique
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.*;
@@ -276,7 +276,7 @@ attribut d'un autre composant Java EE (Servlet, bean CDI ou même EJB).
     :caption: Injection d'une instance d'EJB session
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -313,7 +313,7 @@ attribut d'un autre composant Java EE (Servlet, bean CDI ou même EJB).
         :caption: Un EJB utiliser comme backing bean JSF
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import javax.ejb.Stateful;
@@ -353,7 +353,7 @@ et sur l'EJB lui-même pour préciser le type de l'interface.
     :caption: L'interface locale
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Local;
@@ -370,7 +370,7 @@ et sur l'EJB lui-même pour préciser le type de l'interface.
     :caption: L'implémentation de l'EJB
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Local;
@@ -404,7 +404,7 @@ Pour une interface distante, le mécanisme est identique mais on utilise l'annot
     :caption: L'interface distante
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Remote;
@@ -421,7 +421,7 @@ Pour une interface distante, le mécanisme est identique mais on utilise l'annot
     :caption: L'implémentation de l'EJB
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.Remote;
@@ -503,7 +503,7 @@ les EJB :
     :caption: Transaction gérée par le conteneur
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.*;
@@ -538,7 +538,7 @@ transactions.
     :caption: Transaction gérée par le bean
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.*;
@@ -581,7 +581,7 @@ d'EJB.
     :caption: Une exception applicative provoquant un rollback
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ejb.ApplicationException;

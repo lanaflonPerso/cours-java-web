@@ -1,8 +1,8 @@
 Les entrées/sorties
 ###################
 
-En Java les entrées/sorties sont représentées par des objets de type 
-java.io.InputStream_ java.io.Reader_, java.io.OutputStream_ et java.io.Writer_. 
+En Java les entrées/sorties sont représentées par des objets de type
+java.io.InputStream_ java.io.Reader_, java.io.OutputStream_ et java.io.Writer_.
 Le package java.io_ définit
 un ensemble de classes qui vont pouvoir être utilisées conjointement avec ces
 quatre classes abstraites pour réaliser des traitements plus complexes.
@@ -20,9 +20,9 @@ implémentation concrète.
 La classe ByteArrayInputStream_ permet d'ouvrir un flux de lecture binaire sur
 un tableau de **byte**.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.ByteArrayInputStream;
 
@@ -37,15 +37,15 @@ un tableau de **byte**.
         System.out.print((char) octet);
       }
     }
-    
+
   }
 
 
 La classe FileInputStream_ permet d'ouvrir un flux de lecture binaire sur un fichier.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.FileInputStream;
   import java.io.IOException;
@@ -75,12 +75,12 @@ octet par octet.
 
   À part s'ils représentent une zone mémoire, les flux de données sont généralement
   attachés à des ressources système (descripteurs de fichier ou de socket). Il
-  est donc impératif de fermer ces flux en appelant leur méthode **close** 
+  est donc impératif de fermer ces flux en appelant leur méthode **close**
   lorsqu'ils ne sont plus nécessaires pour libérer les ressources système associées.
   Comme toutes les méthodes d'un flux sont susceptibles de jeter une IOException_,
   on utilise généralement le bloc **finally** pour appeler la méthode **close**.
-  
-  ::
+
+.. code-block:: java
 
     InputStream stream = new FileInputStream("chemin/vers/mon/fichier.bin");
     try {
@@ -92,14 +92,14 @@ octet par octet.
     } finally {
       stream.close();
     }
-  
+
   Toutes les classes qui représentent
   des flux d'entrée ou de sortie implémentent l'interface Closeable_. Cela
   signifie qu'elles peuvent être utilisées avec la syntaxe *try-with-resources* et
   ainsi faciliter leur gestion en garantissant une fermeture automatique.
-  
-  ::
-  
+
+.. code-block:: java
+
     try (InputStream stream = new FileInputStream("/chemin/vers/mon/fichier.bin")) {
       byte[] buffer = new byte[1024];
       int nbRead;
@@ -107,7 +107,7 @@ octet par octet.
         // ...
       }
     }
-    
+
   Les flux System.in_, System.out_ et System.err_ qui permettent de lire ou d'écrire
   sur la console sont des cas particuliers. Ils sont ouverts au lancement de l'application
   et seront automatiquement fermés à la fin. Il est néanmoins possible de fermer
@@ -123,7 +123,7 @@ représente un flux de sortie de données binaires. Elle déclare des méthodes 
 qui permettent d'écrire des données octet par octet ou bien de les écrire
 depuis un tableau. La classe OutputStream_ fournit également la méthode flush_
 pour forcer l'écriture de la zone tampon (s'il existe une zone tampon sinon un
-appel à cette méthode est sans effet). 
+appel à cette méthode est sans effet).
 
 Il existe plusieurs classes qui en fournissent une implémentation concrète.
 
@@ -131,9 +131,9 @@ La classe ByteArrayOutputStream_ permet d'ouvrir un flux d'écriture binaire en
 mémoire. Le contenu peut ensuite être récupéré sous la forme d'un tableau d'octets
 grâce à la méthode toByteArray_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.ByteArrayOutputStream;
   import java.util.Arrays;
@@ -146,19 +146,19 @@ grâce à la méthode toByteArray_.
       for (byte b : "Hello the world".getBytes()) {
         stream.write(b);
       }
-      
+
       byte[] byteArray = stream.toByteArray();
       System.out.println(Arrays.toString(byteArray));
     }
-    
+
   }
 
 
 La classe FileOutputStream_ permet d'ouvrir un flux d'écriture binaire sur un fichier.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.FileOutputStream;
   import java.io.IOException;
@@ -202,15 +202,15 @@ Reader et classes concrètes
 
 La classe Reader_ est une :doc:`classe abstraite <classe_abstraite>` qui permet de
 lire des flux de caractères. Comme InputStream_, la classe Reader_ fournit des méthodes
-read_ mais qui acceptent en paramètre des caractères. Il existe 
+read_ mais qui acceptent en paramètre des caractères. Il existe
 plusieurs classes qui en fournissent une implémentation concrète.
 
 La classe StringReader_ permet de parcourir une chaîne de caractères sous la forme
 d'un flux de caractères.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.io.Reader;
@@ -226,21 +226,21 @@ d'un flux de caractères.
         System.out.print((char) caractere);
       }
     }
-    
+
   }
 
 .. note::
 
   Il n'est pas nécessaire d'utiliser un StringReader_ pour parcourir une chaîne
-  de caractères. Par contre, cette classe est très pratique si une partie 
+  de caractères. Par contre, cette classe est très pratique si une partie
   d'un programme réalise des traitements en utilisant une instance de Reader_.
   Le principe de substitution peut s'appliquer en passant une instance de StringReader_.
 
 La classe FileReader_ permet de lire le contenu d'un fichier texte.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.FileReader;
   import java.io.IOException;
@@ -272,19 +272,19 @@ La classe FileReader_ permet de lire le contenu d'un fichier texte.
 Writer et classes concrètes
 ***************************
 
-La classe Writer_ est une :doc:`classe abstraite <classe_abstraite>` qui permet 
+La classe Writer_ est une :doc:`classe abstraite <classe_abstraite>` qui permet
 d'écrire des flux de caractères. Comme OutputStream_, la classe Writer_ fournit des méthodes
 write_ mais qui acceptent en paramètre des caractères. Elle fournit également
 des méthodes append_ qui réalisent la même type d'opérations et qui retournent l'instance du Writer_
-afin de pouvoir chaîner les appels. Il existe plusieurs classes qui en 
+afin de pouvoir chaîner les appels. Il existe plusieurs classes qui en
 fournissent une implémentation concrète.
 
 La classe StringWriter_ permet d'écrire dans un flux caractères pour ensuite produire
 une chaîne de caractères.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.io.StringWriter;
@@ -309,9 +309,9 @@ une chaîne de caractères.
 
 La classe FileWriter_ permet d'écrire un flux de caractères dans un fichier.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.FileWriter;
   import java.io.IOException;
@@ -337,8 +337,8 @@ La classe FileWriter_ permet d'écrire un flux de caractères dans un fichier.
 .. note::
 
   La classe FileWriter_ ne permet pas de positionner l'encodage de caractères
-  (*charset*) utilisé pour écrire dans le fichier. Elle utilise l'encodage par 
-  défaut de la JVM qui est dépendant du système. Dans la pratique l'usage de 
+  (*charset*) utilisé pour écrire dans le fichier. Elle utilise l'encodage par
+  défaut de la JVM qui est dépendant du système. Dans la pratique l'usage de
   cette classe est donc assez limité.
 
 
@@ -357,9 +357,9 @@ il est possible d'indiquer la taille à la construction de l'objet. Ces classes
 sont très utiles lorsque l'on veut lire ou écrire des données sur un disque
 ou sur un réseau afin de limiter les accès système et améliorer les performances.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.BufferedWriter;
   import java.io.FileWriter;
@@ -378,16 +378,16 @@ ou sur un réseau afin de limiter les accès système et améliorer les performa
 
   }
 
-Dans l'exemple ci-dessus, on crée un BufferedWriter_ avec une zone tampon de 
+Dans l'exemple ci-dessus, on crée un BufferedWriter_ avec une zone tampon de
 1 Ko.
 
 La classe LineNumberReader_ permet quant à elle, de compter les lignes lors
 de la lecture d'un flux caractères. Elle fournit également la méthode readLine_
 pour lire une ligne complète.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.io.LineNumberReader;
@@ -413,16 +413,16 @@ pour lire une ligne complète.
 
 Les classes InputStreamReader_ et OutputStreamWriter_ permettent de manipuler
 un flux binaire sous la forme d'un flux caractères. La classe InputStreamReader_
-hérite de Reader_ et prend comme paramètre de constructeur une instance de 
+hérite de Reader_ et prend comme paramètre de constructeur une instance de
 InputStream_. La classe OutputStreamWriter_ hérite de Writer_ et prend
 comme paramètre de constructeur une instance de OutputStream_. Ces classes sont
 particulièrement utiles car elles permettent de préciser l'encodage des caractères
 (*charset*) qui doit être utilisé pour passer d'un flux binaire au flux
 caractères et vice-versa.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.FileInputStream;
   import java.io.IOException;
@@ -452,9 +452,9 @@ au format UTF-8.
 
 Il est possible de créer très facilement des chaînes de décorateurs.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.FileInputStream;
   import java.io.IOException;
@@ -506,11 +506,11 @@ La classe Scanner
 
 La classe java.util.Scanner_ agit comme un décorateur pour différents types d'instance
 qui représentent une entrée. Elle permet de réaliser des opérations de lecture
-et de validation de données plus complexes que les classes du packages java.io_. 
+et de validation de données plus complexes que les classes du packages java.io_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.util.Scanner;
@@ -539,9 +539,9 @@ et de validation de données plus complexes que les classes du packages java.io_
 On peut compléter l'implémentation précédente en effectuant une validation
 sur les données saisies par l'utilisateur :
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.util.InputMismatchException;
@@ -594,9 +594,9 @@ qui représente un fichier. À travers, cette classe, il est possible de savoir
 si le fichier existe, s'il s'agit d'un répertoire... On peut également créer
 le fichier ou le supprimer.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.BufferedWriter;
   import java.io.File;
@@ -629,7 +629,7 @@ le schéma *file* :
 .. code-block:: text
 
   file:///home/david/monfichier.txt
-  
+
 ou bien une chaîne de caractère représentant directement le chemin. L'inconvénient
 de cette dernière méthode est qu'elle n'est pas portable suivant les différents
 systèmes de fichiers et les différents systèmes d'exploitation. En Java, on
@@ -637,12 +637,12 @@ utilise l'interface Path_ pour représenter un chemin de fichier de manière gé
 Les classes Paths_ et FileSystem_ servent à construire des instances de type
 Path_. La classe FileSystem_ fournit également des méthodes pour obtenir des
 informations à propos du ou des systèmes de fichiers présents sur la machine.
-On peut accéder à une instance de FileSystem_ grâce à la méthode 
+On peut accéder à une instance de FileSystem_ grâce à la méthode
 `FileSystems.getDefault()`_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.File;
   import java.io.IOException;
@@ -659,10 +659,10 @@ On peut accéder à une instance de FileSystem_ grâce à la méthode
       System.out.println(cheminFichier.getNameCount()); // 3
       System.out.println(cheminFichier.getParent()); // home/david
       System.out.println(cheminFichier.getFileName()); // fichier.txt
-      
+
       cheminFichier = FileSystems.getDefault().getPath("home", "david", "fichier.txt");
       File fichier = cheminFichier.toFile();
-      
+
       // maintenant on peut utiliser le fichier
     }
 
@@ -673,9 +673,9 @@ fournit un ensemble de méthodes statiques qui permettent de créer, de consulte
 de modifier ou de supprimer des fichiers et des répertoires en utilisant
 un minimum d'appel.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.BufferedWriter;
   import java.io.IOException;
@@ -689,7 +689,7 @@ un minimum d'appel.
 
     public static void main(String[] args) throws IOException {
       Path fichier1 = Paths.get("fichier.txt");
-      
+
       // création du fichier
       fichier1 = Files.createFile(fichier1);
 
@@ -721,7 +721,7 @@ un minimum d'appel.
 
 .. note::
 
-  La classe Files_ se révèle très pratique d'utilisation notamment pour lire 
+  La classe Files_ se révèle très pratique d'utilisation notamment pour lire
   l'intégralité d'un fichier.
   Elle ne rend pas pour autant obsolète l'utilisation de Reader_ ou de OutputStream_.
   En effet, travailler à partir d'un flux peut avoir un impact important sur
@@ -735,16 +735,16 @@ Accès au réseau
 ***************
 
 La classe URL_, comme son nom l'indique, représente une URL. Elle déclare la méthode
-openConnection_ qui retourne une instance de URLConnection_. Une instance de 
+openConnection_ qui retourne une instance de URLConnection_. Une instance de
 URLConnection_ ouvre une connexion distante avec le serveur et permet de
 récupérer des informations du serveur distant. Elle permet surtout d'obtenir
 une instance de OutputStream_ si on désire envoyer des informations au serveur
 et une instance de InputStream_ si on désire récupérer les informations
 retournées par le serveur.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.io.InputStreamReader;
@@ -762,18 +762,18 @@ retournées par le serveur.
 
       String encodage = Objects.toString(connection.getContentEncoding(), "ISO-8859-1");
       Reader reader = new InputStreamReader(connection.getInputStream(), encodage);
-      
+
       try (LineNumberReader linNumberReader = new LineNumberReader(reader)) {
         String line;
         while ((line = linNumberReader.readLine()) != null) {
           System.out.println(line);
         }
-        
+
         System.out.println("Ce fichier contient " + linNumberReader.getLineNumber() + " lignes.");
       }
-      
+
     }
-    
+
   }
 
 Le programme ci-dessus récupère, affiche sur la sortie standard et donne le nombre
@@ -788,8 +788,8 @@ mémoire et des flux réseaux.
 La sérialisation d'objets
 *************************
 
-Les classes ObjectOutputStream_ et ObjectInputStream_  permettent de réaliser la 
-sérialisation/désérialisation d'objets : un objet (et tous les objets qu'il référence) 
+Les classes ObjectOutputStream_ et ObjectInputStream_  permettent de réaliser la
+sérialisation/désérialisation d'objets : un objet (et tous les objets qu'il référence)
 peut être écrit dans un flux ou lu depuis un flux. Cela peut permettre de sauvegarder dans
 un fichier un état de l'application ou bien d'échanger des données entre deux programmes
 Java à travers un réseau. La sérialisation d'objets a des limites :
@@ -798,16 +798,16 @@ Java à travers un réseau. La sérialisation d'objets a des limites :
   ne font pas partie de la sérialisation et doivent être disponibles pour la JVM
   au moment de la lecture (opération de désérialisation réalisée avec la classe
   ObjectInputStream_).
-   
+
 * Le format des données sérialisées est propre à Java, ce mécanisme n'est donc
   pas adapté pour échanger des informations avec des applications qui ne seraient
   pas écrites en Java.
-  
+
 * Les données sérialisées sont très dépendantes de la structure des classes. Si
   des modifications sont apportées à ces dernières, une grappe d'objets préalablement
   sérialisée dans un fichier ne sera sans doute plus lisible.
-   
-Pour qu'un objet puisse être sérialisé, il faut que sa classe implémente 
+
+Pour qu'un objet puisse être sérialisé, il faut que sa classe implémente
 :ref:`l'interface marqueur <interface_marqueur>` Serializable_. Si un objet
 référence d'autres objets dans ses attributs alors il faut également que les classes
 de ces objets implémentent l'interface Serializable_. Beaucoup de classes de l'API standard de
@@ -815,16 +815,16 @@ Java implémentent l'interface Serializable_, à commencer par la classe String_
 
 .. note::
 
-  Tenter de sérialiser un objet dont la classe n'implémente pas Serializable_ 
+  Tenter de sérialiser un objet dont la classe n'implémente pas Serializable_
   produit une exception de type java.io.NotSerializableException_.
-  
+
 Prenons comme exemple une classe *Personne* qui contient la liste de ses enfants
 (eux-mêmes de type *Personne*). Cette classe implémente l'interface Serializable_ :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.io.Serializable;
@@ -833,7 +833,7 @@ Prenons comme exemple une classe *Personne* qui contient la liste de ses enfants
   import java.util.List;
 
   public class Personne implements Serializable {
-    
+
     private String prenom;
     private String nom;
     private List<Personne> enfants = new ArrayList<>();
@@ -842,23 +842,23 @@ Prenons comme exemple une classe *Personne* qui contient la liste de ses enfants
       this.prenom = prenom;
       this.nom = nom;
     }
-    
+
     public String getNom() {
       return nom;
     }
-    
+
     public String getPrenom() {
       return prenom;
     }
-    
+
     public void ajouterEnfants(Personne... enfants) {
       Collections.addAll(this.enfants, enfants);
     }
-    
+
     public List<Personne> getEnfants() {
       return enfants;
     }
-    
+
     @Override
     public String toString() {
       return this.prenom + " " + this.nom;
@@ -868,9 +868,9 @@ Prenons comme exemple une classe *Personne* qui contient la liste de ses enfants
 
 Le code ci-dessous sérialise les données dans le fichier *arbre_genialogique.bin*
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.io.ObjectOutputStream;
@@ -878,17 +878,17 @@ Le code ci-dessous sérialise les données dans le fichier *arbre_genialogique.b
   import java.nio.file.Files;
   import java.nio.file.Paths;
 
-  import ROOT_PKG.Personne;
+  import {{ROOT_PKG}}.Personne;
 
   public class TestSerialisation {
-   
+
     public static void main(String[] args) throws IOException {
-      
+
       Personne personne = new Personne("Donald", "Duck");
-      personne.ajouterEnfants(new Personne("Riri", "Duck"), 
-                              new Personne("Fifi", "Duck"), 
+      personne.ajouterEnfants(new Personne("Riri", "Duck"),
+                              new Personne("Fifi", "Duck"),
                               new Personne("Loulou", "Duck"));
-      
+
       OutputStream outputStream = Files.newOutputStream(Paths.get("arbre_genialogique.bin"));
       try(ObjectOutputStream objectStream = new ObjectOutputStream(outputStream);) {
         objectStream.writeObject(personne);
@@ -897,12 +897,12 @@ Le code ci-dessous sérialise les données dans le fichier *arbre_genialogique.b
   }
 
 
-Un autre code qui a accès à la même classe *Personne* peut ensuite lire le fichier 
+Un autre code qui a accès à la même classe *Personne* peut ensuite lire le fichier
 *arbre_genialogique.bin* pour retrouver les objets dans l'état attendu.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.io;
+  package {{ROOT_PKG}}.io;
 
   import java.io.IOException;
   import java.io.InputStream;
@@ -910,16 +910,16 @@ Un autre code qui a accès à la même classe *Personne* peut ensuite lire le fi
   import java.nio.file.Files;
   import java.nio.file.Paths;
 
-  import ROOT_PKG.Personne;
+  import {{ROOT_PKG}}.Personne;
 
   public class TestDeserialisation {
-   
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-      
+
       InputStream outputStream = Files.newInputStream(Paths.get("arbre_genialogique.bin"));
       try(ObjectInputStream objectStream = new ObjectInputStream(outputStream);) {
         Personne personne = (Personne) objectStream.readObject();
-        
+
         System.out.println(personne);
         for (Personne enfant : personne.getEnfants()) {
           System.out.println(enfant);
@@ -944,17 +944,17 @@ Donnée transient
 Parfois une classe contient des informations que l'on ne souhaite pas sérialiser.
 Cela peut être dû à des limitations techniques (par exemple la classe associée n'implémente
 pas l'interface Serializable_). Mais il peut aussi s'agir de données sensibles
-ou volatiles qui n'ont pas à être sérialisées. Pour que les processus de 
+ou volatiles qui n'ont pas à être sérialisées. Pour que les processus de
 sérialisation/désérialisation ignorent ces attributs, il faut leur ajouter
 le mot-clé **transient**.
 
 Pour la classe *Personne*, si on veut exclure la liste des enfants de la
 sérialisation/désérialisation, on peut modifier les attributs comme suit :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.io.Serializable;
@@ -963,7 +963,7 @@ sérialisation/désérialisation, on peut modifier les attributs comme suit :
   import java.util.List;
 
   public class Personne implements Serializable {
-    
+
     private String prenom;
     private String nom;
     private transient List<Personne> enfants = new ArrayList<>();
@@ -972,7 +972,7 @@ sérialisation/désérialisation, on peut modifier les attributs comme suit :
       this.prenom = prenom;
       this.nom = nom;
     }
-    
+
     // ...
   }
 
@@ -983,20 +983,20 @@ du paragraphe précédent, la sortie standard affichera alors :
 
   Donald Duck
 
-Car l'état de la liste des enfants ne sera plus écrit dans le fichier 
+Car l'état de la liste des enfants ne sera plus écrit dans le fichier
 *arbre_genialogique.bin*.
 
 
 Identifiant de version de sérialisation
 =======================================
 
-La principale difficulté dans la mise en pratique des mécanismes de 
-sérialisation/désérialisation provient de leur extrême dépendance au format des 
+La principale difficulté dans la mise en pratique des mécanismes de
+sérialisation/désérialisation provient de leur extrême dépendance au format des
 classes.
 
 Si la sérialisation est utilisée pour sauvegarder dans un fichier l'état des objets entre deux
-exécutions, alors il n'est pas possible de modifier significativement puis de 
-recompiler les classes sérialisables (sinon l'opération de désérialisation 
+exécutions, alors il n'est pas possible de modifier significativement puis de
+recompiler les classes sérialisables (sinon l'opération de désérialisation
 échouera avec une erreur InvalidClassException_). Si la sérialisation est utilisée
 pour échanger des informations entre deux applications sur un réseau, alors
 le deux applications doivent disposer dans leur *classpath* des mêmes définitions
@@ -1018,10 +1018,10 @@ trop importantes pour ne plus garantir la compatibilité ascendante avec des ver
 de cette classe. Le numéro de version est une constante de classe de type **long**
 qui doit s'appeler *serialVersionUID*.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.io.Serializable;
@@ -1030,7 +1030,7 @@ qui doit s'appeler *serialVersionUID*.
   import java.util.List;
 
   public class Personne implements Serializable {
-    
+
     private static final long serialVersionUID = 1775245980933452908L;
 
     // ...
@@ -1040,20 +1040,20 @@ qui doit s'appeler *serialVersionUID*.
 
   Eclipse produit un avertissement si une classe qui implémente Serializable_
   ne déclare pas une constante *serialVersionUID*.
-  
+
 .. tip::
 
   Pour contourner le problème de dépendance entre le format de sérialisation
   et la déclaration de la classe, il est possible d'implémenter soi-même l'écriture
   et la lecture des données. Pour cela, il faut déclarer deux méthodes privées dans
   la classe : *writeObject* et *readObject*. Ces méthodes seront appelées (même
-  si elles sont privées) en lieu et place de l'algorithme par défaut de 
+  si elles sont privées) en lieu et place de l'algorithme par défaut de
   sérialisation/désérialisation.
-  
-  ::
-  
+
+.. code-block:: java
+
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -1065,13 +1065,13 @@ qui doit s'appeler *serialVersionUID*.
     import java.util.List;
 
     public class Personne implements Serializable {
-      
+
       private static final long serialVersionUID = 1775245980933452908L;
 
       private String prenom;
       private String nom;
       private List<Personne> enfants = new ArrayList<>();
-      
+
       private void writeObject(ObjectOutputStream s) throws IOException {
         // on ne sérialise que le prénom et le nom
         s.writeObject(prenom);
@@ -1084,12 +1084,12 @@ qui doit s'appeler *serialVersionUID*.
         this.nom = (String) s.readObject();
         this.enfants = new ArrayList<>();
       }
-      
+
       // ...
 
     }
 
-    
+
 .. _java.io.NotSerializableException: https://docs.oracle.com/javase/8/docs/api/java/io/NotSerializableException.html
 .. _InvalidClassException: https://docs.oracle.com/javase/8/docs/api/java/io/InvalidClassException.html
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
@@ -1154,4 +1154,3 @@ qui doit s'appeler *serialVersionUID*.
 .. _FileSystems.getDefault(): https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystems.html#getDefault--
 .. _CSV: https://fr.wikipedia.org/wiki/Comma-separated_values
 .. _Map: https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
-

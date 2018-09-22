@@ -12,7 +12,7 @@ Java est un `langage de programmation impératif`_.
 Cela signifie qu'un programme Java se compose d'instructions (**statements**) décrivant les opérations que la machine doit exécuter.
 En Java une instruction est délimitée par un **point-virgule**.
 
-::
+.. code-block:: java
 
   double i = 0.0;
   i = Math.sqrt(16);
@@ -24,7 +24,7 @@ Java permet de structurer le code en bloc.
 Un bloc est délimité par des **accolades**.
 Un bloc permet d'isoler par exemple le code conditionnel à la suite d'un **if** mais il est également possible de créer des blocs anonymes.
 
-::
+.. code-block:: java
 
   double i = 0.0;
   i = Math.sqrt(16);
@@ -45,14 +45,14 @@ Les commentaires
 
 Un commentaire sur une ligne commence par **//** et continue jusqu'à la fin de la ligne :
 
-::
+.. code-block:: java
 
   // ceci est un commentaire
   double i = 0.0; // ceci est également un commentaire
 
 Un commentaire sur plusieurs lignes commence par **/*** et se termine par ***/** :
 
-::
+.. code-block:: java
 
   /* ceci est un commentaire
      sur plusieurs lignes */
@@ -62,7 +62,7 @@ Il existe un type spécial de commentaires utilisé par l'utilitaire javadoc_.
 Ces commentaires servent à générer la documentation au format HTML de son code.
 Ces commentaires, appelés **commentaires javadoc**, commencent par **/**** :
 
-::
+.. code-block:: java
 
   /**
   * Une classe d'exemple.
@@ -84,8 +84,8 @@ Le compilateur Java n'impose pas de formatage particulier du code.
 Dans la mesure où une instruction se termine par un point-virgule et que les blocs sont délimités par des accolades, il est possible de présenter du code de façon différente.
 Ainsi, le code suivant :
 
-::
-
+.. code-block:: java
+  
   double i = 0.0;
   i = Math.sqrt(16);
 
@@ -95,7 +95,7 @@ Ainsi, le code suivant :
 
 est strictement identique pour le compilateur à celui-ci :
 
-::
+.. code-block:: java
 
   double i=0.0;i=Math.sqrt(16);if(i>1){i=-i;}
 
@@ -104,7 +104,7 @@ Les développeurs Java utilisent une convention de formatage qu'il **faut** resp
 Des outils comme Eclipse permettent d'ailleurs de reformater le code (sous Eclipse avec le raccourci clavier *MAJ + CTRL + F*).
 Rappelez-vous des conventions suivantes :
 
-::
+.. code-block:: java
 
   // On revient à la ligne après une accolade (mais pas avant)
   if (i > 0) {

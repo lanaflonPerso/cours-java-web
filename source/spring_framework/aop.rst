@@ -79,7 +79,7 @@ Coupe (*Pointcut*)
 
   .. code-block:: java
 
-    execution(* ROOT_PKG.Service.*(...))
+    execution(* {{ROOT_PKG}}.Service.*(...))
 
   pour indiquer l'appel à n'importe quelle méthode de la classe ``Service``.
 
@@ -105,7 +105,7 @@ réalise un traitement important pour notre application :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class BusinessService {
@@ -127,7 +127,7 @@ nous pouvons plutôt créer une classe qui va jouer le rôle de greffon (*advice
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class SimpleLogger {
@@ -161,16 +161,16 @@ invoquée après tous les appels à la méthode ``BusinessService.doSomething``.
                              http://www.springframework.org/schema/aop
                              http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-      <bean name="businessService" class="ROOT_PKG.BusinessService"/>
+      <bean name="businessService" class="{{ROOT_PKG}}.BusinessService"/>
 
-      <bean name="logger" class="ROOT_PKG.SimpleLogger"/>
+      <bean name="logger" class="{{ROOT_PKG}}.SimpleLogger"/>
 
       <aop:config>
         <aop:aspect ref="logger">
           <aop:before method="logAvant" pointcut-ref="logPointcut"/>
           <aop:after method="logApres"  pointcut-ref="logPointcut"/>
           <aop:pointcut id="logPointcut"
-                        expression="execution(* ROOT_PKG.*Service.*())"/>
+                        expression="execution(* {{ROOT_PKG}}.*Service.*())"/>
         </aop:aspect>
       </aop:config>
 
@@ -181,7 +181,7 @@ Enfin le code de l'application :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;

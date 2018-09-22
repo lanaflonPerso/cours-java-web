@@ -4,28 +4,28 @@ Les classes internes
 La plupart du temps, une classe en Java est déclarée dans un fichier
 portant le même nom que la classe avec l'extension *.java*. Cependant, il est également
 possible de déclarer des classes dans une classe. On parle alors de classes
-internes (*inner classes*). Cela est également possible, dans une certaine limite, 
-pour les interfaces et les énumérations. 
+internes (*inner classes*). Cela est également possible, dans une certaine limite,
+pour les interfaces et les énumérations.
 
 La déclaration des classes internes peut se faire dans l'ordre que l'on souhaite
-à l'intérieur du bloc de déclaration de la classe englobante. Les classes internes 
-peuvent être ou non déclarées **static**. Ces deux cas correspondent à deux 
+à l'intérieur du bloc de déclaration de la classe englobante. Les classes internes
+peuvent être ou non déclarées **static**. Ces deux cas correspondent à deux
 usages particuliers des classes internes.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class ClasseEnglobante {
-  
+
     public static class ClasseInterneStatic {
     }
-  
+
     public class ClasseInterne {
     }
-    
+
   }
 
 Les classes internes static
@@ -35,14 +35,14 @@ Les classes internes déclarées **static** sont des classes pour lesquelles
 l'espace de noms est celui de la classe englobante.
 
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
-  
+
   public class ClasseEnglobante {
-  
+
     public static class ClasseInterne {
     }
 
@@ -52,14 +52,14 @@ Pour une classe interne **static** :
 
 * Son nom complet inclus le nom de la classe englobante (qui agit comme un package).
   Pour la classe ci-dessus, le nom complet de *ClasseInterne* est :
-  
-  ::
-    
-    ROOT_PKG.ClasseEnglobante.ClasseInterne
-        
+
+.. code-block:: java
+
+    {{ROOT_PKG}}.ClasseEnglobante.ClasseInterne
+
 * La classe englobante et la classe interne partage le même espace privé. Cela
   signifie que les attributs et les méthodes privés déclarés dans la classe
-  englobante sont accessibles à la classe interne. Réciproquement, la classe 
+  englobante sont accessibles à la classe interne. Réciproquement, la classe
   englobante peut avoir accés aux éléments privés de la classe interne.
 * Une instance de la classe interne n'a accès directement qu'aux
   attributs et aux méthodes de la classe englobante qui sont déclarés
@@ -71,15 +71,15 @@ la lecture du code. Dans l'exemple ci-dessous, plutôt que de créer un fichier
 spécifique pour l'implémentation d'un comparateur, on ajoute son implémentation
 comme une classe interne.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
   import java.util.Comparator;
 
   public class Individu {
-    
+
     public static class Comparateur implements Comparator<Individu> {
       @Override
       public int compare(Individu i1, Individu i2) {
@@ -96,15 +96,15 @@ comme une classe interne.
         return cmp;
       }
     }
-    
+
     private final String prenom;
     private final String nom;
-    
+
     public Individu(String prenom, String nom) {
       this.prenom = prenom;
       this.nom = nom;
     }
-    
+
     @Override
     public String toString() {
       return this.prenom + " " + this.nom;
@@ -112,16 +112,16 @@ comme une classe interne.
 
   }
 
-::
+.. code-block:: java
 
   Individu[] individus = {
       new Individu("John", "Eod"),
-      new Individu("Annabel", "Doe"), 
-      new Individu("John", "Doe") 
+      new Individu("Annabel", "Doe"),
+      new Individu("John", "Doe")
   };
-  
+
   Arrays.sort(individus, new Individu.Comparateur());
-  
+
   System.out.println(Arrays.toString(individus));
 
 Dans l'exemple ci-dessus, la classe *Individu* fournit publiquement une
@@ -133,7 +133,7 @@ paramètres *i1* et *i2* car ils sont de type *Individu*.
 Les classes internes
 ********************
 
-Une classe interne qui n'est pas déclarée avec le mot-clé 
+Une classe interne qui n'est pas déclarée avec le mot-clé
 **static** est liée au contexte d'exécution d'une instance de la classe
 englobante.
 
@@ -157,7 +157,7 @@ en Java avec l'API Swing_.
   :linenos:
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.awt.FlowLayout;
@@ -169,7 +169,7 @@ en Java avec l'API Swing_.
   import javax.swing.JLabel;
 
   public class BoiteDeDialogue extends JDialog {
-    
+
     private class IncrementerAction extends AbstractAction {
       public IncrementerAction() {
         super("Incrémenter");
@@ -180,7 +180,7 @@ en Java avec l'API Swing_.
         incrementer();
       }
     }
-    
+
     private class DecrementerAction extends AbstractAction {
       public DecrementerAction() {
         super("Décrémenter");
@@ -191,7 +191,7 @@ en Java avec l'API Swing_.
         decrementer();
       }
     }
-    
+
     private JLabel label;
     private int valeur;
 
@@ -205,11 +205,11 @@ en Java avec l'API Swing_.
       this.add(new JButton(new DecrementerAction()));
       this.pack();
     }
-    
+
     private void incrementer() {
       label.setText(Integer.toString(++this.valeur));
     }
-    
+
     private void decrementer() {
       label.setText(Integer.toString(--this.valeur));
     }
@@ -223,17 +223,17 @@ en Java avec l'API Swing_.
   }
 
 L'exemple ci-dessus est un programme complet qui crée une boite de dialogue
-contenant deux boutons qui permettent respectivement d'incrémenter et de 
+contenant deux boutons qui permettent respectivement d'incrémenter et de
 décrémenter un nombre qui est affiché. La classe JButton_ qui représente un
 bouton attend comme paramètre de construction une instance
 implémentant l'interface Action_. Cette instance définit le libellé du bouton et l'action
 à réaliser lorsque l'utilisateur clique sur le bouton. Les boutons sont créés
-aux lignes 44 et 45. Les classes d'action utilisées pour chaque bouton sont 
+aux lignes 44 et 45. Les classes d'action utilisées pour chaque bouton sont
 définies aux lignes 13 et 24. Ces classes sont
 des classes internes. Dans leur méthode actionPerformed_, elles appellent soit
 la méthode *incrementer* soit la méthode *decrementer*. Ces deux méthodes
 sont définies par la classe englobante BoiteDeDialogue. Donc les instances de
-ces classes d'action appellent ces méthodes sur l'instance de l'objet englobant 
+ces classes d'action appellent ces méthodes sur l'instance de l'objet englobant
 qui les a créées. Ainsi, les classes internes
 possèdent une référence sur l'objet BoiteDeDialogue qui les a créées.
 
@@ -258,12 +258,12 @@ on déclare le bloc de la classe au moment de l'instantiation avec **new**.
 Imaginons que nous souhaitions créer une interface pour représenter un système
 de log :
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.logger;
+  package {{ROOT_PKG}}.logger;
 
   public interface Logger {
-    
+
     void log(String message);
 
   }
@@ -274,12 +274,12 @@ l'interface *Logger*.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.logger;
+  package {{ROOT_PKG}}.logger;
 
   import java.time.LocalDateTime;
 
   public class GenerateurLogger {
-    
+
     private String application;
 
     /**
@@ -288,14 +288,14 @@ l'interface *Logger*.
     public GenerateurLogger(String application) {
       this.application = application;
     }
-    
+
     public Logger creerConsoleLogger() {
       return new Logger() {
         @Override
         public void log(String message) {
           // Pour le format du message utilisé dans printf
           // Cf. https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
-          System.out.println(String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+          System.out.println(String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                                            LocalDateTime.now(), application, message));
         }
       };
@@ -303,7 +303,7 @@ l'interface *Logger*.
 
   }
 
-L'implémentation de la méthode *creerConsoleLogger* crée une instance 
+L'implémentation de la méthode *creerConsoleLogger* crée une instance
 implémentant l'interface *Logger* à partir d'une classe anonyme. L'implémentation
 de la méthode *log* affiche sur la sortie standard une chaîne de caractères
 formatée contenant la date et l'heure, le nom de l'application et le message
@@ -324,8 +324,8 @@ Le code précédent affichera sur la sortie standard :
 .. code-block:: text
 
   2017-nov.-jeu. 15:58 mon_appli - un message de log
- 
-  
+
+
 Nous pouvons enrichir notre implémentation. Par exemple, la classe *GenerateurLogger*
 peut créer un logger qui ne fait rien ou encore un logger qui écrit les messages
 dans un fichier.
@@ -333,7 +333,7 @@ dans un fichier.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.logger;
+  package {{ROOT_PKG}}.logger;
 
   import java.io.IOException;
   import java.io.Writer;
@@ -344,7 +344,7 @@ dans un fichier.
   import java.time.LocalDateTime;
 
   public class GenerateurLogger {
-    
+
     private String application;
 
     /**
@@ -353,14 +353,14 @@ dans un fichier.
     public GenerateurLogger(String application) {
       this.application = application;
     }
-    
+
     public Logger creerConsoleLogger() {
       return new Logger() {
         @Override
         public void log(String message) {
           // Pour le format du message utilisé dans printf
           // Cf. https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
-          System.out.println(String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+          System.out.println(String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                                            LocalDateTime.now(), application, message));
         }
       };
@@ -373,14 +373,14 @@ dans un fichier.
         }
       };
     }
-    
+
     public Logger creerFileLogger(Path path) {
       return new Logger() {
         @Override
         public void log(String message) {
           // Pour le format du message utilisé dans printf
           // Cf. https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
-          String logMessage = String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+          String logMessage = String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                                             LocalDateTime.now(), application, message);
           try(Writer w = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             w.append(logMessage).append('\n');
@@ -404,14 +404,14 @@ a accès au paramètre de la méthode qui la déclare.
   Une classe anonyme peut utiliser les paramètres et les variables de la méthode qui la déclare
   uniquement à condition qu'ils ne soient modifiés ni par la méthode ni par la
   classe anonyme. Avant Java 8, le compilateur exigeait que ces
-  paramètres et ces variables soient déclarés avec le mot-clé **final**. Même 
-  s'il n'est plus nécessaire de déclarer explicitement le statut **final**, 
+  paramètres et ces variables soient déclarés avec le mot-clé **final**. Même
+  s'il n'est plus nécessaire de déclarer explicitement le statut **final**,
   le compilateur générera tout de même une erreur si on tente de modifier un
   paramètre ou une variable déclaré dans la méthode et utilisé par une classe anonyme.
 
-  ::  
-    
-    // on déclare le paramètre final pour signaler explicitement qu'il n'est 
+  ::
+
+    // on déclare le paramètre final pour signaler explicitement qu'il n'est
     // pas possible de modifier la référence de ce paramètre puisqu'il est
     // utilisé par la classe anonyme.
     public Logger creerFileLogger(final Path path) {
@@ -420,7 +420,7 @@ a accès au paramètre de la méthode qui la déclare.
         public void log(String message) {
           // Pour le format du message utilisé dans printf
           // Cf. https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
-          String logMessage = String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+          String logMessage = String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                                             LocalDateTime.now(), application, message);
           try(Writer w = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             w.append(logMessage).append('\n');
@@ -430,7 +430,7 @@ a accès au paramètre de la méthode qui la déclare.
         }
       };
     }
-   
+
 
 Accès aux éléments de l'objet englobant
 ***************************************
@@ -441,9 +441,9 @@ qui écrit sur la sortie standard et pour celui qui écrit dans un fichier. Afin
 de mutualiser le code, nous pouvons créer une méthode *genererLogMessage*
 dans la classe englobante qui pourra être appelée par chaque classe anonyme.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.logger;
+  package {{ROOT_PKG}}.logger;
 
   import java.io.IOException;
   import java.io.Writer;
@@ -454,7 +454,7 @@ dans la classe englobante qui pourra être appelée par chaque classe anonyme.
   import java.time.LocalDateTime;
 
   public class GenerateurLogger {
-    
+
     private String application;
 
     /**
@@ -463,14 +463,14 @@ dans la classe englobante qui pourra être appelée par chaque classe anonyme.
     public GenerateurLogger(String application) {
       this.application = application;
     }
-    
+
     public Logger creerConsoleLogger() {
       return new Logger() {
         @Override
         public void log(String message) {
           // Pour le format du message utilisé dans printf
           // Cf. https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
-          
+
           System.out.println(genererLogMessage(message));
         }
       };
@@ -496,9 +496,9 @@ dans la classe englobante qui pourra être appelée par chaque classe anonyme.
         }
       };
     }
-    
+
     private String genererLogMessage(String message) {
-      return String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+      return String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                            LocalDateTime.now(), application, message);
     }
 
@@ -512,23 +512,23 @@ le contexte de la classe englobante en utilisant :
 .. code-block:: text
 
   NomDeLaClasse.this
-  
+
 Ainsi nous pouvons renommer notre méthode *genererLogMessage* en *log*
 et nous pouvons l'invoquer explicitement dans les méthodes des classes anonymes avec la
 syntaxe :
 
-::
-  
+.. code-block:: java
+
   GenerateurLogger.this.log(message);
 
 .. note::
 
   Cette syntaxe permet d'accéder aux attributs et aux méthodes de l'instance de
-  la classe englobante.  
-  
-::
+  la classe englobante.
 
-  package ROOT_PKG.logger;
+.. code-block:: java
+
+  package {{ROOT_PKG}}.logger;
 
   import java.io.IOException;
   import java.io.Writer;
@@ -539,7 +539,7 @@ syntaxe :
   import java.time.LocalDateTime;
 
   public class GenerateurLogger {
-    
+
     private String application;
 
     /**
@@ -548,7 +548,7 @@ syntaxe :
     public GenerateurLogger(String application) {
       this.application = application;
     }
-    
+
     public Logger creerConsoleLogger() {
       return new Logger() {
         @Override
@@ -582,9 +582,9 @@ syntaxe :
         }
       };
     }
-    
+
     private String log(String message) {
-      return String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+      return String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                            LocalDateTime.now(), application, message);
     }
 
@@ -595,8 +595,8 @@ syntaxe :
   Il n'est pas possible de déclarer un constructeur dans une classe anonyme. En
   effet, un constructeur porte le même nom que sa classe et justement, par
   définition, les classes anonymes n'ont pas de nom. Le compilateur générera
-  néanmoins un constructeur par défaut. 
-  
+  néanmoins un constructeur par défaut.
+
   Cela entraîne une limitation : il n'est pas possible de déclarer une classe anonyme
   qui étendrait une classe ne possédant pas de constructeur sans paramètre.
 
@@ -611,14 +611,14 @@ méthode peut fonctionner de la même manière qu'une classe anonyme : elle
 peut accéder aux paramètres et aux variables de la méthode qui la déclare (à
 condition qu'ils ne soient modifiés ni par la méthode ni par la classe).
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.logger;
+  package {{ROOT_PKG}}.logger;
 
   import java.time.LocalDateTime;
 
   public class GenerateurLogger {
-    
+
     private String application;
 
     /**
@@ -627,7 +627,7 @@ condition qu'ils ne soient modifiés ni par la méthode ni par la classe).
     public GenerateurLogger(String application) {
       this.application = application;
     }
-    
+
     public Logger creerConsoleLogger() {
       class ConsoleLogger implements Logger {
         @Override
@@ -639,9 +639,9 @@ condition qu'ils ne soient modifiés ni par la méthode ni par la classe).
       }
       return new ConsoleLogger();
     }
-    
+
     private String log(String message) {
-      return String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s", 
+      return String.format("%1$tY-%1$tb-%1$ta %1$tH:%1$tM %2$s - %3$s",
                            LocalDateTime.now(), application, message);
     }
 
@@ -654,7 +654,7 @@ interne *ConsoleLogger*.
 
   Contrairement aux classes anonymes, une classe interne à une méthode peut
   déclarer des constructeurs.
-  
+
 Interface et énumération
 ************************
 
@@ -663,18 +663,18 @@ Il est même possible de déclarer des interfaces et des énumérations dans une
 interface. Dans ce cas, les interfaces et les énumérations sont traitées
 implicitement comme **static**. On peut ou non préciser le mot-clé.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class ClasseEnglobante {
-    
+
     public interface InterfaceInterne {
-      
+
     }
-    
+
     public enum EnumerationInterne{VALEUR1, VALEUR2}
 
   }
@@ -682,7 +682,7 @@ implicitement comme **static**. On peut ou non préciser le mot-clé.
 Plusieurs classes dans un même fichier
 **************************************
 
-Même s'il ne s'agit pas de classes internes, il est possible de déclarer 
+Même s'il ne s'agit pas de classes internes, il est possible de déclarer
 plusieurs classes dans un même fichier en Java. Mais les classes supplémentaires
 sont forcément de portée package.
 
@@ -695,4 +695,3 @@ chaque classe.
 .. _Action: https://docs.oracle.com/javase/8/docs/api/javax/swing/Action.html
 .. _actionPerformed: https://docs.oracle.com/javase/8/docs/api/javax/swing/Action.html
 .. _JButton: https://docs.oracle.com/javase/8/docs/api/javax/swing/JButton.html
-

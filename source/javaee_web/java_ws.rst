@@ -394,7 +394,7 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
     :caption: Une SEI avec JAX-WS SOAP
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.jws.WebMethod;
@@ -418,12 +418,12 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
     :caption: La classe d'implémentation de la SEI
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.jws.WebService;
 
-    @WebService(endpointInterface="ROOT_PKG.HelloService",
+    @WebService(endpointInterface="{{ROOT_PKG}}.HelloService",
         targetNamespace="http://spoonless.github.io/ws/hello", serviceName="HelloService")
     public class HelloServiceImpl implements HelloService {
 
@@ -442,7 +442,7 @@ ou peuvent être générées à partir d'un ficher WSDL (*Cf.* ci-dessous).
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import javax.jws.WebMethod;

@@ -1,51 +1,51 @@
 Les annotations
 ###############
 
-Les annotations en Java sont des marqueurs qui permettent d'ajouter des 
+Les annotations en Java sont des marqueurs qui permettent d'ajouter des
 méta-données aux classes, aux méthodes, aux attributs, aux paramètres, aux 
 variables, aux paquets ou aux annotations elles-mêmes.
 
-Les annotations sont utilisées dans des domaines divers. Leur intérêt principal 
+Les annotations sont utilisées dans des domaines divers. Leur intérêt principal
 est de fournir une méta-information qui pourra être exploitée par un programme.
 
 Utilisation des annotations
 ***************************
 
-Une annotation est un type (comme une classe ou une interface) du langage Java : 
+Une annotation est un type (comme une classe ou une interface) du langage Java :
 elle peut être référencée par son nom complet ou importée depuis un autre paquet
 grâce au mot-clé **import**.
 
-Une annotation n'est pas instanciée, elle est simplement accolée à l'élément 
+Une annotation n'est pas instanciée, elle est simplement accolée à l'élément
 qu'elle vient enrichir :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Voiture {
-    
+
     @Override
     public String toString() {
       return "une voiture";
     }
-    
+
   }
 
-L'annotation Override_ est définie dans le package java.lang_ (c'est pour cela 
-qu'il n'est pas nécessaire de l'importer explicitement). Cette annotation est 
-utilisable uniquement sur les méthodes pour indiquer que la méthode est une 
+L'annotation Override_ est définie dans le package java.lang_ (c'est pour cela
+qu'il n'est pas nécessaire de l'importer explicitement). Cette annotation est
+utilisable uniquement sur les méthodes pour indiquer que la méthode est une
 redéfinition d'une méthode d'une classe parente (dans l'exemple précédent, la méthode
 redéfinit Object.toString_). Cette annotation est exploitée par le compilateur
-pour réaliser des vérifications supplémentaires. C'est également le cas pour les 
+pour réaliser des vérifications supplémentaires. C'est également le cas pour les
 autres annotations déclarées dans le même package :
 
 Deprecated_
   Permet de générer des warnings afin d'informer les autres développeurs que
   quelque chose (une classe, une méthode...) a été dépréciée et ne devrait plus
   être utilisée.
-  
+
 FunctionalInterface_
   Permet au compilateur de s'assurer que l'interface qui porte cette annotation
   peut être implémentée par une lambda (Cf. :ref:`le chapitre sur les lambdas <functionalInterface>`).
@@ -58,18 +58,18 @@ Override_
 SuppressWarnings_
   Permet de forcer le compilateur à ne plus émettre d'avertissement à la compilation
   dans certains cas.
-  
+
 SafeVarargs_
-  Cette annotation s'ajoute à une méthode acceptant un paramètre variable 
+  Cette annotation s'ajoute à une méthode acceptant un paramètre variable
   (*varargs*) dont le type est un générique. En effet, le principe de l'effacement
   de type (*type erasure*) dans la gestion des classes génériques fait qu'il
-  est possible de corrompre un type paramétré utilisé comme paramètre variable 
-  sans que le compilateur et la JVM ne puissent le détecter. Pour pallier à ce problème, 
-  le compilateur produit systématiquement un avertissement lorsqu'on utilise un 
-  type générique comme paramètre variable. Cette annotation permet de supprimer 
-  l'avertissement à la compilation et implique que le développeur s'est assuré 
+  est possible de corrompre un type paramétré utilisé comme paramètre variable
+  sans que le compilateur et la JVM ne puissent le détecter. Pour pallier à ce problème,
+  le compilateur produit systématiquement un avertissement lorsqu'on utilise un
+  type générique comme paramètre variable. Cette annotation permet de supprimer
+  l'avertissement à la compilation et implique que le développeur s'est assuré
   que son implémentation est sûre.
-  
+
 L'API standard de Java (mais également des bibliothèques tierces) fournissent
 beaucoup d'autres annotations qui ne sont pas interprétées par le compilateur
 mais par le programme lui-même à l'exécution.
@@ -82,28 +82,28 @@ un document XML. Cette annotation accepte deux attributs optionnels : *name*
 pour donner le nom de l'élément XML correspondant et *namespace* pour donner
 l'espace de nom XML auquel l'élément appartient.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import javax.xml.bind.annotation.XmlRootElement;
 
   @XmlRootElement(name = "personne", namespace="http://xml.personne.com/ns")
   public class Personne {
-    
+
     private String prenom;
     private String nom;
-    
+
     // ...
 
   }
- 
+
 Si un attribut est de type tableau alors, il est possible de passer plusieurs
 valeurs entre accolades :
 
-::
+.. code-block:: java
 
   @SuppressWarnings(value = { "deprecation", "unused" })
   public void doSomething() {
@@ -113,7 +113,7 @@ valeurs entre accolades :
 Mais si un attribut est de type tableau et que l'on veut fournir une seule
 valeur alors, les accolades peuvent être omises :
 
-::
+.. code-block:: java
 
   @SuppressWarnings(value = "unused")
   public void doSomething() {
@@ -123,7 +123,7 @@ valeur alors, les accolades peuvent être omises :
 Enfin, si l'attribut porte le nom spécial **value** et qu'il est le seul dont
 la valeur est donnée alors, il est possible d'omettre le nom :
 
-::
+.. code-block:: java
 
   @SuppressWarnings("unused")
   public void doSomething() {
@@ -138,10 +138,10 @@ Comme pour les classes, les interfaces et les énumérations, on crée une annot
 dans un fichier portant le même nom que l'annotation avec l'extension *.java*.
 On déclare une annotation avec le mot-clé **@interface**.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public @interface MyAnnotation {
@@ -154,10 +154,10 @@ On déclare une annotation avec le mot-clé **@interface**.
 
 La déclaration des attributs d'une annotation a une syntaxe très particulière :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public @interface MyAnnotation {
@@ -185,23 +185,23 @@ Documented_
   par un outil comme *javadoc*.
 
 Inherited_
-  Pour indiquer que l'annotation doit être héritée par la classe fille. 
+  Pour indiquer que l'annotation doit être héritée par la classe fille.
 
 Retention_
   Pour préciser le niveau de rétention de l'annotation (Cf. ci-dessous).
-  
+
 Target_
   Pour indiquer quels types d'éléments peuvent utiliser l'annotation : classe,
   méthode, attribut...
-  
+
 Repeatable_
   Pour indiquer qu'une annotation peut être déclarée plusieurs fois sur un même élément.
 
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.lang.annotation.Documented;
@@ -224,28 +224,28 @@ Repeatable_
 
 L'annotation ci-dessus porte des méta-annotations qui indiquent que l'utilisation
 de cette annotation doit apparaître dans la documentation générée, qu'elle est
-utilisable sur les types Java (c'est-à-dire les classes, les interfaces) et 
+utilisable sur les types Java (c'est-à-dire les classes, les interfaces) et
 que sa rétention est de type *RUNTIME*.
 
 Rétention d'une annotation
 **************************
 
-Une annotation est définie par sa rétention, c'est-à-dire la façon dont une 
+Une annotation est définie par sa rétention, c'est-à-dire la façon dont une
 annotation sera conservée. La rétention est définie grâce à la méta-annotation
 Retention_. Les différentes rétentions d'annotation sont :
 
 **SOURCE**
-  L'annotation est accessible durant la compilation mais n'est pas intégrée dans 
+  L'annotation est accessible durant la compilation mais n'est pas intégrée dans
   le fichier class généré.
 
 **CLASS**
-  L'annotation est accessible durant la compilation, elle est intégrée dans le 
+  L'annotation est accessible durant la compilation, elle est intégrée dans le
   fichier class généré mais elle n'est pas chargée dans la JVM à l'exécution.
 
 **RUNTIME**
-  L'annotation est accessible durant la compilation, elle est intégrée dans le 
-  fichier class généré et elle est chargée dans la JVM à l'exécution. Elle est 
-  accessible par introspection. 
+  L'annotation est accessible durant la compilation, elle est intégrée dans le
+  fichier class généré et elle est chargée dans la JVM à l'exécution. Elle est
+  accessible par introspection.
 
 Utilisation des annotations par introspection
 *********************************************
@@ -265,7 +265,7 @@ prises en charge par le compilateur lui-même).
 .. note::
 
   Lombok_ est un exemple de projet open-source fournissant des annotations
-  permettant de générer du code au moment de la compilation grâce à un 
+  permettant de générer du code au moment de la compilation grâce à un
   processeur d'annotations.
 
 L'utilisation la plus courante (notamment avec Java EE) est l'utilisation
@@ -279,12 +279,12 @@ le nombre et le type de ses paramètres. Mais surtout, on peut connaître les
 annotations utilisées et la valeur de leurs attributs.
 
 Imaginons que nous souhaitions créer une framework de tests automatisés. Nous
-pouvons créer l'annotation *@Test* qui servira à indiquer quelles méthodes 
+pouvons créer l'annotation *@Test* qui servira à indiquer quelles méthodes
 publiques d'une classe correspondent à des tests à exécuter par notre framework.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.framework.test;
+  package {{ROOT_PKG}}.framework.test;
 
   import java.lang.annotation.Documented;
   import java.lang.annotation.ElementType;
@@ -305,15 +305,15 @@ Comme la rétention de cette annotation est **RUNTIME**, il est possible d'accé
 classe *TestFramework* qui accepte une instance de n'importe quel type d'objet
 et qui va exécuter une à une les méthodes publiques ayant l'annotation *@Test*.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.framework.test;
+  package {{ROOT_PKG}}.framework.test;
 
   import java.lang.reflect.InvocationTargetException;
   import java.lang.reflect.Method;
 
   public class TestFramework {
-    
+
     public static void run(Object o) {
       Method[] methods = o.getClass().getMethods();
       for (Method method : methods) {
@@ -342,17 +342,17 @@ d'une classe avec la méthode getClass_.
 
 Finalement, nous pouvons écrire une pseudo-classe de tests :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
-  import ROOT_PKG.framework.test.Test;
-  import ROOT_PKG.framework.test.TestFramework;
+  import {{ROOT_PKG}}.framework.test.Test;
+  import {{ROOT_PKG}}.framework.test.TestFramework;
 
   public class MesTests {
-    
+
     @Test
     public void doRight() {
       // ...
@@ -374,26 +374,26 @@ Exercice
 
 .. admonition:: Java et XML
   :class: hint
-  
+
   Java propose une API nommée JAXB qui permet de transformer un document XML
   en objets Java ou de transformer des objets Java en document XML. JAXB fournit
   des annotations qui indiquent la correspondance en XML des classes et de leurs
   attributs.
-  
+
   Parmi ces annotations, il y a :
-  
+
   * XmlRootElement_
   * XmlElement_
   * XmlAttribute_
-  
+
   Par ailleurs, JAXB permet de créer des instances de *Marshaller* et de *Unmarshaller*.
   Le premier type permet de passer de Java à un document XML et le second type
   réalise l'opération inverse.
-  
+
   .. code-block:: java
     :caption: Utilisation d'un Marshaller JAXB
-    
-    package ROOT_PKG.xml;
+
+    package {{ROOT_PKG}}.xml;
 
     import java.io.File;
 
@@ -401,11 +401,11 @@ Exercice
     import javax.xml.bind.Marshaller;
 
     public class XmlMarshaller {
-      
+
       public static void main(String[] args) throws Exception {
-        
+
         JAXBContext ctx = JAXBContext.newInstance(Personne.class, Adresse.class);
-        
+
         Marshaller marshaller = ctx.createMarshaller();
         marshaller.marshal(createPersonne(), new File("personne.xml"));
       }
@@ -415,11 +415,11 @@ Exercice
       }
 
     }
-    
+
   .. code-block:: java
     :caption: Utilisation d'un Unmarshaller JAXB
-    
-    package ROOT_PKG.xml;
+
+    package {{ROOT_PKG}}.xml;
 
     import java.io.File;
 
@@ -429,21 +429,21 @@ Exercice
     public class XmlUnmarshaller {
 
       public static void main(String[] args) throws Exception {
-        
+
         JAXBContext ctx = JAXBContext.newInstance(Personne.class, Adresse.class);
-        
+
         Unmarshaller unmarshaller = ctx.createUnmarshaller();
         Personne personne = (Personne) unmarshaller.unmarshal(new File("personne.xml"));
 
         System.out.println(personne);
       }
-      
+
     }
 
   Étant donné le document XML suivant :
-  
+
   .. code-block:: xml
-  
+
     <?xml version="1.0" encoding="UTF-8"?>
     <personne id="0001">
       <nom>Doe</nom>

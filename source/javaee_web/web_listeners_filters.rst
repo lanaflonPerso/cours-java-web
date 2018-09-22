@@ -101,7 +101,7 @@ Pour cela, il suffit d'ajouter l'annotation `@WebListener`_ à la classe :
     :caption: Exemple de ServletRequestListener
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.servlet.ServletRequestEvent;
@@ -138,7 +138,7 @@ possible de déclarer un listener dans le fichier de déploiement
       version="3.0">
 
         <listener>
-            <listener-class>ROOT_PKG.MyServletRequestListener</listener-class>
+            <listener-class>{{ROOT_PKG}}.MyServletRequestListener</listener-class>
         </listener>
 
     </web-app>
@@ -154,7 +154,7 @@ Exemple de ``ServletRequestListener``
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.servlet.ServletContextEvent;
@@ -191,7 +191,7 @@ L'opération de filtrage est réalisée grâce à la méthode Filter.doFilter_.
     :caption: Exemple d'implémentation d'un filtre Web
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -238,7 +238,7 @@ filtre doit être appelé.
     :caption: Déclaration d'un filtre Web par annotation
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -289,7 +289,7 @@ grâce aux balises ``filter`` et ``filter-mapping``.
 
       <filter>
         <filter-name>MyFilter</filter-name>
-        <filter-class>ROOT_PKG.MyFilter</filter-class>
+        <filter-class>{{ROOT_PKG}}.MyFilter</filter-class>
       </filter>
       
       <filter-mapping>
@@ -367,7 +367,7 @@ très facilement être implémenté au moyen d'un filtre Web.
     :caption: Filtre UTF-8
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -411,7 +411,7 @@ les logs du serveur le nom et la valeur de tous les paramètres reçus :
     :caption: Filtre de log de paramètres
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;

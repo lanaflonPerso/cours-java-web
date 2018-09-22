@@ -47,9 +47,9 @@ des interfaces ci-dessus.
 .. code-block:: java
   :caption: Exemple de création d'un repository JPA
   
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import org.springframework.data.jpa.repository.JpaRepository;
 
   public interface UserRepository extends JpaRepository<User, Long> {
@@ -84,10 +84,10 @@ dans la déclaration du contexte de l'application :
                         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:property-placeholder location="classpath:jdbc.properties" />
-    <context:component-scan base-package="ROOT_PKG" />
+    <context:component-scan base-package="{{ROOT_PKG}}" />
     <tx:annotation-driven />
 
-    <jpa:repositories base-package="ROOT_PKG.repositories"
+    <jpa:repositories base-package="{{ROOT_PKG}}.repositories"
                       enable-default-transactions="false" />
 
     <bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
@@ -142,20 +142,20 @@ suivants :
 
 À l'initialisation du contexte d'application, *Spring Data JPA* va fournir une implémentation
 à toutes les interfaces héritant directement ou indirectement de `Repository<T, ID>`_ et
-qui se trouvent dans le package |ROOT_PKG|.repositories ou un de ses sous-packages.
+qui se trouvent dans le package |{{ROOT_PKG}}|.repositories ou un de ses sous-packages.
 Ainsi, il est possible d'injecter un *bean* du type de l'interface d'un *repository*,
 l'implémentation concrète étant à la charge de *Spring Data JPA*.
 
 .. code-block:: java
   :caption: Exemple d'injection et d'utilisation d'un repository
 
-  package ROOT_PKG.service;
+  package {{ROOT_PKG}}.service;
 
   import org.springframework.beans.factory.annotation.Autowired;
   import org.springframework.stereotype.Repository;
   import org.springframework.transaction.annotation.Transactional;
 
-  import ROOT_PKG.repository.UserRepository;
+  import {{ROOT_PKG}}.repository.UserRepository;
 
   @Repository
   public class UserService {
@@ -191,9 +191,9 @@ correspondre à un paramètre de la méthode dans le même ordre.
   :caption: Exemple de déclaration de *query methods*
   :linenos:
   
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import org.springframework.data.jpa.repository.JpaRepository;
 
   public interface UserRepository extends JpaRepository<User, Long> {
@@ -252,7 +252,7 @@ Pour la méthode *findByNameOrEmail*, l'implémentation sera de la forme :
   
   ::
 
-    package ROOT_PKG.service;
+    package {{ROOT_PKG}}.service;
   
     import javax.persistence.Entity;
     import javax.persistence.GeneratedValue;
@@ -277,7 +277,7 @@ Pour la méthode *findByNameOrEmail*, l'implémentation sera de la forme :
 
   ::
 
-    package ROOT_PKG.service;
+    package {{ROOT_PKG}}.service;
       
     import javax.persistence.Entity;
     import javax.persistence.GeneratedValue;
@@ -318,9 +318,9 @@ de la méthode. Ainsi si on définit une requête nommée sur une entité ``User
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import javax.persistence.Entity;
   import javax.persistence.GeneratedValue;
   import javax.persistence.GenerationType;
@@ -343,9 +343,9 @@ Il faut ensuite déclarer la méthode dans le *repository* assigné à l'entité
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import org.springframework.data.jpa.repository.JpaRepository;
   import org.springframework.data.repository.query.Param;
 
@@ -368,9 +368,9 @@ elle-même :
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import org.springframework.data.jpa.repository.JpaRepository;
   import org.springframework.data.jpa.repository.Query;
   import org.springframework.data.repository.query.Param;
@@ -390,9 +390,9 @@ elle-même :
   
   ::
 
-    package ROOT_PKG.repositories;
+    package {{ROOT_PKG}}.repositories;
 
-    import ROOT_PKG.service.User;
+    import {{ROOT_PKG}}.service.User;
     import org.springframework.data.jpa.repository.JpaRepository;
     import org.springframework.data.jpa.repository.Query;
 
@@ -419,9 +419,9 @@ Il est possible de créer des *query methods* pour réaliser des modifications
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import org.springframework.data.jpa.repository.JpaRepository;
   import org.springframework.data.jpa.repository.Modifying;
   import org.springframework.data.jpa.repository.Query;
@@ -444,9 +444,9 @@ créer l'interface ``UserCustomRepository`` :
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
 
   public interface UserCustomRepository {
     
@@ -458,9 +458,9 @@ Cette interface est étendue par l'interface du *repository* :
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import org.springframework.data.jpa.repository.JpaRepository;
 
   public interface UserRepository extends UserCustomRepository, JpaRepository<User, Long>{
@@ -483,9 +483,9 @@ de cette classe.
 
 ::
 
-  package ROOT_PKG.repositories;
+  package {{ROOT_PKG}}.repositories;
 
-  import ROOT_PKG.service.User;
+  import {{ROOT_PKG}}.service.User;
   import javax.persistence.EntityManager;
   import javax.persistence.PersistenceContext;
 

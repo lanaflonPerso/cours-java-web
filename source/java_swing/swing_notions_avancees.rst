@@ -36,7 +36,7 @@ Habituellement, le nouveau composant graphique redéfinit (*override*) les méth
   :caption: Exemple d'un composant Swing
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.awt.Color;
@@ -80,7 +80,7 @@ Habituellement, le nouveau composant graphique redéfinit (*override*) les méth
   ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.awt.Color;
@@ -212,7 +212,7 @@ Si nous disposons de la classe *Individu* :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Individu {
@@ -263,7 +263,7 @@ Nous créons une implémentation de TableModel_ que nous appelons *IndividuTable
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.util.ArrayList;
   import java.util.Arrays;
@@ -271,7 +271,7 @@ Nous créons une implémentation de TableModel_ que nous appelons *IndividuTable
 
   import javax.swing.table.AbstractTableModel;
 
-  import ROOT_PKG.Individu;
+  import {{ROOT_PKG}}.Individu;
 
   public class IndividuTableModel extends AbstractTableModel {
 
@@ -408,7 +408,7 @@ le composant JTable_ :
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.event.ActionEvent;
   import java.awt.event.ActionListener;
@@ -421,7 +421,7 @@ le composant JTable_ :
   import javax.swing.JTable;
   import javax.swing.WindowConstants;
 
-  import ROOT_PKG.Individu;
+  import {{ROOT_PKG}}.Individu;
 
   public class IndividuTableur extends JFrame {
 

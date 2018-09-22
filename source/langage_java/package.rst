@@ -30,7 +30,7 @@ commence par l'instruction :
 Une classe ne peut appartenir qu'à un seul package. Les packages sont également
 représentés sur le disque par des répertoires. Donc pour la classe suivante :
 
-::
+.. code-block:: java
 
   package monapplication;
 
@@ -66,7 +66,7 @@ Sous package
 Comme pour les répertoires, les packages suivent une organisation arborescente.
 Un package contenu dans un autre package est appelé un **sous package** :
 
-::
+.. code-block:: java
 
   package monapplication.monsouspackage;
 
@@ -78,8 +78,8 @@ Nom d'un package
 
 Comme le mécanisme des packages a été introduit pour éviter la collision de noms,
 il est conseillé de suivre une convention de nommage de ses packages. Pour une
-organisation, on utilise le nom de domaine inversé comme base de l'arborescence 
-de packages : par exemple |ROOT_PKG|. On ajoute généralement ensuite le nom de 
+organisation, on utilise le nom de domaine inversé comme base de l'arborescence
+de packages : par exemple |ROOT_PKG|. On ajoute généralement ensuite le nom de
 l'application ou de la bibliothèque.
 
 Les noms de packages contenant le mot *java* sont réservés pour la bibliothèque standard.
@@ -91,14 +91,14 @@ dans la bibliothèque standard fournie avec le JDK.
 Nom complet d'une classe
 ************************
 
-Une classe est normalement désignée par son *nom complet*, c'est-à-dire par le 
+Une classe est normalement désignée par son *nom complet*, c'est-à-dire par le
 chemin de packages suivi d'un **.** suivi du nom de la classe.
 
 Par exemple, la classe String_ s'appelle en fait java.lang.String_ car elle se
 trouve dans le package java.lang_. J'ai donc la possibilité, si je le souhaite,
 de créer ma propre classe String par exemple dans le package |ROOT_PKG| :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
   package ROOT_PKG;
@@ -112,7 +112,7 @@ de créer ma propre classe String par exemple dans le package |ROOT_PKG| :
 Il est possible d'accèder à une classe en spécifiant son nom complet. Par
 exemple, pour accèder à la classe java.util.Arrays_ :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
   package ROOT_PKG;
@@ -123,7 +123,7 @@ exemple, pour accèder à la classe java.util.Arrays_ :
     public static final main(String... args) {
       int[] tableau = {5, 6, 3, 4};
       java.util.Arrays.sort(tableau);
-    }    
+    }
   }
 
 Par défaut, une classe a accès à l'espace de nom de son propre package et du
@@ -134,32 +134,32 @@ java.lang.String_, java.lang.Math_.
 Si nous créons deux classes : *Voiture* et *Conducteur*, toutes deux dans le
 package |ROOT_PKG| :
 
-::
- 
+.. code-block:: java
+
 {% if not jupyter %}
   package ROOT_PKG;
 {% endif %}
 
   public class Conducteur {
-  
+
     // ...
 
   }
 
-::
- 
+.. code-block:: java
+
 {% if not jupyter %}
   package ROOT_PKG;
 {% endif %}
 
   public class Voiture {
-  
+
     private Conducteur conducteur;
-    
+
     public void setConducteur(Conducteur conducteur) {
       this.conducteur = conducteur;
     }
-    
+
     // ...
 
   }
@@ -172,10 +172,10 @@ Import de noms
 **************
 
 Pour éviter de préfixer systématiquement une classe par son nom de package,
-il est possible d'importer son nom dans l'espace de noms courant grâce au 
-mot-clé **import**. Une instruction **import** **doit** se situer juste après 
-la déclaration de **package** (si cette dernière est présente). Donc, il n'est pas 
-possible d'importer un nom en cours de déclaration d'une classe ou d'une 
+il est possible d'importer son nom dans l'espace de noms courant grâce au
+mot-clé **import**. Une instruction **import** **doit** se situer juste après
+la déclaration de **package** (si cette dernière est présente). Donc, il n'est pas
+possible d'importer un nom en cours de déclaration d'une classe ou d'une
 méthode.
 
 Le mot-clé **import** permet d'importer :
@@ -183,49 +183,49 @@ Le mot-clé **import** permet d'importer :
 * Un nom de classe particulier
 
   ::
-    
+
     import java.util.Arrays;
-    
+
 * Un nom de méthode de classe ou d'attribut de classe
 
   ::
-  
+
     import static java.lang.Math.abs;
     import static java.lang.System.out;
-    
+
 * Un nom de classe interne (inner class)
 
   ::
-  
+
     import java.util.Map.Entry;
-    
+
 * Tous les noms d'un package
 
   ::
-  
+
     import java.util.*;
-    
+
 * Tous les noms des méthodes et des attributs de classe
 
   ::
-  
+
     import static java.lang.Math.*;
 
 
-Le caractère **\*** permet d'importer tous les noms d'un package dans l'espace 
-de nom courant. Même si cela peut sembler très pratique, il est pourtant 
-déconseillé de le faire. Tous les IDE Java savent gérer automatiquement les 
-importations. Dans Eclipse, lorsque l'on saisit le nom d'une classe qui ne fait 
-pas partie de l'espace de nom, il suffit de demander la complétion de code 
-(*CTRL + espace*) et de choisir dans la liste la classe appartenant au package 
-voulu et Eclipse génère automatiquement l'instruction **import** pour ce nom de 
-classe. De plus, on peut demander à Eclipse à tout moment de réorganiser les 
-importations (*CTRL + MAJ + O*). Ainsi, la gestion des importations est 
-grandement automatisée et le recours à **\*** comme facilité d'écriture n'est 
+Le caractère **\*** permet d'importer tous les noms d'un package dans l'espace
+de nom courant. Même si cela peut sembler très pratique, il est pourtant
+déconseillé de le faire. Tous les IDE Java savent gérer automatiquement les
+importations. Dans Eclipse, lorsque l'on saisit le nom d'une classe qui ne fait
+pas partie de l'espace de nom, il suffit de demander la complétion de code
+(*CTRL + espace*) et de choisir dans la liste la classe appartenant au package
+voulu et Eclipse génère automatiquement l'instruction **import** pour ce nom de
+classe. De plus, on peut demander à Eclipse à tout moment de réorganiser les
+importations (*CTRL + MAJ + O*). Ainsi, la gestion des importations est
+grandement automatisée et le recours à **\*** comme facilité d'écriture n'est
 plus vraiment utile.
 
-::
-  
+.. code-block:: java
+
 {% if not jupyter %}
   package ROOT_PKG;
 {% endif %}
@@ -267,7 +267,7 @@ La portée de niveau package
 ***************************
 
 Nous avons vu précédemment que les classes, les méthodes et les attributs
-peuvent avoir une portée **public** ou **private**. Il existe également une 
+peuvent avoir une portée **public** ou **private**. Il existe également une
 portée de niveau package. Une classe, une méthode ou un attribut avec cette
 portée n'est accessible qu'aux membres du même package. Cela permet notamment
 de créer des classes nécessaires au fonctionnement du package tout en les
@@ -280,20 +280,20 @@ Imaginons que nous voulions créer une bibliothèque de cryptographie. Nous pouv
 créer une classe pour chaque algorithme. Par contre, pour simplifier l'utilisation,
 nous pouvons fournir une classe outil de chiffrement. Dans ce cas, il n'est
 pas nécessaire de rendre accessible à l'extérieur du package les classes
-représentant les algorithmes : on les déclare alors avec la portée package.  
+représentant les algorithmes : on les déclare alors avec la portée package.
 
 
 .. code-block:: java
   :caption: CypherAlgorithm.java
-  
+
   package ROOT_PKG.cypher;
-  
+
   class CypherAlgorithm {
-  
+
     public CypherAlgorithm() {
       // ...
     }
-    
+
     public byte[] encrypt(byte[] msg) {
       // ...
     }
@@ -302,26 +302,26 @@ représentant les algorithmes : on les déclare alors avec la portée package.
 
 .. code-block:: java
   :caption: CypherLibrary.java
-  
+
   package ROOT_PKG.cypher;
-  
+
   public class CypherLibrary {
-  
+
     private CypherLibrary() {
     }
-    
+
     public static byte[] cypher(byte[] msg) {
       CypherAlgorithm algo = new CypherAlgorithm();
       return algo.cypher(msg);
     }
   }
-  
+
 La classe *CypherAlgorithm* est de portée package, elle est donc invisible
 pour les classes qui ne sont pas membres de son package. Par contre, elle est
 utilisée par la classe *CypherLibrary*.
 
 La portée de niveau package est souvent utilisée pour dissimuler la complexité
-de l'implémentation en ne laissant voir que les classes et/ou les méthodes 
+de l'implémentation en ne laissant voir que les classes et/ou les méthodes
 réellement utiles aux utilisateurs.
 
 Le fichier package-info.java
@@ -334,11 +334,11 @@ lui-même. Il peut également contenir des annotations pour le package.
 
 .. code-block:: java
   :caption: contenu du fichier package-info.java pour |ROOT_PKG|
-  
+
 {% if not jupyter %}
   package ROOT_PKG;
 {% endif %}
-  
+
   /**
    * Ceci est le commentaire pour le package.
    */

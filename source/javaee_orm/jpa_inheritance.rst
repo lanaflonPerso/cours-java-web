@@ -47,7 +47,7 @@ super classe et de l'ensemble des classes filles.
 .. code-block:: java
     :caption: Super classe
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.DiscriminatorColumn;
     import javax.persistence.Entity;
@@ -80,7 +80,7 @@ dans la classe.
 .. code-block:: java
     :caption: Classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.DiscriminatorValue;
     import javax.persistence.Entity;
@@ -98,7 +98,7 @@ dans la classe.
 .. code-block:: java
     :caption: Une autre classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.DiscriminatorValue;
     import javax.persistence.Entity;
@@ -146,7 +146,7 @@ est très différent.
 .. code-block:: java
     :caption: Super classe
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.DiscriminatorColumn;
     import javax.persistence.Entity;
@@ -174,7 +174,7 @@ est très différent.
 .. code-block:: java
     :caption: Classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.DiscriminatorValue;
     import javax.persistence.Entity;
@@ -192,7 +192,7 @@ est très différent.
 .. code-block:: java
     :caption: Une autre classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.DiscriminatorValue;
     import javax.persistence.Entity;
@@ -244,7 +244,7 @@ Ainsi, la notion d'héritage n'est pas exprimée dans le modèle relationnel de 
 .. code-block:: java
     :caption: Super classe
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.Entity;
     import javax.persistence.GeneratedValue;
@@ -270,7 +270,7 @@ Ainsi, la notion d'héritage n'est pas exprimée dans le modèle relationnel de 
 .. code-block:: java
     :caption: Classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.Entity;
     import javax.persistence.Table;
@@ -288,7 +288,7 @@ Ainsi, la notion d'héritage n'est pas exprimée dans le modèle relationnel de 
 .. code-block:: java
     :caption: Une autre classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.Entity;
     import javax.persistence.Table;
@@ -372,7 +372,7 @@ sens JPA, on parle de *mapped superclass*.
 .. code-block:: java
     :caption: Super classe
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.GeneratedValue;
     import javax.persistence.GenerationType;
@@ -398,7 +398,7 @@ avec l'annotation `@MappedSuperclass`_.
 .. code-block:: java
     :caption: Classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.Entity;
     import javax.persistence.Table;
@@ -416,7 +416,7 @@ avec l'annotation `@MappedSuperclass`_.
 .. code-block:: java
     :caption: Une autre classe enfant
 
-    package ROOT_PKG.vehicule;
+    package {{ROOT_PKG}}.vehicule;
 
     import javax.persistence.Entity;
     import javax.persistence.Table;

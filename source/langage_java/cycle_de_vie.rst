@@ -24,7 +24,7 @@ Un constructeur se distingue d'une méthode car il n'a jamais de type de retour
 (pas même **void**). De plus un constructeur a obligatoirement **le même nom que la classe**.
 
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -37,7 +37,7 @@ Un constructeur se distingue d'une méthode car il n'a jamais de type de retour
 Lorsqu'une voiture est créée par l'application avec l'opérateur **new** comme
 avec l'instruction suivante :
 
-::
+.. code-block:: java
 
   Voiture voiture = new Voiture();
 
@@ -54,7 +54,7 @@ les méthodes, les constructeurs supportent la surcharge (*overloading*).
 Une classe peut ainsi déclarer plusieurs constructeurs à condition que la liste
 des paramètres diffère par le nombre et/ou le type.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -78,7 +78,7 @@ au moment de la création d'une instance de cette classe. Pour cet exemple, on
 voit que le constructeur permet de forcer la création d'une instance de *Voiture*
 en fournissant au moins sa marque.
 
-::
+.. code-block:: java
 
   Voiture voiture = new Voiture("DeLorean");
   Voiture voiture2 = new Voiture("DeLorean", 88.0f);
@@ -92,7 +92,7 @@ explicitement à la déclaration. Dans le cas contraire, ils sont initialisés
 avec une valeur par défaut. Java garantit que cette initialisation a lieu avant
 l'appel au constructeur.
 
-::
+.. code-block:: java
 
   public class Vehicule {
 
@@ -126,7 +126,7 @@ contre, le compilateur génèrera une erreur si :
 * un constructeur tente d'affecter une valeur à un attribut **final** qui a déjà été initialisé
   au moment de sa déclaration.
 
-::
+.. code-block:: java
 
   public class Vehicule {
 
@@ -157,7 +157,7 @@ Constructeur par défaut
 Le compilateur Java garantit que toutes les classes ont au moins un constructeur.
 Si vous créez la classe suivante :
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -165,7 +165,7 @@ Si vous créez la classe suivante :
 
 Alors, le compilateur ajoutera le code nécessaire qui correspondrait à :
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -178,7 +178,7 @@ Ce constructeur est appelé le **constructeur par défaut**. Par contre si votre
 classe contient au moins un constructeur, quelle que soit sa signature, alors
 le compilateur n'ajoutera pas le **constructeur par défaut**.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -206,7 +206,7 @@ Constructeur privé
 Il est tout à fait possible d'interdire l'instantiation d'une classe en Java.
 Pour cela, il suffit de déclarer tous ses constructeurs avec une portée **private**.
 
-::
+.. code-block:: java
 
   public class Calculatrice {
 
@@ -244,7 +244,7 @@ constructeur en utilisant le mot-clé **this** comme nom du constructeur.
 Cependant, un constructeur ne peut appeler qu'un **seul** constructeur et,
 s'il le fait, cela doit être sa première instruction.
 
-::
+.. code-block:: java
 
   public class Vehicule {
 
@@ -329,58 +329,58 @@ objets. Parfois, ces objets peuvent eux-même avoir une représentation interne 
 qui nécessite des références vers d'autres objets... Par exemple, une classe
 *Voiture* peut nécessiter une instance d'une classe *Moteur* :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Moteur {
-    
+
     private int nbCylindres;
     private int nbSoupapesParCylindre;
     private float vitesseMax;
-    
+
     public Moteur(int nbCylindres, int nbSoupapesParCylindre, float vitesseMax) {
       this.nbCylindres = nbCylindres;
       this.nbSoupapesParCylindre = nbSoupapesParCylindre;
       this.vitesseMax = vitesseMax;
     }
-    
+
     // ...
   }
 
 À partir de la classe *Moteur* ci-dessus, nous pouvons fournir l'implémentation
 suivante de la classe *Voiture* :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Voiture {
-    
+
     private String marque;
     private Moteur moteur;
-    
+
     public Voiture(String marque, int nbCylindres, int nbSoupapesParCylindre, float vitesseMax) {
       this.marque = marque;
       this.moteur = new Moteur(nbCylindres, nbSoupapesParCylindre, vitesseMax);
     }
-    
+
     // ...
   }
 
 Et créer une instance de la classe *Voiture* :
 
-::
+.. code-block:: java
 
   Voiture clio = new Voiture("Clio Williams", 4, 4, 216);
 
 Cependant, si nous considérons le type de relation qui unit la classe *Voiture*
 à la classe *Moteur*, nous constatons que non seulement la classe *Voiture* est
-dépendante de la classe *Moteur* mais qu'en plus la classe *Voiture* crée 
+dépendante de la classe *Moteur* mais qu'en plus la classe *Voiture* crée
 l'instance de la classe *Moteur* dont elle a besoin. Donc la classe *Voiture*
 a un couplage très fort avec la classe *Moteur*. Par exemple, si le constructeur
 de la classe *Moteur* évolue alors le constructeur de la classe *Voiture* doit
@@ -393,32 +393,32 @@ créer car il n'y a pas vraiment de raison à ce qu'elles connaissent les
 informations nécessaires à leur création. Dans le cas de notre classe *Voiture*
 nous pouvons proposer simplement l'implémentation :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Voiture {
-    
+
     private String marque;
     private Moteur moteur;
-    
+
     public Voiture(String marque, Moteur moteur) {
       this.marque = marque;
       this.moteur = moteur;
     }
-    
+
     // ...
   }
 
 La création d'une instance de *Voiture* se fait maintenant en deux étapes :
 
-::
+.. code-block:: java
 
   Moteur moteur = new Moteur(4, 4, 216);
   Voiture clio = new Voiture("Clio Williams", moteur);
-  
+
 
 On dit qu'une instance de la classe *Moteur* est **injectée** par le constructeur
 dans une instance de *Voiture*. En programmation objet, cela signifie que nous
@@ -441,7 +441,7 @@ Le bloc d'initialisation
 Il est possible d'écrirer un traitement d'initialisation s'effectuant avant l'appel
 au constructeur. Il suffit de déclarer un bloc anonyme dans la classe.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -474,7 +474,7 @@ ne sera effectué qu'une seule fois : au moment du chargement de la définition 
 classe dans la mémoire de la JVM. Une initialisation de classe se fait à l'aide
 d'un bloc d'instructions **static**.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -499,7 +499,7 @@ une constante à partir d'un traitement plus complexe.
 On peut obtenir un resultat similaire en initialisant la constante *NB_ROUES* à partir
 d'un appel à une méthode de classe :
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -524,19 +524,19 @@ Exercice
     ::
 
       // constructeur sans paramètre
-      Phrase phrase = new Phrase(); 
+      Phrase phrase = new Phrase();
 
       // constructeur pour indiquer quel caractère fini la phrase
-      phrase = new Phrase(Phrase.INTERROGATION); // ? 
+      phrase = new Phrase(Phrase.INTERROGATION); // ?
       phrase = new Phrase(Phrase.EXCLAMATION);   // !
       phrase = new Phrase(Phrase.DECLARATION);   // .
 
       // constructeur pour passer des mots à la phrase
-      phrase = new Phrase("une", "phrase"); 
+      phrase = new Phrase("une", "phrase");
 
       // constructeur pour indiquer quel caractère fini la phrase
       // et passer des mots à la phrase
-      phrase = new Phrase(Phrase.INTERROGATION, "une", "phrase"); 
+      phrase = new Phrase(Phrase.INTERROGATION, "une", "phrase");
 
     Ajoutez également des méthodes de classe pour créer directement une *Phrase*
     selon son type :
@@ -672,7 +672,7 @@ La méthode finalize
 Si un objet souhaite effectuer un traitement avant sa destruction, il peut implémenter
 la méthode *finalize*. Cette méthode a la signature suivante :
 
-::
+.. code-block:: java
 
   protected void finalize() {
   }
@@ -683,7 +683,7 @@ la méthode **finalize** est appelée. Elle peut même ne jamais être appelée 
 termine avant que le ramasse-miettes ne réclame l'espace mémoire de l'objet. Elle n'a donc
 pas le même statut ni la même importance qu'un destructeur dans le langage C++.
 
-::
+.. code-block:: java
 
   public class ObjetCurieux {
 

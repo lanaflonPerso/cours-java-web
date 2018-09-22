@@ -36,7 +36,7 @@ classe JFrame_.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import javax.swing.JFrame;
   import javax.swing.JLabel;
@@ -158,7 +158,7 @@ JTabbedPane_
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import javax.swing.JButton;
   import javax.swing.JCheckBox;
@@ -280,7 +280,7 @@ horizontalement.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.FlowLayout;
 
@@ -411,7 +411,7 @@ fill
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.GridBagConstraints;
   import java.awt.GridBagLayout;
@@ -527,7 +527,7 @@ et le conteneur.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import java.awt.Container;
 
@@ -631,7 +631,7 @@ and feel* personnalisé.
 .. code-block:: java
   :linenos:
 
-  package ROOT_PKG.gui;
+  package {{ROOT_PKG}}.gui;
 
   import javax.swing.JButton;
   import javax.swing.JCheckBox;

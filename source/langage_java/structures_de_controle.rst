@@ -9,7 +9,7 @@ if-else
 L'expression **if** permet d'exécuter un bloc d'instructions uniquement si l'expression
 booléenne est évaluée à vrai :
 
-::
+.. code-block:: java
 
   if (i % 2 == 0) {
     // instructions à exécuter si i est pair
@@ -18,7 +18,7 @@ booléenne est évaluée à vrai :
 L'expression **if** peut être optionnellement suivie d'une expression **else** pour les
 cas où l'expression est évaluée à faux :
 
-::
+.. code-block:: java
 
   if (i % 2 == 0) {
     // instructions à exécuter si i est pair
@@ -29,7 +29,7 @@ cas où l'expression est évaluée à faux :
 L'expression **else** peut être suivie d'une nouvelle instruction **if** afin de réaliser
 des choix multiples :
 
-::
+.. code-block:: java
 
   if (i % 2 == 0) {
     // instructions à exécuter si i pair
@@ -60,7 +60,7 @@ d'une méthode et de retourner la valeur de l'expression spécifiée après ce m
 ne retourne pas de valeur (**void**), alors on utilise le mot-clé **return** seul.
 L'exécution d'un **return** entraîne la fin d'une structure de contrôle.
 
-::
+.. code-block:: java
 
   if (i % 2 == 0) {
     return 0;
@@ -69,7 +69,7 @@ L'exécution d'un **return** entraîne la fin d'une structure de contrôle.
 Écrire des instructions immédiatement après une instruction **return** n'a pas de sens puisqu'elles
 ne seront jamais exécutées. Le compilateur Java le signalera par une erreur *unreachable code*.
 
-::
+.. code-block:: java
 
   if (i % 2 == 0) {
     return 0;
@@ -82,7 +82,7 @@ while
 L'expression *while* permet de définir un bloc d'instructions à répéter tant que l'expression
 booléenne est évaluée à vrai.
 
-::
+.. code-block:: java
 
   while (i % 2 == 0) {
     // instructions à exécuter tant que i est pair
@@ -108,7 +108,7 @@ do-while
 
 Il existe une variante de la structure précédente, nommée **do-while** :
 
-::
+.. code-block:: java
 
   do {
     // instructions à exécuter
@@ -130,7 +130,7 @@ bloc d'instructions est exécuté et un incrément est appelé.
     bloc d'instructions
   }
 
-::
+.. code-block:: java
 
   for (int i = 0; i < 10; ++i) {
     // instructions
@@ -176,7 +176,7 @@ for amélioré
 Il existe une forme améliorée de l'expression *for* (souvent appelée *for-each*)
 qui permet d'exprimer plus succinctement un parcours d'une collection d'éléments.
 
-::
+.. code-block:: java
 
   for (int i : maCollection) {
     // instructions à exécuter
@@ -187,7 +187,7 @@ Pour que cette expression compile, il faut que la variable désignant la collect
 Il faut également que la variable à gauche de **:** soit compatible pour l'assignation
 d'un élément de la collection.
 
-::
+.. code-block:: java
 
   short arrayOfShort[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
@@ -204,7 +204,7 @@ il est possible de contrôler le comportement à l'intérieur de la boucle grâc
 
 **break** quitte la boucle sans exécuter le reste des instructions.
 
-::
+.. code-block:: java
 
   int k = 10;
   for (int i = 1 ; i < 10; ++i) {
@@ -216,7 +216,7 @@ il est possible de contrôler le comportement à l'intérieur de la boucle grâc
 
 **continue** arrête l'exécution de l'itération actuelle et commence l'exécution de l'itération suivante.
 
-::
+.. code-block:: java
 
   for (int i = 1 ; i < 10; ++i) {
     if (i % 2 == 0) {
@@ -234,7 +234,7 @@ raison d'utiliser un libellé est le cas d'une itération imbriquée dans une au
 Par défaut, **break** et **continue** n'agissent que sur le bloc d'itération dans lequel ils apparaissent.
 En utilisant un libellé, on peut arrêter ou continuer sur une itération de niveau supérieur :
 
-::
+.. code-block:: java
 
   int m = 0;
 
@@ -259,7 +259,7 @@ switch
 
 Un expression **switch** permet d'effectuer une sélection parmi plusieurs valeurs.
 
-::
+.. code-block:: java
 
   switch (s) {
     case "valeur 1":
@@ -281,7 +281,7 @@ représente un point à partir duquel l'exécution du code commencera. Si on veu
 utiliser une instruction **break**. Au contraire, l'omission de l'instruction **break**
 peut être pratique si on veut effectuer le même traitement pour un ensemble de cas :
 
-::
+.. code-block:: java
 
   switch (c) {
     case 'a':
@@ -358,26 +358,26 @@ Exercice
   algorithme fonctionne correctement.
 
   .. hint::
-  
+
     On peut obtenir un tableau de caractères à partir d'une chaîne avec la méthode
     toCharArray_. S'il n'est pas possible de parcourir les éléments d'une chaîne de caractères
     avec un for amélioré, on peut facilement parcourir le tableau de caractères :
-    
+
     ::
-    
+
       String helloWorld = "Hello world!";
       for (char c : helloWorld.toCharArray()) {
         // ...
       }
 
-    
+
     Il est possible de créer une nouvelle chaîne de caractères à partir d'un tableau :
-    
+
     ::
-    
+
       char[] tableau = "Hello".toCharArray();
       String chaine = new String(tableau);
-    
+
 
 .. _Iterable: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
 .. _toCharArray: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toCharArray--

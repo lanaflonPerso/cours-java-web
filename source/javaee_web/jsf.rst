@@ -294,7 +294,7 @@ Nous verrons dans l'exemple ci-dessous une déclaration par annotations :
     :caption: Une déclaration de portée requête
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.enterprise.context.RequestScoped;
@@ -366,7 +366,7 @@ l'annotation ``@Named`` :
         :caption: Une déclaration de portée session
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import javax.enterprise.context.SessionScoped;
@@ -513,7 +513,7 @@ Ainsi un contrôleur valide pourrait être :
     :caption: Un exemple de contrôleur
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.enterprise.context.RequestScoped;
@@ -564,7 +564,7 @@ une chaîne de caractères.
     :caption: Spécification de la vue par un contrôleur
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.enterprise.context.RequestScoped;
@@ -747,7 +747,7 @@ L'implémentation de booleanValidator qui vérifie que la valeur vaut true
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.faces.application.FacesMessage;
@@ -793,7 +793,7 @@ d'ajouter des annotations directement sur le bean ``Personne`` :
     :caption: Utilisation de Bean Validation
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.validation.constraints.Max;
@@ -918,7 +918,7 @@ Un exemple simple mais complet serait :
     :caption: Le contrôleur associé
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.enterprise.context.RequestScoped;

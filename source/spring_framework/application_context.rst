@@ -144,7 +144,7 @@ par l'objet ApplicationContext_ :
   :caption: La classe principale de l'application
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.Date;
@@ -220,7 +220,7 @@ un singleton et "now" qui est de portée prototype.
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
@@ -293,7 +293,7 @@ des méthodes ci-dessus. Prenons l'exemple de la classe ``Personne`` :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Personne {
@@ -336,7 +336,7 @@ Pour l'exemple, nous créons également la classe ``PersonneFactory`` :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class PersonneFactory {
@@ -361,11 +361,11 @@ Ci-dessous, un contexte d'application en XML qui crée quatre *beans* de type ``
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Création à partir d'un constructeur sans paramètre -->
-    <bean name="anonyme" class="ROOT_PKG.Personne">
+    <bean name="anonyme" class="{{ROOT_PKG}}.Personne">
     </bean>
 
     <!-- Création à partir d'un constructeur avec des paramètres -->
-    <bean name="moi" class="ROOT_PKG.Personne">
+    <bean name="moi" class="{{ROOT_PKG}}.Personne">
       <constructor-arg>
         <value>David</value>
       </constructor-arg>
@@ -375,12 +375,12 @@ Ci-dessous, un contexte d'application en XML qui crée quatre *beans* de type ``
     </bean>
 
     <!-- Création à partir d'une méthode statique d'une fabrique -->
-    <bean name="autreAnonyme" class="ROOT_PKG.PersonneFactory"
+    <bean name="autreAnonyme" class="{{ROOT_PKG}}.PersonneFactory"
           factory-method="getAnonyme">
     </bean>
 
     <!-- Création d'une fabrique -->
-    <bean name="personneFactory" class="ROOT_PKG.PersonneFactory">
+    <bean name="personneFactory" class="{{ROOT_PKG}}.PersonneFactory">
     </bean>
 
     <!-- Création à partir d'une méthode non statique d'une fabrique créée dans le conteneur -->
@@ -399,7 +399,7 @@ Et le code de test de l'application :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
@@ -431,7 +431,7 @@ d'entiers :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.stream.IntStream;
@@ -461,7 +461,7 @@ voulues sous la forme d'une liste :
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="calculateur" class="ROOT_PKG.Calculateur">
+    <bean name="calculateur" class="{{ROOT_PKG}}.Calculateur">
       <constructor-arg>
         <list>
           <value>1</value>
@@ -478,7 +478,7 @@ Et le code de l'application :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
@@ -526,7 +526,7 @@ données la classe ``Societe`` :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.List;
@@ -574,7 +574,7 @@ de type ``Personne`` :
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="dirigeant" class="ROOT_PKG.Personne">
+    <bean name="dirigeant" class="{{ROOT_PKG}}.Personne">
       <constructor-arg>
         <value>Jean</value>
       </constructor-arg>
@@ -583,7 +583,7 @@ de type ``Personne`` :
       </constructor-arg>
     </bean>
 
-    <bean name="societe" class="ROOT_PKG.Societe">
+    <bean name="societe" class="{{ROOT_PKG}}.Societe">
       <property name="nom">
         <value>Societe SA</value>
       </property>
@@ -593,7 +593,7 @@ de type ``Personne`` :
       <property name="salaries">
         <list>
           <ref bean="dirigeant"/>
-          <bean class="ROOT_PKG.Personne">
+          <bean class="{{ROOT_PKG}}.Personne">
             <constructor-arg>
               <value>Michel</value>
             </constructor-arg>
@@ -625,18 +625,18 @@ du *bean* que l'on souhaite injecter ou bien d'utiliser directement une balise
            xsi:schemaLocation="http://www.springframework.org/schema/beans
                                http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-      <bean name="dirigeant" class="ROOT_PKG.Personne">
+      <bean name="dirigeant" class="{{ROOT_PKG}}.Personne">
         <constructor-arg value="Jean"/>
         <constructor-arg value="Don"/>
       </bean>
 
-      <bean name="societe" class="ROOT_PKG.Societe">
+      <bean name="societe" class="{{ROOT_PKG}}.Societe">
         <property name="nom" value="Societe SA"/>
         <property name="dirigeant" ref="dirigeant" />
         <property name="salaries">
           <list>
             <ref bean="dirigeant"/>
-            <bean class="ROOT_PKG.Personne">
+            <bean class="{{ROOT_PKG}}.Personne">
               <constructor-arg value="Michel"/>
               <constructor-arg value="Don"/>
             </bean>
@@ -650,7 +650,7 @@ Et le code de l'application :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.support.GenericXmlApplicationContext;
@@ -697,7 +697,7 @@ Si nous disposons de la classe ci-dessous :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class ExempleBeanRessource {
@@ -723,7 +723,7 @@ en précisant que les méthodes ``init`` et ``close`` doivent respectivement
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="ROOT_PKG.ExempleBeanRessource"
+    <bean class="{{ROOT_PKG}}.ExempleBeanRessource"
           init-method="init" destroy-method="close"/>
 
   </beans>
@@ -791,7 +791,7 @@ Si nous reprenons l'exemple de la classe ``Societe`` :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.List;
@@ -839,12 +839,12 @@ En déclarant le contexte d'application de la façon suivante :
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd" >
 
-    <bean name="dirigeant" class="ROOT_PKG.Personne">
+    <bean name="dirigeant" class="{{ROOT_PKG}}.Personne">
       <constructor-arg value="Jean"/>
       <constructor-arg value="Don"/>
     </bean>
 
-    <bean name="societe" class="ROOT_PKG.Societe" autowire="byName">
+    <bean name="societe" class="{{ROOT_PKG}}.Societe" autowire="byName">
       <property name="nom" value="Ma société"/>
     </bean>
   </beans>
@@ -864,12 +864,12 @@ En déclarant maintenant le contexte d'application comme suit :
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd" >
 
-    <bean name="dirigeant" class="ROOT_PKG.Personne">
+    <bean name="dirigeant" class="{{ROOT_PKG}}.Personne">
       <constructor-arg value="Jean"/>
       <constructor-arg value="Don"/>
     </bean>
 
-    <bean name="societe" class="ROOT_PKG.Societe" autowire="byType">
+    <bean name="societe" class="{{ROOT_PKG}}.Societe" autowire="byType">
       <property name="nom" value="Ma société"/>
     </bean>
   </beans>
@@ -894,7 +894,7 @@ d'application intégralement en Java. Pour cela, on utilise les annotations
   :caption: Exemple de contexte d'application en Java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.annotation.AnnotationConfigApplicationContext;
