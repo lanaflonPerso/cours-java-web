@@ -3,9 +3,9 @@ La classe String
 
 En Java, les chaînes de caractères sont des instances de la classe String_.
 Les chaînes de caractères écrites littéralement sont toujours délimitées par des
-guillemets : 
+guillemets :
 
-::
+.. code-block:: java
 
   "Hello World"
 
@@ -17,8 +17,8 @@ ne peut pas être traitée comme un tableau. Si on souhaite accéder à un carac
 de la chaîne à partir de son index, il faut utiliser la méthode String.charAt_.
 On peut ainsi parcourir les caractères d'une chaîne :
 
-::
-  
+.. code-block:: java
+
   String s = "Hello World";
 
   for (int i = 0; i < s.length(); ++i) {
@@ -32,7 +32,7 @@ les caractères d'une chaîne car la classe String_ n'implémente pas l'interfac
 Iterable_. Par contre, il est possible d'obtenir un tableau des caractères avec
 la méthode String.toCharArray_. On peut alors parcourir ce tableau avec un for amélioré.
 
-::
+.. code-block:: java
 
   String s = "Hello World";
 
@@ -45,12 +45,12 @@ la méthode String.toCharArray_. On peut alors parcourir ce tableau avec un for 
   La méthode String.toCharArray_ a l'inconvénient de créer un tableau de la même
   longueur que la chaîne et de copier un à un les caractères. Si votre programme
   manipule intensivement des chaînes de caractères de taille importante, cela
-  peut être pénalisant pour les performances. Depuis Java 8, il existe avec une 
-  nouvelle solution à ce problème avec un impact mémoire quasi nul : 
+  peut être pénalisant pour les performances. Depuis Java 8, il existe avec une
+  nouvelle solution à ce problème avec un impact mémoire quasi nul :
   l'utilisation des streams et des lambdas.
-  
-  ::
-  
+
+  .. code-block:: java
+
     String s = "Hello World";
     s.chars().forEach(c -> System.out.println((char)c));
 
@@ -64,20 +64,20 @@ des méthodes.
 
 String.equals_
 
-  Compare la chaîne de caractères avec une autre chaînes de caractères. 
-  
-  ::
+  Compare la chaîne de caractères avec une autre chaînes de caractères.
+
+  .. code-block:: java
 
     System.out.println("a".equals("a"));   // true
     System.out.println("a".equals("ab"));  // false
     System.out.println("ab".equals("AB")); // false
 
 String.equalsIgnoreCase
-  
+
   Comme la méthode précédente sauf que deux chaînes qui ne diffèrent que par
   la casse seront considérées comme identiques.
-  
-  ::
+
+  .. code-block:: java
 
     System.out.println("a".equalsIgnoreCase("a"));   // true
     System.out.println("a".equalsIgnoreCase("ab"));  // false
@@ -87,11 +87,11 @@ String.compareTo_
 
   Compare la chaîne de caractères avec une autre chaînes de caractères. La comparaison
   se fait suivant la taille des chaînes et l'ordre lexicographique des caractères. Cette méthode
-  retourne 0 si les deux chaînes sont identiques, une valeur négative si la première 
-  est inférieure à la seconde et une valeur positive si la première est plus grande 
+  retourne 0 si les deux chaînes sont identiques, une valeur négative si la première
+  est inférieure à la seconde et une valeur positive si la première est plus grande
   que la seconde.
-  
-  ::
+
+  .. code-block:: java
 
     System.out.println("a".compareTo("a"));   // 0
     System.out.println("a".compareTo("ab"));  // < 0
@@ -100,11 +100,11 @@ String.compareTo_
     System.out.println("ab".compareTo("AB")); // > 0
 
 String.compareToIgnoreCase_
-  
+
   Comme la méthode précédente sauf que deux chaînes qui ne diffèrent que par
   la casse seront considérées comme identiques.
-  
-  ::
+
+  .. code-block:: java
 
     System.out.println("a".compareToIgnoreCase("a"));   // 0
     System.out.println("a".compareToIgnoreCase("ab"));  // < 0
@@ -116,77 +116,77 @@ String.concat_
 
   Concatène les deux chaînes dans une troisième. Cette méthode est équivalente
   à l'utilisation de l'opérateur **+**.
-  
-  ::
-    
+
+  .. code-block:: java
+
     String s = "Hello".concat(" ").concat("World"); // "Hello World"
 
 String.contains_
 
   Retourne **true** si la chaîne contient une séquence de caractères donnée.
-  
-  ::
-  
+
+  .. code-block:: java
+
     boolean b = "Hello World".contains("World"); // true
     b = "Hello World".contains("Monde");         // false
 
 String.endsWith_
 
   Retourne **true** si la chaîne se termine par une chaîne de caractères donnée.
-  
-  ::
-  
+
+  .. code-block:: java
+
     boolean b = "Hello World".endsWith("World"); // true
     b = "Hello World".endsWith("Hello");         // false
 
 String.startsWith_
 
   Retourne **true** si la chaîne commence par une chaîne de caractères donnée.
-  
-  ::
-  
+
+  .. code-block:: java
+
     boolean b = "Hello World".endsWith("Hello"); // true
     b = "Hello World".endsWith("World");         // false
-    
+
 String.isEmpty_
 
   Retourne **true** si la chaîne est la chaîne vide (*length()* vaut 0)
-  
-  ::
-  
+
+  .. code-block:: java
+
     boolean b = "".isEmpty();    // true
     b = "Hello World".isEmpty(); // false
 
 String.length_
 
   Retourne le nombre de caractères dans la chaîne.
-  
-  ::
-  
+
+  .. code-block:: java
+
     int n = "Hello World".length(); // 11
-    
+
 String.replace_
 
   Remplace un caractère par un autre dans une nouvelle chaîne de caractères.
-  
-  ::
-  
-    String s = "Hello World".replace('l', 'x'); // "Hexxo Worxd" 
+
+  .. code-block:: java
+
+    String s = "Hello World".replace('l', 'x'); // "Hexxo Worxd"
 
   Cette méthode est surchargée pour accepter des chaînes de caractères comme
   paramètres.
-  
-  ::
-  
+
+  .. code-block:: java
+
     String s = "Hello World".replace(" World", ""); // "Hello"
-    
+
 String.substring_
 
   Crée une nouvelle sous-chaîne à partir de l'index de début et jusqu'à
   l'index de fin (non inclus).
-  
-  ::
-  
+
+  .. code-block:: java
+
     String s = "Hello World".substring(2, 4); // "ll"
     s = "Hello World".substring(0, 5);        // "Hello"
 
@@ -194,25 +194,25 @@ String.toLowerCase_
 
   Crée une chaîne de caractères équivalente en minuscules.
 
-  ::
-  
+  .. code-block:: java
+
     String s = "Hello World".toLowerCase(); // "hello world"
-  
+
 String.toUpperCase_
 
   Crée une chaîne de caractères équivalente en majuscules.
 
-  ::
-  
+  .. code-block:: java
+
     String s = "Hello World".toUpperCase(); // "HELLO WORLD"
-    
+
 String.trim_
 
   Crée une nouvelle chaîne de caractères en supprimant les espaces au début et
   à la fin.
-  
-  ::
-  
+
+  .. code-block:: java
+
     String s = "       Hello World      ".trim(); // "Hello World"
 
 Construction d'une instance de String
@@ -221,13 +221,13 @@ Construction d'une instance de String
 La classe String_ possède plusieurs constructeurs qui permettent de créer
 une chaîne de caractères avec l'opérateur **new**.
 
-::
+.. code-block:: java
 
   String s1 = new String(); // chaîne vide
-  
+
   String hello = "Hello World";
   String s2 = new String(hello); // copie d'un chaîne
-  
+
   char[] tableau = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
   String s3 = new String(tableau); // à partir d'un tableau de caractères.
 
@@ -247,7 +247,7 @@ Cela signifie que des opérations intensives sur les chaînes de caractères peu
 toutes les opérations se font finalement par copie.
 
 Nous avons vu qu'il n'existe pas réellement de constante en Java mais
-uniquement des attributs déclarés avec **static** et **final**. Cette immutabilité 
+uniquement des attributs déclarés avec **static** et **final**. Cette immutabilité
 permet de garantir qu'une variable de String_ déclarée **static** et **final**
 ne peut plus être modifié.
 
@@ -287,14 +287,14 @@ courante du StringBuilder_ ce qui permet de chaîner les appels en une seule
 instruction.
 Pour obtenir la chaîne de caractères, il suffit d'appeler la méthode StringBuilder.toString_.
 
-::
+.. code-block:: java
 
   StringBuilder sb = new StringBuilder();
   sb.append("Hello")
     .append(" ")
     .append("world")
     .insert(5, " the")    // On insère la chaîne à l'index 5
-    .append('!'); 
+    .append('!');
   System.out.println(sb); // "Hello the world!"
 
   sb.reverse();
@@ -305,10 +305,10 @@ Pour obtenir la chaîne de caractères, il suffit d'appeler la méthode StringBu
 
 La classe StringBuilder_ permet de pallier au fait que les instances de la
 classe String_ sont immutables. D'ailleurs, l'opérateur **+** de concaténation
-de chaînes n'est qu'un sucre syntaxique, le compilateur le remplace par une 
+de chaînes n'est qu'un sucre syntaxique, le compilateur le remplace par une
 utilisation de la classe StringBuilder_.
 
-::
+.. code-block:: java
 
   String s1 = "Hello";
   String s2 = "the";
@@ -317,7 +317,7 @@ utilisation de la classe StringBuilder_.
 
 Le code ci-dessus sera en fait interprété par le compilateur comme ceci :
 
-::
+.. code-block:: java
 
   String s1 = "Hello";
   String s2 = "the";
@@ -332,11 +332,11 @@ La méthode de classe String.format_ permet de passer une chaîne de caractères
 décrivant un formatage ainsi que plusieurs objets correspondant à des paramètres
 du formatage.
 
-::
+.. code-block:: java
 
   String who = "the world";
   String message = String.format("Hello %s!", who);
-  
+
   System.out.println(message); // "Hello the world!"
 
 Dans l'exemple ci-dessus, la chaîne de formatage "Hello %s" contient un paramètre
@@ -348,8 +348,8 @@ Un paramètre dans la chaîne de formatage peut contenir différente information
 
 L'index est la place du paramètre dans l'appel à la méthode String.format_.
 
-::
-  
+.. code-block:: java
+
   int quantite = 12;
   LocalDate now = LocalDate.now();
 
@@ -361,8 +361,8 @@ Il existe également une définition de la méthode String.format_ qui attend un
 instance de Locale_ en premier paramètre. La locale indique la langue du message
 et permet de formater les nombres, les dates, etc comme attendu.
 
-::
-  
+.. code-block:: java
+
   int quantite = 12;
   LocalDate now = LocalDate.now();
 
@@ -384,20 +384,20 @@ Les expressions régulières
 **************************
 
 Certaines méthodes de la classe String_ acceptent comme paramètre une `expression
-régulière`_ (*regular expression* ou *regexp*). Une expression régulière permet 
+régulière`_ (*regular expression* ou *regexp*). Une expression régulière permet
 d'exprimer avec des motifs un ensemble
 de chaînes de caractères possibles. Par exemple la méthode String.matches_ prend
 un paramètre de type String_ qui est interprété comme une expression régulière.
 Cette méthode retourne **true** si la chaîne de caractères est conforme à l'expression
 régulière passée en paramètre.
 
-::
+.. code-block:: java
 
   boolean match = "hello".matches("hello");
   System.out.println(match); // true
 
 L'intérêt des expressions régulières est qu'elles peuvent contenir des classes
-de caractères, c'est-à-dire des caractères qui sont interprétés comme 
+de caractères, c'est-à-dire des caractères qui sont interprétés comme
 représentant un ensemble de caractères.
 
 .. csv-table:: Les classes de caractères dans une expression régulière
@@ -414,7 +414,7 @@ représentant un ensemble de caractères.
   \\w, "Un caractère composant un mot (équivalent à [a-zA-Z_0-9]"
   \\W, "Un caractère ne composant pas un mot (équivalent à [^\\w])"
 
-::
+.. code-block:: java
 
   String s = "hello";
   System.out.println(s.matches("....."));           // true
@@ -435,7 +435,7 @@ une séquence de caractères dans la chaîne.
   "X{n,}", X est présent au moins n fois
   "X{n,m}", X est présent entre n et m fois
 
-::
+.. code-block:: java
 
   String s = "hello";
   System.out.println(s.matches(".*"));                 // true
@@ -453,7 +453,7 @@ Il est possible d'utiliser la méthode String.replaceFirst_ ou String.replaceAll
 pour remplacer respectivement la première ou toutes les occurrences d'une
 séquence de caractères définie par une expression régulière.
 
-::
+.. code-block:: java
 
   String s = "hello";
   System.out.println(s.replaceAll("[aeiouy]", "^_^")); // h^_^ll^_^
@@ -462,16 +462,16 @@ La méthode String.split_ permet de découper une chaîne de caractères en tabl
 de chaînes de caractère en utilisant une expression régulière pour identifier
 le séparateur.
 
-::
+.. code-block:: java
 
   String s = "hello the world";
 
   // ["hello", "the", "world"]
   String[] tab = s.split("\\W");
 
-  // ["hello", "world"]  
+  // ["hello", "world"]
   tab = s.split(" the ");
-  
+
   // ["he", "", "", "the w", "r", "d"]
   tab = s.split("[ol]");
 

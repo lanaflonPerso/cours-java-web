@@ -21,14 +21,14 @@ une date. Elle comporte de nombreuses limitations :
 La quasi totalité des constructeurs et des méthodes de cette classe ont été
 dépréciés. Cela signifie qu'il ne faut pas les utiliser. Pourtant, la classe Date_
 reste une classe largement utilisée en Java. Par exemple, la classe Date_ est la
-classe mère des classes java.sql.Date_, java.sql.Time_ et java.sql.Timestamp_ qui 
+classe mère des classes java.sql.Date_, java.sql.Time_ et java.sql.Timestamp_ qui
 servent à représenter les types du même nom en SQL. Beaucoup de bibliothèques
 tierces utilisent directement ou indirectement la classe Date_.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.Instant;
@@ -39,13 +39,13 @@ tierces utilisent directement ou indirectement la classe Date_.
     public static void main(String[] args) {
       Date aujourdhui = new Date(); // crée une date au jour et à l'heure d'aujourd'hui
       Date dateAvant = new Date(0); // crée une date au 1 janvier 1970 00:00:00.000
-      
+
       System.out.println(aujourdhui.after(dateAvant)); // true
       System.out.println(dateAvant.before(aujourdhui)); // true
-      
+
       System.out.println(aujourdhui.equals(dateAvant)); // false
       System.out.println(aujourdhui.compareTo(dateAvant)); // 1
-      
+
       Instant instant = aujourdhui.toInstant();
     }
 
@@ -64,20 +64,20 @@ millisecondes depuis le 1er janvier 1970 à 00:00:00.000.
   Pour connaître le nombre de millisecondes écoulées depuis le 1er janvier 1970
   à 00:00:00.000, il faut appeler la méthodes System.currentTimeMillis_.
 
-  ::
-    
+  .. code-block:: java
+
     long nbMilliSecondes = System.currentTimeMillis();
 
 .. note::
 
   Depuis l'introduction en Java 8 de la nouvelle API des dates,
   il est possible de convertir une instance de Date_ en une instance de Instant_ avec
-  la méthode Date.toInstant_. 
+  la méthode Date.toInstant_.
 
 Calendar
 ********
 
-Depuis Java 1.1, la classe java.util.Calendar_ a été proposée pour remplacer 
+Depuis Java 1.1, la classe java.util.Calendar_ a été proposée pour remplacer
 la classe java.util.Date_. La classe Calendar_ pallie les nombreux désavantages
 de la classe Date_ :
 
@@ -87,10 +87,10 @@ de la classe Date_ :
   fournir des classes concrètes pour gérer différents calendriers (le JDK ne propose
   que la classe GregorianCalendar_ comme implémentation concrète pour le calendrier grégorien).
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.Calendar;
@@ -109,15 +109,15 @@ de la classe Date_ :
 
       // On positionne la date au 8 juin 2005 à 12:00:00
       date.set(2005, 6, 8, 12, 0, 0);
-      
+
       System.out.println(date.toInstant());
-   
+
       // On ajoute 24 heures à la date et on passe au jour suivant
       date.add(Calendar.HOUR, 24);
       // On décale la date de 12 mois sans passer à l'année suivante
       date.roll(Calendar.MONTH, 12);
       System.out.println(date.toInstant()); // 9 juin 2005 à 12:00:00
-      
+
     }
 
   }
@@ -148,10 +148,10 @@ Les Dates
 Les classes LocalDate_, LocalTime_ et LocalDateTime_ permettent de représenter respectivement
 une date, une heure, une date et une heure.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.LocalDate;
@@ -167,7 +167,7 @@ une date, une heure, une date et une heure.
       date = date.plus(1, ChronoUnit.DAYS); // 06/06/2005
       LocalDateTime dateTime = date.atTime(12, 00); // 06/06/2005 12:00:00
       LocalTime time = dateTime.toLocalTime(); // 12:00:00
-      
+
       time = time.minusHours(2); // 10:00:00
     }
 
@@ -177,10 +177,10 @@ On peut facilement passer d'un type à une autre. Par exemple la méthode
 LocalDate.atTime_ permet d'ajouter une heure à une date, créant ainsi une instance
 de LocalDateTime_. Toutes les instances de ces classes sont immutables.
 
-Si on veut avoir l'information de la date ou de l'heure d'aujourd'hui, on peut 
+Si on veut avoir l'information de la date ou de l'heure d'aujourd'hui, on peut
 créer une instance grâce à la méthode *now*.
 
-::
+.. code-block:: java
 
   LocalDate dateAujourdhui = LocalDate.now();
   LocalTime heureMaintenant = LocalTime.now();
@@ -190,7 +190,7 @@ Une instance de ces classes ne contient pas d'information de fuseau horaire.
 On peut néanmoins passer en paramètre des méthodes *now* un ZoneId_ pour indiquer
 le fuseau horaire pour lequel on désire la date et/ou l'heure actuelle.
 
-::
+.. code-block:: java
 
   LocalDate dateAujourdhui = LocalDate.now(ZoneId.of("GMT"));
   LocalTime heureMaintenant = LocalTime.now(ZoneId.of("Europe/Paris"));
@@ -204,10 +204,10 @@ le fuseau horaire pour lequel on désire la date et/ou l'heure actuelle.
 Les classe Year_ et YearMonth_ permettent de manipuler les dates et d'obtenir
 des informations intéressantes à partir de l'année ou du mois et de l'année.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.LocalDate;
@@ -219,13 +219,13 @@ des informations intéressantes à partir de l'année ou du mois et de l'année.
 
     public static void main(String[] args) {
       Year year = Year.of(2004);
-      
+
       // année bissextile ?
       boolean isLeap = year.isLeap();
-      
+
       // 08/2004
       YearMonth yearMonth = year.atMonth(Month.AUGUST);
-      
+
       // 31/08/2004
       LocalDate localDate = yearMonth.atEndOfMonth();
     }
@@ -239,10 +239,10 @@ La classe Instant_ représente un point dans le temps. Contrairement aux classes
 précédentes qui permettent de représenter les dates pour les humains, la classe
 Instant_ est adaptée pour réaliser des traitements de données temporelles.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.Instant;
@@ -252,14 +252,14 @@ Instant_ est adaptée pour réaliser des traitements de données temporelles.
     public static void main(String[] args) {
       Instant maintenant = Instant.now();
       Instant epoch = Instant.ofEpochSecond(0); // 01/01/1970 00:00:00.000
-      
+
       Instant uneMinuteDansLeFuture = maintenant.plusSeconds(60);
-      
+
       long unixTimestamp = uneMinuteDansLeFuture.getEpochSecond();
     }
 
   }
- 
+
 .. note::
 
   Les classes LocalDate_, LocalTime_, LocalDateTime_, ZonedDateTime_, Year_, YearMonth_,
@@ -272,14 +272,14 @@ Période et durée
 ================
 
 Il est possible de définir des périodes grâce à des instances de la classe Period_.
-Une période peut être construite directement ou à partir de la différence entre deux 
+Une période peut être construite directement ou à partir de la différence entre deux
 instances de type Temporal_. Il est ensuite possible de modifier une date en ajoutant ou soustrayant
 une période.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.LocalDate;
@@ -292,24 +292,24 @@ une période.
 
     public static void main(String[] args) {
       YearMonth moisAnnee = Year.of(2000).atMonth(Month.APRIL); // 04/2000
-      
+
       // période de 1 an et deux mois
       Period periode = Period.ofYears(1).plusMonths(2);
-      
+
       YearMonth moisAnneePlusTard = moisAnnee.plus(periode); // 06/2001
-      
+
       Period periode65Jours = Period.between(LocalDate.now(), LocalDate.now().plusDays(65));
     }
 
   }
- 
+
 La durée est représentée par une instance de la classe Duration_. Elle peut être
 obtenue à partir de deux instances de Instant_.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.Duration;
@@ -319,9 +319,9 @@ obtenue à partir de deux instances de Instant_.
 
     public static void main(String[] args) {
       Instant debut = Instant.now();
-      
+
       // ... traitement à mesurer
-      
+
       Duration duree = Duration.between(debut, Instant.now());
       System.out.println(duree.toMillis());
     }
@@ -339,10 +339,10 @@ ZonedDateTime_, Year_ et YearMonth_.
 Le format de représentation d'une date et/ou du temps est défini par la classe
 DateTimeFormatter_.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.time.LocalDateTime;

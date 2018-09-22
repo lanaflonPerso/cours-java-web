@@ -39,7 +39,7 @@ structure de données. Il est possible de créer une instance de cette classe
 avec l'opérateur **new** et d'accéder aux attributs de l'objet créé avec
 l'opérateur **.** :
 
-::
+.. code-block:: java
 
   Voiture v = new Voiture();
   v.marque = "DeLorean";
@@ -71,7 +71,7 @@ L'initialisation
 En Java, on peut indiquer la valeur d'initialisation d'un attribut pour chaque
 nouvel objet.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -118,7 +118,7 @@ En fait, un attribut possède nécessairement une valeur par défaut qui dépend
 
 Donc, écrire ceci :
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -129,7 +129,7 @@ Donc, écrire ceci :
 
 ou ceci
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -147,7 +147,7 @@ Un attribut peut être déclaré comme **final**. Cela signifie qu'il n'est plus
 d'affecter une valeur à cet attribut une fois qu'il a été initialisé.
 Dans cas, le compilateur exige que l'attribut soit initialisé *explicitement*.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -174,7 +174,7 @@ et ne pourra plus être modifié.
   Pour une application d'un concessionnaire automobile, nous pouvons créer un objet *Facture*
   qui contient un attribut de type *Voiture* et le déclarer **final**.
 
-  ::
+  .. code-block:: java
 
     public class Facture {
 
@@ -208,7 +208,7 @@ et est donc accessible même si on ne crée aucune instance de cette classe.
 
 Pour déclarer un attribut de classe, on utilise le mot-clé **static**.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -223,7 +223,7 @@ C'est une façon de suggérer que toutes les voitures de notre application ont l
 de roues. Cette caractéristique appartient donc à la classe plutôt qu'à chacune de ses instances.
 Il est donc possible d'accéder directement à cet attribut depuis la classe :
 
-::
+.. code-block:: java
 
   System.out.println(Voiture.nombreDeRoues);
 
@@ -239,7 +239,7 @@ et nous n'avons pas à le créer car il existe dès le lancement.
 Si le programme modifie un attribut de classe, alors la modification est visible depuis toutes
 les instances :
 
-::
+.. code-block:: java
 
   Voiture v1 = new Voiture();
   Voiture v2 = new Voiture();
@@ -262,7 +262,7 @@ cela n'aura pas d'impact sur les autres instances. C'est notamment pour cela que
 avertissement si on accède ou si on modifie un attribut de classe à travers un objet.
 Même si l'effet est identique, il est plus lisible d'accéder à un tel attribut à travers le nom de la classe uniquement :
 
-::
+.. code-block:: java
 
   System.out.println(Voiture.nombreDeRoues); // 4
 
@@ -280,7 +280,7 @@ la combinaison des mots-clés **static** et **final** pour déclarer une constan
 Par convention, pour les distinguer des autres attributs, on écrit leur nom en majuscules et
 les mots sont séparés par _.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -316,7 +316,7 @@ d'avoir accès au attribut de l'objet. Si la méthode modifie la valeur des attr
 de l'objet, elle a un *effet de bord* qui change l'état interne de l'objet. C'est le
 cas dans l'exemple ci-dessous pour la méthode *accelerer* :
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -341,7 +341,7 @@ cas dans l'exemple ci-dessous pour la méthode *accelerer* :
 Il est possible de créer une instance de la classe ci-dessus avec l’opérateur **new**
 et d’exécuter les méthodes de l’objet créé avec l’opérateur **.** :
 
-::
+.. code-block:: java
 
   Voiture v = new Voiture();
   v.accelerer(88.0f);
@@ -374,7 +374,7 @@ de retour est un objet, la méthode peut toujours retourner la valeur spéciale 
 c'est-à-dire l'absence d'objet. Une méthode qui ne retourne aucune valeur,
 le signale avec le mot-clé **void**.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -400,7 +400,7 @@ Les paramètres
 Un méthode peut éventuellement avoir des paramètres (ou arguments). Chaque paramètre
 est défini par son type et par son nom.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -422,7 +422,7 @@ Il est également possible de créer une méthode avec un nombre variable de par
 (*varargs parameter*).
 On le signale avec trois points après le type du paramètre.
 
-::
+.. code-block:: java
 
   public class Calculatrice {
 
@@ -438,7 +438,7 @@ On le signale avec trois points après le type du paramètre.
 Le paramètre variable est vu comme un tableau dans le corps de la méthode. Par contre,
 il s'agit bien d'une liste de paramètre au moment de l'appel :
 
-::
+.. code-block:: java
 
   Calculatrice calculatrice = new Calculatrice();
 
@@ -455,7 +455,7 @@ Au moment de l'appel, le paramètre variable peut être omis. Dans ce cas le tab
 au corps de la méthode est un tableau vide. Un paramètre variable est donc également
 optionnel.
 
-::
+.. code-block:: java
 
   Calculatrice calculatrice = new Calculatrice();
 
@@ -465,7 +465,7 @@ Il est possible d'utiliser un tableau pour passer des valeurs à un paramètre
 variable. Cela permet notamment d'utiliser un paramètre variable dans le corps d'une
 méthode comme paramètre variable à l'appel d'une autre méthode.
 
-::
+.. code-block:: java
 
   Calculatrice calculatrice = new Calculatrice();
 
@@ -477,7 +477,7 @@ Pour l'exemple de la calculatrice, il peut sembler *naturel* d'obliger à passer
 deux paramètres à la méthode *additionner*. Dans ce cas, il faut créer une méthode à trois
 paramètres :
 
-::
+.. code-block:: java
 
   public class Calculatrice {
 
@@ -545,7 +545,7 @@ d'un objet mais elle peut toujours accéder aux éventuels attributs de classe.
 
 Pour déclarer une méthode de classe, on utilise le mot clé **static**.
 
-::
+.. code-block:: java
 
   public class Calculatrice {
 
@@ -565,7 +565,7 @@ un autre langage de programmation, il s'agirait de simples fonctions.
 Les méthodes de classe peuvent être invoquées directement à partir de la classe.
 Donc il n'est pas nécessaire de créer une instance.
 
-::
+.. code-block:: java
 
   int resultat = Calculatrice.additionner(1, 2, 3, 4);
 
@@ -579,7 +579,7 @@ Donc il n'est pas nécessaire de créer une instance.
 Il est tout à fait possible d'invoquer une méthode de classe à travers une variable
 pointant sur une instance de cette classe :
 
-::
+.. code-block:: java
 
   Calculatrice c = new Calculatrice();
   int resultat = c.additionner(1, 2, 3, 4);
@@ -593,7 +593,7 @@ d’invoquer une méthode de classe à partir de la classe elle-même.
 La méthode de classe la plus célèbre en Java est sans doute **main**. Elle permet
 de définir le point d'entrée d'une application dans une classe :
 
-::
+.. code-block:: java
 
   public static void main(String... args) {
     // ...
@@ -617,7 +617,7 @@ de méthode n'a réellement de sens que si les méthodes portant le même nom on
 comportement que l'utilisateur de la classe jugera proche. Java permet
 également la surcharge de méthode de classe.
 
-::
+.. code-block:: java
 
   public class Calculatrice {
 
@@ -643,7 +643,7 @@ pour le type entier et pour le type à virgule flottante. Selon le type de param
 passé à l'appel, le compilateur déterminera laquelle des deux méthodes doit
 être appelée.
 
-::
+.. code-block:: java
 
   int resultatEntier = Calculatrice.additionner(1,2,3);
   float resultat = Calculatrice.additionner(1f,2.3f);
@@ -658,7 +658,7 @@ passé à l'appel, le compilateur déterminera laquelle des deux méthodes doit
 Si on surcharge une méthode avec un paramètre variable, cela peut créer une
 ambiguïté de choix. Par exemple :
 
-::
+.. code-block:: java
 
   public class Calculatrice {
 
@@ -678,7 +678,7 @@ ambiguïté de choix. Par exemple :
 
 Si on fait appel à la méthode *additionner* de cette façon :
 
-::
+.. code-block:: java
 
   Calculatrice.additionner(2, 2);
 
@@ -704,7 +704,7 @@ Plus précisément, le nom d'une variable est limité au bloc de code (délimit�
 des accolades) dans lequel il a été déclaré. En dehors de ce bloc, le nom est
 inaccessible.
 
-::
+.. code-block:: java
 
   public int doSomething(int valeurMax) {
     int resultat = 0;
@@ -756,7 +756,7 @@ deux blocs de code successifs. Cette pratique n'est vraiment utile que pour les
 variables temporaires (comme pour une boucle **for** contrôlée par un index).
 Sinon, cela gène généralement la lecture.
 
-::
+.. code-block:: java
 
   public void doSomething(int valeurMin, int valeurMax) {
     for (int i = 0; i < valeurMax; ++i) {
@@ -774,7 +774,7 @@ En Java, le masquage du nom d'un attribut par un paramètre ou une variable
 est autorisé car les attributs sont toujours accessibles à travers le mot-clé
 **this**.
 
-::
+.. code-block:: java
 
   public class Voiture {
     private String marque;
@@ -790,7 +790,7 @@ Avec **this**, on peut accéder aux attributs et aux méthodes de l'objet. Il es
 même possible de retourner la valeur **this** ou la passer en paramètre pour
 indiquer une référence de l'objet courant :
 
-::
+.. code-block:: java
 
   public class Voiture {
     private float vitesse;
@@ -828,7 +828,7 @@ un fichier distant. Les clients d'une telle classe n'ont sans doute aucun intér
 comprendre les mécanismes compliqués du protocole FTP. Ils veulent simplement qu'on leur
 rende un service. Notre classe FTP pourrait très grossièrement ressembler à ceci :
 
-::
+.. code-block:: java
 
   public class ClientFtp {
 
@@ -870,7 +870,7 @@ d'accéder aux **propriétés** d'un objet ou d'une classe.
   Permet l'accès en lecture à une propriété.
   La signature de la méthode se présente sous la forme :
 
-  ::
+  .. code-block:: java
 
     public type getNomPropriete() {
       // ...
@@ -878,7 +878,7 @@ d'accéder aux **propriétés** d'un objet ou d'une classe.
 
   Pour un type booléen, on peut aussi écrire :
 
-  ::
+  .. code-block:: java
 
     public boolean isNomPropriete() {
       // ...
@@ -888,7 +888,7 @@ d'accéder aux **propriétés** d'un objet ou d'une classe.
   Permet l'accès en écriture à une propriété.
   La signature de la méthode se présente sous la forme :
 
-  ::
+  .. code-block:: java
 
     public void setNomPropriete(type nouvelleValeur) {
       // ...
@@ -897,7 +897,7 @@ d'accéder aux **propriétés** d'un objet ou d'une classe.
 
 Ce qui donnera pour notre classe *Voiture* :
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -928,7 +928,7 @@ sera exprimé en mètres par seconde. Il devient possible de conserver la cohér
 classe en effectuant les conversions nécessaires pour passer de la propriété en
 km/s à l'attribut en m/s et inversement.
 
-::
+.. code-block:: java
 
   public class Voiture {
 
@@ -995,7 +995,7 @@ Exercice
 
   Le code suivant :
 
-  ::
+  .. code-block:: java
 
     Phrase phrase = new Phrase();
     phrase.ajouter("Une");

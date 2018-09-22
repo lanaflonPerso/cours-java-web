@@ -334,7 +334,7 @@ déterminent quand une transaction doit se déclarer et on configure un greffon
       <!-- Configuration de l'aspect -->
       <aop:config>
           <aop:pointcut id="serviceOperation" 
-                        expression="execution(* ROOT_PKG.service.*Service.*(..))"/>
+                        expression="execution(* {{ROOT_PKG}}.service.*Service.*(..))"/>
           <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
       </aop:config>
 
@@ -357,14 +357,14 @@ deux stratégies *via* ce greffon :
 
 À partir de la ligne 29, on déclare la configuration de l'aspect. Le greffon
 doit être appliqué lors de l'appel à n'importe quelle méthode d'une classe
-qui se trouve dans le package |ROOT_PKG|.service et dont le nom est suffixé
+qui se trouve dans le package |{{ROOT_PKG}}|.service et dont le nom est suffixé
 par "Service".
 
 Cela signifie que si notre application contient la classe suivante :
 
 .. code-block:: java
 
-  package ROOT_PKG.service;
+  package {{ROOT_PKG}}.service;
   
   public class UserService {
   
@@ -447,7 +447,7 @@ délimitation transactionnelle.
 
 .. code-block:: java
 
-  package ROOT_PKG.service;
+  package {{ROOT_PKG}}.service;
 
   import org.springframework.transaction.annotation.Transactional;
   
@@ -552,7 +552,7 @@ soit avec l'annotation `@Transactional`_ :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.transaction.annotation.Propagation;
@@ -634,7 +634,7 @@ soit avec l'annotation `@Transactional`_ :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.transaction.annotation.Isolation;

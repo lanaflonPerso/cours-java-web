@@ -23,7 +23,7 @@ l'URI d'un service.
   :caption: Exemple de classe Configuration
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Configuration {
@@ -45,7 +45,7 @@ Un première implémentation pourrait être :
   :caption: Exemple de classe Service
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Service {
@@ -70,9 +70,9 @@ Et enfin, on peut définit le contexte d'application :
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="configuration" class="ROOT_PKG.Configuration"/>
+    <bean name="configuration" class="{{ROOT_PKG}}.Configuration"/>
 
-    <bean name="service" class="ROOT_PKG.Service">
+    <bean name="service" class="{{ROOT_PKG}}.Service">
       <constructor-arg ref="configuration"/>
     </bean>
   </beans>
@@ -87,7 +87,7 @@ pourrait alors être implémentée comme ceci :
   :caption: Exemple de classe Service sans dépendance à la classe Configuration
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Service {
@@ -113,9 +113,9 @@ du contexte d'application :
          xsi:schemaLocation="http://www.springframework.org/schema/beans
                              http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="configuration" class="ROOT_PKG.Configuration"/>
+    <bean name="configuration" class="{{ROOT_PKG}}.Configuration"/>
 
-    <bean name="service" class="ROOT_PKG.Service">
+    <bean name="service" class="{{ROOT_PKG}}.Service">
       <constructor-arg value="#{ configuration.url }"/>
     </bean>
   </beans>
@@ -217,7 +217,7 @@ Si nous reprenons notre exemple de la classe ``Configuration`` et ``Service`` :
   :caption: La classe Configuration
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.stereotype.Component;
@@ -235,7 +235,7 @@ Si nous reprenons notre exemple de la classe ``Configuration`` et ``Service`` :
   :caption: La classe Service
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.beans.factory.annotation.Value;
@@ -267,7 +267,7 @@ Si nous reprenons notre exemple de la classe ``Configuration`` et ``Service`` :
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="ROOT_PKG" />
+    <context:component-scan base-package="{{ROOT_PKG}}" />
 
   </beans>
 

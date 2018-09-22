@@ -72,7 +72,7 @@ représenter des données de notre modèle :
     :caption: La classe Item
     
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     public class Item {
@@ -94,7 +94,7 @@ JSON d'une instance de la classe *Item* :
     :caption: Un contrôleur pour une API Web
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.web.bind.annotation.GetMapping;
@@ -177,7 +177,7 @@ peut produire du JSON ou du XML en déclarant un tableau de types MIME dans l'at
     :caption: Un contrôleur pour une API Web
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.web.bind.annotation.GetMapping;
@@ -227,7 +227,7 @@ de type `@RequestMapping`_ conjointement avec l'annotation `@RequestBody`_.
     :caption: Un contrôleur acceptant des requêtes au format JSON
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import org.springframework.http.HttpStatus;
@@ -300,7 +300,7 @@ de retourner un objet de type `ResponseEntity<T>`_.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.net.URI;
@@ -387,7 +387,7 @@ le comportement par défaut de la sérialisation/désérialisation.
         :caption: Un programme qui produit un document JSON sur la sortie standard
         
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import com.fasterxml.jackson.databind.ObjectMapper;
@@ -410,7 +410,7 @@ le comportement par défaut de la sérialisation/désérialisation.
         :caption: Un programme qui produit un document XML sur la sortie standard
         
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -454,7 +454,7 @@ Reprenons notre classe *Item* en ajoutant des annotations Jackson :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import com.fasterxml.jackson.annotation.JsonProperty;
@@ -501,7 +501,7 @@ nous allons créer les interfaces *ItemViewWithoutQuantity* et *ItemViewWithQuan
     :caption: les interfaces représentant les vues JSON
     
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     public interface ItemViewWithoutQuantity {
@@ -509,7 +509,7 @@ nous allons créer les interfaces *ItemViewWithoutQuantity* et *ItemViewWithQuan
     }
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     public interface ItemViewWithQuantity extends ItemViewWithoutQuantity {
@@ -525,7 +525,7 @@ ajoutant des annotations `@JsonView`_ pour attribuer une vue à chaque attribut 
     :caption: déclaration des vues JSON
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import com.fasterxml.jackson.annotation.JsonProperty;
@@ -559,7 +559,7 @@ Il faut maintenant faire évoluer le programme de sérialisation pour indiquer
     :caption: programme de sérialisation JSON en précisant une vue
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import com.fasterxml.jackson.databind.ObjectMapper;
@@ -598,7 +598,7 @@ limite la sérialisation à la vue *ItemViewWithoutQuantity*.
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import java.net.URI;
@@ -643,7 +643,7 @@ l'application client suivante :
     :caption: un exemple d'application cliente avec RestTemplate
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.net.URI;
@@ -718,7 +718,7 @@ Exercice
         :caption: Exemple d'une classe de test d'un contrôleur        
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;

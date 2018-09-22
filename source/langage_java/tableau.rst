@@ -6,13 +6,13 @@ tableaux sont eux-mêmes des objets. Donc une variable de type tableau peut
 avoir la valeur **null**. Une variable de type tableau se déclare en ajoutant
 des crochets à la suite du type :
 
-::
+.. code-block:: java
 
   int[] tableau;
 
 Il est également possible de placer les crochets après le nom de la variable :
 
-::
+.. code-block:: java
 
   int tableau[];
 
@@ -22,7 +22,7 @@ Initialisation
 Il est possible d'initialiser une variable de type tableau à partir d'une liste
 fixe délimitée par des accolades.
 
-::
+.. code-block:: java
 
   int[] tableauEntier = {1, 2, 3, 4, 5};
   String[] tableauChaine = {"Bonjour", "le", "monde"};
@@ -33,7 +33,7 @@ Création avec new
 Les tableaux étant des objets, il est également possible de les créer avec
 le mot-clé **new**.
 
-::
+.. code-block:: java
 
   int[] tableauEntier = new int[] {1, 2, 3, 4};
   String[] tableauChaine = new String[] {"Bonjour", "le", "monde"};
@@ -41,7 +41,7 @@ le mot-clé **new**.
 Si on ne souhaite pas donner de valeurs d'initialisation pour les élements
 du tableau, il suffit d'indiquer uniquement le nombre d'éléments du tableau entre crochets.
 
-::
+.. code-block:: java
 
   int[] tableauEntier = new int[5];
   String[] tableauChaine = new String[3];
@@ -87,7 +87,7 @@ défaut (comme pour un attribut) :
 La taille du tableau peut être donnée par une constante, une expression ou
 une variable.
 
-::
+.. code-block:: java
 
   int t = 6;
   int[] tableau = new int[t * t * 2];
@@ -100,7 +100,7 @@ du tableau d'origine vers le nouveau tableau.
 Un tableau dispose de l'attribut **length** permettant de connaître sa taille.
 L'attribut **length** ne peut pas être modifié.
 
-::
+.. code-block:: java
 
   int t = 6;
   int[] tableau = new int[t * t * 2];
@@ -109,10 +109,10 @@ L'attribut **length** ne peut pas être modifié.
 .. note::
 
   Il est tout à fait possible de créer un tableau vide, c'est-à-dire avec une taille
-  de zéro. 
+  de zéro.
 
   ::
-  
+
     int[] tableau = new int[0];
 
   Par contre, donner une taille négative est autorisé par le compilateur
@@ -127,7 +127,7 @@ L'accès aux éléments d'un tableau se fait en donnant l'indice d'un élément
 entre crochets. Le premier élément d'un tableau a l'indice **0**. Le dernier
 élément d'un tableau a donc comme indice la taille du tableau moins un.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 2, 3, 4, 5};
 
@@ -148,7 +148,7 @@ un tableau à partir d'un indice que l'on fait varier à l'aide d'une boucle **f
 Mais il est également possible de parcourir tous les élements d'un tableau avec
 un **for** amélioré.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 2, 3, 4, 5};
 
@@ -177,7 +177,7 @@ Tableau multi-dimensionnel
 
 Il est possible d'initialiser un tableau à plusieurs dimensions.
 
-::
+.. code-block:: java
 
   int[][] tableauDeuxDimensions = { {1, 2}, {3, 4} };
 
@@ -189,7 +189,7 @@ Il est possible d'initialiser un tableau à plusieurs dimensions.
 Il est également possible de créer un tableau multi-dimensionnel avec
 le mot-clé **new**.
 
-::
+.. code-block:: java
 
   int[][] tableauDeuxDimensions = new int[2][10];
   int[][][] tableauTroisDimensions = new int[2][10][5];
@@ -200,7 +200,7 @@ sans préciser les dimensions au delà de la première et d'affecter ensuite
 des tableaux à chaque valeur. Ces tableaux peuvent d'ailleurs avoir des tailles
 différentes.
 
-::
+.. code-block:: java
 
   int[][] tableauDeuxDimensions = new int[2][];
 
@@ -213,7 +213,7 @@ Conversion en chaîne de caractères
 
 Si vous affichez un tableau sur la sortie standard, vous serez certainement surpris.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 2, 3, 4, 5};
   System.out.println(tableau);
@@ -234,7 +234,7 @@ Pour obtenir une chaîne de caractères donnant le contenu du tableau, il faut
 utiliser la classe outil java.util.Arrays_ qui contient des méthodes de classe
 **toString** adaptées pour les tableaux.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 2, 3, 4, 5};
   System.out.println(java.util.Arrays.toString(tableau));
@@ -251,7 +251,7 @@ deux objets. En effet, cet opérateur compare la référence des variables. Cela
 signifie qu'il indique **true** uniquement si les deux variables référencent
 le même objet.
 
-::
+.. code-block:: java
 
   int[] tableau1 = {1, 2, 3, 4, 5};
   int[] tableau2 = {1, 2, 3, 4, 5};
@@ -263,7 +263,7 @@ Pour comparer deux objets, il faut utiliser la méthode **equals**. Les tableaux
 en Java disposent de la méthode **equals**, malheureusement, elle a exactement
 le même comportement que l'utilisation de l'opérateur **==**.
 
-::
+.. code-block:: java
 
   int[] tableau1 = {1, 2, 3, 4, 5};
   int[] tableau2 = {1, 2, 3, 4, 5};
@@ -275,7 +275,7 @@ le même comportement que l'utilisation de l'opérateur **==**.
 La classe outil java.util.Arrays_ fournit des méthodes de classe **equals**
 pour comparer des tableaux en comparant un à un leurs éléments.
 
-::
+.. code-block:: java
 
   int[] tableau1 = {1, 2, 3, 4, 5};
   int[] tableau2 = {1, 2, 3, 4, 5};
@@ -288,7 +288,7 @@ Il est également possible de comparer des tableaux d'objets. Dans ce cas, la co
 des élements se fait en appelant la méthode **equals** de chaque objet. La méthode
 **equals** possède la signature suivante :
 
-::
+.. code-block:: java
 
   public boolean equals(Object obj) {
     // ...
@@ -297,7 +297,7 @@ des élements se fait en appelant la méthode **equals** de chaque objet. La mé
 Par exemple, la classe java.lang.String_ fournit une implémentation de la méthode
 **equals**. Il est donc possible de comparer des tableaux de chaînes de caractères.
 
-::
+.. code-block:: java
 
   String[] tableau1 = {"premier", "deuxième", "troisième", "quatrième"};
   String[] tableau2 = {"premier", "deuxième", "troisième", "quatrième"};
@@ -319,7 +319,7 @@ Tout d'abord, java.util.Arrays_ fournit plusieurs méthodes **sort**. Celles
 prenant un tableau de primitives en paramètre trient selon l'ordre naturel
 des éléments.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 5, 4, 3, 2};
   java.util.Arrays.sort(tableau);
@@ -329,7 +329,7 @@ des éléments.
 Il est également possible de trier certains tableaux d'objets.
 Par exemple, il est possible de trier des tableaux de chaînes de caractères.
 
-::
+.. code-block:: java
 
   String[] tableau = {"premier", "deuxième", "troisième", "quatrième"};
   java.util.Arrays.sort(tableau);
@@ -347,7 +347,7 @@ de la valeur trouvée. Si la valeur n'est pas dans le tableau, alors ces méthod
 retournent un nombre négatif. La valeur absolue de ce nombre correspond à l'index
 auquel la valeur aurait dû se trouver plus un.
 
-::
+.. code-block:: java
 
   int[] tableau = {10, 20, 30, 40, 50};
   System.out.println(java.util.Arrays.binarySearch(tableau, 20)); // 1
@@ -367,7 +367,7 @@ Comme il n'est pas possible de modifier la taille d'un tableau, la copie peut
 s'avérer une opération utile. java.util.Arrays_ fournit des méthodes de classe
 *copyOf* et *copyOfRange* pour réaliser des copies de tableaux.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 2, 3, 4, 5};
 
@@ -388,7 +388,7 @@ Pour réaliser une copie, il existe également la méthode java.lang.System.arra
 Contrairement aux précédentes, cette méthode ne crée pas de nouveau tableau,
 elle copie d'un tableau existant vers un autre tableau existant.
 
-::
+.. code-block:: java
 
   int[] tableau = {1, 2, 3, 4, 5};
   int[] destination = new int[3];
@@ -421,7 +421,7 @@ du langage. Ainsi on ne peut mettre dans un tableau que des valeurs qui peuvent
 De plus, les tableaux peuvent être affectés à des variables dont le type correspond
 à un tableau d'éléments de type parent.
 
-::
+.. code-block:: java
 
   Integer[] tableau = {1, 2, 3, 4};
   Number[] tableauNumber = tableau;
@@ -449,7 +449,7 @@ Pour transformer un tableau d'objets en liste, on utilise la méthode java.util.
 La liste obtenue possède une taille fixe. Par contre le contenu de la liste est modifiable,
 et toute modification des éléments de cette liste sera répercutée sur le tableau.
 
-::
+.. code-block:: java
 
   String[] tableau = {"Bonjour", "le", "monde"};
   java.util.List<String> liste = java.util.Arrays.asList(tableau);
@@ -475,4 +475,3 @@ et toute modification des éléments de cette liste sera répercutée sur le tab
 .. _java.lang.ArrayStoreException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayStoreException.html
 .. _java.util.Arrays.asList: https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#asList-T...-
 .. _java.lang.ArrayIndexOutOfBoundsException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html
-

@@ -20,23 +20,23 @@ et le parcours complet des éléments.
 
 .. code-block:: java
   :emphasize-lines: 16,17
-   
+
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.ArrayList;
   import java.util.List;
 
   public class TestArrayList {
-    
+
     public static void main(String[] args) {
       List list = new ArrayList();
-      
+
       list.add("bonjour le monde");
       list.add(1); // boxing ! list.add(Integer.valueOf(1));
       list.add(new Object());
-      
+
       String s1 = (String) list.get(0);
       String s2 = (String) list.get(1); // ERREUR à l'exécution : ClassCastException
       String s3 = (String) list.get(2); // ERREUR à l'exécution : ClassCastException
@@ -53,36 +53,36 @@ que cela suppose de se tromper de type. Ce type de classe exige donc beaucoup de
 d'utilisation pour les développeurs.
 
 Une situation plus simple serait de pouvoir déclarer en tant que développeur qu'une instance
-de ArrayList_ se limite à un type d'éléments : par exemple au type String_. Ainsi le 
+de ArrayList_ se limite à un type d'éléments : par exemple au type String_. Ainsi le
 compilateur pourrait signaler une erreur si le programme tente d'ajouter un élément qui n'est
 pas compatible avec le type String_ ou s'il veut récupérer un élément dans une variable qui
-n'est pas d'un type compatible. Les classes et les méthodes génériques permettent 
-de gérer ce type de situation. Elles sont une aide pour les développeurs afin 
+n'est pas d'un type compatible. Les classes et les méthodes génériques permettent
+de gérer ce type de situation. Elles sont une aide pour les développeurs afin
 d'écrire des programmes plus robustes.
 
 Création et assignation d'une classe générique
 **********************************************
 
 La classe ArrayList_ et l'interface List_ sont justement une classe générique
-et une interface générique supportant un type paramétré. 
+et une interface générique supportant un type paramétré.
 
 .. note::
 
   List_ est une interface implémentée notamment par la classe ArrayList_.
 
-Il est possible, par exemple, de déclarer qu'une instance est une liste de 
+Il est possible, par exemple, de déclarer qu'une instance est une liste de
 chaînes de caractères :
 
-::
+.. code-block:: java
 
   List<String> list = new ArrayList<String>();
 
-On ajoute entre les signes **<** et **>** le paramètre de type géré par la liste. 
-À partir de cette information, le compilateur va pouvoir nous aider à résoudre 
-les ambiguïtés. Il peut maintenant déterminer si un élément peut être ajouté ou 
+On ajoute entre les signes **<** et **>** le paramètre de type géré par la liste.
+À partir de cette information, le compilateur va pouvoir nous aider à résoudre
+les ambiguïtés. Il peut maintenant déterminer si un élément peut être ajouté ou
 assigné à une variable sans nécessiter un transtypage explicite du développeur.
 
-::
+.. code-block:: java
 
   list.add("bonjour");
   String s = list.get(0); // l'opération de transtypage n'est plus nécessaire
@@ -91,19 +91,19 @@ Par contre :
 
 .. code-block:: java
   :emphasize-lines: 1,4,6
-   
+
   list.add(1); // Erreur de compilation : type String attendu
 
   Object o = "je suis une chaîne affectée à une variable de type Object";
   list.add(o); // Erreur de compilation : type String attendu
-  
+
   Voiture v = (Voiture) list.get(0); // Erreur de compilation Voiture n'hérite pas de String
 
 Pour les types paramétrés, le principe de substitution s'applique. Comme la classe String_
 hérite de la classe Object_, il est possible de récupérer un élément de la liste
 dans une variable de type Object_ :
 
-::
+.. code-block:: java
 
   Object o = list.get(0); // OK
 
@@ -115,10 +115,10 @@ La classe HashMap_ permet de spécifier le type de la clé et le type de la vale
 Pour créer un tableau associatif entre le nom d'une personne (type String_) et
 une instance de la classe *Personne*, on peut écrire :
 
-::
+.. code-block:: java
 
   Map<String, Personne> tableauAssociatif = new HashMap<String, Personne>();
-  
+
 .. note::
 
   Map_ est une interface implémentée notamment par la classe HashMap_.
@@ -130,7 +130,7 @@ Lors de l'initialisation, il n'est pas nécessaire de préciser le type des para
 à droite de l'expression. Le compilateur peut réaliser une inférence de types
 à partir de la variable à gauche de l'expression :
 
-::
+.. code-block:: java
 
   Map<String, Personne> tableauAssociatif = new HashMap<>();
   List<Integer> listeDeNombres = new ArrayList<>();
@@ -145,10 +145,10 @@ Avec l'héritage, nous avons vu que nous pouvons affecter à une variable (ou à
 paramètre ou un à attribut) une référence d'un objet du même type ou d'un type
 qui en hérite. On appelle cela le principe de substitution.
 
-::
+.. code-block:: java
 
   Object obj = new String();
-  
+
 Dans l'exemple ci-dessus, il est possible d'affecter un objet du type String_
 à une variable de type Object_ car String_ hérite de Object_. Avec les types
 génériques, le principe de substitution est possible mais devient un peu
@@ -156,7 +156,7 @@ plus complexe. Par exemple :
 
 .. code-block:: java
   :emphasize-lines: 1
-  
+
   List<Object> listeString = new ArrayList<String>(); // ERREUR DE COMPILATION
 
 Il n'est pas possible d'affecter une ArrayList_ de String_ à une variable de type
@@ -168,7 +168,7 @@ détecter le problème :
 
 .. code-block:: java
   :emphasize-lines: 1
-  
+
   listeString.add(new Voiture()); // Il vaut mieux ne pas pouvoir faire cela !
 
 Pour les types génériques, il est nécessaire d'introduire la notion de type borné
@@ -176,48 +176,48 @@ Pour les types génériques, il est nécessaire d'introduire la notion de type b
 important de comprendre qu'il existe deux cas fondamentaux. Prenons une exemple
 de classes qui héritent les unes des autres : *Vehicule*, *Voiture*, *VoitureDeCourse*.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
-  
+
   public class Vehicule {
     // ...
   }
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
-  
+
   public class Voiture extends Vehicule {
     // ...
   }
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
-  
+
   public class VoitureDeCourse extends Voiture {
     // ...
   }
 
 Si nous créons une instance de ArrayList_ pour le type *Voiture* :
 
-::
+.. code-block:: java
 
   ArrayList<Voiture> listeVoitures = new ArrayList<>();
-  
+
 Si on souhaite ajouter des objets dans cette liste, le principe de substitution
 nous assure que nous pouvons ajouter sans risque une instance de la classe *Voiture* ou
 une instance de la classe *VoitureDeCourse* (puisqu'une *VoitureDeCourse* est
 une *Voiture*).
 
-::
+.. code-block:: java
 
   listeVoitures.add(new Voiture());
   listeVoitures.add(new VoitureDeCourse());
@@ -227,28 +227,28 @@ nous dit que nous pouvons affecter sans risque un élément de cette liste à un
 variable de type *Voiture* ou de type *Vehicule* (puisqu'une *Voiture* est un
 *Vehicule*).
 
-::
+.. code-block:: java
 
   Voiture voiture = listeVoitures.get(0);
   Vehicule vehicule = listeVoitures.get(0);
-  
-Il y a donc une différence selon que nous souhaitons ajouter un élément à cette liste 
+
+Il y a donc une différence selon que nous souhaitons ajouter un élément à cette liste
 ou que nous souhaitons consulter un élément de cette liste. L'ajout s'apparente
-à utiliser le type paramétré comme paramètre d'entrée et la consultation 
+à utiliser le type paramétré comme paramètre d'entrée et la consultation
 s'apparente à utiliser le type paramétré comme paramètre de sortie.
 
 Une liste de *Voiture* peut donc aussi être considérée comme :
 
-* une liste de quelque chose qui est au mieux de type *Voiture* dans le cas où l'on 
+* une liste de quelque chose qui est au mieux de type *Voiture* dans le cas où l'on
   souhaite uniquement consulter les éléments de la liste.
 * une liste de quelque chose qui est au moins de type *Voiture* dans
   le cas où on ne souhaite qu'ajouter de nouveaux éléments à la liste.
 
-Il est possible d'exprimer cela en Java. Pour le premier cas, *Voiture* 
+Il est possible d'exprimer cela en Java. Pour le premier cas, *Voiture*
 correspond à la borne supérieure (*upper bounded type*) et nous pouvons écrire
 l'expression suivante :
 
-::
+.. code-block:: java
 
   List<? extends Voiture> listePourConsultation = listeVoitures;
   Voiture voiture = listePourConsultation.get(0);
@@ -256,10 +256,10 @@ l'expression suivante :
 L'expression **<? extends Voiture>** désigne une **capture** et permet au compilateur
 de déterminer l'ensemble des classes acceptables.
 
-Pour le second cas, *Voiture* correspond à la borne inférieure (*lower bounded 
+Pour le second cas, *Voiture* correspond à la borne inférieure (*lower bounded
 type*) et nous pouvons écrire l'expression suivante :
 
-::
+.. code-block:: java
 
   List<? super Voiture> listePourAjout = listeVoitures;
   listePourAjout.add(new Voiture());
@@ -268,7 +268,7 @@ type*) et nous pouvons écrire l'expression suivante :
 Il est également possible d'utiliser uniquement le caractère de subsitution **?**
 dans la déclaration de la capture :
 
-::
+.. code-block:: java
 
   List<?> listePourAjout = listeVoitures;
 
@@ -279,11 +279,11 @@ de l'instance de la classe.
 
   Pour une classe supportant plusieurs types génériques, on peut au besoin déclarer
   une capture pour chaque type :
-  
-  ::
-  
+
+.. code-block:: java
+
     Map<?, ? extends Personne> tableauAssociatif = new HashMap<String, Personne>();
-  
+
 
 La déclaration de capture est surtout utile pour la création de méthodes et classes
 supportant les types génériques.
@@ -296,16 +296,16 @@ qui supporte les types paramétrés. Reprenons notre exemple ci-dessus des class
 *Vehicule*, *Voiture* et *VoitureDeCourse*. La classe *Vehicule* définit la propriété
 *vitesse* accessible en lecture :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Vehicule {
-    
+
     private int vitesse;
-    
+
     public int getVitesse() {
       return vitesse;
     }
@@ -315,22 +315,22 @@ qui supporte les types paramétrés. Reprenons notre exemple ci-dessus des class
 Nous voulons ajouter la méthode de classe *getPlusRapide* qui retourne le véhicule
 le plus rapide parmi une liste de véhicules :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.List;
 
   public class Vehicule {
-    
+
     private int vitesse;
-    
+
     public int getVitesse() {
       return vitesse;
     }
-    
+
     public static Vehicule getPlusRapide(List<Vehicule> vehicules) {
       Vehicule plusRapide = null;
       int vitesse = 0;
@@ -350,36 +350,36 @@ rencontrer quelques problèmes lors de l'utilisation de la méthode
 
 .. code-block:: java
   :emphasize-lines: 5
-  
+
   List<Voiture> listeVoitures = new ArrayList<>();
   listeVoitures.add(new Voiture());
   listeVoitures.add(new VoitureDeCourse());
 
   Vehicule plusRapide = Vehicule.getPlusRapide(listeVoitures); // ERREUR DE COMPILATION
-  
+
 Le code ci-dessus ne compile pas. En effet, on tente de passer en paramètre à la méthode
 *Vehicule.getPlusRapide* une liste de type *Voiture* alors que la méthode est écrite
 pour une liste de type *Vehicule*. Nous pourrions utiliser la surcharge en fournissant
 une implémentation pour chaque type de liste, mais la bonne solution est de déclarer
 *Vehicule.getPlusRapide* comme une méthode générique :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.ArrayList;
   import java.util.List;
 
   public class Vehicule {
-    
+
     private int vitesse;
-    
+
     public int getVitesse() {
       return vitesse;
     }
-    
+
     public static <T extends Vehicule> T getPlusRapide(List<T> vehicules) {
       T plusRapide = null;
       int vitesse = 0;
@@ -404,7 +404,7 @@ et retourner l'instance pour laquelle la vitesse est la plus élevée.
 Maintenant nous pouvons utiliser cette méthode en passant une liste de type *Vehicule*,
 de *Voiture* ou de *VoitureDeCourse*
 
-::
+.. code-block:: java
 
   List<Voiture> listeVoitures = new ArrayList<>();
   listeVoitures.add(new Voiture());
@@ -414,13 +414,13 @@ de *Voiture* ou de *VoitureDeCourse*
 
 Notez que la méthode *Voiture.getPlusRapide* retourne le type générique **T**. Donc
 le compilateur infère que si on appelle cette méthode avec une liste de type *Voiture*
-en paramètre alors cette méthode retourne une instance assignable à une variable 
+en paramètre alors cette méthode retourne une instance assignable à une variable
 de type *Voiture*.
 
 .. note::
 
   Par convention un type paramétré s'écrit avec une seule lettre en majuscule :
-  
+
   * T pour identifier un type générique en général
   * E pour identifier un type générique qui représente un élément
   * K pour identifier un type générique qui est utilisé comme clé (*key*)
@@ -438,30 +438,30 @@ permet d'associer une instance d'une classe avec une instance d'une autre
 classe, il suffit d'utiliser des types paramétrés en les déclarant entre **<**
 **>** après le nom de la classe :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Paire<U, V> {
-    
+
     private U valeurGauche;
     private V valeurDroite;
-    
+
     public Paire(U valeurGauche, V valeurDroite) {
       this.valeurGauche = valeurGauche;
       this.valeurDroite = valeurDroite;
     }
-    
+
     public U getValeurGauche() {
       return valeurGauche;
     }
-    
+
     public V getValeurDroite() {
       return valeurDroite;
     }
-    
+
     @Override
     public String toString() {
       return valeurGauche + " " + valeurDroite;
@@ -472,36 +472,36 @@ classe, il suffit d'utiliser des types paramétrés en les déclarant entre **<*
 La classe *Paire* peut maintenant être utilisée pour associer n'importe quel type
 d'instances :
 
-::
+.. code-block:: java
 
   Paire<String, Integer> paireStringInteger = new Paire<>("test", 1);
-  
+
   Paire<Voiture, Voiture> paireVoitureVoiture = new Paire<>(new Voiture(), new Voiture());
 
 
 Comme pour les méthodes, il est possible de préciser une capture pour les types
 paramétrés :
 
-::
+.. code-block:: java
 
   public class Paire<U extends Number, V> {
-    
+
     private U valeurGauche;
     private V valeurDroite;
-    
+
     public Paire(U valeurGauche, V valeurDroite) {
       this.valeurGauche = valeurGauche;
       this.valeurDroite = valeurDroite;
     }
-    
+
     public U getValeurGauche() {
       return valeurGauche;
     }
-    
+
     public V getValeurDroite() {
       return valeurDroite;
     }
-    
+
     @Override
     public String toString() {
       return valeurGauche + " " + valeurDroite;
@@ -517,7 +517,7 @@ nous limitons le premier type paramétré au type Number_ ou un type qui en hér
   La classe Number_ est la classe parente des classes enveloppes Integer_, Long_,
   Short_, Byte_, Float_ et Double_.
 
-::
+.. code-block:: java
 
   Paire<Integer, String> paireIntegerString = new Paire<>(1, "Test");
   Paire<Float, String> paireFloatString = new Paire<>(1.3f, "Test");
@@ -533,7 +533,7 @@ un type primitif. Si on désire créer une instance
 de ArrayList_ pour des nombres, alors on peut passer par la classe enveloppe
 Integer_ :
 
-::
+.. code-block:: java
 
   ArrayList<Integer> listeDeNombres = new ArrayList<Integer>();
 
@@ -543,7 +543,7 @@ Donc il n'est pas possible de spécifier un type paramétré avec le mot-clé
 
 .. code-block:: java
   :emphasize-lines: 1
-  
+
   if (listeVoiture instanceof List<Voiture>) { // ERREUR DE COMPILATION
     // ...
   }
@@ -566,9 +566,9 @@ paramétré :
   :emphasize-lines: 3
 
   public class Test<T> {
-  
+
     private static T attribut; // ERREUR DE COMPILATION
-  
+
   }
 
 Il n'est pas possible de créer des tableaux en spécifiant des types paramétrés :
@@ -603,7 +603,7 @@ le type paramétré d'un paramètre :
     public void doSomething(List<String> l) {
       // ...
     }
-    
+
     public void doSomething(List<Integer> l) { // ERREUR DE COMPILATION
       // ...
     }
@@ -615,28 +615,28 @@ le type paramétré d'un paramètre :
   Beaucoup des limitations des classes et des méthodes génériques viennent de
   ce que l'on appelle *l'effacement du type* (*type erasure*). Les types paramétrés
   ne sont pas conservés dans le bytecode produit par le compilateur.
-  
+
   Pour l'exemple ci-dessus, la suppression du type par le compilateur conduit à
   la classe suivante :
-  
-  ::
-  
+
+.. code-block:: java
+
     public class Test {
 
       public void doSomething(List l) {
         // ...
       }
-      
+
       public void doSomething(List l) {
         // ...
       }
     }
-  
+
   Donc, le résultat de la compilation amènerait à déclarer une classe avec
   deux méthodes strictement identiques. Voilà pourquoi il n'est pas possible
   de surcharger une méthode juste en changeant le type paramétré d'un paramètre.
 
-.. _java.util.ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html 
+.. _java.util.ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _ArrayList: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 .. _ArrayList.add: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#add-E-
 .. _List.add: https://docs.oracle.com/javase/8/docs/api/java/util/List.html#add-E-
@@ -654,4 +654,3 @@ le type paramétré d'un paramètre :
 .. _Long: https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html
 .. _Float: https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html
 .. _Double: https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html
-

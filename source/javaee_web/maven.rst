@@ -167,7 +167,7 @@ Le contenu du fichier :file:`pom.xml` du projet hello-webapp est le suivant :
         Ainsi si deux projets s'appelle hello et qu'ils ont des group ID
         différents, ils sont considérés comme étant des projets différents.
       --> 
-      <groupId>ROOT_PKG</groupId>
+      <groupId>{{ROOT_PKG}}</groupId>
       
       <!--
         Le nom du projet 
@@ -219,7 +219,7 @@ Le contenu du fichier :file:`pom.xml` du projet hello-webapp est le suivant :
 
 Ce fichier :file:`pom.xml` donne les informations minimales à Maven :
 
--  Le projet s'appelle |ROOT_PKG|:hello
+-  Le projet s'appelle |{{ROOT_PKG}}|:hello
 -  La version actuelle est la 0.0.1 et il s'agit d'une version de
    travail
 -  Le projet est une application Web Java EE (war)

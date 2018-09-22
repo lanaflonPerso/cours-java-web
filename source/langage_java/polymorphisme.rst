@@ -13,12 +13,12 @@ Prenons l'exemple de la classe *Animal*. Cette classe offre une méthode
 *crier*. Pour simplifier notre exemple, la méthode se contente d'écrire
 le cri de l'animal sur la sortie standard.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class Animal {
-    
+
     public void crier() {
       System.out.println("un cri d'animal");
     }
@@ -28,17 +28,17 @@ le cri de l'animal sur la sortie standard.
 Nous disposons également des classes *Chat* et *Chien* qui héritent de la classe
 *Animal*.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class Chat extends Animal {
 
   }
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class Chien extends Animal {
 
@@ -48,24 +48,24 @@ Nous disposons également des classes *Chat* et *Chien* qui héritent de la clas
 Ces deux classes sont une spécialisation de la classe
 *Animal*. À ce titre, elles peuvent **redéfinir** (*override*) la méthode *crier*.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class Chat extends Animal {
-    
+
     public void crier() {
       System.out.println("Miaou !");
     }
 
   }
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class Chien extends Animal {
-    
+
     public void crier() {
       System.out.println("Whouaf whouaf !");
     }
@@ -75,10 +75,10 @@ Ces deux classes sont une spécialisation de la classe
 
 Chaque classe fille change le comportement de la méthode *crier*. Cela signifie
 qu'un objet de type *Chien* pour lequel on invoque le méthode *crier* ne fournira
-pas le même comportement qu'un objet de type *Chat*. Et cela, quel que soit le 
+pas le même comportement qu'un objet de type *Chat*. Et cela, quel que soit le
 type de la variable qui référence ces objets.
 
-::
+.. code-block:: java
 
   Animal animal = new Animal();
   animal.crier(); // affiche "un cri d'animal"
@@ -88,10 +88,10 @@ type de la variable qui référence ces objets.
 
   Chien chien = new Chien();
   chien.crier();  // affiche "Whouaf whouaf !"
-  
+
   animal = chat;
   animal.crier(); // affiche "Miaou !"
-  
+
   animal = chien;
   animal.crier(); // affiche "Whouaf whouaf !"
 
@@ -105,7 +105,7 @@ Une exception : les méthodes privées
 Les méthodes de portée **private** ne supportent pas le polymorphisme. En effet,
 une méthode de portée **private** n'est accessible uniquement que par la classe
 qui la déclare. Donc si une classe mère et une classe fille définissent une méthode
-**private** avec la même signature, le compilateur les traitera comme 
+**private** avec la même signature, le compilateur les traitera comme
 deux méthodes différentes.
 
 .. _redefinition_et_signature:
@@ -138,27 +138,27 @@ Le changement de portée dans la redéfinition sert la plupart du temps à place
 une implémentation dans la classe parente mais à laisser les classes filles
 qui le désirent offrir publiquement l'accès à cette méthode.
 
-Au :ref:`chapitre précédent <portee_protected>`, nous avions introduit les 
-classes *Vehicule*, *Voiture* et *Moto*. En partant du principe que seules les 
-instances de *Voiture* peuvent offrir la méthode *reculer*, nous avons ajouté 
+Au :ref:`chapitre précédent <portee_protected>`, nous avions introduit les
+classes *Vehicule*, *Voiture* et *Moto*. En partant du principe que seules les
+instances de *Voiture* peuvent offrir la méthode *reculer*, nous avons ajouté
 cette méthode dans la classe *Voiture*. Pour cela, nous avions dû modifier
 l'implémentation de la classe *Vehicule* en utilisant une portée **protected**
 pour l'attribut *vitesse*. Nous avions alors vu que cela n'était pas totalement
 conforme au `principe du ouvert/fermé`_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Vehicule {
 
     private final String marque;
     protected float vitesse;
-    
+
     public Vehicule(String marque) {
       this.marque = marque;
     }
-    
+
     public void accelerer(float deltaVitesse) {
       this.vitesse += deltaVitesse;
     }
@@ -168,25 +168,25 @@ conforme au `principe du ouvert/fermé`_.
     }
 
     // ...
-    
+
   }
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Voiture extends Vehicule {
-  
+
     public Voiture(String marque) {
       super(marque);
     }
-    
+
     public void reculer(float vitesse) {
       this.vitesse = -vitesse;
     }
 
     // ...
-    
+
   }
 
 
@@ -195,19 +195,19 @@ Nous pouvons maintenant revoir notre implémentation. En fait, c'est la méthode
 **protected**. La classe *Voiture* peut se limiter à redéfinir cette méthode
 en la rendant **public**.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Vehicule {
 
     private final String marque;
     private float vitesse;
-    
+
     public Vehicule(String marque) {
       this.marque = marque;
     }
-    
+
     public void accelerer(float deltaVitesse) {
       this.vitesse += deltaVitesse;
     }
@@ -221,25 +221,25 @@ en la rendant **public**.
     }
 
     // ...
-    
+
   }
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Voiture extends Vehicule {
-  
+
     public Voiture(String marque) {
       super(marque);
     }
-    
+
     public void reculer(float vitesse) {
       super.reculer(vitesse);
     }
 
     // ...
-    
+
   }
 
 
@@ -254,12 +254,12 @@ Si nous reprenons l'exemple d'héritage des classes *Animal*, *Chien* et *Chat*,
 nous pouvons définir une classe *EleveurAnimal* qui permet de créer une instance
 de *Animal* quand on appelle la méthode *elever* :
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class EleveurAnimal {
-    
+
     public Animal elever() {
       return new Animal();
     }
@@ -272,39 +272,39 @@ Si maintenant nous créons la classe *EleveurChien* qui hérite de la classe
 *elever* peut déclarer qu'elle retourne un type *Chien*. Comme *Chien* hérite
 de *Animal*, la méthode qui redéfinit se présente comme une spécialisation.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.animal;
+  package {{ROOT_PKG}}.animal;
 
   public class EleveurChien extends EleveurAnimal {
 
     public Chien elever() {
       return new Chien();
     }
-    
+
   }
 
 
 Le mot-clé super
 ****************
 
-La redéfinition de méthode masque la méthode de la classe parente. Cependant, nous 
+La redéfinition de méthode masque la méthode de la classe parente. Cependant, nous
 avons vu précédemment avec l'exemple de la méthode *reculer* que l'implémentation
 d'une classe fille a la possibilité d'appeler une méthode de la classe parente
 en utilisant le mot-clé **super**. L'appel à l'implémentation parente est très
 utile lorsque l'on veut effectuer une action avant et/ou après sans
 avoir besoin de dupliquer le code d'origine.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Voiture extends Vehicule {
-  
+
     public Voiture(String marque) {
       super(marque);
     }
-    
+
     public void accelerer(float deltaVitesse) {
       // faire quelque chose avant
 
@@ -314,7 +314,7 @@ avoir besoin de dupliquer le code d'origine.
     }
 
     // ...
-    
+
   }
 
 
@@ -324,16 +324,16 @@ que l'implémentation de la classe parente. Si la classe *Voiture* a redéfini
 la méthode *accelerer* et que l'on crée la classe *VoitureDeCourse* héritant
 de la classe *Voiture*.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class VoitureDeCourse extends Voiture {
-  
+
     public VoitureDeCourse(String marque) {
       super(marque);
     }
-    
+
     public void accelerer(float deltaVitesse) {
       // faire quelque chose avant
 
@@ -343,7 +343,7 @@ de la classe *Voiture*.
     }
 
     // ...
-    
+
   }
 
 
@@ -365,23 +365,23 @@ que cette méthode est une redéfinition d'une méthode héritée. Cela permet a
 compilateur de vérifier que la signature de la méthode correspond bien à une
 méthode d'une classe parente. Dans le cas contraire, la compilation échoue.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Voiture extends Vehicule {
-  
+
     public Voiture(String marque) {
       super(marque);
     }
-    
+
     @Override
     public void reculer(float vitesse) {
       super.reculer(vitesse);
     }
 
     // ...
-    
+
   }
 
 Les méthodes de classe
@@ -392,28 +392,28 @@ la redéfinition. Si une classe fille déclare une méthode **static**
 avec la même signature que dans la classe parente, ces méthodes seront simplement
 vues par le compilateur comme deux méthodes distinctes.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Parent {
-    
+
      public static void methodeDeClasse() {
        System.out.println("appel à la méthode de la classe Parent");
      }
 
   }
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Enfant extends Parent {
-    
+
      public static void methodeDeClasse() {
        System.out.println("appel à la méthode de la classe Enfant");
      }
@@ -425,7 +425,7 @@ Dans le code ci-dessus, la classe *Enfant* hérite de la classe *Parent* et tout
 deux implémentent une méthode **static** appelée *methodeDeClasse*. Le code suivant
 peut être source d'incompréhension :
 
-::
+.. code-block:: java
 
   Parent a = new Enfant();
   a.methodeDeClasse();
@@ -447,11 +447,11 @@ la variable. Cet exemple illustre pourquoi il est très fortement conseillé
 d'appeler les méthodes **static** à partir du nom de la classe et non pas d'une
 variable afin d'éviter toute ambiguïté.
 
-::
+.. code-block:: java
 
   Parent.methodeDeClasse();
   Enfant.methodeDeClasse();
- 
+
 
 Méthode finale
 **************
@@ -467,7 +467,7 @@ en héritent.
 .. note::
 
   Même si les méthodes **static** n'autorisent pas la redéfinition, elles peuvent
-  être déclarées **final**. Dans ce cas, il n'est pas possible d'ajouter une 
+  être déclarées **final**. Dans ce cas, il n'est pas possible d'ajouter une
   méthode de classe qui a la même signature dans les classes qui en héritent.
 
 
@@ -483,25 +483,25 @@ signifie que le constructeur de Object_ est toujours appelé en premier.
 Cependant un constructeur peut appeler une méthode et dans ce cas le polymorphisme
 s'applique. Comme les constructeurs sont appelés dans l'ordre
 de la hiérarchie d'héritage, cela signifie qu'un constructeur invoque
-toujours une méthode redéfinie avant que la classe fille qui l'implémente n'ait 
+toujours une méthode redéfinie avant que la classe fille qui l'implémente n'ait
 pu être initialisée.
 
-Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui redéfinit la 
+Par exemple, si nous disposons d'un classe *VehiculeMotorise* qui redéfinit la
 méthode *accelerer* pour prendre en compte la consommation d'essence :
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class VehiculeMotorise extends Vehicule {
 
     private Moteur moteur;
-    
+
     public VehiculeMotorise(String marque) {
       super(marque);
       this.moteur = new Moteur();
     }
-    
+
     @Override
     public void accelerer(float deltaVitesse) {
       moteur.consommer(deltaVitesse);
@@ -509,38 +509,38 @@ méthode *accelerer* pour prendre en compte la consommation d'essence :
     }
 
     // ...
-    
+
   }
 
 
 Si maintenant nous faisons évoluer la classe *Vehicule* pour créer une instance
 avec une vitesse minimale :
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Vehicule {
 
     private final String marque;
     protected float vitesse;
-    
+
     public Vehicule(String marque) {
       this.marque = marque;
       this.accelerer(10);
     }
-    
+
     public void accelerer(float deltaVitesse) {
       this.vitesse += deltaVitesse;
     }
 
     // ...
-    
+
   }
 
 Que va-t-il se passer à l'exécution de ce code :
 
-::
+.. code-block:: java
 
   VehiculeMotorise vehiculeMotorise = new VehiculeMotorise("DeLorean");
 
@@ -555,7 +555,7 @@ valeur est nulle et donc la création d'une instance de *VehiculeMotorise*
 
 On voit par cet exemple que l'appel de méthode dans un constructeur peut amener
 à des situations complexes. Il est fortement recommandé d'appeler dans un constructeur
-des méthodes dont le comportement ne peut pas être modifié par la redéfinition : soit 
+des méthodes dont le comportement ne peut pas être modifié par la redéfinition : soit
 des méthodes déclarées **private** soit des méthodes déclarées **final**.
 
 
@@ -576,29 +576,29 @@ de la classe parente est simplement masqué dans la classe fille. Si une classe
 fille veut accéder à l'attribut de la classe parente, elle peut le faire à travers
 le mot-clé **super**.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Personne {
-    
+
     protected String nom;
 
     public Personne(String nom) {
       this.nom = nom;
     }
-    
+
     // ...
 
   }
-  
+
 .. code-block:: java
   :emphasize-lines: 15
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class HerosMasque extends Personne {
@@ -609,15 +609,15 @@ le mot-clé **super**.
       super(nom);
       this.nom = nomHeros;
     }
-    
+
     @Override
     public String toString() {
       // mmmmh ! Pas très clair
       return this.nom + " dont l'identité secrète est " + super.nom;
     }
-    
+
     // ...
-    
+
   }
 
 En raison de la difficulté de compréhension que cela peut entraîner, il est
@@ -630,7 +630,7 @@ Le principe du ouvert/fermé
 ***************************
 
 Le `principe du ouvert/fermé`_ stipule qu'une classe doit être conçue pour être
-ouverte en extension mais fermée en modification. 
+ouverte en extension mais fermée en modification.
 
 D'un côté, si une classe hérite
 d'une autre classe, elle doit pouvoir ajouter des nouveaux comportements avec
@@ -639,14 +639,13 @@ utilisée pour créer une implémentation qui a un comportement trop différent
 de celui de la classe parente.
 
 D'une autre côté, si une classe hérite d'une autre classe, elle ne doit pas
-pouvoir modifier le fonctionnement décrit par la classe parente. En Java, pour 
+pouvoir modifier le fonctionnement décrit par la classe parente. En Java, pour
 interdire de modifier le comportement d'une classe, on peut déclarer ses attributs
 **private** et les méthodes jugées les plus critiques peuvent être déclarées
 **final**.
 
-  
+
 .. _@Override: https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html
 .. _principe du ouvert/fermé: https://fr.wikipedia.org/wiki/Principe_ouvert/ferm%C3%A9
 .. _Object: https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 .. _NullPointerException: https://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html
-

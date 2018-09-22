@@ -106,7 +106,7 @@ Par défaut, un attribut de type **char** vaut **0** (c'est-à-dire le caractèr
 
 Pour représenter un littéral, on utilise l'apostrophe (**simple quote**) :
 
-::
+.. code-block:: java
 
   char c = 'a';
 
@@ -114,7 +114,7 @@ Même si les caractères ne sont pas des nombres, Java autorise les opérations
 arithmétiques sur les caractères en se basant sur le code caractère. Cela peut
 être pratique si l'on veut parcourir l'alphabet par exemple :
 
-::
+.. code-block:: java
 
   for (char i = 'a'; i <= 'z'; ++i) {
     // ...
@@ -123,7 +123,7 @@ arithmétiques sur les caractères en se basant sur le code caractère. Cela peu
 On peut également affecter un nombre à une variable caractère. Ce nombre représente
 alors le code caractère :
 
-::
+.. code-block:: java
 
   char a = 97; // 97 est le code caractère de la lettre a en UTF-16
 
@@ -131,7 +131,7 @@ Affecter une variable de type entier à un variable de type **char** conduit à 
 de compilation. En effet, le type **char** est un nombre signé sur 2 octets. Pour passer
 la compilation, il faut transtyper (**cast**) la variable :
 
-::
+.. code-block:: java
 
   int i = 97;
   char a = (char) i; // cast vers char obligatoire pour la compilation
@@ -147,7 +147,7 @@ Par défaut, un attribut de type **byte**, **short**, **int** ou **long** vaut 0
 La règle de conversion implicite est simple : on peut affecter une variable d'un type
 à une variable d'un autre type que si la taille mémoire est au moins assez grande.
 
-::
+.. code-block:: java
 
   byte b  = 1;
   short s = 2;
@@ -167,7 +167,7 @@ La règle de conversion implicite est simple : on peut affecter une variable d'u
 Dans tous les autres cas, il faut réaliser un transtypage avec un risque de perte
 de valeur :
 
-::
+.. code-block:: java
 
   b = (byte) s;
   s = (short) i;
@@ -207,13 +207,13 @@ Les valeurs littérales peuvent s'écrire suivant plusieurs bases :
 On peut forcer une valeur littérale à être interprétée comme un entier long en suffixant
 la valeur par **L** ou **l** :
 
-::
+.. code-block:: java
 
   long l = 100L;
 
 Pour plus de lisibilité, il est également possible de séparer les milliers par _ :
 
-::
+.. code-block:: java
 
   long l = 1_000_000;
 
@@ -249,7 +249,7 @@ Par défaut, un attribut de type **float** ou **double** vaut 0.
 Il est possible d'ajouter une valeur entière à un type à virgule flottante mais l'inverse
 nécessite une transtypage (**cast**) avec une perte éventuelle de valeur.
 
-::
+.. code-block:: java
 
   int i = 2;
   double d = 5.0;
@@ -259,7 +259,7 @@ nécessite une transtypage (**cast**) avec une perte éventuelle de valeur.
 Les valeurs littérales peuvent s'écrire avec un **.** pour signifier la virgule et/ou avec une
 notation scientifique en donnant l'exposant en base 10 :
 
-::
+.. code-block:: java
 
   double d1 = .0; // le 0 peut être omis à gauche de la virgule
   double d2 = -1.5;
@@ -269,7 +269,7 @@ notation scientifique en donnant l'exposant en base 10 :
 Une valeur littérale est toujours considérée en double précision. Pour l'affecter à une variable
 de type **float**, il faut suffixer la valeur par **F** ou **f** :
 
-::
+.. code-block:: java
 
   float f = 0.5f;
 
@@ -331,14 +331,14 @@ Il est possible de créer une instance d'une classe enveloppe soit en utilisant
 son constructeur soit en utilisant la méthode de classe **valueOf** (il s'agit
 de la méthode recommandée).
 
-::
+.. code-block:: java
 
   Integer i = Integer.valueOf(2);
 
 Pour obtenir la valeur enveloppée, on fait appel à la méthode *xxxValue()*, xxx étant
 le type sous-jacent :
 
-::
+.. code-block:: java
 
   Integer i = Integer.valueOf(2);
   int x = 1 + i.intValue();
@@ -349,7 +349,7 @@ Pourquoi avoir créé ces classes ? Cela permet d'offrir un emplacement facile �
 de classe de la forme *parseXXX* qui permet de convertir une chaîne de caractères en un type
 primitif :
 
-::
+.. code-block:: java
 
   boolean b = Boolean.parseBoolean("true");
   byte by = Byte.parseByte("1");
@@ -361,9 +361,9 @@ primitif :
   // enfin presque toutes car Character n'a pas cette méthode
 
 Une variable de type d'une des classes enveloppes référence un objet donc elle peut avoir la valeur spéciale **null**.
-Ce cas permet de signifier l'absence de valeur. 
+Ce cas permet de signifier l'absence de valeur.
 
-Les classes enveloppes contiennent des constantes pour donner des informations 
+Les classes enveloppes contiennent des constantes pour donner des informations
 utiles. Par exemple, la classe java.lang.Integer_ déclare les constantes
 MIN_VALUE_ et MAX_VALUE_ qui donnent respectivement la plus petite valeur
 et la plus grande valeur représentables par la primitive associée.
@@ -385,33 +385,33 @@ s'appelle **l'unboxing**.
 
 Le code suivant
 
-::
+.. code-block:: java
 
   Integer i = 1;
 
 est accepté par le compilateur et ce dernier lira à la place
 
-::
+.. code-block:: java
 
   Integer i = Integer.valueOf(1); // boxing
 
 De même, le code suivant
 
-::
+.. code-block:: java
 
   Integer i = 1;
   int j = i;
 
 est également accepté par le compilateur et ce dernier lira à la place
 
-::
+.. code-block:: java
 
   Integer i = Integer.valueOf(1); // boxing
   int j = i.intValue(); // unboxing
 
 On peut ainsi réaliser des opérations arithmétiques sur des instances de classes enveloppes
 
-::
+.. code-block:: java
 
   Integer i = 1;
   Integer j = 2;
@@ -428,7 +428,7 @@ L'autoboxing est parfois difficile à utiliser car il conduit à des expressions
 qui peuvent être ambiguës.
 Par exemple, alors que le code suivant utilisant des primitives compile :
 
-::
+.. code-block:: java
 
   int i = 1;
   float j = i;

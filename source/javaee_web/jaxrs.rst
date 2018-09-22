@@ -94,7 +94,7 @@ Dans l'exemple ci-dessus, cela signifie que les requêtes à partir de
 
     ::
 
-        package ROOT_PKG.adhesion.api;
+        package {{ROOT_PKG}}.adhesion.api;
 
         import javax.ws.rs.ApplicationPath;
         import javax.ws.rs.core.Application;
@@ -129,7 +129,7 @@ l'annotation `@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import javax.ws.rs.Path;
@@ -149,7 +149,7 @@ l'annotation `@Path <https://docs.oracle.com/javaee/7/api/javax/ws/rs/Path.html>
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import javax.ws.rs.Path;
@@ -192,7 +192,7 @@ pour traiter la méthode de la requête HTTP entrante.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.DELETE;
@@ -255,7 +255,7 @@ leur valeur dans les paramètres des méthodes :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.DELETE;
@@ -308,7 +308,7 @@ un modèle objet :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.DELETE;
@@ -369,7 +369,7 @@ le spécifier avec une expression régulière :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.GET;
@@ -434,7 +434,7 @@ paramètre de chemin ``[^/]+?``
     ::
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import javax.ws.rs.DELETE;
@@ -595,7 +595,7 @@ Si on souhaite retourner une instance de la classe suivante :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.util.ArrayList;
@@ -646,7 +646,7 @@ Si on définit une ressource de la façon suivante :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.GET;
@@ -693,7 +693,7 @@ en paramètre un document JSON transformé en une instance Java.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.POST;
@@ -751,7 +751,7 @@ ajouter les annotations JAXB :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.util.ArrayList;
@@ -811,7 +811,7 @@ Si nous autorisons une ressource à produire du XML :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.GET;
@@ -870,7 +870,7 @@ pour déterminer quel est le format à utiliser pour la réponse.
     :caption: Exemple de ressource supportant plusieurs formats de représentation
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.Consumes;
@@ -919,7 +919,7 @@ d'appeler la méthode ``build()`` et retourner le résultat.
     :caption: Exemple d'utilisation de la classe ``javax.rs.core.Response``
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.net.URI;
@@ -998,7 +998,7 @@ exceptions filles.
     :caption: Exemple d'un ``ExceptionMapper`` pour les exceptions de type ``ValiditionException``
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.validation.ValidationException;
@@ -1046,7 +1046,7 @@ HTTP.
     :caption: Utilisation de Bean Validation sur les attributs d'une classe
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.util.ArrayList;
@@ -1113,7 +1113,7 @@ HTTP.
     :caption: Utilisation de Bean Validation sur un paramètre de méthode d'une ressource
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.validation.constraints.Size;
@@ -1163,7 +1163,7 @@ https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summar
         :caption: Exemple d'injection d'une ``DataSource``
 
       {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
         import java.sql.Connection;
@@ -1215,7 +1215,7 @@ pour créer une instance de la classe
     :caption: Exemple d'utilisation d'un client HTTP
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.ws.rs.client.Client;

@@ -13,9 +13,9 @@ correctement.
 .. note::
 
   Rien ne vous interdit de créer une instance de Object_.
-  
-  ::
-  
+
+  .. code-block:: java
+
     Object myObj = new Object();
 
 
@@ -26,11 +26,11 @@ En Java, l'opérateur **==** sert à comparer les références. Il ne faut donc
 **jamais** l'utiliser pour comparer des objets. La comparaison d'objets se
 fait grâce à la méthode equals_ héritée de la classe Object_.
 
-::
+.. code-block:: java
 
   Vehicule v1 = new Voiture("DeLorean");
   Vehicule v2 = new Moto("Kaneda");
-  
+
   if (v1.equals(v1)) {
     System.out.println("v1 est identique à lui-même.");
   }
@@ -43,7 +43,7 @@ fait grâce à la méthode equals_ héritée de la classe Object_.
 L'implémentation par défaut de equals_ fournie par Object_ compare les références
 entre elles. L'implémentation par défaut est donc simplement :
 
-::
+.. code-block:: java
 
   public boolean equals(Object obj) {
     return (this == obj);
@@ -55,27 +55,27 @@ entre elles. L'implémentation par défaut est donc simplement :
   d'utiliser **==** pour comparer des objets. N'importe quelle classe
   héritant de la classe Object_ peut modifier ce comportement : à commencer
   par une des classes les plus utilisée en Java, la classe String_.
-  
-  
+
+
 Parfois, l'implémentation par défaut peut suffire. C'est notamment le cas
 lorsque l'unicité en mémoire suffit à identifier un objet. Cependant,
 si nous ajoutons la notion de plaque d'immatriculation à notre classe
 *Vehicule* :
 
-::
+.. code-block:: java
 
   public class Vehicule {
-  
+
     private String immatriculation;
     private final String marque;
-    
+
     public Vehicule(String immatriculation, String marque) {
       this.immatriculation = immatriculation;
       this.marque = marque;
     }
-    
+
     // ...
-    
+
   }
 
 
@@ -83,33 +83,33 @@ Alors l'attribut immatriculation introduit l'idée d'identification du véhicule
 Il est donc judicieux de considérer que deux véhicules sont égaux s'ils
 ont la même immatriculation. Dans ce cas, il faut redéfinir la méthode equals_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
+  package {{ROOT_PKG}}.conduite;
 
   public class Vehicule {
-  
+
     private String immatriculation;
     private final String marque;
-    
+
     public Vehicule(String immatriculation, String marque) {
       this.immatriculation = immatriculation;
       this.marque = marque;
     }
 
-    @Override    
+    @Override
     public boolean equals(Object obj) {
       if (! (obj instanceof Vehicule)) {
         return false;
       }
       Vehicule vehicule = (Vehicule) obj;
-      return this.immatriculation != null && 
+      return this.immatriculation != null &&
              this.immatriculation.equals(vehicule.immatriculation);
-      
+
     }
-    
+
     // ...
-    
+
   }
 
 Dans l'exemple précédent, notez l'utilisation de **instanceof** pour vérifier
@@ -117,7 +117,7 @@ que l'objet en paramètre est bien compatible avec le type *Vehicule* (sinon
 la méthode retourne **false**). En effet, la signature de equals_ impose que
 le paramètre soit de type Object_. Il est donc important de commencer par
 vérifier que le paramètre est d'un type acceptable pour la comparaison.
-Notez également, que l'implémentation est telle que deux véhicules n'ayant pas 
+Notez également, que l'implémentation est telle que deux véhicules n'ayant pas
 de plaque d'immatriculation ne sont pas identiques.
 
 L'implémentation de equals_ doit être conforme à certaines règles pour s'assurer
@@ -130,35 +130,35 @@ l'API standard ou par des bibliothèques tierces.
     Si x.equals(y) est vrai alors y.equals(x) doit être vrai
 * Son implémentation doit être transitive :
     Pour x, y et z non nuls
-    
+
     Si x.equals(y) est vrai
-    
+
     Et si y.equals(z) est vrai
-    
+
     Alors x.equals(z) doit être vrai
 * Son implémentation doit être consistante
     Pour x et y non nuls
-    
+
     Si x.equals(y) est vrai alors il doit rester vrai tant que l'état de x et de
     y est inchangé.
-* Si x est non nul alors x.equals(null) doit être faux.    
+* Si x est non nul alors x.equals(null) doit être faux.
 
 .. note::
 
   Il est parfois facile d'introduire un bug en Java.
-  
+
   ::
-  
+
     if (x.equals(y)) {
       // ...
     }
-  
+
   Le code ci-dessus ne teste pas la possibilité pour la variable *x* de valoir
   **null**, entraînant ainsi une erreur de type NullPointerException_.
   Il ne faut donc pas oublier de tester la valeur **null** :
-  
+
   ::
-  
+
     if (x != null && x.equals(y)) {
       // ...
     }
@@ -168,9 +168,9 @@ l'API standard ou par des bibliothèques tierces.
   de la nullité. En effet, equals_ doit retourner **false** si le paramètre
   vaut **null**. Cela est notamment très pratique pour comparer une chaîne
   de caractères avec une constante :
-  
+
   ::
-  
+
     if ("Message à comparer".equals(msg)) {
       // ...
     }
@@ -179,7 +179,7 @@ l'API standard ou par des bibliothèques tierces.
   de classe `equals(Object, Object)`_ pour prendre en charge le cas de la valeur
   **null**. Notez toutefois que `equals(Object, Object)`_ retourne **true**
   si les deux paramètres valent **null**.
-  
+
 
 La méthode hashCode
 *******************
@@ -198,38 +198,38 @@ Cette méthode ne doit être redéfinie que si cela est réellement utile.
 Par exemple si une instance de cette classe doit servir de clé pour une
 instance de HashMap_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
+  package {{ROOT_PKG}}.conduite;
 
   public class Vehicule {
-  
+
     private String immatriculation;
     private final String marque;
-    
+
     public Vehicule(String immatriculation, String marque) {
       this.immatriculation = immatriculation;
       this.marque = marque;
     }
 
-    @Override    
+    @Override
     public boolean equals(Object obj) {
       if (! (obj instanceof Vehicule)) {
         return false;
       }
       Vehicule vehicule = (Vehicule) obj;
-      return this.immatriculation != null && 
+      return this.immatriculation != null &&
              this.immatriculation.equals(vehicule.immatriculation);
-      
+
     }
-    
-    @Override    
+
+    @Override
     public int hashCode() {
       return immatriculation == null ? 0 : immatriculation.hashCode();
     }
 
     // ...
-    
+
   }
 
 
@@ -237,7 +237,7 @@ La méthode toString
 *******************
 
 La méthode toString_ est une méthode très utile, notamment pour le débugage et
-la production de log. Elle permet d'obtenir une représentation sous forme 
+la production de log. Elle permet d'obtenir une représentation sous forme
 de chaîne de caractères d'un objet. Elle est implicitement appelée par le
 compilateur lorsqu'on concatène une chaîne de caractères avec un objet.
 
@@ -245,9 +245,9 @@ Par défaut l'implémentation de la méthode toString_ dans la classe Object_
 retourne le type de l'objet suivi de @ suivi du code de hachage de l'objet.
 Il suffit de redéfinir cette méthode pour obtenir la représentation souhaitée.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
+  package {{ROOT_PKG}}.conduite;
 
   public class Vehicule {
 
@@ -263,16 +263,16 @@ Il suffit de redéfinir cette méthode pour obtenir la représentation souhaité
     }
 
     // ...
-	
+
   }
 
 
-::
+.. code-block:: java
 
   Vehicule v = new Vehicule("DeLorean");
-  
+
   String msg = "Objet créé : " + v;
-  
+
   System.out.println(msg); // "Objet créé : Véhicule de marque DeLorean"
 
 
@@ -296,7 +296,7 @@ classes ne désirent pas permettre de cloner une instance.
 Pour qu'un objet soit clonable, sa classe doit implémenter l'interface marqueur
 Cloneable_. L'implémentation par défaut de la méthode dans Object_ consiste à jeter
 une exception CloneNotSupportedException_ si l'interface Cloneable_ n'est pas
-implémentée. Si l'interface est implémentée, alors la méthode crée une nouvelle 
+implémentée. Si l'interface est implémentée, alors la méthode crée une nouvelle
 instance de la classe et affecte
 la même valeur que l'instance d'origine aux attributs de la nouvelle instance.
 L'implémentation par défaut de clone_ n'appelle pas les constructeurs pour créer
@@ -306,8 +306,8 @@ la nouvelle instance.
 
   L'implémentation par défaut de la méthode clone_ ne réalise pas un clonage
   en profondeur. Cela signifie que si les attributs de la classe d'origine
-  référencent des objets, les attributs du clone référenceront les mêmes objets. 
-  Si ce comportement n'est pas celui désiré, alors il 
+  référencent des objets, les attributs du clone référenceront les mêmes objets.
+  Si ce comportement n'est pas celui désiré, alors il
   faut fournir une nouvelle implémentation de la méthode clone_ dans la classe.
 
 .. note ::
@@ -333,7 +333,7 @@ usages avancés impliquant la *réflexivité*.
 L'exemple ci-dessous, affiche le nom complet (c'est-à-dire en incluant son package)
 de la classe d'un objet :
 
-::
+.. code-block:: java
 
   Vehicule v = new Vehicule("DeLorean");
 

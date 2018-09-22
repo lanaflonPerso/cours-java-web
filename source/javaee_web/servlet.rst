@@ -18,7 +18,7 @@ javax.servlet.http.HttpServlet_ :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.servlet.http.HttpServlet;
@@ -48,7 +48,7 @@ qui la concernent.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -113,7 +113,7 @@ sont :
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;
@@ -157,7 +157,7 @@ consiste à utiliser l'annotation `@WebServlet`_ sur la classe.
 ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import java.io.IOException;

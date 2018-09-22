@@ -244,7 +244,7 @@ pour centraliser toutes les requêtes relatives à cette entité.
   :caption: Déclaration d'une requête nommée
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import javax.persistence.Entity;
@@ -276,7 +276,7 @@ Si vous voulez nommer plusieurs requêtes, vous devez utiliser l'annotation
   :caption: Déclaration de plusieurs requêtes nommées
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import javax.persistence.Entity;

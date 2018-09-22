@@ -55,7 +55,7 @@ des classes internes
 L'ordre dans lequel apparaissent ces éléments dans la déclaration de la classe est
 sans importance en Java. Pour des raisons de commodité de lecture, les développeurs
 adoptent en général une convention : d'abord les constantes, puis les énumérations,
-puis les attributs et enfin les méthodes. 
+puis les attributs et enfin les méthodes.
 
 Ajouter des méthodes
 ********************
@@ -67,7 +67,7 @@ la méthode **getVitesse** qui permet de connaître la vitesse actuelle d'une vo
 
 Une méthode est identifée par sa **signature**. La signature d'une méthode est de la forme :
 
-::
+.. code-block:: java
 
   [portée] [type de retour] [identifiant] ([liste des paramètres]) {
     [code]
@@ -96,7 +96,7 @@ de stocker cette information comme attribut de la classe :
 
 Un attribut est identifé par :
 
-::
+.. code-block:: java
 
   [portée] [type] [identifiant];
 
@@ -130,7 +130,7 @@ Si nous voulons utiliser notre classe dans un programme, il nous faut détermine
 pour l'exécution du programme. Un point d'entrée est représenté par la méthode **main** qui doit avoir
 la signature suivante :
 
-::
+.. code-block:: java
 
   public static void main(String[] args) {
   }
@@ -170,7 +170,7 @@ Créer une instance d'un objet se fait grâce au mot-clé **new**.
 En Java, l'opérateur **.** sert à accéder aux attributs ou aux méthodes d'un objet. Donc si on dispose
 d'une variable *voiture* de type *Voiture*, on peut appeler sa méthode *accelerer* grâce à cet opérateur :
 
-::
+.. code-block:: java
 
   voiture.accelerer(90);
 

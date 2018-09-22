@@ -129,7 +129,7 @@ en fonction de la configuration.
 
       <context:property-placeholder location="classpath:configuration.properties"/>
 
-      <bean class="ROOT_PKG.${bean.classe}">
+      <bean class="{{ROOT_PKG}}.${bean.classe}">
       </bean>
 
   </beans>

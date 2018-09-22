@@ -1,36 +1,36 @@
 Les énumérations
 ################
 
-Dans une application, il est très utile de pouvoir représenter des listes 
+Dans une application, il est très utile de pouvoir représenter des listes
 finies d'éléments. Par exemple, si une application a besoin d'une liste
-de niveaux de criticité, elle peut créer des constantes dans une classe 
+de niveaux de criticité, elle peut créer des constantes dans une classe
 utilitaire quelconque.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class ClasseUtilitaireQuelconque {
-  
+
     public static final int CRITICITE_FAIBLE = 0;
     public static final int CRITICITE_NORMAL = 1;
     public static final int CRITICITE_HAUTE = 2;
   }
-  
+
 Ce choix d'implémentation est très imparfait. Même si le choix du type **int**
 permet de retranscrire une notion d'ordre dans les niveaux de criticité, il ne
 permet pas de créer un vrai type représentant une criticité.
 
 Il existe un type particulier en Java qui permet de fournir une meilleure
-implémentation dans ce cas : l'énumération. Un énumération se déclare avec le 
+implémentation dans ce cas : l'énumération. Un énumération se déclare avec le
 mot-clé **enum**.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public enum Criticite {
@@ -52,10 +52,10 @@ qui porte son nom. Pour l'exemple ci-dessus, le code source sera dans le fichier
 Une énumération peut également être définie dans une classe, une interface et
 même dans une énumération.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class Zone {
@@ -72,16 +72,16 @@ L'énumération permet de définir un type avec un nombre fini de valeurs possib
 Il est possible de manipuler ce nouveau type comme une constante, comme un attribut,
 un paramètre et une variable.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
-  
+
   public class RapportDeBug {
-  
+
     private Criticite criticite = Criticite.NORMAL;
-    
+
     public RapportDeBug() {
     }
 
@@ -89,11 +89,11 @@ un paramètre et une variable.
       this.criticite = criticite;
     }
   }
-  
-::
+
+.. code-block:: java
 
   RapportDeBug rapport = new RapportDeBug(Criticite.HAUTE);
-  
+
 
 .. note::
 
@@ -108,23 +108,23 @@ Donc une énumération fournit également des méthodes de classe et des méthod
 pour chacun des éléments de l'énumération.
 
 **valueOf**
-  Une méthode de classe qui permet de convertir une chaîne de caractères en une 
+  Une méthode de classe qui permet de convertir une chaîne de caractères en une
   énumération. Attention
   toutefois, si la chaîne de caractères ne correspond pas à un nom d'un élément
   de l'énumération, cette méthode produit une IllegalArgumentException_.
-  
-  ::
-  
+
+.. code-block:: java
+
     Criticite criticite = Criticite.valueOf("HAUTE");
-  
+
 **values**
-  Une méthode de classe qui retourne un tableau contenant tous les éléments de 
+  Une méthode de classe qui retourne un tableau contenant tous les éléments de
   l'énumération dans l'ordre
   de leur déclaration. Cette méthode est très pratique pour connaître la liste
   des valeurs possibles par programmation.
-  
-  ::
-  
+
+.. code-block:: java
+
     for(Criticite c : Criticite.values()) {
       System.out.println(c);
     }
@@ -133,17 +133,17 @@ Chaque élément d'une énumération possède les méthodes suivantes :
 
 **name**
   Retourne le nom de l'élément sous la forme d'une chaîne de caractères.
-  
-  ::
-    
+
+.. code-block:: java
+
     String name = Criticite.NORMAL.name(); // "NORMAL"
 
 **ordinal**
   Retourne le numéro d'ordre d'un élément. Le numéro d'ordre est donné
   par l'ordre de la déclaration, le premier élément ayant le numéro 0.
-  
-  ::
-  
+
+.. code-block:: java
+
     int ordre = Criticite.HAUTE.ordinal(); // 2
 
 
@@ -163,7 +163,7 @@ des variables, des attributs et des paramètres du type d'énumération. L'utili
 de l'opérateur **==** est même considérée comme la bonne façon de comparer
 les énumérations.
 
-::
+.. code-block:: java
 
   if (criticite == Criticite.HAUTE) {
     // ...
@@ -175,7 +175,7 @@ Support de switch
 
 Une énumération peut être utilisée dans une structure **switch** :
 
-::
+.. code-block:: java
 
   switch (criticite) {
 
@@ -200,10 +200,10 @@ Génération d'une énumération
 Le mot-clé **enum** est en fait un sucre syntaxique. Les énumérations en Java
 sont des classes comme les autres. Ainsi, l'énumération :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public enum Criticite {
@@ -217,10 +217,10 @@ sont des classes comme les autres. Ainsi, l'énumération :
 
 est transcrite comme ceci par le compilateur :
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public final class Criticite extends Enum<Criticite> {
@@ -265,10 +265,10 @@ Lorsque l'on a bien compris qu'une énumération est une classe particulière,
 il devient évident qu'il est possible d'ajouter des attributs et des méthodes
 à une énumération.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public enum Couleur {
@@ -302,7 +302,7 @@ il devient évident qu'il est possible d'ajouter des attributs et des méthodes
 Les énumérations peuvent devenir des objets complexes qui fournissent de nombreux
 services.
 
-::
+.. code-block:: java
 
   Couleur couleur = Couleur.ROUGE;
 
@@ -315,13 +315,13 @@ Ajout de constructeurs
 
 Il est également possible d'ajouter un ou plusieurs constructeurs dans une énumération.
 Attention, ces constructeurs doivent impérativement être de portée **private**
-sous peine de faire échouer la compilation. L'appel au constructeur se fait au 
+sous peine de faire échouer la compilation. L'appel au constructeur se fait au
 moment de la déclaration des éléments de l'énumération.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public enum Polygone {
@@ -341,7 +341,7 @@ moment de la déclaration des éléments de l'énumération.
   }
 
 
-.. _IllegalArgumentException: https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html  
+.. _IllegalArgumentException: https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html
 .. _Comparable: https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
 .. _compareTo: https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html#compareTo-E-
 .. _Enum: https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html

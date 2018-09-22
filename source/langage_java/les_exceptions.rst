@@ -14,7 +14,7 @@ Les sources d'erreur peuvent être nombreuses dans un programme. Il peut s'agir 
 * et bien d'autres cas encore...
 
 La robustesse d'une application est souvent comprise comme sa capacité à continuer
-à rendre un service acceptable dans un environnement dégradé, c'est-à-dire quand 
+à rendre un service acceptable dans un environnement dégradé, c'est-à-dire quand
 toutes les conditions attendues normalement ne sont pas satisfaites.
 
 En Java, la gestion des erreurs se confond avec la gestion des cas exceptionnels.
@@ -24,7 +24,7 @@ Qu'est-ce qu'une exception ?
 ****************************
 
 Une exception est une classe Java qui représente un état particulier et qui
-hérite directement ou indirectement de la classe Exception_. Par convention, le 
+hérite directement ou indirectement de la classe Exception_. Par convention, le
 nom de la classe doit permettre de comprendre le type d'exception et doit
 se terminer par Exception.
 
@@ -45,12 +45,12 @@ IndexOutOfBoundsException_
 Pour créer sa propre exception, il suffit de créer une classe héritant
 de la classe java.lang.Exception_.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
-  
+  package {{ROOT_PKG}}.heroes;
+
   public class FinDuMondeException extends Exception {
-  
+
     public FinDuMondeException() {
     }
 
@@ -67,11 +67,11 @@ de la classe java.lang.Exception_.
 Une exception étant un objet, elle possède son propre état et peut ainsi stocker
 des informations utiles sur les raisons de son apparition.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
-  import java.time.Instant;  
-  
+  package {{ROOT_PKG}}.heroes;
+  import java.time.Instant;
+
   public class FinDuMondeException extends Exception {
 
     private Instant date;
@@ -95,7 +95,7 @@ Signaler une exception
 **********************
 
 Dans les langages de programmation qui ne supportent pas le mécanisme des
-exceptions, on utilise généralement un code retour ou une valeur booléenne 
+exceptions, on utilise généralement un code retour ou une valeur booléenne
 pour savoir si une fonction ou une méthode s'est déroulée correctement.
 Cette mécanique se révèle assez fastidieuse dans son implémentation car cela
 signifie qu'un développeur doit tester dans son programme toutes les valeurs
@@ -107,7 +107,7 @@ Cela permet d'améliorer la lisibilité du code source.
 Lorsqu'un programme détecte un état exceptionnel, il peut le signaler en *jetant*
 une exception grâce au mot-clé **throw**.
 
-::
+.. code-block:: java
 
   if(isPlanDiaboliqueReussi()) {
     throw new FinDuMondeException();
@@ -118,7 +118,7 @@ une exception grâce au mot-clé **throw**.
   La classe Exception_ hérite de la classe Throwable_. Le mot-clé **throw**
   peut en fait être utilisé avec n'importe quelle instance qui hérite
   directement ou indirectement de Throwable_.
-  
+
 Jeter une exception signifie que le flot d'exécution normal de la méthode
 est interrompu jusqu'au point de traitement de l'exception. Si aucun point
 de traitement n'est trouvé, le programme s'interrompt.
@@ -129,8 +129,8 @@ Traiter une exception
 Pour traiter une exception, il faut d'abord délimiter un bloc de code avec le
 mot-clé **try**. Ce bloc de code correspond au flot d'exécution pour lequel
 on souhaite éventuellement *attraper* une exception qui serait jetée afin
-d'implémenter un traitement particulier. Le bloc **try** peut être suivi d'un 
-ou plusieurs blocs **catch** pour intercepter une exception d'un type 
+d'implémenter un traitement particulier. Le bloc **try** peut être suivi d'un
+ou plusieurs blocs **catch** pour intercepter une exception d'un type
 particulier.
 
 .. code-block:: java
@@ -140,16 +140,16 @@ particulier.
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-  
+
     boolean victoire = heros.combattre(espritDuMal);
     boolean planDejoue = heros.desamorcer(machineInfernale);
-    
+
     if (!victoire || !planDejoue) {
       throw new FinDuMondeException();
     }
-    
+
     heros.setPoseVictorieuse();
-  
+
   } catch (FinDuMondeException fdme) {
     // ...
   }
@@ -176,16 +176,16 @@ ensuite à la fin des blocs **catch**.
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-  
+
     boolean victoire = heros.combattre(espritDuMal);
     boolean planDejoue = heros.desamorcer(machineInfernale);
-    
+
     if (!victoire || !planDejoue) {
       throw new FinDuMondeException();
     }
-    
+
     heros.setPoseVictorieuse();
-  
+
   } catch (Exception e) {
     // ...
   }
@@ -195,7 +195,7 @@ Exception_. Comme toutes les exceptions en Java hérite directement ou indirecte
 de cette classe, ce bloc sera exécuté pour traité la NullPointerException_ à
 la ligne 3 ou la *FinDuMondeException* à la ligne 10.
 
-Les blocs **catch** sont pris en compte à l'exécution dans l'ordre de leur 
+Les blocs **catch** sont pris en compte à l'exécution dans l'ordre de leur
 déclaration. Déclarer un bloc **catch** pour une exception parente avant
 un bloc **catch** pour une exception enfant est considéré comme une erreur de compilation.
 
@@ -207,16 +207,16 @@ un bloc **catch** pour une exception enfant est considéré comme une erreur de 
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-  
+
     boolean victoire = heros.combattre(espritDuMal);
     boolean planDejoue = heros.desamorcer(machineInfernale);
-    
+
     if (!victoire || !planDejoue) {
       throw new FinDuMondeException();
     }
-    
+
     heros.setPoseVictorieuse();
-  
+
   } catch (Exception e) {
     // ...
   } catch (FinDuMondeException fdme) {
@@ -236,16 +236,16 @@ que cela fonctionne, il faut inverser l'ordre des blocs **catch** :
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-  
+
     boolean victoire = heros.combattre(espritDuMal);
     boolean planDejoue = heros.desamorcer(machineInfernale);
-    
+
     if (!victoire || !planDejoue) {
       throw new FinDuMondeException();
     }
-    
+
     heros.setPoseVictorieuse();
-  
+
   } catch (FinDuMondeException fdme) {
     // ...
   } catch (Exception e) {
@@ -273,16 +273,16 @@ le bloc **catch** en les séparant par **|** :
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-  
+
     boolean victoire = heros.combattre(espritDuMal);
     boolean planDejoue = heros.desamorcer(machineInfernale);
-    
+
     if (!victoire || !planDejoue) {
       throw new FinDuMondeException();
     }
-    
+
     heros.setPoseVictorieuse();
-  
+
   } catch (NullPointerException | FinDuMondeException ex) {
     // traitement commun aux deux types d'exception...
   }
@@ -299,7 +299,7 @@ Propagation d'une exception
 Si une exception n'est pas interceptée par un bloc **catch**, alors elle remonte
 la pile d'appel, jusqu'à ce qu'un bloc **catch** prenne cette exception en charge.
 Si l'exception remonte tout en haut de la pile d'appel du thread, alors le thread
-s'interrompt. S'il s'agit du thread principal, alors l'application s'arrête 
+s'interrompt. S'il s'agit du thread principal, alors l'application s'arrête
 en erreur.
 
 Le mécanisme de propagation permet de séparer la partie de l'application qui génère
@@ -311,17 +311,17 @@ par une exception plutôt que de retourner un booléen. L'exception jetée
 porte une information plus riche qu'un simple booléen car elle dispose d'un type
 et d'un état interne.
 
-::
+.. code-block:: java
 
   try {
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-    
+
     heros.combattre(espritDuMal);
     heros.desamorcer(machineInfernale);
     heros.setPoseVictorieuse();
-  
+
   } catch (FinDuMondeException ex) {
     // ...
   }
@@ -334,13 +334,13 @@ le code du bloc n'est plus contaminé par des variables et des instructions
 La langage Java impose que les méthodes signalent les types d'exception
 qu'elles peuvent jeter. Ainsi, le code ci-dessus ne compilera que si au moins
 une des instructions du bloc **try** peut générer une *FinDuMondeException*.
-Cela permet au compilateur de détecter d'éventuel code mort. La déclaration des 
-exceptions jetées par une méthode fait donc partie de sa signature et utilise 
+Cela permet au compilateur de détecter d'éventuel code mort. La déclaration des
+exceptions jetées par une méthode fait donc partie de sa signature et utilise
 le mot-clé **throws**.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
+  package {{ROOT_PKG}}.heroes;
 
   public class Heros {
 
@@ -362,9 +362,9 @@ est même possible d'interrompre un constructeur. Cela aura pour effet de stoppe
 la construction de l'objet et ainsi d'empêcher d'avoir une instance dans un
 état invalide.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
+  package {{ROOT_PKG}}.heroes;
 
   public class Heros {
 
@@ -379,14 +379,14 @@ La déclaration des exceptions dans la signature d'une méthode permet à la foi
 de documenter dans le code lui-même le comportement de la méthode tout en
 contrôlant à la compilation que les cas d'exception sont gérés par le code.
 
-::
+.. code-block:: java
 
-  public Marchandise acheter(long montant, Currency devise) 
-    throws CreditInsuffisantException, DeviseRefuseeException, 
+  public Marchandise acheter(long montant, Currency devise)
+    throws CreditInsuffisantException, DeviseRefuseeException,
            MarchandiseNonDisponibleException {
     // ...
   }
-  
+
 Dans l'exemple ci-dessus, même sans avoir accès au code source, la signature
 suffit à renseigner sur les cas d'erreur que l'on va pouvoir rencontrer
 lorsqu'on appelle la méthode *acheter*.
@@ -411,9 +411,9 @@ dans la sous-classe.
 Ainsi, si la classe *SuperHeros* hérite de la classe *Heros*, elle peut redéfinir
 les méthodes en ne déclarant pas d'exception.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
+  package {{ROOT_PKG}}.heroes;
 
   public class SuperHeros extends Heros {
 
@@ -432,9 +432,9 @@ Cette nouvelle classe peut aussi changer les types d'exception déclarés par
 les méthodes redéfinies à condition que ces types soient des classes filles
 des exceptions d'origine.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
+  package {{ROOT_PKG}}.heroes;
 
   public class SuperHeros extends Heros {
 
@@ -448,14 +448,14 @@ des exceptions d'origine.
 Le code précédent ne compile que si l'exception *PlanMachiaveliqueException*
 hérite directement ou indirectement de *FinDuMondeException*.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.heroes;
+  package {{ROOT_PKG}}.heroes;
 
   public class PlanMachiaveliqueException extends FinDuMondeException {
     // ...
   }
-  
+
 
 .. note ::
 
@@ -474,21 +474,21 @@ terminé normalement ou par une exception.
 
 .. note::
 
-  Si un bloc **try** se termine par une exception et qu'il n'existe pas 
+  Si un bloc **try** se termine par une exception et qu'il n'existe pas
   de bloc **catch** approprié, alors le bloc **finally** est exécuté et ensuite
   l'exception est propagée.
 
-::
+.. code-block:: java
 
   try {
     if (heros == null) {
       throw new NullPointerException("Le heros ne peut pas être nul !");
     }
-  
+
     heros.combattre(espritDuMal);
     heros.desamorcer(machineInfernale);
     heros.setPoseVictorieuse();
-  
+
   } catch (FinDuMondeException fdme) {
     // ...
   } finally {
@@ -501,13 +501,13 @@ terminé normalement ou par une exception.
   Un bloc **finally** est exécuté même si bloc **try** exécute une instruction
   **return**. Dans ce cas, le bloc **finally** est d'abord exécuté puis ensuite
   l'instruction **return**.
-  
+
 Le bloc **finally** est le plus souvent utilisé pour gérer les ressources autre
 que la mémoire. Si le programme ouvre une connexion, un fichier..., le traitement est
 effectué dans le bloc **try** puis le bloc **finally** se charge de libérer
 la ressource.
 
-::
+.. code-block:: java
 
   java.io.FileReader reader = new java.io.FileReader(filename);
   try {
@@ -522,8 +522,8 @@ la ressource.
     return builder.toString();
   } finally {
     // Ce block est obligatoirement exécuté après le block try.
-    // Ainsi le flux de lecture sur le fichier est fermé 
-    // avant le retour de la méthode. 
+    // Ainsi le flux de lecture sur le fichier est fermé
+    // avant le retour de la méthode.
     reader.close();
   }
 
@@ -531,10 +531,10 @@ la ressource.
 Le try-with-resources
 *********************
 
-La gestion des ressources peut également être réalisée par la syntaxe 
-du try-with-resources_. 
+La gestion des ressources peut également être réalisée par la syntaxe
+du try-with-resources_.
 
-::
+.. code-block:: java
 
   try (java.io.FileReader reader = new java.io.FileReader(filename)) {
     int nbCharRead = 0;
@@ -555,7 +555,7 @@ sur chacune des variables qui ne valent pas **null**.
 
 Ainsi pour ce code :
 
-::
+.. code-block:: java
 
   try (java.io.FileReader reader = new java.io.FileReader(filename)) {
     // ...
@@ -563,7 +563,7 @@ Ainsi pour ce code :
 
 Le compilateur générera le bytecode correspondant à :
 
-::
+.. code-block:: java
 
   {
     java.io.FileReader reader = new java.io.FileReader(filename)
@@ -594,10 +594,10 @@ en Java.
 
 La hiérarchie d'exception permet de grouper des erreurs en concevant des types d'exception
 de plus en plus généraux. Une application pourra donc traiter à sa convenance des exceptions générales
-comme IOException_ mais pourra, au besoin, fournir une bloc **catch** pour 
+comme IOException_ mais pourra, au besoin, fournir une bloc **catch** pour
 traiter des exceptions plus spécifiques.
 
-::
+.. code-block:: java
 
   try {
 
@@ -623,14 +623,14 @@ intercepter une IOException_. Mais cela n'a peut-être pas beaucoup de sens pour
 le reste du programme, la méthode peut décider de jeter à la place une exception définit
 par l'application comme une *OperationNonDisponibleException*.
 
-::
+.. code-block:: java
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   public class OperationNonDisponibleException extends Exception {
-  
+
     public OperationNonDisponibleException(Exception cause) {
       super(cause);
     }
@@ -640,12 +640,12 @@ Cette exception n'a pas de lien d'héritage avec une IOException_. Par contre, e
 expose un constructeur qui accepte en paramètre une exception. Cela permet d'indiquer
 que l'exception a été causée par une autre exception.
 
-::
+.. code-block:: java
 
   try {
-   
+
    // ... opérations d'entrée / sortie vers le serveur
-  
+
   } catch (IOException ioe) {
     throw new OperationNonDisponibleException(ioe);
   }
@@ -666,7 +666,7 @@ avec le mot clé **throw**. De plus la classe Throwable_ fournit des méthodes u
 Par exemple, la méthode printStackTrace_ permet d'afficher sur la sortie d'erreur
 standard la pile d'appel de l'application.
 
-::
+.. code-block:: java
 
   try {
     double d = 1/0; // produit une ArithmeticException
@@ -696,7 +696,7 @@ NullPointerException_
 ClassCastException_
   signale qu'un transtypage invalide a été réalisé.
 
-Généralement, les exceptions qui héritent de RuntimeException_ ne sont pas 
+Généralement, les exceptions qui héritent de RuntimeException_ ne sont pas
 interceptées ni traitées par l'application. Au mieux, elles sont interceptées
 au plus haut de la pile d'appel pour signaler une erreur à l'utilisateur ou dans
 les fichiers de log.
@@ -705,31 +705,31 @@ les fichiers de log.
 Les classes Error_, RuntimeException_ et toutes les classes qui en héritent
 sont appelées des *unchecked exceptions*. Cela signifie que le compilateur
 n'exige pas que ces exceptions apparaissent dans la signature des méthodes.
-En effet, elles représentent des problèmes internes graves de la JVM ou des 
+En effet, elles représentent des problèmes internes graves de la JVM ou des
 bugs. Donc virtuellement toutes les méthodes en Java sont susceptibles de
 lancer de telles exceptions.
 
 
-Si nous reprenons notre exemple des véhicules, les méthodes pour accélérer 
-et décélerer devraient contrôler que le paramètre passé est bien un nombre 
-positif. Si ce n'est pas le cas, elle peut jeter une IllegalArgumentException_ 
-qui est une exception runtime fournie par l'API standard et qui sert à signaler 
+Si nous reprenons notre exemple des véhicules, les méthodes pour accélérer
+et décélerer devraient contrôler que le paramètre passé est bien un nombre
+positif. Si ce n'est pas le cas, elle peut jeter une IllegalArgumentException_
+qui est une exception runtime fournie par l'API standard et qui sert à signaler
 qu'un paramètre est invalide. Cette exception ne doit pas être obligatoirement
 déclarée dans la signature de la méthode.
 
-::
+.. code-block:: java
 
-  package ROOT_PKG.conduite;
-  
+  package {{ROOT_PKG}}.conduite;
+
   public class Vehicule {
 
     private final String marque;
     protected float vitesse;
-    
+
     public Vehicule(String marque) {
       this.marque = marque;
     }
-    
+
     public void accelerer(float deltaVitesse) {
       if (deltaVitesse < 0) {
         throw new IllegalArgumentException("deltaVitesse doit être positif");
@@ -745,7 +745,7 @@ déclarée dans la signature de la méthode.
     }
 
     // ...
-    
+
   }
 
 
@@ -754,14 +754,14 @@ déclarée dans la signature de la méthode.
   Il est tout de même intéressant de signaler les exceptions runtime qui sont
   engendrées par des violations de préconditions ou de postconditions. Cela
   permet de documenter explicitement ces préconditions et ces postconditions.
-  
-  ::
-    
+
+  .. code-block:: java
+
     /**
      * Accélère le véhicule
      *
      * @param deltaVitesse la vitesse à ajouter à la vitesse courante.
-     * @throws IllegalArgumentException si deltaVitesse est un nombre négatif. 
+     * @throws IllegalArgumentException si deltaVitesse est un nombre négatif.
      */
     public void accelerer(float deltaVitesse) throws IllegalArgumentException {
       if (deltaVitesse < 0) {
@@ -779,7 +779,7 @@ Choix entre checked et unchecked
 
 En tant que développeurs, lorsque nous créons de nouvelles classes pour représenter
 des exceptions, nous avons le choix entre hériter de la classe Exception_ ou
-de la classe RuntimeException_. C'est-à-dire entre créer une *checked* ou 
+de la classe RuntimeException_. C'est-à-dire entre créer une *checked* ou
 une *unchecked* exception. La frontière entre les deux familles a évolué
 au cours des versions de Java.
 
@@ -820,11 +820,11 @@ vérifier qu'elle est correctement traitée.
   Une assertion est une condition qui doit être vraie. Sinon une AssertionError_ est jetée.
   La syntaxe est la suivante :
 
-  ::
+  .. code-block:: java
 
     assert expression;
     assert expression : valeur;
-    
+
   L'expression doit être une expression booléenne, la valeur sera passée comme message
   à l'instance de AssertionError_ si l'expression est fausse. Cela permet d'avoir
   une information de contexte d'erreur.
@@ -835,11 +835,11 @@ vérifier qu'elle est correctement traitée.
   * exemple d'assertion
   * limite des assertions
   * activer les assertions dans Eclipse
-    
+
 
 .. _Programming With Assertions: https://docs.oracle.com/javase/8/docs/technotes/guides/language/assert.html
-.. _AssertionError: https://docs.oracle.com/javase/8/docs/api/java/lang/AssertionError.html  
-.. _IllegalArgumentException: https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html  
+.. _AssertionError: https://docs.oracle.com/javase/8/docs/api/java/lang/AssertionError.html
+.. _IllegalArgumentException: https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html
 .. _ClassCastException: https://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html
 .. _ArithmeticException: https://docs.oracle.com/javase/8/docs/api/java/lang/ArithmeticException.html
 .. _Exception: https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html

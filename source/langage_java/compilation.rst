@@ -260,7 +260,7 @@ Exercice
 
     Créer ensuite la classe *PremierPdf* et ajoutez le code suivant :
 
-    ::
+    .. code-block:: java
 
       import java.io.FileOutputStream;
 

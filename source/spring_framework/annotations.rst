@@ -63,7 +63,7 @@ d'application. Si ce n'est pas le cas, l'initialisation du contexte d'applicatio
   :caption: Exemple de déclaration avec l'annotation @Required
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.List;
@@ -96,7 +96,7 @@ pour un type primitif ou un chaîne de caractères. Il donne la valeur par défa
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.util.List;
@@ -134,7 +134,7 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
   :caption: Exemple d'utilisation de @Autowired sur un attribut
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import javax.sql.DataSource;
@@ -153,7 +153,7 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
   :caption: Exemple d'utilisation de @Autowired sur une méthode
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import javax.sql.DataSource;
@@ -176,7 +176,7 @@ ou à l'attribut. La stratégie est donc forcément :ref:`byType <spring_autowir
   :caption: Exemple d'utilisation de @Autowired sur un constructeur
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import javax.sql.DataSource;
@@ -224,7 +224,7 @@ dans le contexte d'application.
   :caption: Utilisation de l'annotation `@Qualifier`_
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.beans.factory.annotation.Autowired;
@@ -259,13 +259,13 @@ dans le contexte d'application.
 
     <context:annotation-config/>
     
-    <bean name="userService" class="ROOT_PKG.UserService"/>
+    <bean name="userService" class="{{ROOT_PKG}}.UserService"/>
       
-    <bean class="ROOT_PKG.UserFilter">
+    <bean class="{{ROOT_PKG}}.UserFilter">
       <qualifier value="whitelist"/>
     </bean>
 
-    <bean class="ROOT_PKG.UserFilter">
+    <bean class="{{ROOT_PKG}}.UserFilter">
       <qualifier value="blacklist"/>
     </bean>
 
@@ -288,7 +288,7 @@ par le Spring Framework :
   ::
 
   {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
     import javax.annotation.Resource;
@@ -314,7 +314,7 @@ par le Spring Framework :
 ::
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import java.sql.Connection;
@@ -368,7 +368,7 @@ dans le fichier XML de contexte d'application.
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="ROOT_PKG" />
+    <context:component-scan base-package="{{ROOT_PKG}}" />
 
   </beans>
 
@@ -406,7 +406,7 @@ Spring Framework pour créer un *bean* dans le contexte d'application.
   :caption: Utilisation de l'annotation `@Service`_
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.stereotype.Service;
@@ -435,7 +435,7 @@ annotées avec `@Bean`_. Dans ce cas, le nom du *bean* correspond au nom de la m
   :caption: Création d'un bean à partir d'un composant
 
 {% if not jupyter %}
-  package ROOT_PKG;
+  package {{ROOT_PKG}};
 {% endif %}
 
   import org.springframework.context.annotation.Bean;
