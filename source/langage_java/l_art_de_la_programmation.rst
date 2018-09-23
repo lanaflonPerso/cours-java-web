@@ -56,8 +56,7 @@ permet de très bien “vendre” votre CV, pour trouver des stages et des
 emplois après une formation spécialisée en informatique.
 
 +-------------+-------------+-------------+-------------+-------------+
-| Rang        | Langage     | part de     | utilisation | avis        |
-|             |             | marché      |             |             |
+| Rang        | Langage     | popularité  | utilisation | avis        |
 +=============+=============+=============+=============+=============+
 | 1           | Python      | 24.58       | Calcul      | Simple      |
 |             |             |             | scientifiqu | d’utilisati |
