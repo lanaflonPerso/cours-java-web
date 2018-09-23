@@ -4,7 +4,7 @@ Les interfaces
 Une interface permet de définir un ensemble de services qu'un client peut
 obtenir d'un objet. Une interface introduit une abstraction pure qui permet
 un découplage maximal entre un service et son implémentation. On retrouve
-ainsi les interfaces au cœur de l'implémentation de beaucoup ade bibliothèques
+ainsi les interfaces au cœur de l'implémentation de beaucoup de bibliothèques
 et de frameworks. Le mécanisme des interfaces permet d'introduire également une
 forme simplifiée d'héritage multiple.
 

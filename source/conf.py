@@ -236,3 +236,8 @@ rst_epilog = """
 for tag in getattr(profile, 'tags', '[]'):
     print("###################### adding tag: %s" % tag)
     tags.add(tag)
+
+source_parsers = {
+   '.md': 'recommonmark.parser.CommonMarkParser',
+}
+    

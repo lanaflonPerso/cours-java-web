@@ -9,9 +9,8 @@ highlight_root_package = 'fr.univ_paris1.miashs'
 root_package_name='fr.univ_paris1.miashs'
 todo_include_todos = False
 
-chapters=['langage_java']
+chapters=['langage_java',"langage_java_exo"]
 
 tags=[
 "skip_package",
-
 ]
