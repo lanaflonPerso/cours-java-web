@@ -409,7 +409,7 @@ a accès au paramètre de la méthode qui la déclare.
   le compilateur générera tout de même une erreur si on tente de modifier un
   paramètre ou une variable déclaré dans la méthode et utilisé par une classe anonyme.
 
-  .. code-block:: java
+  ::
 
     // on déclare le paramètre final pour signaler explicitement qu'il n'est
     // pas possible de modifier la référence de ce paramètre puisqu'il est
