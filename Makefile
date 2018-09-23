@@ -53,11 +53,11 @@ build_ipynb: $(subst xml,ipynb,$(wildcard $(BUILDDIR)/xml/*/*.xml) $(wildcard $(
 build_md: $(subst xml,md,$(wildcard $(BUILDDIR)/xml/*/*.xml) $(wildcard $(BUILDDIR)/xml/*.xml))
 
 
-ipynb: $(PREPROCESS_COMMAND) build_xml
-	make build_ipynb
+ipynb: build_xml
+	make build_ipynb -j
 
-md:	$(PREPROCESS_COMMAND) build_md
-	make build_md
+md:     build_md
+	make build_md -j
 
 
 $(SOURCEDIR) $(SOURCEDIR)/ipynb:
@@ -90,7 +90,7 @@ help:
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%:
+%: $(PREPROCESS_COMMAND)
 	@if [ $@ != build_md ] && [ $@ != build_ipynb ] && [ $@ != ipynb ] && [ $@ != md ] && [ $@ != preprocess_sources ]; then \
 	$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O); \
 	fi

@@ -222,7 +222,7 @@ Pour plus de lisibilité, il est également possible de séparer les milliers pa
   Les opérations arithmétiques entre des valeurs littérales sont effectuées à la compilation.
   Il est souvent plus lisible de faire apparaître l'opération plutôt que le résultat :
 
-  ::
+  .. code-block:: java
 
     int hourInMilliseconds = 60 * 60 * 1000 // plutôt que 3_600_000
 

@@ -147,7 +147,7 @@ l'API standard ou par des bibliothèques tierces.
 
   Il est parfois facile d'introduire un bug en Java.
 
-  ::
+  .. code-block:: java
 
     if (x.equals(y)) {
       // ...
@@ -157,7 +157,7 @@ l'API standard ou par des bibliothèques tierces.
   **null**, entraînant ainsi une erreur de type NullPointerException_.
   Il ne faut donc pas oublier de tester la valeur **null** :
 
-  ::
+  .. code-block:: java
 
     if (x != null && x.equals(y)) {
       // ...
@@ -169,7 +169,7 @@ l'API standard ou par des bibliothèques tierces.
   vaut **null**. Cela est notamment très pratique pour comparer une chaîne
   de caractères avec une constante :
 
-  ::
+  .. code-block:: java
 
     if ("Message à comparer".equals(msg)) {
       // ...
@@ -316,7 +316,7 @@ la nouvelle instance.
   la méthode clone_ afin de la rendre **public**. On peut donc directement cloner
   des tableaux en Java si on désire en obtenir une copie.
 
-  ::
+  .. code-block:: java
 
     int[] tableau = {1, 2, 3, 4};
     int[] tableauClone = tableau.clone();

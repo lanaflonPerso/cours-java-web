@@ -28,7 +28,7 @@ suivante dans le corps de la classe :
   }
 
 
-  
+
 La classe ci-dessus ne contient que des attributs, elle s'apparente à une simple
 structure de données. Il est possible de créer une instance de cette classe
 avec l'opérateur **new** et d'accéder aux attributs de l'objet créé avec

@@ -424,7 +424,7 @@ de type *Voiture* à des variables de type *Vehicule*.
   héritent directement ou indirectement de Object_. Donc, toute instance peut
   être affectée à une variable, un attribut ou un paramètre de type Object_.
 
-  ::
+  .. code-block:: java
 
     Object obj = null;
     obj = new Voiture("DeLorean");

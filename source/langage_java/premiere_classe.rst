@@ -161,7 +161,7 @@ Créer une instance d'un objet se fait grâce au mot-clé **new**.
 
   Remarquez l'utilisation des parenthèses avec le mot-clé **new** :
 
-  ::
+  .. code-block:: java
 
     Voiture voiture = new Voiture();
 

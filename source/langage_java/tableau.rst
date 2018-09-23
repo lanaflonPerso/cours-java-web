@@ -111,7 +111,7 @@ L'attribut **length** ne peut pas être modifié.
   Il est tout à fait possible de créer un tableau vide, c'est-à-dire avec une taille
   de zéro.
 
-  ::
+  .. code-block:: java
 
     int[] tableau = new int[0];
 

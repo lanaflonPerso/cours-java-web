@@ -2,6 +2,7 @@
    :caption: Le langage Java
    :maxdepth: 1
 
+   /langage_java/l_art_de_la_programmation
    /langage_java/introduction
    /langage_java/installation
    /langage_java/compilation
@@ -30,4 +31,3 @@
    /langage_java/streams
    /langage_java/classe_interne
    /langage_java/les_annotations
-

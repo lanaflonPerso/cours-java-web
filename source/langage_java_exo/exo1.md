@@ -1,10 +1,4 @@
-#Exo 1#
+# Semaine 1 #
 
 
-## Question 1 ##
-
-ennoncé blabal
-
-```java
-String toto="toto";
-```
+## Excercice 1 ##
