@@ -142,8 +142,10 @@ le nom d'une classe qui doit déclarer une méthode **main**.
 
 Ajoutons une méthode **main** à la classe Voiture pour réaliser une programme très simple :
 
-.. literalinclude:: samples/premiere_classe/v4/Voiture.java
-  :linenos:
+.. raw:: html
+
+  <iframe src="https://trinket.io/embed/java/e6e6643152" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
 
 À la ligne 49, le code commence par créer une **instance** de la classe Voiture.
 Une classe représente une abstraction ou, si vous préférez, un schéma de ce

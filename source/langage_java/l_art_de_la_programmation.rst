@@ -2,7 +2,7 @@ Le logiciel mange le monde
 ==========================
 
 Aujourd’hui, le logiciel est présent dans toutes les sphères de nos
-vies. L’exemple le plus frappant sont les réseaux sociaux. Ils
+vies. L’exemple le plus frappant est l'influence des réseaux sociaux. Ils
 représentent désormais la porte d’entrée principale de l’information.
 Dans ce cadre, ils opèrent une hiérarchisation de chacun de nos fils
 d’actualité en fonction de nos préférences et influence donc grandement
@@ -96,13 +96,6 @@ emplois après une formation spécialisée en informatique.
 |             |             |             | produit     |             |
 |             |             |             | microsoft   |             |
 +-------------+-------------+-------------+-------------+-------------+
-| 7           | R           | 4.04 %      | Statistique | Beaucoup de |
-|             |             |             | s           | fonctionnal |
-|             |             |             |             | ités        |
-|             |             |             |             | déjà        |
-|             |             |             |             | existantes  |
-|             |             |             |             | mais lent   |
-+-------------+-------------+-------------+-------------+-------------+
 | 6           | C/C++       | 6.22 %      | Systèmes    | Très        |
 |             |             |             | bas niveau, | complexe    |
 |             |             |             | Systèmes    | mais très   |
@@ -111,6 +104,13 @@ emplois après une formation spécialisée en informatique.
 |             |             |             | (Linux,     |             |
 |             |             |             | Windows,    |             |
 |             |             |             | OSX)        |             |
++-------------+-------------+-------------+-------------+-------------+
+| 7           | R           | 4.04 %      | Statistique | Beaucoup de |
+|             |             |             | s           | fonctionnal |
+|             |             |             |             | ités        |
+|             |             |             |             | déjà        |
+|             |             |             |             | existantes  |
+|             |             |             |             | mais lent   |
 +-------------+-------------+-------------+-------------+-------------+
 | 8           | Objective-C | 3.33 %      | Mobile      | Très        |
 |             |             |             | (IOS)       | spécialisé  |
