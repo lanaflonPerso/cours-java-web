@@ -31,3 +31,4 @@
    /langage_java/streams
    /langage_java/classe_interne
    /langage_java/les_annotations
+   /langage_java/tests_unitaires
