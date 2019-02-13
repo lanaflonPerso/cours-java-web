@@ -31,9 +31,6 @@ JINJA_OPTS 		= $(ROOT_DIR)/preprocessing.conf.yaml --format=yaml
 
 
 
-
-
-
 build_xml:
 	@$(SPHINXBUILD) -M xml "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
