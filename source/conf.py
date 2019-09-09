@@ -26,8 +26,8 @@ import os
 profile = {}
 if 'BUILD_PROFILE' in os.environ:
   import importlib
-  profile = importlib.import_module('conf-%s' % os.environ['BUILD_PROFILE'])
-
+  profile = importlib.import_module('source.conf-%s' % os.environ['BUILD_PROFILE'])
+  
 
 # -- General configuration ------------------------------------------------
 

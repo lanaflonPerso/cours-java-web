@@ -1,3 +1,3 @@
 make clean
-BUILD_PROFILE=L2MIASHS make xml ipynb PREPROCESSING=YES -j
-rsync --progress  -r ./build/ipynb/* ubuntu@teaching.nextnet.top:/home/ubuntu/L2MIASHS
+BUILD_PROFILE=L2MIASHS make xml ipynb html PREPROCESSING=YES -j
+rsync --progress  -r ./build/html/* ubuntu@teaching-java.nextnet.top:/mnt/media/www/teaching-java.nextnet.top/html

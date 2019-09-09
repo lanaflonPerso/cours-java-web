@@ -13,12 +13,10 @@ la valeur du paramètre de droite (appelé *rvalue*) dans le paramètre de gauch
 (appelé *lvalue*). Java opère donc par copie. Cela signifie que si l'on change
 plus tard la valeur d'un des opérandes, la valeur de l'autre ne sera pas affectée.
 
-.. code-block:: java
+.. raw:: html
 
-  int i = 1;
-  int j = i; // j reçoit la copie de la valeur de i
+        <iframe src="https://trinket.io/embed/java/12ab96be6d" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
-  i = 10; // maintenant i vaut 10 mais j vaut toujours 1
 
 Pour les variables de type objet, on appelle ces variables des **handlers**
 car la variable ne contient pas à proprement parler un objet mais
@@ -138,15 +136,9 @@ Les opérateurs arithmétiques unaires ne prennent qu'un seul argument
    * - **-**
      - Négatif
 
-.. code-block:: java
+.. raw:: html
 
-  int i = 0;
-  i++; // i vaut 1
-  ++i; // i vaut 2
-  --i; // i vaut 1
-
-  int j = +i; // équivalent à int j = i;
-  int k = -i;
+        <iframe src="https://trinket.io/embed/java/0ec540aa23" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 .. note::
 
@@ -172,12 +164,10 @@ possible de concaténer un objet de type String_ avec un autre type.
 Pour cela, le compilateur insérera un appel à la méthode *toString* de l'objet ou de
 la classe enveloppe pour un type primitif.
 
-.. code-block:: java
+.. raw::html
 
-  String s1 = "Hello ";
-  String s2 = s1 + " world";
-  String s3 = " !";
-  String s4 = s2 + s3;
+        <iframe src="https://trinket.io/embed/java/42185f1bfb" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
 
 .. note::
 
@@ -186,22 +176,9 @@ la classe enveloppe pour un type primitif.
   consiste justement à nous aider à construire des chaînes de caractères. Le compilateur
   remplacera en fait notre code précédent par quelque chose dans ce genre :
 
-  .. code-block:: java
-
-    String s1 = "Hello ";
-
-    StringBuilder sb1 = new StringBuilder();
-    sb1.append(s1)
-    sb1.append(s2);
-
-    String s2 = sb1.toString();
-    String s3 = " !";
-
-    StringBuilder sb2 = new StringBuilder();
-    sb2.append(s2)
-    sb2.append(s3);
-
-    String s4 = sb2.toString();
+  .. raw:: html
+  
+          <iframe src="https://trinket.io/embed/java/87ac9f47b8" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 
 .. note::

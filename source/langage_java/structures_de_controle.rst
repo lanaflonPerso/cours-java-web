@@ -351,7 +351,11 @@ Exercice
   Le programme suivant vérifie que le résultat du chiffrement est bien conforme au ce qui est attendu.
   Dans ce cas, il affichera *true* sur la sortie standard.
 
-  .. literalinclude:: samples/structures_de_controle/AlgoCesar.java
+  .. comments .. literalinclude:: samples/structures_de_controle/AlgoCesar.java
+
+  .. raw:: html
+
+  
 
   Décommentez le code de chaque étape dans la méthode *main* au fur et à
   mesure que vous implémentez la méthode *encrypte* afin de vérifier que votre
