@@ -3,4 +3,4 @@ sphinx-rtd-theme==0.3.0
 jinja2-cli==0.6.0
 sphinx-markdown-tables==0.0.9
 recommonmark==0.5.0
-pyyaml==3.13
+pyyaml==5.1
