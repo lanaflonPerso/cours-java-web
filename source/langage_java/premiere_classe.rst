@@ -223,5 +223,21 @@ choisir *Run as > Java Application*.
   Vous pouvez aussi appuyer sur la touche F11 lorsque vous êtes positionné dans le fichier source
   pour lancer l'exécution de la classe.
 
+Exercice
+*******************************
+
+Ecrivez une classe appellée AscenseurTolbiac, elle devra contenir les méthodes suivantes:
+  - monter # l'Ascenseur monte du nombre d'étage désiré
+  - descendre # l'Ascenseur descend du nombre d'étage désiré
+  - relacher # l'Ascenseur permet à ses occupants de sortir
+  - accueillir # l'Ascenseur permet à des personnes de rentrer
+  - toString # renvoie une chaine de caractère décrivant l'étage et le contenu de l'ascenceur
+
+.. raw:: html
+
+  <iframe src="https://trinket.io/embed/java/308916e8a4?showInstructions=true" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
+
 .. _System: https://docs.oracle.com/javase/8/docs/api/java/lang/System.html
 .. _println: https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#println-java.lang.Object-

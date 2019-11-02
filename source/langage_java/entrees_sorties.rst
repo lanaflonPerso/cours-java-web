@@ -93,10 +93,7 @@ octet par octet.
       stream.close();
     }
 
-  Toutes les classes qui représentent
-  des flux d'entrée ou de sortie implémentent l'interface Closeable_. Cela
-  signifie qu'elles peuvent être utilisées avec la syntaxe *try-with-resources* et
-  ainsi faciliter leur gestion en garantissant une fermeture automatique.
+Toutes les classes qui représentent des flux d'entrée ou de sortie implémentent l'interface Closeable_. Cela signifie qu'elles peuvent être utilisées avec la syntaxe *try-with-resources* et ainsi faciliter leur gestion en garantissant une fermeture automatique.
 
 .. code-block:: java
 
@@ -108,11 +105,7 @@ octet par octet.
       }
     }
 
-  Les flux System.in_, System.out_ et System.err_ qui permettent de lire ou d'écrire
-  sur la console sont des cas particuliers. Ils sont ouverts au lancement de l'application
-  et seront automatiquement fermés à la fin. Il est néanmoins possible de fermer
-  explicitement ces flux si on veut détacher l'application du *shell* à partir
-  duquel elle a été lancée.
+Les flux System.in_, System.out_ et System.err_ qui permettent de lire ou d'écrire sur la console sont des cas particuliers. Ils sont ouverts au lancement de l'application et seront automatiquement fermés à la fin. Il est néanmoins possible de fermer explicitement ces flux si on veut détacher l'application du *shell* à partir duquel elle a été lancée.
 
 
 OutputStream et classes concrètes

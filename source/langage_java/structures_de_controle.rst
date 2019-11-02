@@ -351,11 +351,11 @@ Exercice
   Le programme suivant vérifie que le résultat du chiffrement est bien conforme au ce qui est attendu.
   Dans ce cas, il affichera *true* sur la sortie standard.
 
-  .. comments .. literalinclude:: samples/structures_de_controle/AlgoCesar.java
 
   .. raw:: html
 
-  
+    <iframe src="https://trinket.io/embed/java/e7b6c8b749?showInstructions=true" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
 
   Décommentez le code de chaque étape dans la méthode *main* au fur et à
   mesure que vous implémentez la méthode *encrypte* afin de vérifier que votre

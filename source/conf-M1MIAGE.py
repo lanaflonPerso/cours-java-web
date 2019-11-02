@@ -9,7 +9,7 @@ highlight_root_package = 'fr.univ_paris1.miage'
 root_package_name='fr.univ_paris1.miage'
 todo_include_todos = False
 
-chapters=['javaee_web']
+chapters=['javaee_web',"javaee_orm"]
 
 tags=[
 "skip_package",

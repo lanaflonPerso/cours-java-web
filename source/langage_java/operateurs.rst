@@ -177,7 +177,7 @@ la classe enveloppe pour un type primitif.
   remplacera en fait notre code précédent par quelque chose dans ce genre :
 
   .. raw:: html
-  
+
           <iframe src="https://trinket.io/embed/java/87ac9f47b8" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 
@@ -297,16 +297,24 @@ Dans l'exemple ci-dessus, la méthode **ltest** est appelée et si elle retourne
 alors la méthode rtest() sera appelée pour évaluer l'expression. Si la méthode **ltest**
 retourne **false** alors le résultat de l'expression sera **false** et la méthode **rtest** ne sera pas appelée.
 
-.. code-block:: java
+..  .. code-block:: java
+  
+    ltest() || rtest()
 
-  ltest() || rtest()
+.. raw:: html
+ 
+  <iframe src="https://trinket.io/embed/java/c7e5f71bf0" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+.. raw:: html
+  
+  <iframe src="https://trinket.io/embed/java/f28659533a" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
 
 Dans l'exemple ci-dessus, la méthode **ltest** est appelée et si elle retourne **false**
 alors la méthode rtest() sera appelée pour évaluer l'expression. Si la méthode **ltest**
 retourne **true** alors le résultat de l'expression sera **true** et la méthode **rtest** ne sera pas appelée.
 
-Si les méthodes des exemples ci-dessus produisent des effets de bord, il est parfois difficile de comprendre
-le comportement du programme.
+Si les méthodes des exemples ci-dessus produisent des effets de bord, il est parfois difficile de comprendre le comportement du programme.
 
 .. tip::
 
@@ -335,6 +343,140 @@ Par exemple :
 
   String s = age >= 18 ? "majeur" : "mineur";
   int code = s.equals("majeur") ? 10 : 20;
+
+
+
+
+Le transtypage (cast)
+**********************
+
+Il est parfois nécessaire de signifier que l'on désire passer d'un type vers un autre
+au moment de l'affectation. Java étant un langage fortement typé, il autorise par défaut
+uniquement les opérations de transtypage qui sont sûres. Par exemple : passer d'un entier
+à un entier long puisqu'il n'y aura de perte de données.
+
+Si on le désire, il est possible de forcer un transtypage en indiquant explicitement
+le type attendu entre parenthèses :
+
+..  .. code-block:: java
+
+  int i = 1;
+  long l = i; // Ok
+  short s = (short) l; // cast obligatoire
+
+.. raw:: html
+  
+  <iframe src="https://trinket.io/embed/java/4ccd12ad42" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
+L'opération doit avoir un sens. Par exemple, pour passer d'un type d'objet à un autre, il faut
+que les classes aient un lien d'héritage entre elles.
+
+.. caution::
+
+  Si Java impose de spécifier explicitement le transtypage dans certaines situations alors
+  c'est qu'il s'agit de situations qui peuvent être problématiques (perte de données possible
+  ou mauvais type d'objet). Il ne faut pas interpréter cela comme une limite du langage : il s'agit
+  peut-être du symptôme d'une erreur de programmation ou d'une mauvaise conception.
+
+.. note::
+
+  Le transtypage peut se faire également par un appel à la méthode Class.cast_.
+  Il s'agit d'une utilisation avancée du langage puisqu'elle fait intervenir la notion
+  de réflexivité.
+
+Opérateur et assignation
+************************
+
+Il existe une forme compacte qui permet d'appliquer certains opérateurs et d'assigner le résultat
+directement à l'opérande de gauche.
+
+.. list-table:: Opérateurs avec assignation
+   :widths: 1 1
+   :header-rows: 0
+
+   * - Opérateur
+     - Équivalent
+
+   * - **+=**
+     - a = a + b
+
+   * - **-=**
+     - a = a - b
+
+   * - **\*=**
+     - a = a * b
+
+   * - **/=**
+     - a = a / b
+
+   * - **%=**
+     - a = a % b
+
+   * - **&=**
+     - a = a & b
+
+   * - **^=**
+     - a = a ^ b
+
+   * - **|=**
+     - a = a | b
+
+   * - **<<=**
+     - a = a << b
+
+   * - **>>=**
+     - a = a >> b
+
+   * - **>>>=**
+     - a = a >>> b
+
+
+
+
+L'opérateur .
+*************
+
+L'opérateur **.** permet d'accéder aux attributs et aux méthodes d'une classe
+ou d'un objet à partir d'une référence.
+
+.. code-block:: java
+
+  String s = "Hello the world";
+  int length = s.length();
+  System.out.println("La chaîne de caractères contient " + length  + " caractères");
+
+.. note ::
+
+  On a l'habitude d'utiliser l'opérateur **.** en plaçant à gauche une variable ou
+  un appel de fonction. Cependant comme une chaîne de caractères est une instance
+  de String_, on peut aussi écrire :
+
+  .. code-block:: java
+
+    int length = "Hello the world".length();
+
+  Lorsqu'on utilise la réflexivité en Java, on peut même utiliser le nom des
+  types primitifs à gauche de l'opérateur **.** pour accéder à la classe associée :
+
+  .. code-block:: java
+
+    String name = int.class.getName();
+
+L'opérateur ,
+*************
+
+L'opérateur virgule est utilisé comme séparateur des paramètres dans la définition
+et l'appel des méthodes. Il peut également être utilisé en tant qu'opérateur pour
+évaluer séquentiellement une instruction.
+
+.. code-block:: java
+
+  int x = 0, y = 1, z= 2;
+
+Cependant, la plupart des développeurs Java préfèrent déclarer une variable par ligne
+et l'utilisation de l'opérateur virgule dans ce contexte est donc très rare.
+
 
 Les opérateurs *bitwise*
 ************************
@@ -401,89 +543,9 @@ Puisque la machine stocke les nombres en base 2, un décalage vers la gauche éq
   i = i >> 2 // i vaut 4
 
 
-Le transtypage (cast)
-**********************
-
-Il est parfois nécessaire de signifier que l'on désire passer d'un type vers un autre
-au moment de l'affectation. Java étant un langage fortement typé, il autorise par défaut
-uniquement les opérations de transtypage qui sont sûres. Par exemple : passer d'un entier
-à un entier long puisqu'il n'y aura de perte de données.
-
-Si on le désire, il est possible de forcer un transtypage en indiquant explicitement
-le type attendu entre parenthèses :
-
-.. code-block:: java
-
-  int i = 1;
-  long l = i; // Ok
-  short s = (short) l; // cast obligatoire
-
-L'opération doit avoir un sens. Par exemple, pour passer d'un type d'objet à un autre, il faut
-que les classes aient un lien d'héritage entre elles.
-
-.. caution::
-
-  Si Java impose de spécifier explicitement le transtypage dans certaines situations alors
-  c'est qu'il s'agit de situations qui peuvent être problématiques (perte de données possible
-  ou mauvais type d'objet). Il ne faut pas interpréter cela comme une limite du langage : il s'agit
-  peut-être du symptôme d'une erreur de programmation ou d'une mauvaise conception.
-
-.. note::
-
-  Le transtypage peut se faire également par un appel à la méthode Class.cast_.
-  Il s'agit d'une utilisation avancée du langage puisqu'elle fait intervenir la notion
-  de réflexivité.
-
-Opérateur et assignation
-************************
-
-Il existe une forme compacte qui permet d'appliquer certains opérateurs et d'assigner le résultat
-directement à l'opérande de gauche.
-
-.. list-table:: Opérateurs avec assignation
-   :widths: 1 1
-   :header-rows: 0
-
-   * - Opérateur
-     - Équivalent
-
-   * - **+=**
-     - a = a + b
-
-   * - **-=**
-     - a = a - b
-
-   * - **\*=**
-     - a = a * b
-
-   * - **/=**
-     - a = a / b
-
-   * - **%=**
-     - a = a % b
-
-   * - **&=**
-     - a = a & b
-
-   * - **^=**
-     - a = a ^ b
-
-   * - **|=**
-     - a = a | b
-
-   * - **<<=**
-     - a = a << b
-
-   * - **>>=**
-     - a = a >> b
-
-   * - **>>>=**
-     - a = a >>> b
-
-
 .. admonition:: À votre avis
 
-  .. code-block:: java
+  .. .. code-block:: java
 
     int i = 100;
     i += 1;
@@ -492,50 +554,11 @@ directement à l'opérande de gauche.
     i &= ~0;
     i %= 20;
 
-  Quelle est la valeur de i ?
+    // Quelle est la valeur de i ?
+  .. raw:: html
+    
+    <iframe src="https://trinket.io/embed/java/b657dbbfb7?showInstructions=true" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
-L'opérateur .
-*************
-
-L'opérateur **.** permet d'accéder aux attributs et aux méthodes d'une classe
-ou d'un objet à partir d'une référence.
-
-.. code-block:: java
-
-  String s = "Hello the world";
-  int length = s.length();
-  System.out.println("La chaîne de caractères contient " + length  + " caractères");
-
-.. note ::
-
-  On a l'habitude d'utiliser l'opérateur **.** en plaçant à gauche une variable ou
-  un appel de fonction. Cependant comme une chaîne de caractères est une instance
-  de String_, on peut aussi écrire :
-
-  .. code-block:: java
-
-    int length = "Hello the world".length();
-
-  Lorsqu'on utilise la réflexivité en Java, on peut même utiliser le nom des
-  types primitifs à gauche de l'opérateur **.** pour accéder à la classe associée :
-
-  .. code-block:: java
-
-    String name = int.class.getName();
-
-L'opérateur ,
-*************
-
-L'opérateur virgule est utilisé comme séparateur des paramètres dans la définition
-et l'appel des méthodes. Il peut également être utilisé en tant qu'opérateur pour
-évaluer séquentiellement une instruction.
-
-.. code-block:: java
-
-  int x = 0, y = 1, z= 2;
-
-Cependant, la plupart des développeurs Java préfèrent déclarer une variable par ligne
-et l'utilisation de l'opérateur virgule dans ce contexte est donc très rare.
 
 
 .. _String: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
